@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brenger × Marktplaats — Ale Rosenbaum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Tokens — matches home exactly ── */
+    :root {
+      --gray-hue: 32;
+      --gray-sat-mult: .2;
+      --gray00: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 50%), 98%);
+      --gray05: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 95%);
+      --gray10: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 90%);
+      --gray20: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 70%);
+      --gray30: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 30%), 30%);
+      --gray35: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 15%), 20%);
+      --gray40: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 30%), 5%);
+
+      --baseline: 1.6;
+      --xxs:.2; --xs:.6; --s:.8; --m:1; --l:1.25; --xl:2; --xxl:3;
+      --sp-xxs: calc(var(--xxs) * 1rem);
+      --sp-xs:  calc(var(--xs)  * 1rem);
+      --sp-s:   calc(var(--s)   * 1rem);
+      --sp-m:   calc(var(--m)   * 1rem);
+      --sp-l:   calc(var(--l)   * 1rem);
+      --sp-xl:  calc(var(--xl)  * 1rem);
+      --sp-xxl: calc(var(--xxl) * 1rem);
+
+      --container-width: 46rem;
+      --grid-spec: minmax(0,1fr) minmax(auto, var(--container-width)) minmax(0,1fr);
+      --center-column: 2 / 3;
+
+      --site-color:  #ff7006;
+      --text-color:  var(--gray40);
+      --meta-color:  var(--gray30);
+      --wash-color:  var(--gray00);
+      --hover-color: var(--site-color);
+
+      --font-sans:    system-ui, -apple-system, sans-serif;
+      --font-heading: 'Instrument Serif', Georgia, serif;
+      --font-serif:   'Spectral', Georgia, serif;
+      --font-body:    var(--font-serif);
+
+      /* ── Type scale — 4 levels, clear jumps ── */
+      --fs-display: clamp(3rem, 7.5vw, 5rem);
+      --fs-heading: clamp(1.5rem, 3vw, 2rem);
+      /* body: base font-size (~1rem) */
+      --fs-small: 0.8rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root { --text-color: var(--gray00); --meta-color: var(--gray10); --wash-color: var(--gray40); }
+    }
+
+    @media (max-width: 50em) {
+      :root { --grid-spec: minmax(100%, 1fr); --center-column: 1 / -1; }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+
+    body {
+      background: var(--wash-color);
+      color: var(--text-color);
+      font-family: var(--font-body);
+      font-size: clamp(100%, 2.75vw, 125%);
+      line-height: var(--baseline);
+    }
+
+    a { color: inherit; text-decoration-line: underline; text-decoration-thickness: max(.05em, 1px); -webkit-text-decoration-color: var(--hover-color) !important; text-decoration-color: var(--hover-color) !important; }
+    a:hover { color: var(--hover-color); }
+    p { margin-bottom: var(--sp-m); }
+    p:last-child { margin-bottom: 0; }
+
+    blockquote {
+      padding-left: var(--sp-m);
+      margin-block: var(--sp-l);
+      font-style: italic;
+      font-family: var(--font-serif);
+      position: relative;
+    }
+    blockquote::before {
+      content: '';
+      position: absolute;
+      left: 0; top: .2em; bottom: .2em;
+      width: 2px;
+      background: var(--meta-color);
+      opacity: .4;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--gray10);
+      width: 50%;
+      margin: var(--sp-xxl) auto;
+      position: relative;
+    }
+    hr::after {
+      font-family: var(--font-serif);
+      content: "∞";
+      background: var(--wash-color);
+      padding-inline: var(--sp-xs);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* ── Layout containers ── */
+    /* Narrow — 33rem centered, matches home column */
+    .col {
+      display: grid;
+      grid-template-columns: var(--grid-spec);
+      margin-bottom: var(--sp-xl);
+    }
+    .col > * { grid-column: var(--center-column); }
+
+    /* Wide — 68rem centered, for side-by-side sections */
+    .wide {
+      max-width: 68rem;
+      margin-inline: auto;
+      padding-inline: var(--sp-l);
+      margin-bottom: var(--sp-xl);
+    }
+
+    @media (max-width: 50em) {
+      .col > * { padding-inline: var(--sp-m); }
+      .wide { padding-inline: var(--sp-m); }
+    }
+
+    /* ── NAV — identical to home ── */
+    .nav {
+      display: grid;
+      grid-template-columns: var(--grid-spec);
+      margin-bottom: var(--sp-s);
+    }
+    .nav > * { grid-column: var(--center-column); }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-top: var(--sp-m);
+    }
+    .nav-name { font-family: var(--font-sans); font-size: var(--fs-small); color: var(--text-color); text-decoration: none; }
+    .nav-name:hover { color: var(--hover-color); }
+    .nav-links { display: flex; gap: var(--sp-s); list-style: none; }
+    .nav-links a { font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); text-decoration: none; position: relative; }
+    .nav-links a:hover { color: var(--hover-color); }
+    .nav-links a.active { color: var(--text-color); }
+    .nav-links a.active::after { content: "*"; color: var(--site-color); position: absolute; top: 100%; left: 50%; transform: translateX(-50%); line-height: 1; }
+
+    /* ── HERO ── */
+    .hero-wrap { /* single column stack */ }
+
+    .hero-title {
+      font-family: var(--font-sans);
+      font-size: var(--fs-display);
+      font-weight: 400;
+      letter-spacing: -.02em;
+      line-height: 1.05;
+      margin-bottom: var(--sp-xs);
+    }
+    .hero-lead {
+      font-family: var(--font-sans);
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: var(--meta-color);
+      line-height: 1.55;
+      margin-bottom: var(--sp-l);
+      max-width: 58ch;
+    }
+    .hero-pills {
+      display: flex;
+      gap: var(--sp-s);
+      flex-wrap: wrap;
+    }
+    .hero-tag {
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      color: var(--meta-color);
+      border: 1px solid var(--gray10);
+      border-radius: 2em;
+      padding: .35em 1em;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: .5em;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--site-color);
+      flex-shrink: 0;
+    }
+
+    /* ── MOCKUP PLACEHOLDERS ── */
+    .mockup {
+      background: var(--gray05);
+      border: 1px solid var(--gray10);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-xs);
+      padding: var(--sp-l);
+      text-align: center;
+      color: var(--gray20);
+      font-family: var(--font-sans);
+      font-size: .7rem;
+      line-height: 1.4;
+    }
+    .mockup-hero   { aspect-ratio: 16 / 6; border-radius: 0; border-inline: 0; }
+    .hero-img { display: block; width: 100%; max-height: 72vh; object-fit: cover; object-position: center 30%; margin-bottom: var(--sp-xl); }
+    .mockup-photo  { aspect-ratio: 4 / 3; }
+    .mockup-1phone { aspect-ratio: 9 / 18; max-width: 180px; }
+    .mockup-2phone { aspect-ratio: 3 / 2; }
+    .mockup-4phone { aspect-ratio: 16 / 5; }
+
+    /* ── Mixed serif/sans within headings — matches home intro pattern ── */
+    /* All major headings: sans base, Instrument Serif italic for em */
+    .hero-title em,
+    .challenge-stat em,
+    .research-heading em,
+    .approach-heading em,
+    .phase-title em,
+    .reflection-heading em {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    /* Orange underline accent — selective use on key words */
+    .mark {
+      text-decoration: underline;
+      -webkit-text-decoration-color: var(--site-color);
+      text-decoration-color: var(--site-color);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    /* ── SECTION LABELS ── */
+    .label {
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      color: var(--site-color);
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-s);
+    }
+
+    /* ── CATEGORIES SCROLL ── */
+    .cats {
+      display: flex;
+      gap: var(--sp-m);
+      overflow-x: auto;
+      scrollbar-width: none;
+      border-top: 1px solid var(--gray10);
+      border-bottom: 1px solid var(--gray10);
+      padding-block: var(--sp-m);
+    }
+    .cats::-webkit-scrollbar { display: none; }
+    .cat {
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      color: var(--meta-color);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .cat-dot { color: var(--gray20); }
+
+    /* ── CHALLENGE ── */
+    .challenge-stat {
+      font-family: var(--font-sans);
+      font-size: var(--fs-heading);
+      font-weight: 400;
+      letter-spacing: -.015em;
+      line-height: 1.2;
+      margin-bottom: var(--sp-m);
+    }
+    .pills { display: flex; flex-wrap: wrap; gap: var(--sp-xs); margin-bottom: var(--sp-m); }
+    .pill {
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      color: var(--meta-color);
+      background: var(--gray05);
+      border: 1px solid var(--gray10);
+      border-radius: 2em;
+      padding: .2em .85em;
+    }
+
+    /* ── RESEARCH 2-COL ── */
+    .research-grid {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: var(--sp-xl);
+      align-items: start;
+    }
+    .research-heading {
+      font-family: var(--font-sans);
+      font-size: var(--fs-heading);
+      font-weight: 400;
+      letter-spacing: -.015em;
+      line-height: 1.2;
+      margin-bottom: var(--sp-m);
+    }
+    .research-body {
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      color: var(--meta-color);
+      line-height: 1.65;
+    }
+    .research-body p { margin-bottom: var(--sp-s); }
+    .research-body p:last-child { margin-bottom: 0; }
+    @media (max-width: 50em) { .research-grid { grid-template-columns: 1fr; } }
+
+    /* ── APPROACH ── */
+    .approach-heading {
+      font-family: var(--font-sans);
+      font-size: var(--fs-heading);
+      font-weight: 400;
+      letter-spacing: -.015em;
+      line-height: 1.2;
+      margin-bottom: var(--sp-l);
+    }
+    .diagram {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-s);
+      margin-bottom: var(--sp-l);
+      font-family: var(--font-sans);
+      font-size: .7rem;
+      color: var(--meta-color);
+    }
+    .node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-align: center;
+    }
+    .node-circle {
+      width: 2.4rem; height: 2.4rem;
+      border-radius: 50%;
+      background: var(--gray10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+    .node-label { font-size: .65rem; line-height: 1.3; max-width: 4.5rem; }
+    .node-line { flex: 1; height: 1px; background: var(--gray20); position: relative; }
+    .node-line::after { content: '›'; position: absolute; right: -5px; top: 50%; transform: translateY(-55%); color: var(--gray20); font-size: 1rem; line-height: 1; }
+
+    /* ── PARTNER ── */
+    .partner {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-l);
+    }
+    .partner p {
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      color: var(--meta-color);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .partner-logo {
+      flex-shrink: 0;
+      width: 3.5rem; height: 3.5rem;
+      border-radius: 50%;
+      background: #5bc4bf;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-size: .55rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      color: #fff;
+    }
+
+    /* ── PHASES ── */
+    .phase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-xl);
+      align-items: start;
+      margin-bottom: var(--sp-xxl);
+      padding-bottom: var(--sp-xxl);
+      border-bottom: 1px solid var(--gray10);
+    }
+    @media (max-width: 50em) { .phase { grid-template-columns: 1fr; } }
+
+    .phase-label {
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      color: var(--site-color);
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-xs);
+    }
+    .phase-title {
+      font-family: var(--font-sans);
+      font-size: var(--fs-heading);
+      font-weight: 400;
+      letter-spacing: -.015em;
+      line-height: 1.2;
+      margin-bottom: var(--sp-m);
+    }
+    .phase-body {
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      color: var(--meta-color);
+      line-height: 1.65;
+      margin-bottom: var(--sp-m);
+    }
+
+    .outcomes {
+      list-style: none;
+      border-top: 1px solid var(--gray10);
+      padding-top: var(--sp-m);
+      margin-top: var(--sp-m);
+    }
+    .outcomes li {
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      color: var(--meta-color);
+      padding-left: 1.4em;
+      position: relative;
+      margin-bottom: var(--sp-xxs);
+      line-height: 1.55;
+    }
+    .outcomes li::before {
+      content: '✓';
+      color: var(--site-color);
+      position: absolute;
+      left: 0;
+      font-size: .8em;
+      top: .15em;
+    }
+
+    /* Phase 4 — wide visual on top, 2-col text below */
+    .phase-wide { margin-bottom: var(--sp-xxl); }
+    .phase-wide-visual { margin-bottom: var(--sp-l); }
+    .phase-wide-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-xl);
+    }
+    @media (max-width: 50em) { .phase-wide-content { grid-template-columns: 1fr; } }
+
+    /* ── RESULTS ── */
+    .results {
+      background: var(--gray05);
+      margin-block: var(--sp-xxl);
+    }
+    .results-inner {
+      max-width: 54rem;
+      margin-inline: auto;
+      padding: var(--sp-xxl) var(--sp-l);
+    }
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-l);
+      margin-top: var(--sp-l);
+    }
+    @media (max-width: 50em) { .results-grid { grid-template-columns: 1fr 1fr; } }
+    .result-num {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: var(--fs-display);
+      font-weight: 400;
+      letter-spacing: -.04em;
+      line-height: 1;
+      margin-bottom: var(--sp-xs);
+    }
+    .result-label {
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      color: var(--meta-color);
+    }
+
+    /* ── REFLECTION ── */
+    .reflection-heading {
+      font-family: var(--font-sans);
+      font-size: var(--fs-heading);
+      font-weight: 400;
+      letter-spacing: -.015em;
+      line-height: 1.2;
+      margin-bottom: var(--sp-m);
+    }
+    .reflection-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-xl);
+    }
+    @media (max-width: 50em) { .reflection-cols { grid-template-columns: 1fr; } }
+    .reflection-col-title { font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); font-weight: 500; margin-bottom: var(--sp-s); }
+    .reflection-list { list-style: none; }
+    .reflection-list li {
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      color: var(--meta-color);
+      line-height: 1.55;
+      padding-left: var(--sp-m);
+      position: relative;
+      margin-bottom: var(--sp-xs);
+    }
+    .reflection-list li::before { content: '—'; position: absolute; left: 0; color: var(--gray20); }
+
+    /* ── OTHER WORKS ── */
+    .works-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-m); margin-top: var(--sp-l); }
+    .work-card {
+      display: block; text-decoration: none; color: inherit;
+      border: 1px solid var(--gray10); border-radius: 4px; overflow: hidden;
+      transition: border-color .2s;
+    }
+    .work-card:hover { border-color: var(--gray20); text-decoration: none; }
+    .work-thumb { aspect-ratio: 16/9; background: var(--gray05); }
+    .work-info { padding: var(--sp-s); }
+    .work-title { font-family: var(--font-heading); font-weight: 400; margin-bottom: 2px; font-size: 1rem; }
+    .work-meta { font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); }
+
+    /* ── FOOTER ── */
+    .footer { background: var(--gray05); margin-top: var(--sp-xxl); }
+    .footer-inner { padding-block: var(--sp-xxl); }
+    .footer-cta {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: var(--fs-display);
+      font-weight: 400;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+      margin-bottom: var(--sp-l);
+    }
+    .footer-btn {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      color: var(--text-color);
+      border: 1px solid var(--gray20);
+      border-radius: 2em;
+      padding: .45em 1.25em;
+      text-decoration: none;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .footer-btn:hover { background: var(--site-color); border-color: var(--site-color); color: #fff; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="wide" style="margin-bottom: var(--sp-l); padding-top: var(--sp-xl); max-width: min(90rem, 95vw)">
+  <div class="hero-wrap">
+    <h1 class="hero-title"><span style="white-space:nowrap">Integrating <em>Brenger</em> into <em>Marktplaats,</em></span><br>one step at a time</h1>
+    <p class="hero-lead">From the first design of Marktplaats' first fully-integrated large-item shipping flow. Built through lean iterations, from an in-app promotion to a flexible delivery experience.</p>
+    <div class="hero-pills">
+      <span class="hero-tag">+300 weekly shippings per week</span>
+      <span class="hero-tag">+€230K of total gross revenue for 2024</span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO IMAGE -->
+<img src="brenger-hero.png" alt="Hand holding a phone showing the Brenger integration inside the Marktplaats app" class="hero-img" />
+
+<!-- CATEGORIES -->
+<div class="wide" style="margin-bottom: var(--sp-xl)">
+  <div class="cats">
+    <span class="cat">Bicycle</span>
+    <span class="cat-dot">·</span>
+    <span class="cat">Car</span>
+    <span class="cat-dot">·</span>
+    <span class="cat">Caravan</span>
+    <span class="cat-dot">·</span>
+    <span class="cat">Corner</span>
+  </div>
+</div>
+
+<!-- CHALLENGE -->
+<div class="col">
+  <div>
+    <p class="label">Challenge</p>
+    <p class="challenge-stat">In 2023, <em><span class="mark">4 of the top 10</span></em> most searched items were <em>large items</em> that couldn't be traded with Marktplaats's transaction tools.</p>
+    <div class="pills">
+      <span class="pill">Sofa</span>
+      <span class="pill">Wardrobe</span>
+      <span class="pill">Dinner Table</span>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- RESEARCH -->
+<div class="wide">
+  <div class="research-grid">
+
+    <div class="mockup mockup-photo">
+      Research photo — user interview / team session
+    </div>
+
+    <div>
+      <p class="label">Research &amp; Insights</p>
+      <h2 class="research-heading">We combined <em>data analysis, surveys,<br>and interviews</em> to understand the real situation.</h2>
+      <div class="research-body">
+        <p>Qualitative and quantitative research confirmed the main barrier wasn't cost — it was trust. Users didn't know how items would be handled, or what recourse they'd have if something went wrong.</p>
+      </div>
+      <blockquote>
+        <p style="font-size: var(--sp-s);">"I was going to ship it if I knew my sofa wouldn't get damaged. Otherwise, I'd stick to pick-up only." — Buyer, user interview</p>
+      </blockquote>
+    </div>
+
+  </div>
+</div>
+
+<!-- APPROACH -->
+<div class="col">
+  <div>
+    <h2 class="approach-heading">We decided to build a new product <em><span class="mark">iteratively</span></em> — delivering value in chunks and reducing risk.</h2>
+    <div class="diagram">
+      <div class="node">
+        <div class="node-circle">A</div>
+        <span class="node-label">In-chat promotion</span>
+      </div>
+      <div class="node-line"></div>
+      <div class="node">
+        <div class="node-circle" style="background:var(--gray05)">2</div>
+        <span class="node-label">Split payment</span>
+      </div>
+      <div class="node-line"></div>
+      <div class="node">
+        <div class="node-circle" style="background:var(--gray05)">3</div>
+        <span class="node-label">Full integration</span>
+      </div>
+      <div class="node-line"></div>
+      <div class="node">
+        <div class="node-circle" style="background:var(--gray05)">B</div>
+        <span class="node-label">Standalone flow</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PARTNER -->
+<div class="col" style="margin-bottom: var(--sp-xxl)">
+  <div class="partner">
+    <p>From the analyzed partners, <strong>Brenger was the best C2C fit</strong> due to their flexibility, ease of integration and good relationship.</p>
+    <div class="partner-logo">brenger</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- PHASES -->
+<div class="wide">
+
+  <!-- Phase 01 -->
+  <div class="phase">
+    <div class="mockup mockup-1phone" style="margin-inline: auto; width: 100%">
+      Phase 1 — In-chat promotion screen
+    </div>
+    <div>
+      <p class="phase-label">In-chat Promotion</p>
+      <h3 class="phase-title">Started by testing desirability with <em>In-chat Promotion</em></h3>
+      <p class="phase-body">Promotion banners inside the Marktplaats chat redirected users to Brenger to finalize orders. No backend integration — just enough to measure intent and validate demand.</p>
+      <ul class="outcomes">
+        <li>Validated demand without engineering investment</li>
+        <li>Brenger started +125 orders from Marktplaats users</li>
+        <li>Signal strong enough to invest in real integration</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Phase 02 -->
+  <div class="phase">
+    <div class="mockup mockup-2phone">
+      Phase 2 — Marktplaats checkout + Brenger booking (2 screens)
+    </div>
+    <div>
+      <p class="phase-label">Split Payment</p>
+      <h3 class="phase-title">Item payment at <em>Marktplaats,</em> shipping payment at <em>Brenger</em></h3>
+      <p class="phase-body">Item payment stayed inside Marktplaats; transport booking and payment happened on Brenger's platform. Two flows linked by a handoff — friction, but full transaction validated.</p>
+      <ul class="outcomes">
+        <li>First fully transacted shipments via Brenger on Marktplaats</li>
+        <li>Identified two-step checkout as the main conversion blocker</li>
+        <li>Transport satisfaction high — product-market fit confirmed</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Phase 03 -->
+  <div class="phase">
+    <div class="mockup mockup-2phone">
+      Phase 3 — Unified checkout + scheduling (2 screens)
+    </div>
+    <div>
+      <p class="phase-label">Full Integration</p>
+      <h3 class="phase-title"><em>Full payment</em> at Marktplaats, appointments via <em>Brenger</em></h3>
+      <p class="phase-body">Unified the checkout: users paid for both item and transport in a single Marktplaats flow. Appointment scheduling was handled by Brenger post-purchase. Biggest friction point removed.</p>
+      <ul class="outcomes">
+        <li>Single payment flow — two-step checkout eliminated</li>
+        <li>Conversion rate improved significantly vs. Phase 02</li>
+        <li>Brenger positioned as quality partner, not external redirect</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Phase 04 — wide, 4 screens on top -->
+  <div class="phase-wide">
+    <div class="phase-wide-visual">
+      <div class="mockup mockup-4phone">
+        Phase 4 — Full standalone flow (4 screens: discovery → listing → booking → confirmation)
+      </div>
+    </div>
+    <div class="phase-wide-content">
+      <div>
+        <p class="phase-label">Standalone Flow</p>
+        <h3 class="phase-title">Users could <em>fully trade</em> with Brenger on a standalone solution — even after a pivot</h3>
+      </div>
+      <div>
+        <p class="phase-body">End-to-end flow inside Marktplaats: discover, negotiate, pay, and schedule transport without leaving the platform. What started as a static toggle became a permanent product feature.</p>
+        <ul class="outcomes">
+          <li>End-to-end trade with transport, no platform switches</li>
+          <li>Feature retained permanently after pilot period</li>
+          <li>Foundation for future logistics integrations across categories</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- RESULTS -->
+<div class="results">
+  <div class="results-inner">
+    <p class="label">Results</p>
+    <div class="results-grid">
+      <div>
+        <span class="result-num">+300</span>
+        <span class="result-label">weekly new shippings</span>
+      </div>
+      <div>
+        <span class="result-num">+€230K</span>
+        <span class="result-label">revenue for 2025</span>
+      </div>
+      <div>
+        <span class="result-num">4.2★</span>
+        <span class="result-label">user satisfaction</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REFLECTION -->
+<div class="col">
+  <div>
+    <p class="label">Reflection</p>
+    <h2 class="reflection-heading">Defining the product in increments <em><span class="mark">allowed us to:</span></em></h2>
+    <div class="reflection-cols">
+      <div>
+        <p class="reflection-col-title">Team learnings</p>
+        <ul class="reflection-list">
+          <li>Test adoption and reset goals before scaling</li>
+          <li>Iterate quickly based on real feedback, reducing risk</li>
+          <li>Prove value early to stakeholders, reducing politics</li>
+        </ul>
+      </div>
+      <div>
+        <p class="reflection-col-title">What I learned as a designer</p>
+        <ul class="reflection-list">
+          <li>Designing for trust in peer-to-peer transactions requires clarity at every step</li>
+          <li>Small design details — like highlighting "insured transport" — had outsized impact on conversion</li>
+          <li>The iterative approach helped alignment with both users and stakeholders</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OTHER WORKS -->
+<div class="col" style="margin-bottom: var(--sp-xxl)">
+  <div>
+    <p class="label">Other works</p>
+    <div class="works-grid">
+      <a class="work-card" href="#">
+        <div class="work-thumb" style="background: hsl(145,14%,89%)"></div>
+        <div class="work-info">
+          <p class="work-title">Design System para Saúde</p>
+          <p class="work-meta">Healthtech · 2024</p>
+        </div>
+      </a>
+      <a class="work-card" href="#">
+        <div class="work-thumb" style="background: hsl(28,18%,90%)"></div>
+        <div class="work-info">
+          <p class="work-title">Dashboard de Analytics</p>
+          <p class="work-meta">B2B · 2023</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="col">
+    <div class="footer-inner">
+      <p class="footer-cta">Let's start creating together.</p>
+      <a class="footer-btn" href="index.html#contact">Let's talk</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

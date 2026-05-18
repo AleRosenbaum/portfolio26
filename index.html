@@ -2,49 +2,803 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio UX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ale Rosenbaum, Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ── Tokens (daneden.me) ── */
+    :root {
+      --gray-hue: 32;
+      --gray-sat-mult: .2;
+      --gray00: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 50%), 98%);
+      --gray05: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 95%);
+      --gray10: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 90%);
+      --gray20: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 70%);
+      --gray30: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 30%), 30%);
+      --gray35: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 15%), 20%);
+      --gray40: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 30%), 5%);
+
+      --baseline: 1.6;
+      --xxs:.2; --xs:.6; --s:.8; --m:1; --l:1.25; --xl:2; --xxl:3;
+      --sp-xxs: calc(var(--xxs) * 1rem);
+      --sp-xs:  calc(var(--xs)  * 1rem);
+      --sp-s:   calc(var(--s)   * 1rem);
+      --sp-m:   calc(var(--m)   * 1rem);
+      --sp-l:   calc(var(--l)   * 1rem);
+      --sp-xl:  calc(var(--xl)  * 1rem);
+      --sp-xxl: calc(var(--xxl) * 1rem);
+
+      --container-width: 33rem;
+      --page-width: calc(var(--container-width) + (var(--baseline) * var(--m) * 2));
+      --content-width: calc(.25rem + (100vw - var(--page-width)) / 2);
+      --grid-spec: minmax(0,1fr) minmax(auto, var(--container-width)) minmax(0,1fr);
+      --center-column: 2 / 3;
+
+      --site-color: #ff7006;
+      --text-color: var(--gray40);
+      --meta-color: var(--gray30);
+      --wash-color: var(--gray00);
+      --highlight-color: #ffc800;
+      --hover-color: var(--site-color);
+      --code-wash: var(--gray05);
+
+      --font-sans:    system-ui, -apple-system, sans-serif;
+      --font-heading: 'Instrument Serif', Georgia, serif;
+      --font-serif:   'Spectral', Georgia, serif;
+      --font-body:    var(--font-serif);
+      --font-caption: var(--font-sans);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-color: var(--gray00);
+        --meta-color: var(--gray10);
+        --wash-color: var(--gray40);
+        --code-wash: #222;
+      }
+    }
+
+    @media (max-width: 50em) {
+      :root {
+        --grid-spec: minmax(100%, 1fr);
+        --center-column: 1 / -1;
+      }
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0f0f0f;
-      color: #f0f0f0;
-      min-height: 100vh;
+      background-color: var(--wash-color);
+      color: var(--text-color);
+      font-family: var(--font-body);
+      font-size: clamp(100%, 2.75vw, 125%);
+      line-height: var(--baseline);
+      font-feature-settings: "ss02" 1;
+    }
+
+    /* ── Global elements ── */
+    a {
+      color: inherit;
+      text-decoration-line: underline;
+      text-decoration-thickness: max(.05em, 1px);
+      -webkit-text-decoration-color: var(--hover-color) !important;
+      text-decoration-color: var(--hover-color) !important;
+    }
+    a:hover, a:focus { color: var(--hover-color); }
+
+    p { margin-bottom: var(--sp-m); }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol { margin-bottom: var(--sp-m); padding-left: var(--sp-l); }
+
+    h1, .h1 {
+      font-family: var(--font-heading);
+      font-size: var(--sp-xl);
+      font-weight: 400;
+      letter-spacing: -.0125em;
+      line-height: 1.1;
+      text-wrap: balance;
+      margin-bottom: var(--sp-m);
+      padding-bottom: var(--sp-l);
+      padding-top: var(--sp-xl);
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-size: var(--sp-l);
+      font-weight: 400;
+      margin-bottom: var(--sp-m);
+      padding-top: var(--sp-s);
+    }
+
+    h3 {
+      font-family: var(--font-sans);
+      font-size: var(--sp-m);
+      color: var(--meta-color);
+      font-weight: 400;
+    }
+
+    small, .small { font-size: var(--sp-s); }
+    .sans { font-family: var(--font-sans); }
+    .meta { color: var(--meta-color); }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--meta-color);
+      width: 50%;
+      margin: var(--sp-xxl) auto;
+      display: block;
+      position: relative;
+    }
+    hr::after {
+      font-family: var(--font-serif);
+      content: "∞";
+      background-color: var(--wash-color);
+      padding-inline: var(--sp-xs);
+      height: var(--sp-s);
+      line-height: .5;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%) translateY(-50%);
+    }
+
+    /* ── Page shell ── */
+    .page { display: none; opacity: 0; transform: translateY(6px); transition: opacity .35s ease, transform .35s ease; }
+    .page.active { display: block; }
+    .page.in { opacity: 1; transform: none; }
+
+    /* ── NAV ── */
+    .nav {
+      display: grid;
+      grid-template-columns: var(--grid-spec);
+      grid-gap: var(--sp-xs);
+      margin-bottom: var(--sp-s);
+    }
+    .nav > * { grid-column: var(--center-column); }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-top: var(--sp-m);
+    }
+
+    .nav-name {
+      font-family: var(--font-sans);
+      font-size: var(--sp-s);
+      color: var(--text-color);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .nav-name:hover { color: var(--hover-color); }
+
+    .nav-links { display: flex; gap: var(--sp-s); list-style: none; padding: 0; margin: 0; }
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-size: var(--sp-s);
+      color: var(--meta-color);
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+    }
+    .nav-links a:hover { color: var(--hover-color); }
+    .nav-links a.active { color: var(--text-color); }
+    .nav-links a.active::after {
+      content: "*";
+      color: var(--site-color);
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%);
+      line-height: 1;
+    }
+
+    /* ── HOME: INTRO ── */
+    .intro {
+      text-wrap: pretty;
+      padding: 1.5rem;
+    }
+    .intro-xxl {
+      font-size: clamp(4rem, 7.5vmin, 3.5rem);
+      font-style: normal;
+      line-height: 1.2;
+      font-family: var(--font-sans);
+      margin-bottom: 0;
+    }
+    .intro-xxl a {
+      font-family: var(--font-heading);
+      letter-spacing: 0;
+      font-style: italic;
+    }
+
+    /* ── HOME: CARDS SCROLL ── */
+    .cards-scroll {
+      max-width: 100%;
+      font-family: var(--font-sans);
+      --card-count: 3.5;
+      --border-width: 1px;
+      gap: .75rem;
+      padding: .75rem;
+      display: flex;
+      overflow-x: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .cards-scroll::-webkit-scrollbar { display: none; }
+
+    @media (max-width: 64em) { .cards-scroll { --card-count: 2.5; } }
+    @media (max-width: 50em) {
+      .cards-scroll {
+        --card-count: 1.5;
+        scroll-snap-type: x mandatory;
+        scroll-padding: 50%;
+      }
+    }
+
+    .card {
+      --flex-basis: calc((100 / var(--card-count)) * 1vw);
+      --button-background: #fafafacc;
+      --border-radius: 1.5em;
+      flex-direction: column;
+      flex: 1 0 var(--flex-basis);
+      aspect-ratio: 5/8;
+      border-radius: var(--border-radius);
+      border: var(--border-width) solid transparent;
+      scroll-snap-align: center;
+      background-color: #8080801a;
+      padding: 1.5rem;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (prefers-color-scheme: dark) {
+      .card { --button-background: #141414cc; }
+    }
+
+    .card-highlight { background-clip: padding-box; }
+    .card-highlight::after {
+      border-radius: var(--border-radius);
+      content: "";
+      pointer-events: none;
+      border: var(--border-width) solid #00000020;
+      position: absolute;
+      inset: 0;
+      -webkit-mask-image: linear-gradient(#000, #00000080);
+      mask-image: linear-gradient(#000, #00000080);
+    }
+    @media (prefers-color-scheme: dark) {
+      .card-highlight::after { border-color: #ffffff1a; }
+    }
+
+    .card h2 {
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 0;
+      font-size: var(--sp-m);
+      font-weight: 600;
+      background-image: linear-gradient(var(--site-color), var(--site-color));
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      background-size: 0% 1.5px;
+      transition: background-size .3s ease;
+    }
+    .card:hover h2 {
+      background-size: 100% 1.5px;
+    }
+    .card p {
+      font-family: var(--font-sans);
+      font-size: var(--sp-s);
+      color: var(--meta-color);
+      margin-bottom: 0;
+    }
+
+    /* Phone mockup inside card */
+    .card-phone-wrap {
+      flex: auto;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: var(--sp-s) 0;
+    }
+    .phone-outer {
+      width: 55%;
+      aspect-ratio: 1350 / 2760;
+      position: relative;
+      margin: 0 auto;
+    }
+    .phone-shell {
+      position: absolute;
+      inset: 0;
+      border-radius: 13%;
+      background: #1a1a1f;
+      border: 2px solid #333;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .phone-notch {
+      width: 30%;
+      height: 4%;
+      background: #000;
+      border-radius: 0 0 2em 2em;
+      margin-top: 0;
+      flex-shrink: 0;
+    }
+    .phone-screen {
+      flex: 1;
+      width: 90%;
+      border-radius: 6px;
+      margin: 3% 5% 5%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px;
+    }
+    .ps-bar { height: 6px; border-radius: 3px; }
+    .ps-bar.w70 { width: 70%; }
+    .ps-bar.w50 { width: 50%; }
+    .ps-bar.w35 { width: 35%; }
+    .ps-block { border-radius: 5px; flex: 1; min-height: 0; }
+    .ps-row { display: flex; gap: 4px; }
+    .ps-cell { flex: 1; border-radius: 4px; height: 20px; }
+
+    /* Per-card color themes */
+    .card-blue .phone-screen { background: #e8f0fe; }
+    .card-blue .ps-bar  { background: #4a7cf7; }
+    .card-blue .ps-block{ background: #6b93f8; }
+    .card-blue .ps-cell { background: #8aaaf9; }
+
+    .card-green .phone-screen { background: #e6f4ea; }
+    .card-green .ps-bar  { background: #34a853; }
+    .card-green .ps-block{ background: #4db568; }
+    .card-green .ps-cell { background: #6dc47e; }
+
+    .card-amber .phone-screen { background: #fef3e2; }
+    .card-amber .ps-bar  { background: #e8900a; }
+    .card-amber .ps-block{ background: #f0a62a; }
+    .card-amber .ps-cell { background: #f5bc55; }
+
+    .card-teal .phone-screen { background: #e6f5f4; }
+    .card-teal .ps-bar  { background: #5bc4bf; }
+    .card-teal .ps-block{ background: #74cfcb; }
+    .card-teal .ps-cell { background: #92dad7; }
+
+    /* Card overlay — makes entire card clickable */
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: inherit;
     }
 
-    .container {
-      text-align: center;
-      padding: 2rem;
+    /* Card image */
+    .card-img-wrap {
+      flex: auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-top: var(--sp-xs);
+      min-height: 0;
+    }
+    .card-img-wrap img {
+      width: 60%;
+      display: block;
+      object-fit: contain;
     }
 
-    h1 {
-      font-size: clamp(2.5rem, 8vw, 6rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
+    /* Learn more button */
+    .card-btn {
+      --border-radius-btn: 2em;
+      background-color: var(--button-background);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      z-index: 11;
+      border-radius: 2rem;
+      padding: .75em 1em;
+      font-size: .8em;
       line-height: 1;
-      margin-bottom: 1rem;
+      text-decoration: none;
+      position: absolute;
+      bottom: .75em;
+      right: .75em;
+      color: var(--text-color);
+      box-shadow: 0 4px 8px #0000000d, 0 1px 1px #00000020, 0 2px 4px #0000000d;
+      font-family: var(--font-sans);
+    }
+    .card-btn::after {
+      content: "";
+      border-radius: inherit;
+      box-shadow: inset 0 0 0 var(--border-width) #ffffff40;
+      mix-blend-mode: plus-lighter;
+      position: absolute;
+      inset: 0;
+      -webkit-mask: linear-gradient(#000, #00000080);
+      mask: linear-gradient(#000, #00000080);
+    }
+    .card-btn:hover { background-color: var(--site-color); color: #fff; text-decoration: none; }
+
+    /* ── HOME: TIMELINE TABLE ── */
+    .timeline-wrap {
+      padding: var(--sp-xxl) 0;
+    }
+    .timeline-table {
+      font: inherit;
+      border-collapse: collapse;
+      -webkit-border-horizontal-spacing: 0;
+      width: 100%;
+    }
+    .timeline-table th {
+      font-weight: 400;
+      font-size: inherit;
+      text-align: right;
+      border: none;
+      width: calc(((100vw - (var(--sp-m) * 2)) - var(--container-width)) / 2) !important;
+      font-family: var(--font-sans);
+    }
+    .timeline-table th,
+    .timeline-table td {
+      vertical-align: top;
+      font-family: var(--font-sans);
+      border: none;
+      padding-inline: .25em;
+      line-height: 1.2;
+      font-size: var(--sp-s);
+      padding-block: var(--sp-xs);
+    }
+    .timeline-table th,
+    .timeline-table th + td {
+      border-top: 1px solid var(--meta-color) !important;
+    }
+    .timeline-table a { text-decoration: none; }
+    .timeline-table a:hover { color: var(--hover-color); }
+    .timeline-table td p { margin-bottom: 0; }
+
+    @media (max-width: 50em) {
+      .timeline-table th { width: 4rem !important; text-align: left; }
     }
 
-    .accent {
-      color: #7c6af7;
+    /* ── CONTACT ── */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: var(--grid-spec);
+    }
+    .contact-inner {
+      grid-column: var(--center-column);
+      padding: 1.5rem;
+      padding-bottom: var(--sp-xxl);
     }
 
-    p {
-      font-size: 1.1rem;
-      color: #888;
-      margin-top: 1.5rem;
+    .contact-heading {
+      font-family: var(--font-heading);
+      font-size: var(--sp-xl);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -.0125em;
+      line-height: 1.1;
+      text-wrap: balance;
+      margin-bottom: var(--sp-m);
+      padding-top: var(--sp-xl);
+      padding-bottom: var(--sp-l);
     }
+    .contact-lead {
+      color: var(--meta-color);
+      font-family: var(--font-sans);
+      font-size: var(--sp-s);
+      margin-bottom: var(--sp-xl);
+    }
+
+    .form { display: flex; flex-direction: column; gap: var(--sp-m); }
+    .field { display: flex; flex-direction: column; gap: var(--sp-xxs); }
+    .field-label {
+      font-family: var(--font-sans);
+      font-size: var(--sp-s);
+      color: var(--meta-color);
+    }
+    .field-input, .field-textarea {
+      font-family: var(--font-body);
+      font-size: var(--sp-s);
+      color: var(--text-color);
+      background: var(--gray05);
+      border: 1px solid var(--gray10);
+      border-radius: 3px;
+      padding: var(--sp-xs) var(--sp-s);
+      outline: none;
+      -webkit-appearance: none;
+      line-height: var(--baseline);
+      transition: border-color .2s;
+    }
+    .field-input::placeholder, .field-textarea::placeholder { color: var(--gray20); }
+    .field-input:focus, .field-textarea:focus { border-color: var(--meta-color); }
+    .field-textarea { resize: vertical; min-height: 8rem; }
+
+    .form-submit {
+      font-family: var(--font-sans);
+      font-size: var(--sp-s);
+      padding: var(--sp-xs) var(--sp-m);
+      background: var(--text-color);
+      color: var(--wash-color);
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      align-self: flex-start;
+      line-height: 1;
+      transition: opacity .2s;
+    }
+    .form-submit:hover { opacity: .75; }
+    .form-submit.sent { background: #3a7d44; }
+
+    .contact-links { margin-top: var(--sp-xl); }
+    .cl-label {
+      font-family: var(--font-sans);
+      font-size: var(--sp-s);
+      color: var(--meta-color);
+      margin-bottom: var(--sp-s);
+    }
+    .cl-table {
+      font: inherit;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .cl-table td {
+      font-family: var(--font-sans);
+      font-size: var(--sp-s);
+      padding-block: var(--sp-xs);
+      border-top: 1px solid var(--gray10);
+      vertical-align: middle;
+    }
+    .cl-table td:last-child { text-align: right; color: var(--meta-color); }
+    .cl-table a { text-decoration: none; }
+    .cl-table a:hover { color: var(--hover-color); }
+
+    .avail {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-xs);
+      margin-top: var(--sp-m);
+      font-family: var(--font-sans);
+      font-size: var(--sp-s);
+      color: var(--meta-color);
+    }
+    .avail-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #3a7d44;
+      animation: blink 2.8s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Hello <span class="accent">World</span></h1>
-    <p>UX Portfolio — em breve.</p>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-name" onclick="go('home')">Ale Rosenbaum</span>
+    <ul class="nav-links">
+      <li><a data-p="home"    onclick="go('home')">Work</a></li>
+      <li><a data-p="contact" onclick="go('contact')">Contact</a></li>
+    </ul>
   </div>
+</nav>
+
+<!-- ══════════ HOME ══════════ -->
+<div class="page" id="pg-home">
+
+  <div style="display:grid;grid-template-columns:1fr">
+
+    <div class="intro">
+      <p class="intro-xxl">
+        Ale Rosenbaum is a Senior Product Designer at <a href="https://marktplaats.nl" target="_blank">Marktplaats</a>,
+        based in Amsterdam. He designs with users in mind and ships with
+        business goals in sight. He's excited about AI as a design material —
+        and <a href="#" onclick="go('contact'); return false;">looking for a team that is too</a>.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="cards-scroll">
+
+      <div class="card card-highlight card-teal">
+        <a class="card-overlay" href="brenger.html" aria-label="Read case: The Sofa Problem"></a>
+        <h2>The Sofa Problem</h2>
+        <p>Bringing last-mile logistics into Marktplaats — from buyer hesitation to 300 new shippings a week.</p>
+        <div class="card-img-wrap">
+          <img src="brenger-card.png" alt="Brenger integration screen inside Marktplaats app" />
+        </div>
+        <a class="card-btn" href="brenger.html">Read case →</a>
+      </div>
+
+      <div class="card card-highlight card-green">
+        <h2>Design System para Saúde</h2>
+        <p>Plataforma de telemedicina usada por 300+ médicos — mobile, web e tablet.</p>
+        <div class="card-phone-wrap">
+          <div class="phone-outer">
+            <div class="phone-shell">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="ps-row">
+                  <div class="ps-cell"></div>
+                  <div class="ps-cell"></div>
+                  <div class="ps-cell"></div>
+                </div>
+                <div class="ps-block" style="margin-top:6px"></div>
+                <div class="ps-bar w70" style="margin-top:4px"></div>
+                <div class="ps-bar w50" style="margin-top:4px"></div>
+                <div class="ps-row" style="margin-top:4px">
+                  <div class="ps-cell"></div>
+                  <div class="ps-cell"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="card-btn" href="#">Ver case →</a>
+      </div>
+
+      <div class="card card-highlight card-amber">
+        <h2>Dashboard de Analytics</h2>
+        <p>Arquitetura de informação para e-commerce B2B — redução de carga cognitiva.</p>
+        <div class="card-phone-wrap">
+          <div class="phone-outer">
+            <div class="phone-shell">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="ps-bar w50"></div>
+                <div style="display:flex;gap:4px;margin-top:6px;flex:1;min-height:0">
+                  <div class="ps-block" style="flex:1;margin-top:0"></div>
+                  <div style="flex:1;display:flex;flex-direction:column;gap:4px">
+                    <div class="ps-cell" style="height:auto;flex:1"></div>
+                    <div class="ps-cell" style="height:auto;flex:1"></div>
+                  </div>
+                </div>
+                <div class="ps-bar w35" style="margin-top:4px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="card-btn" href="#">Ver case →</a>
+      </div>
+
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline-wrap">
+      <table class="timeline-table">
+        <tbody>
+          <tr>
+            <th>2026</th>
+            <td>
+              <a href="https://marktplaats.nl" target="_blank">Marktplaats</a>
+              <p class="small sans meta">Senior Product Designer · Amsterdam</p>
+            </td>
+          </tr>
+          <tr>
+            <th>2022</th>
+            <td>
+              <a href="https://marktplaats.nl" target="_blank">Marktplaats</a>
+              <p class="small sans meta">Product Designer · Amsterdam</p>
+            </td>
+          </tr>
+          <tr>
+            <th>2021</th>
+            <td>
+              Quaddro
+              <p class="small sans meta">Product Designer · Founding Team · Remote</p>
+            </td>
+          </tr>
+          <tr>
+            <th>2020</th>
+            <td>
+              Boa Vista
+              <p class="small sans meta">Product Designer · Remote</p>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              Revelo
+              <p class="small sans meta">Product Designer · São Paulo</p>
+            </td>
+          </tr>
+          <tr>
+            <th>2019</th>
+            <td>
+              Carteira Global
+              <p class="small sans meta">UX/UI Designer · São Paulo</p>
+            </td>
+          </tr>
+          <tr>
+            <th>2018</th>
+            <td>
+              <a href="https://developeracademy.senac.br" target="_blank">Apple Developer Academy</a>
+              <p class="small sans meta">Designer · São Paulo</p>
+            </td>
+          </tr>
+          <tr>
+            <th>2017</th>
+            <td>
+              Try Consultoria e Pesquisas
+              <p class="small sans meta">UX/UI Design Intern · São Paulo</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ══════════ CONTACT ══════════ -->
+<div class="page" id="pg-contact">
+  <div class="contact-wrap">
+    <div class="contact-inner">
+      <h1 class="contact-heading">Vamos conversar sobre o seu projeto.</h1>
+      <p class="contact-lead">Disponível para projetos freelance, posições full-time e colaborações. Respondo em até 24h.</p>
+
+      <form class="form" onsubmit="handleForm(event)">
+        <div class="field">
+          <label class="field-label">Nome</label>
+          <input class="field-input" type="text" placeholder="Seu nome" required />
+        </div>
+        <div class="field">
+          <label class="field-label">Email</label>
+          <input class="field-input" type="email" placeholder="seu@email.com" required />
+        </div>
+        <div class="field">
+          <label class="field-label">Mensagem</label>
+          <textarea class="field-textarea" placeholder="Conte um pouco sobre o projeto..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submit-btn">Enviar mensagem</button>
+      </form>
+
+      <div class="contact-links">
+        <p class="cl-label">Links</p>
+        <table class="cl-table">
+          <tbody>
+            <tr><td><a href="#">Email</a></td><td>alex@email.com</td></tr>
+            <tr><td><a href="#">LinkedIn</a></td><td>/in/alexsilva</td></tr>
+            <tr><td><a href="#">Behance</a></td><td>/alexsilva</td></tr>
+            <tr><td><a href="#">Dribbble</a></td><td>/alexsilva</td></tr>
+          </tbody>
+        </table>
+        <div class="avail">
+          <div class="avail-dot"></div>
+          <span>Disponível para novos projetos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function go(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active', 'in'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.p === name));
+    const el = document.getElementById('pg-' + name);
+    el.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    document.querySelector('.nav').style.display = name === 'home' ? 'none' : 'grid';
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('in')));
+  }
+
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Enviado!';
+    btn.classList.add('sent');
+    setTimeout(() => { btn.textContent = 'Enviar mensagem'; btn.classList.remove('sent'); e.target.reset(); }, 3500);
+  }
+
+  go('home');
+</script>
 </body>
 </html>

@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ale Rosenbaum</title>
+  <title>Ale Rosenbaum — Senior Product Designer</title>
+  <meta name="description" content="Ale Rosenbaum is a Senior Product Designer at Marktplaats, Amsterdam. Designs with users in mind, ships with business goals in sight, builds with AI as a material." />
+  <meta name="author" content="Ale Rosenbaum" />
+  <link rel="canonical" href="https://alerosenbaum.github.io/portfolio26/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alerosenbaum.github.io/portfolio26/" />
+  <meta property="og:title" content="Ale Rosenbaum — Senior Product Designer" />
+  <meta property="og:description" content="Ale Rosenbaum is a Senior Product Designer at Marktplaats, Amsterdam. Designs with users in mind, ships with business goals in sight, builds with AI as a material." />
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ale Rosenbaum — Senior Product Designer" />
+  <meta name="twitter:description" content="Ale Rosenbaum is a Senior Product Designer at Marktplaats, Amsterdam. Designs with users in mind, ships with business goals in sight, builds with AI as a material." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <style>
     /* ── Tokens (daneden.me) ── */
     :root {
@@ -44,10 +59,10 @@
       --hover-color: var(--site-color);
       --code-wash: var(--gray05);
 
-      --font-sans:    system-ui, -apple-system, sans-serif;
+      --font-sans:    'Instrument Sans', system-ui, sans-serif;
       --font-heading: 'Instrument Serif', Georgia, serif;
-      --font-serif:   'Spectral', Georgia, serif;
-      --font-body:    var(--font-serif);
+      --font-serif:   'Instrument Sans', system-ui, sans-serif;
+      --font-body:    var(--font-sans);
       --font-caption: var(--font-sans);
     }
 
@@ -208,9 +223,11 @@
     .hero-bio {
       font-size: 3rem;
       font-family: var(--font-sans);
-      font-weight: 400;
+      font-weight: 500;
+      letter-spacing: -0.025em;
       line-height: 1.2;
       text-wrap: pretty;
+      font-feature-settings: "ss12" off, "liga" on;
       margin-bottom: 80px;
     }
     .hero-bio a {
@@ -227,8 +244,10 @@
     }
     .hero-col-label {
       font-family: var(--font-sans);
-      font-size: var(--sp-s);
+      font-size: 0.75rem;
       color: var(--meta-color);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       margin-bottom: 8px;
     }
     .exp-list {
@@ -241,8 +260,12 @@
     }
     .exp-list li {
       font-family: var(--font-sans);
-      font-size: var(--sp-s);
+      font-size: 1rem;
+      letter-spacing: 0.02em;
       line-height: 1.5;
+    }
+    @media (min-width: 64em) {
+      .exp-list li { font-size: 1.125rem; }
     }
     .exp-list .exp-role { font-weight: 600; color: var(--text-color); }
     .exp-list .exp-place { color: var(--meta-color); }
@@ -276,8 +299,12 @@
     }
     .links-list li {
       font-family: var(--font-sans);
-      font-size: var(--sp-s);
+      font-size: 1rem;
+      letter-spacing: 0.02em;
       line-height: 1.5;
+    }
+    @media (min-width: 64em) {
+      .links-list li { font-size: 1.125rem; }
     }
     .links-list a {
       color: var(--text-color);
@@ -304,7 +331,7 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
-      text-decoration: none;
+      cursor: default;
       color: inherit;
     }
     .case-thumb {
@@ -312,15 +339,37 @@
       border-radius: 16px;
       background: var(--gray05);
       overflow: hidden;
-      transition: opacity .2s;
+      position: relative;
     }
-    .case-card:hover .case-thumb { opacity: .85; }
     .case-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform .3s ease;
     }
+    .case-card:hover .case-thumb img { transform: scale(1.04); }
+    .case-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .3s ease;
+    }
+    .case-thumb-overlay span {
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .case-card:hover .case-thumb-overlay { background: rgba(0,0,0,.22); }
+    .case-card:hover .case-thumb-overlay span { opacity: 1; }
     .case-meta {
       display: flex;
       align-items: center;
@@ -345,15 +394,20 @@
     .case-info { min-width: 0; }
     .case-title {
       font-family: var(--font-sans);
-      font-size: var(--sp-m);
-      font-weight: 600;
+      font-size: 1.125rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
       color: var(--text-color);
       line-height: 1.2;
       margin-bottom: 4px;
     }
+    @media (min-width: 64em) {
+      .case-title { font-size: 1.25rem; }
+    }
     .case-desc {
       font-family: var(--font-sans);
-      font-size: var(--sp-s);
+      font-size: 1rem;
+      letter-spacing: 0.02em;
       color: var(--meta-color);
       line-height: 1.5;
       display: -webkit-box;
@@ -493,31 +547,25 @@
   <div style="display:grid;grid-template-columns:1fr">
 
     <div class="hero">
-      <p class="hero-name">Ale Rosenbaum</p>
-      <p class="hero-bio">Senior Product Designer at <a href="https://marktplaats.nl" target="_blank">Marktplaats</a>, based in Amsterdam. Designs with users in mind, ships with business goals in sight. Excited about AI as a design material, and <a href="#" onclick="go('contact'); return false;">looking for a team that is too</a>.</p>
+      <p class="hero-bio">Ale Rosenbaum is a Senior Product Designer at <a href="https://marktplaats.nl" target="_blank">Marktplaats</a>, Amsterdam. Designs with users in mind, ships with business goals in sight, builds with AI as a material, and <a href="#" onclick="go('contact'); return false;">looks for a team that does too</a>.</p>
       <div class="hero-cols">
         <div>
           <p class="hero-col-label">Experience</p>
           <ul class="exp-list">
-            <li><span class="exp-role">Senior Product Designer,</span> <span class="exp-place">Marktplaats, 2022</span><span class="exp-tag">Current</span></li>
-            <li><span class="exp-role">Product Designer,</span> <span class="exp-place">Quaddro, 2021</span></li>
-            <li><span class="exp-role">Product Designer,</span> <span class="exp-place">Boa Vista, 2020</span></li>
-            <li><span class="exp-role">Product Designer,</span> <span class="exp-place">Revelo, 2020</span></li>
+            <li><span class="exp-role">Senior Product Designer,</span> <span class="exp-place"><a href="https://marktplaats.nl" target="_blank">Marktplaats</a>, 2022</span><span class="exp-tag">Current</span></li>
+            <li><span class="exp-role">Founding Product Designer,</span> <span class="exp-place"><a href="https://quaddro.co" target="_blank">Quaddro</a>, 2021</span></li>
+            <li><span class="exp-role">Product Designer,</span> <span class="exp-place"><a href="https://www.consumidorpositivo.com.br" target="_blank">Boa Vista</a>, 2020</span></li>
+            <li><span class="exp-role">Product Designer,</span> <span class="exp-place"><a href="https://www.revelo.com" target="_blank">Revelo</a>, 2020</span></li>
             <li><span class="exp-role">UX/UI Designer,</span> <span class="exp-place">Carteira Global, 2019</span></li>
-            <li><span class="exp-role">Designer,</span> <span class="exp-place">Apple Developer Academy, 2018</span></li>
-            <li><span class="exp-role">UX/UI Design Intern,</span> <span class="exp-place">Try Consultoria, 2017</span></li>
+            <li><span class="exp-role">Design Alumni,</span> <span class="exp-place"><a href="https://developer.apple.com/academies/" target="_blank">Apple Developer Academy</a>, 2018</span></li>
+            <li><span class="exp-role">UX Intern,</span> <span class="exp-place"><a href="https://www.try.com.br/en" target="_blank">Try Consultoria</a>, 2017</span></li>
           </ul>
-          <div class="exp-more">
-            <a href="#">LinkedIn <span class="arrow">↗</span></a>
-          </div>
         </div>
         <div>
           <p class="hero-col-label">Links</p>
           <ul class="links-list">
-            <li><a href="#">Email <span class="arrow">↗</span></a></li>
-            <li><a href="#">LinkedIn <span class="arrow">↗</span></a></li>
-            <li><a href="#">Behance <span class="arrow">↗</span></a></li>
-            <li><a href="#">Dribbble <span class="arrow">↗</span></a></li>
+            <li><a href="mailto:alesrosenbaum@gmail.com">Email <span class="arrow">↗</span></a></li>
+            <li><a href="https://www.linkedin.com/in/alerosenbaum/" target="_blank">LinkedIn <span class="arrow">↗</span></a></li>
           </ul>
         </div>
       </div>
@@ -526,9 +574,10 @@
     <!-- Cases grid -->
     <div class="cases-grid">
 
-      <a class="case-card" href="brenger.html">
+      <div class="case-card">
         <div class="case-thumb">
           <img src="brenger-hero.png" alt="Brenger × Marktplaats" />
+          <div class="case-thumb-overlay"><span>Coming soon</span></div>
         </div>
         <div class="case-meta">
           <div class="case-logo" style="background:none;"><img src="brenger-icon.png" alt="Brenger" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" /></div>
@@ -537,10 +586,13 @@
             <p class="case-desc">Marktplaats</p>
           </div>
         </div>
-      </a>
+      </div>
 
-      <a class="case-card" href="#">
-        <div class="case-thumb"><img src="offers-hero.png" alt="Structured offers" /></div>
+      <div class="case-card">
+        <div class="case-thumb">
+          <img src="offers-hero.png" alt="Structured offers" />
+          <div class="case-thumb-overlay"><span>Coming soon</span></div>
+        </div>
         <div class="case-meta">
           <div class="case-logo" style="background:none;"><img src="brenger-icon.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" /></div>
           <div class="case-info">
@@ -548,10 +600,13 @@
             <p class="case-desc">Marktplaats</p>
           </div>
         </div>
-      </a>
+      </div>
 
-      <a class="case-card" href="#">
-        <div class="case-thumb"><img src="dhl-hero.png" alt="DHL × Marktplaats" /></div>
+      <div class="case-card">
+        <div class="case-thumb">
+          <img src="dhl-hero.png" alt="DHL × Marktplaats" />
+          <div class="case-thumb-overlay"><span>Coming soon</span></div>
+        </div>
         <div class="case-meta">
           <div class="case-logo" style="background:none;"><img src="brenger-icon.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" /></div>
           <div class="case-info">
@@ -559,7 +614,7 @@
             <p class="case-desc">Marktplaats</p>
           </div>
         </div>
-      </a>
+      </div>
 
     </div>
 
@@ -595,10 +650,8 @@
         <p class="cl-label">Links</p>
         <table class="cl-table">
           <tbody>
-            <tr><td><a href="#">Email</a></td><td>alex@email.com</td></tr>
-            <tr><td><a href="#">LinkedIn</a></td><td>/in/alexsilva</td></tr>
-            <tr><td><a href="#">Behance</a></td><td>/alexsilva</td></tr>
-            <tr><td><a href="#">Dribbble</a></td><td>/alexsilva</td></tr>
+            <tr><td><a href="mailto:alesrosenbaum@gmail.com">Email</a></td><td>alesrosenbaum@gmail.com</td></tr>
+            <tr><td><a href="https://www.linkedin.com/in/alerosenbaum/" target="_blank">LinkedIn</a></td><td>/in/alerosenbaum</td></tr>
           </tbody>
         </table>
         <div class="avail">

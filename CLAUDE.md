@@ -43,6 +43,9 @@ Plain HTML/CSS/JS. No framework, no build step. Two pages:
 - `marktplaats-icon.png` — Marktplaats app icon (downloaded, not yet in use)
 - `offers-hero.png` — two phones showing offer/counter-offer UI
 - `dhl-hero.png` — phone with DHL van in Amsterdam background
+- `favicon.png` (32px), `favicon-512.png`, `apple-touch-icon.png` (180px) — site icon: white italic Instrument Serif "a" on `--site-color` orange
+- `og-image.png` — 1200×630 social share card (name + title + domain)
+- `CNAME` — GitHub Pages custom domain (alerosenbaum.com)
 
 ## Writing style
 

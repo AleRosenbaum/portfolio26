@@ -4,11 +4,19 @@ Personal portfolio site for Ale Rosenbaum, Senior Product Designer at Marktplaat
 
 ## Structure
 
-Plain HTML/CSS/JS. No framework, no build step. Three pages:
+Plain HTML/CSS/JS. No framework. Three pages:
 
 - `index.html` — main SPA. JS `go()` function swaps between Home and Contact views. Nav hides on home. Opening `index.html#contact` lands on the Contact view.
-- `brenger.html` — case study page for the Brenger × Marktplaats project ("Integrating Brenger into Marktplaats"). Same editorial format as `offers.html` (statement bands, orange stats, scroll reveals). Most image slots are dashed `.img-placeholder` divs awaiting real screens; only the hero photo is real.
-- `offers.html` — case study page for Structured Offers ("From Silence to Structured Offers"). Editorial layout with full-bleed hero, white statement bands, scroll-reveal animations (vanilla JS), and orange stat numbers. Images live in `offers/`.
+- `brenger.html` — password gate for the Brenger case study ("Integrating Brenger into Marktplaats").
+- `offers.html` — password gate for the Structured Offers case study ("From Silence to Structured Offers").
+
+## Case study password wall
+
+The case pages are AES-256-GCM encrypted (staticrypt-style). The real pages live in `_src/` (not served by GitHub Pages because Jekyll skips underscore directories — do NOT add a `.nojekyll` file). The public `brenger.html` / `offers.html` are generated gate pages: a styled password form plus the encrypted payload; WebCrypto (PBKDF2, 600K iterations) decrypts and `document.write`s the real page on the correct password. The password is kept in `sessionStorage` so unlocking one case unlocks both for the session.
+
+**After editing anything in `_src/`, regenerate the gates:** `node encrypt-cases.mjs <password>`. The password itself is never committed. Caveats: case imagery (`offers/`, `brenger-hero.png`) is not encrypted and stays publicly fetchable by URL; both case pages share one password.
+
+Both case pages use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, white statement bands, orange stat numbers, and scroll-reveal animations (vanilla JS). Sections are styled inline; shared tokens/roles (`.heading-mixed`, `.label`, `.mark`, `.serif-italic`) live in the page's style block. The Brenger page's image slots are mostly dashed `.img-placeholder` divs awaiting real screens; only the hero photo is real. Offers imagery lives in `offers/`.
 
 ## Design system
 
@@ -21,7 +29,7 @@ Plain HTML/CSS/JS. No framework, no build step. Three pages:
 ## Layout
 
 - `index.html` uses a 3-column CSS grid (`--grid-spec`) for the nav and contact page. Home content is full-width with fixed horizontal padding: `120px` desktop / `80px` tablet (max-width: 64em) / `24px` mobile (max-width: 50em).
-- `brenger.html` and `offers.html` use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, and white statement bands. Sections are styled inline; shared tokens/roles (`.heading-mixed`, `.label`, `.mark`, `.serif-italic`) live in the page's style block.
+- The case studies (`_src/brenger.html`, `_src/offers.html`) use the editorial layout described in the password wall section above.
 
 ## Home page sections
 

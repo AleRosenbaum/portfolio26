@@ -8,7 +8,7 @@ Plain HTML/CSS/JS. No framework, no build step. Three pages:
 
 - `index.html` — main SPA. JS `go()` function swaps between Home and Contact views. Nav hides on home. Opening `index.html#contact` lands on the Contact view.
 - `brenger.html` — case study page for the Brenger × Marktplaats project.
-- `offers.html` — case study page for Structured Offers (counter offers). Scaffold with placeholder mockups, same layout and styles as `brenger.html`.
+- `offers.html` — case study page for Structured Offers ("From Silence to Structured Offers"). Editorial layout with full-bleed hero, white statement bands, scroll-reveal animations (vanilla JS), and orange stat numbers. Images live in `offers/`.
 
 ## Design system
 
@@ -44,6 +44,7 @@ Plain HTML/CSS/JS. No framework, no build step. Three pages:
 - `marktplaats-icon.png` — Marktplaats app icon (downloaded, not yet in use)
 - `offers-hero.png` — two phones showing offer/counter-offer UI
 - `dhl-hero.png` — phone with DHL van in Amsterdam background
+- `offers/` — all imagery for the Structured Offers case page (hero, research shots, Miro boards, prototypes, offer-card SVGs, buyer/seller flow GIFs)
 
 ## Writing style
 

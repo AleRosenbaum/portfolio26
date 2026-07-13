@@ -1,807 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Brenger × Marktplaats · Ale Rosenbaum</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
-  <style>
-    /* ── Tokens — matches home exactly ── */
-    :root {
-      --gray-hue: 32;
-      --gray-sat-mult: .2;
-      --gray00: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 50%), 98%);
-      --gray05: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 95%);
-      --gray10: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 90%);
-      --gray20: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 70%);
-      --gray30: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 30%), 30%);
-      --gray35: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 15%), 20%);
-      --gray40: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 30%), 5%);
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integrating Brenger into Marktplaats · Ale Rosenbaum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gray-hue: 32;
+  --gray-sat-mult: .2;
+  --gray00: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 50%), 98%);
+  --gray05: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 95%);
+  --gray10: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 90%);
+  --gray20: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 70%);
+  --gray30: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 30%), 30%);
+  --gray35: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 15%), 20%);
+  --gray40: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 30%), 5%);
 
-      --baseline: 1.6;
-      --xxs:.2; --xs:.6; --s:.8; --m:1; --l:1.25; --xl:2; --xxl:3;
-      --sp-xxs: calc(var(--xxs) * 1rem);
-      --sp-xs:  calc(var(--xs)  * 1rem);
-      --sp-s:   calc(var(--s)   * 1rem);
-      --sp-m:   calc(var(--m)   * 1rem);
-      --sp-l:   calc(var(--l)   * 1rem);
-      --sp-xl:  calc(var(--xl)  * 1rem);
-      --sp-xxl: calc(var(--xxl) * 1rem);
+  --site-color: #ff7006;
+  --highlight-color: #ffc800;
+  --text-color: var(--gray40);
+  --meta-color: var(--gray30);
+  --wash-color: var(--gray00);
+  --code-wash: var(--gray05);
+  --hover-color: var(--site-color);
 
-      --site-color:  #ff7006;
-      --text-color:  var(--gray40);
-      --meta-color:  var(--gray30);
-      --wash-color:  var(--gray00);
-      --hover-color: var(--site-color);
+  --tint-teal: #5bc4bf;
+  --tint-blue: #4a7cf7;
+  --tint-green: #34a853;
+  --tint-amber: #e8900a;
 
-      --font-sans:    system-ui, -apple-system, sans-serif;
-      --font-heading: 'Instrument Serif', Georgia, serif;
-      --font-serif:   'Spectral', Georgia, serif;
-      --font-body:    var(--font-serif);
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --font-heading: 'Instrument Serif', Georgia, serif;
+  --font-serif: 'Spectral', Georgia, serif;
+  --font-body: var(--font-serif);
+  --font-caption: var(--font-sans);
 
-      /* ── Type scale — 4 levels, clear jumps ── */
-      --fs-display: clamp(3rem, 7.5vw, 5rem);
-      --fs-heading: clamp(1.5rem, 3vw, 2rem);
-      /* body: base font-size (~1rem) */
-      --fs-small: 0.8rem;
-    }
+  --baseline: 1.6;
+  --xxs:.2; --xs:.6; --s:.8; --m:1; --l:1.25; --xl:2; --xxl:3;
+  --sp-xxs: calc(var(--xxs) * 1rem);
+  --sp-xs: calc(var(--xs) * 1rem);
+  --sp-s: calc(var(--s) * 1rem);
+  --sp-m: calc(var(--m) * 1rem);
+  --sp-l: calc(var(--l) * 1rem);
+  --sp-xl: calc(var(--xl) * 1rem);
+  --sp-xxl: calc(var(--xxl) * 1rem);
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-font-smoothing: antialiased; }
+  --fs-display: clamp(3rem, 7.5vw, 5rem);
+  --fs-heading: clamp(1.5rem, 3vw, 2rem);
+  --fs-body: clamp(100%, 2.75vw, 125%);
+  --fs-small: 0.8rem;
 
-    body {
-      background: var(--wash-color);
-      color: var(--text-color);
-      font-family: var(--font-body);
-      font-size: clamp(100%, 2.75vw, 125%);
-      line-height: var(--baseline);
-    }
+  --container-width: 33rem;
+  --container-wide: 46rem;
+  --container-max: 68rem;
 
-    a { color: inherit; text-decoration-line: underline; text-decoration-thickness: max(.05em, 1px); -webkit-text-decoration-color: var(--hover-color) !important; text-decoration-color: var(--hover-color) !important; }
-    a:hover { color: var(--hover-color); }
-    p { margin-bottom: var(--sp-m); }
-    p:last-child { margin-bottom: 0; }
+  --hairline: 1px solid var(--gray10);
+  --radius-input: 3px;
+  --radius-thumb: 4px;
+  --radius-card: 1.5em;
+  --radius-pill: 2em;
+}
 
-    blockquote {
-      padding-left: var(--sp-m);
-      margin-block: var(--sp-l);
-      font-style: italic;
-      font-family: var(--font-serif);
-      position: relative;
-    }
-    blockquote::before {
-      content: '';
-      position: absolute;
-      left: 0; top: .2em; bottom: .2em;
-      width: 2px;
-      background: var(--meta-color);
-      opacity: .4;
-    }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; }
 
-    hr {
-      border: 0;
-      border-top: 1px solid var(--gray10);
-      width: 50%;
-      margin: var(--sp-xxl) auto;
-      position: relative;
-    }
-    hr::after {
-      font-family: var(--font-serif);
-      content: "∞";
-      background: var(--wash-color);
-      padding-inline: var(--sp-xs);
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+body {
+  background: var(--wash-color);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--baseline);
+  font-feature-settings: "ss02" 1;
+}
 
-    /* ── Layout containers ── */
-    .col {
-      max-width: 680px;
-      margin-inline: auto;
-      padding-inline: 20px;
-      margin-bottom: var(--sp-xl);
-    }
+.intro-xxl {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  text-wrap: pretty;
+}
+.intro-xxl em {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+}
 
-    .wide {
-      max-width: 68rem;
-      margin-inline: auto;
-      padding-inline: 20px;
-      margin-bottom: var(--sp-xl);
-    }
+.heading-mixed {
+  font-family: var(--font-sans);
+  font-size: var(--fs-heading);
+  font-weight: 400;
+  letter-spacing: -.015em;
+  line-height: 1.2;
+}
+.heading-mixed em, h2 em, .h2 em {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 400;
+}
 
-    /* ── NAV ── */
-    .nav {
-      max-width: 68rem;
-      margin-inline: auto;
-      padding-inline: 20px;
-      margin-bottom: var(--sp-s);
-    }
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding-top: var(--sp-xl);
-    }
-    .nav-name { font-family: var(--font-sans); font-size: var(--fs-small); color: var(--text-color); text-decoration: none; }
-    .nav-name:hover { color: var(--hover-color); }
-    .nav-links { display: flex; gap: var(--sp-s); list-style: none; }
-    .nav-links a { font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); text-decoration: none; position: relative; }
-    .nav-links a:hover { color: var(--hover-color); }
-    .nav-links a.active { color: var(--text-color); }
-    .nav-links a.active::after { content: "*"; color: var(--site-color); position: absolute; top: 100%; left: 50%; transform: translateX(-50%); line-height: 1; }
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--site-color);
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
 
-    /* ── HERO ── */
-    .hero-wrap { /* single column stack */ }
+.mark {
+  text-decoration: underline;
+  -webkit-text-decoration-color: var(--site-color);
+  text-decoration-color: var(--site-color);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
 
-    .hero-title {
-      font-family: var(--font-sans);
-      font-size: var(--fs-display);
-      font-weight: 400;
-      letter-spacing: -.02em;
-      line-height: 1.05;
-      margin-bottom: var(--sp-xs);
-    }
-    .hero-lead {
-      font-family: var(--font-sans);
-      font-size: clamp(1rem, 1.8vw, 1.2rem);
-      color: var(--meta-color);
-      line-height: 1.55;
-      margin-bottom: var(--sp-l);
-      max-width: 58ch;
-    }
-    .hero-pills {
-      display: flex;
-      gap: var(--sp-s);
-      flex-wrap: wrap;
-    }
-    .hero-tag {
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-      color: var(--meta-color);
-      border: 1px solid var(--gray10);
-      border-radius: 2em;
-      padding: .35em 1em;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: .5em;
-    }
-    .hero-tag::before {
-      content: '';
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--site-color);
-      flex-shrink: 0;
-    }
+.serif-italic {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 400;
+}
 
-    /* ── MOCKUP PLACEHOLDERS ── */
-    .mockup {
-      background: var(--gray05);
-      border: 1px solid var(--gray10);
-      border-radius: 6px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: var(--sp-xs);
-      padding: var(--sp-l);
-      text-align: center;
-      color: var(--gray20);
-      font-family: var(--font-sans);
-      font-size: .7rem;
-      line-height: 1.4;
-    }
-    .mockup-hero   { aspect-ratio: 16 / 6; border-radius: 0; border-inline: 0; }
-    .hero-img { display: block; width: 100%; max-height: 72vh; object-fit: cover; object-position: center 30%; margin-bottom: var(--sp-xl); }
-    .mockup-photo  { aspect-ratio: 4 / 3; }
-    .mockup-1phone { aspect-ratio: 9 / 18; max-width: 180px; }
-    .mockup-2phone { aspect-ratio: 3 / 2; }
-    .mockup-4phone { aspect-ratio: 16 / 5; }
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: max(.05em, 1px);
+  -webkit-text-decoration-color: var(--site-color) !important;
+  text-decoration-color: var(--site-color) !important;
+}
+a:hover, a:focus { color: var(--hover-color); }
 
-    /* ── Mixed serif/sans within headings — matches home intro pattern ── */
-    /* All major headings: sans base, Instrument Serif italic for em */
-    .hero-title em,
-    .challenge-stat em,
-    .research-heading em,
-    .approach-heading em,
-    .phase-title em,
-    .reflection-heading em {
-      font-family: var(--font-heading);
-      font-style: italic;
-      font-weight: 400;
-    }
+hr {
+  border: 0;
+  border-top: 1px solid var(--meta-color);
+  width: 50%;
+  margin: var(--sp-xxl) auto;
+  display: block;
+  position: relative;
+}
+hr::after {
+  font-family: var(--font-serif);
+  content: "\221E";
+  background: var(--wash-color);
+  padding-inline: var(--sp-xs);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-    /* Orange underline accent — selective use on key words */
-    .mark {
-      text-decoration: underline;
-      -webkit-text-decoration-color: var(--site-color);
-      text-decoration-color: var(--site-color);
-      text-decoration-thickness: 2px;
-      text-underline-offset: 4px;
-    }
+img { display: block; max-width: 100%; }
 
-    /* ── SECTION LABELS ── */
-    .label {
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-      color: var(--site-color);
-      font-weight: 500;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      margin-bottom: var(--sp-s);
-    }
+/* Placeholder for images not yet provided */
+.img-placeholder {
+  background: var(--gray05);
+  border: 1px dashed var(--gray10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray20);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  text-align: center;
+  padding: 2rem;
+}
 
-    /* ── CATEGORIES SCROLL ── */
-    .cats {
-      display: flex;
-      gap: var(--sp-m);
-      overflow-x: auto;
-      scrollbar-width: none;
-      border-top: 1px solid var(--gray10);
-      border-bottom: 1px solid var(--gray10);
-      padding-block: var(--sp-m);
-    }
-    .cats::-webkit-scrollbar { display: none; }
-    .cat {
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-      color: var(--meta-color);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .cat-dot { color: var(--gray20); }
-
-    /* ── CHALLENGE ── */
-    .challenge-stat {
-      font-family: var(--font-sans);
-      font-size: var(--fs-heading);
-      font-weight: 400;
-      letter-spacing: -.015em;
-      line-height: 1.2;
-      margin-bottom: var(--sp-m);
-    }
-    .pills { display: flex; flex-wrap: wrap; gap: var(--sp-xs); margin-bottom: var(--sp-m); }
-    .pill {
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-      color: var(--meta-color);
-      background: var(--gray05);
-      border: 1px solid var(--gray10);
-      border-radius: 2em;
-      padding: .2em .85em;
-    }
-
-    /* ── RESEARCH 2-COL ── */
-    .research-grid {
-      display: grid;
-      grid-template-columns: 2fr 3fr;
-      gap: var(--sp-xl);
-      align-items: start;
-    }
-    .research-heading {
-      font-family: var(--font-sans);
-      font-size: var(--fs-heading);
-      font-weight: 400;
-      letter-spacing: -.015em;
-      line-height: 1.2;
-      margin-bottom: var(--sp-m);
-    }
-    .research-body {
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-      color: var(--meta-color);
-      line-height: 1.65;
-    }
-    .research-body p { margin-bottom: var(--sp-s); }
-    .research-body p:last-child { margin-bottom: 0; }
-    @media (max-width: 50em) { .research-grid { grid-template-columns: 1fr; } }
-
-    /* ── APPROACH ── */
-    .approach-heading {
-      font-family: var(--font-sans);
-      font-size: var(--fs-heading);
-      font-weight: 400;
-      letter-spacing: -.015em;
-      line-height: 1.2;
-      margin-bottom: var(--sp-l);
-    }
-    .diagram {
-      display: flex;
-      align-items: center;
-      gap: var(--sp-s);
-      margin-bottom: var(--sp-l);
-      font-family: var(--font-sans);
-      font-size: .7rem;
-      color: var(--meta-color);
-    }
-    .node {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      text-align: center;
-    }
-    .node-circle {
-      width: 2.4rem; height: 2.4rem;
-      border-radius: 50%;
-      background: var(--gray10);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-size: 1rem;
-      color: var(--text-color);
-    }
-    .node-label { font-size: .65rem; line-height: 1.3; max-width: 4.5rem; }
-    .node-line { flex: 1; height: 1px; background: var(--gray20); position: relative; }
-    .node-line::after { content: '›'; position: absolute; right: -5px; top: 50%; transform: translateY(-55%); color: var(--gray20); font-size: 1rem; line-height: 1; }
-
-    /* ── PARTNER ── */
-    .partner {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--sp-l);
-    }
-    .partner p {
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-      color: var(--meta-color);
-      line-height: 1.65;
-      flex: 1;
-    }
-    .partner-logo {
-      flex-shrink: 0;
-      width: 3.5rem; height: 3.5rem;
-      border-radius: 50%;
-      background: #5bc4bf;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-sans);
-      font-size: .55rem;
-      font-weight: 700;
-      letter-spacing: .05em;
-      color: #fff;
-    }
-
-    /* ── PHASES ── */
-    .phase {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--sp-xl);
-      align-items: start;
-      margin-bottom: var(--sp-xxl);
-      padding-bottom: var(--sp-xxl);
-      border-bottom: 1px solid var(--gray10);
-    }
-    @media (max-width: 50em) { .phase { grid-template-columns: 1fr; } }
-
-    .phase-label {
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-      color: var(--site-color);
-      font-weight: 500;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      margin-bottom: var(--sp-xs);
-    }
-    .phase-title {
-      font-family: var(--font-sans);
-      font-size: var(--fs-heading);
-      font-weight: 400;
-      letter-spacing: -.015em;
-      line-height: 1.2;
-      margin-bottom: var(--sp-m);
-    }
-    .phase-body {
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-      color: var(--meta-color);
-      line-height: 1.65;
-      margin-bottom: var(--sp-m);
-    }
-
-    .outcomes {
-      list-style: none;
-      border-top: 1px solid var(--gray10);
-      padding-top: var(--sp-m);
-      margin-top: var(--sp-m);
-    }
-    .outcomes li {
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-      color: var(--meta-color);
-      padding-left: 1.4em;
-      position: relative;
-      margin-bottom: var(--sp-xxs);
-      line-height: 1.55;
-    }
-    .outcomes li::before {
-      content: '✓';
-      color: var(--site-color);
-      position: absolute;
-      left: 0;
-      font-size: .8em;
-      top: .15em;
-    }
-
-    /* Phase 4 — wide visual on top, 2-col text below */
-    .phase-wide { margin-bottom: var(--sp-xxl); }
-    .phase-wide-visual { margin-bottom: var(--sp-l); }
-    .phase-wide-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--sp-xl);
-    }
-    @media (max-width: 50em) { .phase-wide-content { grid-template-columns: 1fr; } }
-
-    /* ── RESULTS ── */
-    .results {
-      background: var(--gray05);
-      margin-block: var(--sp-xxl);
-    }
-    .results-inner {
-      max-width: 54rem;
-      margin-inline: auto;
-      padding: var(--sp-xxl) 20px;
-    }
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--sp-l);
-      margin-top: var(--sp-l);
-    }
-    @media (max-width: 50em) { .results-grid { grid-template-columns: 1fr 1fr; } }
-    .result-num {
-      display: block;
-      font-family: var(--font-heading);
-      font-size: var(--fs-display);
-      font-weight: 400;
-      letter-spacing: -.04em;
-      line-height: 1;
-      margin-bottom: var(--sp-xs);
-    }
-    .result-label {
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-      color: var(--meta-color);
-    }
-
-    /* ── REFLECTION ── */
-    .reflection-heading {
-      font-family: var(--font-sans);
-      font-size: var(--fs-heading);
-      font-weight: 400;
-      letter-spacing: -.015em;
-      line-height: 1.2;
-      margin-bottom: var(--sp-m);
-    }
-    .reflection-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--sp-xl);
-    }
-    @media (max-width: 50em) { .reflection-cols { grid-template-columns: 1fr; } }
-    .reflection-col-title { font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); font-weight: 500; margin-bottom: var(--sp-s); }
-    .reflection-list { list-style: none; }
-    .reflection-list li {
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-      color: var(--meta-color);
-      line-height: 1.55;
-      padding-left: var(--sp-m);
-      position: relative;
-      margin-bottom: var(--sp-xs);
-    }
-    .reflection-list li::before { content: '—'; position: absolute; left: 0; color: var(--gray20); }
-
-    /* ── OTHER WORKS ── */
-    .works-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-m); margin-top: var(--sp-l); }
-    .work-card {
-      display: block; text-decoration: none; color: inherit;
-      border: 1px solid var(--gray10); border-radius: 4px; overflow: hidden;
-      transition: border-color .2s;
-    }
-    .work-card:hover { border-color: var(--gray20); text-decoration: none; }
-    .work-thumb { aspect-ratio: 16/9; background: var(--gray05); }
-    .work-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .work-info { padding: var(--sp-s); }
-    .work-title { font-family: var(--font-heading); font-weight: 400; margin-bottom: 2px; font-size: 1rem; }
-    .work-meta { font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); }
-
-    /* ── FOOTER ── */
-    .footer { background: var(--gray05); margin-top: var(--sp-xxl); }
-    .footer-inner { padding-block: var(--sp-xxl); }
-    .footer-cta {
-      font-family: var(--font-heading);
-      font-style: italic;
-      font-size: var(--fs-display);
-      font-weight: 400;
-      letter-spacing: -.03em;
-      line-height: 1.05;
-      margin-bottom: var(--sp-l);
-    }
-    .footer-btn {
-      display: inline-block;
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-      color: var(--text-color);
-      border: 1px solid var(--gray20);
-      border-radius: 2em;
-      padding: .45em 1.25em;
-      text-decoration: none;
-      transition: background .2s, border-color .2s, color .2s;
-    }
-    .footer-btn:hover { background: var(--site-color); border-color: var(--site-color); color: #fff; text-decoration: none; }
-  </style>
+/* Scroll reveal */
+[data-reveal] {
+  transition: opacity 650ms ease-out, transform 650ms ease-out;
+}
+[data-reveal="img"] {
+  transition: transform 800ms ease-out;
+}
+</style>
 </head>
 <body>
 
-<!-- HERO -->
-<div class="wide" style="margin-bottom: var(--sp-l); padding-top: var(--sp-xl);">
-  <div class="hero-wrap">
-    <h1 class="hero-title"><span style="white-space:nowrap">Integrating <em>Brenger</em> into <em>Marktplaats,</em></span><br>one step at a time</h1>
-    <p class="hero-lead">From the first design of Marktplaats' first fully-integrated large-item shipping flow. Built through lean iterations, from an in-app promotion to a flexible delivery experience.</p>
-    <div class="hero-pills">
-      <span class="hero-tag">+300 weekly shippings per week</span>
-      <span class="hero-tag">+€230K of total gross revenue for 2024</span>
-    </div>
-  </div>
-</div>
+<div style="font-family: var(--font-sans); color: var(--text-color); background: var(--wash-color); min-height: 100vh; overflow-x: hidden;">
 
-<!-- HERO IMAGE -->
-<img src="brenger-hero.png" alt="Hand holding a phone showing the Brenger integration inside the Marktplaats app" class="hero-img" />
+  <!-- NAV -->
+  <nav style="display: flex; justify-content: space-between; align-items: baseline; max-width: 68rem; margin: 0 auto; padding: 1.5rem 1.5rem 0 1.5rem;">
+    <a href="index.html" style="font-size: 1rem; text-decoration: none;">Ale Rosenbaum</a>
+    <span style="font-size: var(--fs-small); color: var(--meta-color);">Case study · 2024</span>
+  </nav>
 
-<!-- CATEGORIES -->
-<div class="wide" style="margin-bottom: var(--sp-xl)">
-  <div class="cats">
-    <span class="cat">Bicycle</span>
-    <span class="cat-dot">·</span>
-    <span class="cat">Car</span>
-    <span class="cat-dot">·</span>
-    <span class="cat">Caravan</span>
-    <span class="cat-dot">·</span>
-    <span class="cat">Corner</span>
-  </div>
-</div>
+  <!-- HEADER -->
+  <header style="max-width: 964px; margin: 0 auto; padding: 4rem 1.5rem 2px 1.5rem; width: 100%;">
+    <h1 class="intro-xxl" data-reveal="up" style="margin: 0 0 2rem 0; max-width: 773px">Integrating <em>Brenger</em> into Marktplaats, one step at a time</h1>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0 0 3rem 0; text-wrap: pretty;">
+      17.3 million large-item ads listed every year with no way to ship them. This is how a discovery on user needs became Marktplaats's first integrated large-item delivery service, built iteratively from a chat banner to a full transactional flow.
+    </p>
+  </header>
 
-<!-- CHALLENGE -->
-<div class="col">
-  <div>
-    <p class="label">Challenge</p>
-    <p class="challenge-stat">In 2023, <em><span class="mark">4 of the top 10</span></em> most searched items were <em>large items</em> that couldn't be traded with Marktplaats's transaction tools.</p>
-    <div class="pills">
-      <span class="pill">Sofa</span>
-      <span class="pill">Wardrobe</span>
-      <span class="pill">Dinner Table</span>
-    </div>
-  </div>
-</div>
+  <!-- FULL-BLEED HERO -->
+  <figure style="margin: 0;">
+    <div style="overflow: hidden;">
+      <div data-reveal="img" style="width: 100vw; height: 72vh; min-height: 380px;">
+        <img src="brenger-hero.png" alt="Hand holding a phone showing the Brenger shipping flow inside the Marktplaats app" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
 
-<hr>
-
-<!-- RESEARCH -->
-<div class="wide">
-  <div class="research-grid">
-
-    <div class="mockup mockup-photo">
-      Research photo — user interview / team session
-    </div>
-
-    <div>
-      <p class="label">Research &amp; Insights</p>
-      <h2 class="research-heading">We combined <em>data analysis, surveys,<br>and interviews</em> to understand the real situation.</h2>
-      <div class="research-body">
-        <p>Qualitative and quantitative research confirmed the main barrier wasn't cost. It was trust. Users didn't know how items would be handled, or what recourse they'd have if something went wrong.</p>
-      </div>
-      <blockquote>
-        <p style="font-size: var(--sp-s);">"I was going to ship it if I knew my sofa wouldn't get damaged. Otherwise, I'd stick to pick-up only." Buyer, user interview</p>
-      </blockquote>
-    </div>
-
-  </div>
-</div>
-
-<!-- APPROACH -->
-<div class="col">
-  <div>
-    <h2 class="approach-heading">We decided to build a new product <em><span class="mark">iteratively</span></em>, delivering value in chunks and reducing risk.</h2>
-    <div class="diagram">
-      <div class="node">
-        <div class="node-circle">A</div>
-        <span class="node-label">In-chat promotion</span>
-      </div>
-      <div class="node-line"></div>
-      <div class="node">
-        <div class="node-circle" style="background:var(--gray05)">2</div>
-        <span class="node-label">Split payment</span>
-      </div>
-      <div class="node-line"></div>
-      <div class="node">
-        <div class="node-circle" style="background:var(--gray05)">3</div>
-        <span class="node-label">Full integration</span>
-      </div>
-      <div class="node-line"></div>
-      <div class="node">
-        <div class="node-circle" style="background:var(--gray05)">B</div>
-        <span class="node-label">Standalone flow</span>
       </div>
     </div>
-  </div>
-</div>
+    <figcaption style="max-width: 680px; margin: .9rem auto 0 auto; padding: 0 1.5rem; font-size: var(--fs-small); color: var(--meta-color);">The integrated large-item shipping flow, live on the Netherlands' largest classifieds marketplace.</figcaption>
+  </figure>
 
-<!-- PARTNER -->
-<div class="col" style="margin-bottom: var(--sp-xxl)">
-  <div class="partner">
-    <p>From the analyzed partners, <strong>Brenger was the best C2C fit</strong> due to their flexibility, ease of integration and good relationship.</p>
-    <div class="partner-logo">brenger</div>
-  </div>
-</div>
+  <!-- CONTEXT -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 3rem 1.5rem;">
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      <u>As the Product Designer on the Shipping &amp; Messaging team, I led the design end to end:</u> I shaped the iterative strategy with the PM, ran the foundational research (n=1,000), designed every phase from promotion to full integration, and coordinated usability testing.
+    </p>
+  </section>
 
-<hr>
-
-<!-- PHASES -->
-<div class="wide">
-
-  <!-- Phase 01 -->
-  <div class="phase">
-    <div class="mockup mockup-1phone" style="margin-inline: auto; width: 100%">
-      Phase 1 — In-chat promotion screen
-    </div>
-    <div>
-      <p class="phase-label">In-chat Promotion</p>
-      <h3 class="phase-title">Started by testing desirability with <em>In-chat Promotion</em></h3>
-      <p class="phase-body">Promotion banners inside the Marktplaats chat redirected users to Brenger to finalize orders. No backend integration. Just enough to measure intent and validate demand.</p>
-      <ul class="outcomes">
-        <li>Validated demand without engineering investment</li>
-        <li>Brenger started +125 orders from Marktplaats users</li>
-        <li>Signal strong enough to invest in real integration</li>
-      </ul>
-    </div>
+  <!-- INLINE STATEMENT -->
+  <div data-reveal="up" style="max-width: 680px; margin: 0 auto; padding: 6px 1.5rem;">
+    <div class="heading-mixed" style="font-size: clamp(2.25rem, 4.5vw, 3.25rem); text-wrap: balance; text-align: left">In 2023, <em>4 of the top 10</em> most searched items on Marktplaats were large items with <em>no shipping option.</em></div>
   </div>
 
-  <!-- Phase 02 -->
-  <div class="phase">
-    <div class="mockup mockup-2phone">
-      Phase 2 — Marktplaats checkout + Brenger booking (2 screens)
-    </div>
-    <div>
-      <p class="phase-label">Split Payment</p>
-      <h3 class="phase-title">Item payment at <em>Marktplaats,</em> shipping payment at <em>Brenger</em></h3>
-      <p class="phase-body">Item payment stayed inside Marktplaats; transport booking and payment happened on Brenger's platform. Two flows linked by a handoff. Friction, but the full transaction validated.</p>
-      <ul class="outcomes">
-        <li>First fully transacted shipments via Brenger on Marktplaats</li>
-        <li>Identified two-step checkout as the main conversion blocker</li>
-        <li>Transport satisfaction high, product-market fit confirmed</li>
-      </ul>
-    </div>
-  </div>
+  <!-- PROBLEM STATS -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 6rem 1.5rem;">
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      Existing carriers maxed out at 23kg and 176cm. Sofas, dining tables, and washing machines simply didn't fit. Meanwhile, Brenger was already handling <span class="mark">25,000+ Marktplaats-attributed shipments per year</span> without any product integration.
+    </p>
 
-  <!-- Phase 03 -->
-  <div class="phase">
-    <div class="mockup mockup-2phone">
-      Phase 3 — Unified checkout + scheduling (2 screens)
-    </div>
-    <div>
-      <p class="phase-label">Full Integration</p>
-      <h3 class="phase-title"><em>Full payment</em> at Marktplaats, appointments via <em>Brenger</em></h3>
-      <p class="phase-body">Unified the checkout: users paid for both item and transport in a single Marktplaats flow. Appointment scheduling was handled by Brenger post-purchase. Biggest friction point removed.</p>
-      <ul class="outcomes">
-        <li>Single payment flow, two-step checkout eliminated</li>
-        <li>Conversion rate improved significantly vs. Phase 02</li>
-        <li>Brenger positioned as quality partner, not external redirect</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Phase 04 — wide, 4 screens on top -->
-  <div class="phase-wide">
-    <div class="phase-wide-visual">
-      <div class="mockup mockup-4phone">
-        Phase 4 — Full standalone flow (4 screens: discovery → listing → booking → confirmation)
-      </div>
-    </div>
-    <div class="phase-wide-content">
+    <div data-reveal="up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 2.5rem; margin: 3.5rem 0 0 0;">
       <div>
-        <p class="phase-label">Standalone Flow</p>
-        <h3 class="phase-title">Users could <em>fully trade</em> with Brenger on a standalone solution, even after a pivot</h3>
+        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; color: var(--site-color);">17.3M</div>
+        <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .7rem; line-height: 1.55; max-width: 14rem;">large-item ads listed in 2023, avg. price &euro;230</div>
       </div>
       <div>
-        <p class="phase-body">End-to-end flow inside Marktplaats: discover, negotiate, pay, and schedule transport without leaving the platform. What started as a static toggle became a permanent product feature.</p>
-        <ul class="outcomes">
-          <li>End-to-end trade with transport, no platform switches</li>
-          <li>Feature retained permanently after pilot period</li>
-          <li>Foundation for future logistics integrations across categories</li>
-        </ul>
+        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; color: var(--site-color);">68%</div>
+        <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .7rem; line-height: 1.55; max-width: 14rem;">of sellers default to pick-up when an item is too large to ship</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH (condensed) -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 4rem 1.5rem 0 1.5rem;">
+    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Research</div>
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 0 0 1.75rem 0;">Trust, not price, was the <em>real barrier</em></h2>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      A survey of <span class="mark">1,000 buyers and sellers</span> revealed that 75% picked up with their own car because no viable alternative existed. The main reason buyers wouldn't ship? They needed to see the item in person first (38%). Price expectations were realistic &mdash; 62% expected &euro;0&ndash;40 for a &euro;300 sofa. Sellers wanted easier delivery (40%) and more reach (32%). Sizing the opportunity: <span class="mark">1.6M ads had potential for paid shipment</span>.
+    </p>
+  </section>
+
+  <!-- STATEMENT -->
+  <div style="background: #fff;">
+    <div data-reveal="up" style="max-width: 820px; margin: 0 auto; padding: 8rem 1.5rem;">
+      <div class="heading-mixed" style="font-size: clamp(2.25rem, 4.5vw, 3.25rem); text-wrap: balance; text-align: center;">how might we help buyers and sellers trade large items in a <em>safe and convenient</em> way?</div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 4rem 1.5rem;">
+    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Process</div>
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 0 0 1.75rem 0;">Build the skateboard, <em>not the moving truck</em></h2>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      I facilitated a cross-functional discovery with design, product, data, and engineering. The iterative model was deliberate: <span class="mark">each phase would deliver user value, validate assumptions, and earn the right to the next investment</span>. Three steps &mdash; Skateboard, Electric Step, Electric Bike &mdash; each unlocking more integration depth.
+    </p>
+  </section>
+
+  <!-- DISCOVERY IMAGERY -->
+  <div style="max-width: 68rem; margin: 0 auto; padding: 0 1.5rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 2rem;">
+      <figure data-reveal="up" style="margin: 0;">
+        <div class="img-placeholder" style="width: 100%; aspect-ratio: 4/3; border-radius: 20px;">Discovery session &mdash; Opportunity Canvas with team sticky notes</div>
+        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Opportunity Canvas &mdash; mapping problems, users, outcomes, and solution ideas.</figcaption>
+      </figure>
+      <figure data-reveal="up" style="margin: 0;">
+        <div class="img-placeholder" style="width: 100%; aspect-ratio: 4/3; border-radius: 20px;">Ideation session &mdash; IF/THEN/BECAUSE hypotheses on Miro</div>
+        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Ideation &mdash; hypotheses mapped across every touchpoint from VIP to checkout.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- DECISIONS -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 5rem 1.5rem 0 1.5rem;">
+    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Decisions</div>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      <span class="mark">Curbside delivery first:</span> 72% of Marktplaats-attributed Brenger shipments were curbside, so we scoped the MVP to fixed-price curbside only &mdash; simpler pricing, fewer inputs, faster to build. <span class="mark">Address as the hardest UX problem:</span> I ran a dedicated ideation on collecting addresses without disrupting the flow. Winner: reuse the address book and pre-fill from profile data.
+    </p>
+  </section>
+
+  <!-- ITERATIVE MODEL -->
+  <div data-reveal="up" style="max-width: 68rem; margin: 5rem auto; padding: 0 1.5rem;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: clamp(.5rem, 2vw, 1.5rem); flex-wrap: wrap; padding: 3rem 1.5rem; background: var(--code-wash); border-radius: 20px;">
+      <div style="text-align: center; flex: 1; min-width: 6rem;">
+        <div style="font-family: var(--font-heading); font-style: italic; font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: .3rem;">1</div>
+        <div style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); line-height: 1.3;">In-chat<br>promotion</div>
+      </div>
+      <div style="flex: 0 0 2rem; height: 1px; background: var(--gray20); position: relative;"><span style="position:absolute;right:-4px;top:-6px;color:var(--gray20);">&rsaquo;</span></div>
+      <div style="text-align: center; flex: 1; min-width: 6rem;">
+        <div style="font-family: var(--font-heading); font-style: italic; font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: .3rem;">2</div>
+        <div style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); line-height: 1.3;">Split<br>payment</div>
+      </div>
+      <div style="flex: 0 0 2rem; height: 1px; background: var(--gray20); position: relative;"><span style="position:absolute;right:-4px;top:-6px;color:var(--gray20);">&rsaquo;</span></div>
+      <div style="text-align: center; flex: 1; min-width: 6rem;">
+        <div style="font-family: var(--font-heading); font-style: italic; font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: .3rem;">3</div>
+        <div style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); line-height: 1.3;">Full<br>integration</div>
       </div>
     </div>
   </div>
+
+  <!-- PHASE 1 -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
+    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 1 &mdash; Skateboard</div>
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 0 0 1.75rem 0;">Testing desirability with <em>in-chat promotion</em></h2>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0 0 1.6rem 0; text-wrap: pretty;">
+      Live from November 2023 in three L1 categories (Home &amp; Decor, Garden &amp; Patio, White Goods). A banner inside the Marktplaats chat told users they could ship large items with Brenger, then redirected them to Brenger's platform to complete the order.
+    </p>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      No backend integration. No payment inside Marktplaats. Just enough to measure intent without engineering investment.
+    </p>
+
+    <div data-reveal="up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 3.5rem 0;">
+      <div>
+        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; color: var(--site-color);">22K</div>
+        <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .7rem; line-height: 1.55;">leads sent to Brenger from in-chat banners</div>
+      </div>
+      <div>
+        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; color: var(--site-color);">198</div>
+        <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .7rem; line-height: 1.55;">completed Brenger transactions (~1.8% conversion)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 1 IMAGERY -->
+  <div style="max-width: 68rem; margin: 5rem auto 6rem auto; padding: 0 1.5rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 2rem;">
+      <figure data-reveal="up" style="margin: 0;">
+        <div class="img-placeholder" style="width: 100%; aspect-ratio: 9 / 16; max-width: 20rem; margin: 0 auto; border-radius: 20px;">Phase 1 &mdash; In-chat Brenger banner on mobile</div>
+        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">The in-chat promotion &mdash; minimal intervention, maximum signal.</figcaption>
+      </figure>
+      <figure data-reveal="up" style="margin: 0;">
+        <div class="img-placeholder" style="width: 100%; aspect-ratio: 9 / 16; max-width: 20rem; margin: 0 auto; border-radius: 20px;">Phase 1 &mdash; Brenger modal explaining how large-item shipping works</div>
+        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Clear instructions &mdash; half of users said they considered using the service.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- VALIDATION QUOTE -->
+  <div style="background: #fff;">
+    <div data-reveal="up" style="max-width: 820px; margin: 0 auto; padding: 8rem 1.5rem; text-align: center;">
+      <div class="serif-italic" style="font-size: clamp(2.25rem, 4.5vw, 3.25rem); line-height: 1.25; text-wrap: balance;">"I can see the convenience of large item home delivery &mdash; I just need to trust that it arrives safely."</div>
+      <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: 1.5rem;">Buyer, exit survey on in-chat banner (n=1,871)</div>
+    </div>
+  </div>
+
+  <!-- QUALITATIVE VALIDATION -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 4rem 1.5rem 0 1.5rem;">
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      An exit survey (n=1,871) validated demand: <span class="mark">half considered using the service</span>. Signal strong enough to invest in real integration.
+    </p>
+  </section>
+
+  <!-- PHASE 2 -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
+    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 2 &mdash; Electric Step</div>
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 0 0 1.75rem 0;">Item paid at <em>Marktplaats,</em> shipping completed at <em>Brenger</em></h2>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0 0 1.6rem 0; text-wrap: pretty;">
+      The first real integration: Brenger appeared as a shipping option alongside "Self Shipping" in the payment proposal. Buyers paid for the item inside Marktplaats, then were redirected to Brenger to complete shipping details and payment. Curbside-only pricing, estimated via the Brenger API based on distance.
+    </p>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      The split introduced friction &mdash; two payment moments, two platforms &mdash; but it validated the full transaction loop. Users could now complete an item purchase on Marktplaats <em class="serif-italic">and</em> have it delivered, with <span class="mark">Buyer Protection</span> covering the entire trade.
+    </p>
+  </section>
+
+  <!-- PHASE 2 IMAGERY -->
+  <div style="max-width: 68rem; margin: 5rem auto 6rem auto; padding: 0 1.5rem;">
+    <figure data-reveal="up" style="margin: 0;">
+      <div class="img-placeholder" style="width: 100%; aspect-ratio: 16 / 9; border-radius: 20px;">Phase 2 flow &mdash; Marktplaats payment proposal with Brenger option, then redirect to Brenger for shipping booking</div>
+      <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Split payment &mdash; item on Marktplaats, transport on Brenger. Two flows linked by a handoff.</figcaption>
+    </figure>
+  </div>
+
+  <!-- PHASE 3 -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
+    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 3 &mdash; Electric Bike</div>
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 0 0 1.75rem 0;"><em>Full payment</em> on Marktplaats, scheduling via <em>Brenger</em></h2>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0 0 1.6rem 0; text-wrap: pretty;">
+      The biggest friction point removed: users paid for both item <em class="serif-italic">and</em> shipping in a single Marktplaats checkout. Post-purchase, Brenger handled appointment scheduling. The platform could now offer better prices than going to Brenger directly, and Buyer Protection covered the entire transaction end to end.
+    </p>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      Curbside remained the default (72% of shipments), keeping the flow simple: distance and item dimensions determined the price. No floor-level questions, no elevator inputs. For door-to-door delivery, users could upgrade at Brenger post-purchase.
+    </p>
+  </section>
+
+  <!-- PHASE 3 IMAGERY -->
+  <div style="max-width: 68rem; margin: 5rem auto 6rem auto; padding: 0 1.5rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 2rem;">
+      <figure data-reveal="up" style="margin: 0;">
+        <div class="img-placeholder" style="width: 100%; max-width: 23.5rem; margin: 0 auto; aspect-ratio: 9 / 16; border-radius: 20px;">Phase 3 &mdash; Unified checkout with Brenger shipping included</div>
+        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Single checkout &mdash; item + shipping paid in one flow.</figcaption>
+      </figure>
+      <figure data-reveal="up" style="margin: 0;">
+        <div class="img-placeholder" style="width: 100%; max-width: 23.5rem; margin: 0 auto; aspect-ratio: 9 / 16; border-radius: 20px;">Phase 3 &mdash; Brenger scheduling post-purchase</div>
+        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Post-purchase scheduling &mdash; both parties pick a time slot.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- SOLUTION STATEMENT -->
+  <div style="background: #fff;">
+    <div data-reveal="up" style="max-width: 820px; margin: 0 auto; padding: 8rem 1.5rem; text-align: center;">
+      <div class="heading-mixed" style="font-size: clamp(2.25rem, 4.5vw, 3.25rem); text-wrap: balance;">From zero shipping options for large items to a <em>fully integrated flow</em> in three iterations.</div>
+    </div>
+  </div>
+
+  <!-- SOLUTION SUMMARY -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 4rem 1.5rem;">
+    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">The solution</div>
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 0 0 1.75rem 0;">One checkout. Trusted delivery. <em>Buyer Protection included.</em></h2>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      Sellers create a payment proposal with Brenger as the shipping method, buyers see a transparent total (item + transport), pay in one step, and both parties schedule the pickup. The platform's new principle: if it fits in a box, use PostNL. If it needs a courier, <span class="mark">use Brenger</span>.
+    </p>
+  </section>
+
+  <!-- RESULTS -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 8rem 1.5rem 4rem 1.5rem;">
+    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Results</div>
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 0 0 1.75rem 0;">From 0 to 300 weekly shipments. <em>A new revenue line for Marktplaats.</em></h2>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      Each phase validated the next investment. The skateboard proved demand, the electric step proved the transaction model, and the electric bike proved the business case.
+    </p>
+
+    <div data-reveal="up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 2.5rem; margin: 3.5rem 0 0 0;">
+      <div>
+        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; color: var(--site-color);">300</div>
+        <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .7rem; line-height: 1.55; max-width: 14rem;">weekly shipments target reached in H2 2024</div>
+      </div>
+      <div>
+        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; color: var(--site-color);">&euro;500K+</div>
+        <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .7rem; line-height: 1.55; max-width: 14rem;">projected shipping revenue in 2024, with expectations to triple in 2025</div>
+      </div>
+      <div>
+        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; color: var(--site-color);">25K</div>
+        <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .7rem; line-height: 1.55; max-width: 14rem;">annual shipments target for 2025 &mdash; matching Brenger's unintegrated 2023 volume</div>
+      </div>
+      <div>
+        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; color: var(--site-color);">+5%</div>
+        <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .7rem; line-height: 1.55; max-width: 14rem;">increase in payment proposals sent in targeted categories</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS COMMENTARY -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 6rem 1.5rem;">
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      The financial model projects &euro;1.7M revenue for 2025 and &euro;3.5M by 2026. The integration positions Marktplaats as the <span class="mark">only major Dutch marketplace with integrated large-item shipping</span> &mdash; a moat no direct competitor currently offers.
+    </p>
+  </section>
+
+  <!-- REFLECTION -->
+  <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 8rem 1.5rem;">
+    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Reflection</div>
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 0 0 1.75rem 0;">Defining the product <em>in increments</em></h2>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0 0 1.6rem 0; text-wrap: pretty;">
+      <span class="mark">The iterative approach was the design decision.</span> Phase 1 asked "is there demand?", Phase 2 asked "will people complete the transaction?", Phase 3 asked "can we make it convenient enough to scale?" Without that structure, we'd have built a full integration against unvalidated assumptions.
+    </p>
+    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0; text-wrap: pretty;">
+      What I'd do differently: <span class="mark">map backend constraints earlier</span>. The address collection problem surfaced late and required a dedicated ideation that could have been run in discovery.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background: var(--code-wash);">
+    <div style="max-width: 680px; margin: 0 auto; padding: 3.5rem 1.5rem 4.5rem 1.5rem; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem;">
+      <span class="serif-italic" style="font-size: 1.4rem;">Let's start creating together.</span>
+      <span style="font-size: var(--fs-small); color: var(--meta-color);">Ale Rosenbaum · Senior Product Designer · Amsterdam</span>
+    </div>
+  </footer>
 
 </div>
 
-<!-- RESULTS -->
-<div class="results">
-  <div class="results-inner">
-    <p class="label">Results</p>
-    <div class="results-grid">
-      <div>
-        <span class="result-num">+300</span>
-        <span class="result-label">weekly new shippings</span>
-      </div>
-      <div>
-        <span class="result-num">+€230K</span>
-        <span class="result-label">revenue for 2025</span>
-      </div>
-      <div>
-        <span class="result-num">4.2★</span>
-        <span class="result-label">user satisfaction</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- REFLECTION -->
-<div class="col">
-  <div>
-    <p class="label">Reflection</p>
-    <h2 class="reflection-heading">Defining the product in increments <em><span class="mark">allowed us to:</span></em></h2>
-    <div class="reflection-cols">
-      <div>
-        <p class="reflection-col-title">Team learnings</p>
-        <ul class="reflection-list">
-          <li>Test adoption and reset goals before scaling</li>
-          <li>Iterate quickly based on real feedback, reducing risk</li>
-          <li>Prove value early to stakeholders, reducing politics</li>
-        </ul>
-      </div>
-      <div>
-        <p class="reflection-col-title">What I learned as a designer</p>
-        <ul class="reflection-list">
-          <li>Designing for trust in peer-to-peer transactions requires clarity at every step</li>
-          <li>Small design details, like highlighting "insured transport", had outsized impact on conversion</li>
-          <li>The iterative approach helped alignment with both users and stakeholders</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- OTHER WORKS -->
-<div class="col" style="margin-bottom: var(--sp-xxl)">
-  <div>
-    <p class="label">Other works</p>
-    <div class="works-grid">
-      <a class="work-card" href="offers.html">
-        <div class="work-thumb"><img src="offers-hero.png" alt="Structured offers" /></div>
-        <div class="work-info">
-          <p class="work-title">Structured Offers</p>
-          <p class="work-meta">Negotiation · Marktplaats</p>
-        </div>
-      </a>
-      <a class="work-card" href="index.html">
-        <div class="work-thumb"><img src="dhl-hero.png" alt="DHL × Marktplaats" /></div>
-        <div class="work-info">
-          <p class="work-title">Integrated DHL shipping</p>
-          <p class="work-meta">Coming soon · Marktplaats</p>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="col">
-    <div class="footer-inner">
-      <p class="footer-cta">Let's start creating together.</p>
-      <a class="footer-btn" href="index.html#contact">Let's talk</a>
-    </div>
-  </div>
-</footer>
+<script>
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = Array.from(document.querySelectorAll('[data-reveal]'));
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(en) {
+      if (!en.isIntersecting) return;
+      io.unobserve(en.target);
+      requestAnimationFrame(function() {
+        var delay = en.target.getAttribute('data-reveal-delay');
+        if (delay) en.target.style.transitionDelay = delay + 'ms';
+        en.target.style.opacity = '1';
+        en.target.style.transform = en.target.getAttribute('data-reveal') === 'img' ? 'scale(1)' : 'translateY(0)';
+      });
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function(el) {
+    var rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.92) return;
+    var kind = el.getAttribute('data-reveal');
+    if (kind === 'img') {
+      el.style.transition = 'transform 800ms ease-out';
+      el.style.transform = 'scale(1.05)';
+    } else {
+      el.style.transition = 'opacity 650ms ease-out, transform 650ms ease-out';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+    }
+    io.observe(el);
+  });
+})();
+</script>
 
 </body>
 </html>

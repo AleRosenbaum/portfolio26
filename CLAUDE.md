@@ -7,7 +7,7 @@ Personal portfolio site for Ale Rosenbaum, Senior Product Designer at Marktplaat
 Plain HTML/CSS/JS. No framework, no build step. Three pages:
 
 - `index.html` — main SPA. JS `go()` function swaps between Home and Contact views. Nav hides on home. Opening `index.html#contact` lands on the Contact view.
-- `brenger.html` — case study page for the Brenger × Marktplaats project.
+- `brenger.html` — case study page for the Brenger × Marktplaats project ("Integrating Brenger into Marktplaats"). Same editorial format as `offers.html` (statement bands, orange stats, scroll reveals). Most image slots are dashed `.img-placeholder` divs awaiting real screens; only the hero photo is real.
 - `offers.html` — case study page for Structured Offers ("From Silence to Structured Offers"). Editorial layout with full-bleed hero, white statement bands, scroll-reveal animations (vanilla JS), and orange stat numbers. Images live in `offers/`.
 
 ## Design system
@@ -21,7 +21,7 @@ Plain HTML/CSS/JS. No framework, no build step. Three pages:
 ## Layout
 
 - `index.html` uses a 3-column CSS grid (`--grid-spec`) for the nav and contact page. Home content is full-width with fixed horizontal padding: `120px` desktop / `80px` tablet (max-width: 64em) / `24px` mobile (max-width: 50em).
-- `brenger.html` uses the simplified Medium-style layout: `.col` is `max-width: 680px; margin-inline: auto; padding-inline: 20px`. `.wide` is `max-width: 68rem` with same padding.
+- `brenger.html` and `offers.html` use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, and white statement bands. Sections are styled inline; shared tokens/roles (`.heading-mixed`, `.label`, `.mark`, `.serif-italic`) live in the page's style block.
 
 ## Home page sections
 

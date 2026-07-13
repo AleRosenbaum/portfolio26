@@ -4,10 +4,11 @@ Personal portfolio site for Ale Rosenbaum, Senior Product Designer at Marktplaat
 
 ## Structure
 
-Plain HTML/CSS/JS. No framework, no build step. Two pages:
+Plain HTML/CSS/JS. No framework, no build step. Three pages:
 
-- `index.html` — main SPA. JS `go()` function swaps between Home and Contact views. Nav hides on home.
+- `index.html` — main SPA. JS `go()` function swaps between Home and Contact views. Nav hides on home. Opening `index.html#contact` lands on the Contact view.
 - `brenger.html` — case study page for the Brenger × Marktplaats project.
+- `offers.html` — case study page for Structured Offers (counter offers). Scaffold with placeholder mockups, same layout and styles as `brenger.html`.
 
 ## Design system
 
@@ -32,8 +33,8 @@ Plain HTML/CSS/JS. No framework, no build step. Two pages:
 | Card | Image | Icon | Links to |
 |---|---|---|---|
 | Brenger (last-mile logistics) | `brenger-hero.png` | `brenger-icon.png` | `brenger.html` |
-| Structured Offers | `offers-hero.png` | `brenger-icon.png` (placeholder) | `#` |
-| DHL Shipping | `dhl-hero.png` | `brenger-icon.png` (placeholder) | `#` |
+| Structured Offers | `offers-hero.png` | `brenger-icon.png` (placeholder) | `offers.html` |
+| DHL Shipping | `dhl-hero.png` | `brenger-icon.png` (placeholder) | not linked yet |
 
 ## Assets
 

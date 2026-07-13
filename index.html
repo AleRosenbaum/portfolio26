@@ -334,6 +334,7 @@
       cursor: default;
       color: inherit;
     }
+    a.case-card { text-decoration: none; cursor: pointer; }
     .case-thumb {
       aspect-ratio: 1 / 1;
       border-radius: 16px;
@@ -574,10 +575,10 @@
     <!-- Cases grid -->
     <div class="cases-grid">
 
-      <div class="case-card">
+      <a class="case-card" href="brenger.html">
         <div class="case-thumb">
           <img src="brenger-hero.png" alt="Brenger × Marktplaats" />
-          <div class="case-thumb-overlay"><span>Coming soon</span></div>
+          <div class="case-thumb-overlay"><span>View case</span></div>
         </div>
         <div class="case-meta">
           <div class="case-logo" style="background:none;"><img src="brenger-icon.png" alt="Brenger" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" /></div>
@@ -586,12 +587,12 @@
             <p class="case-desc">Marktplaats</p>
           </div>
         </div>
-      </div>
+      </a>
 
-      <div class="case-card">
+      <a class="case-card" href="offers.html">
         <div class="case-thumb">
           <img src="offers-hero.png" alt="Structured offers" />
-          <div class="case-thumb-overlay"><span>Coming soon</span></div>
+          <div class="case-thumb-overlay"><span>View case</span></div>
         </div>
         <div class="case-meta">
           <div class="case-logo" style="background:none;"><img src="brenger-icon.png" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" /></div>
@@ -600,7 +601,7 @@
             <p class="case-desc">Marktplaats</p>
           </div>
         </div>
-      </div>
+      </a>
 
       <div class="case-card">
         <div class="case-thumb">
@@ -682,7 +683,7 @@
     setTimeout(() => { btn.textContent = 'Enviar mensagem'; btn.classList.remove('sent'); e.target.reset(); }, 3500);
   }
 
-  go('home');
+  go(location.hash === '#contact' ? 'contact' : 'home');
 </script>
 </body>
 </html>

@@ -264,6 +264,20 @@ body {
     try {
       var html = await decrypt(pass);
       sessionStorage.setItem('ale-case-pass', pass);
+      if (html.indexOf('/sticky-header.css') === -1) {
+        html = html.replace('</head>', '<link rel="stylesheet" href="/sticky-header.css"></head>');
+      }
+      if (html.indexOf('/sticky-header.js') === -1) {
+        var stickyHeaderScript = '<script src="/sticky-header.js"><' + '/script>';
+        html = html.replace('</body>', stickyHeaderScript + '</body>');
+      }
+      if (html.indexOf('/site-footer.css') === -1) {
+        html = html.replace('</head>', '<link rel="stylesheet" href="/site-footer.css"></head>');
+      }
+      if (html.indexOf('/site-footer.js') === -1) {
+        var siteFooterScript = '<script src="/site-footer.js"><' + '/script>';
+        html = html.replace('</body>', siteFooterScript + '</body>');
+      }
       document.open();
       document.write(html);
       document.close();

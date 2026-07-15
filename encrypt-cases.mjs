@@ -13,7 +13,17 @@ if (!password) {
 const ITERATIONS = 600000;
 
 const pages = [
-  { src: '_src/brenger.html', out: 'brenger.html', title: 'Integrating Brenger into Marktplaats · Ale Rosenbaum' },
+  {
+    src: '_src/brenger.html',
+    out: 'brenger.html',
+    title: 'Integrating Brenger into Marktplaats · Ale Rosenbaum',
+    description: "How I turned a large-item shipping gap into Marktplaats's first integrated Brenger delivery flow, built iteratively from chat promotion to checkout.",
+    url: 'https://alerosenbaum.com/brenger.html',
+    image: 'https://alerosenbaum.com/brenger-hero.png',
+    imageWidth: 2080,
+    imageHeight: 1170,
+    imageAlt: 'Hand holding a phone showing the Brenger shipping flow inside the Marktplaats app',
+  },
   { src: '_src/offers.html', out: 'offers.html', title: 'From Silence to Structured Offers · Ale Rosenbaum' },
 ];
 
@@ -31,14 +41,36 @@ function encrypt(plaintext) {
   };
 }
 
-function gatePage(title, payload) {
+function gatePage(page, payload) {
+  const socialMeta = page.description ? `
+<meta name="description" content="${page.description}">
+<meta name="author" content="Ale Rosenbaum">
+<link rel="canonical" href="${page.url}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ale Rosenbaum">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="${page.url}">
+<meta property="og:title" content="${page.title}">
+<meta property="og:description" content="${page.description}">
+<meta property="og:image" content="${page.image}">
+<meta property="og:image:secure_url" content="${page.image}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="${page.imageWidth}">
+<meta property="og:image:height" content="${page.imageHeight}">
+<meta property="og:image:alt" content="${page.imageAlt}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${page.title}">
+<meta name="twitter:description" content="${page.description}">
+<meta name="twitter:image" content="${page.image}">
+<meta name="twitter:image:alt" content="${page.imageAlt}">` : '';
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>${title}</title>
+<title>${page.title}</title>${socialMeta}
 <!-- Google Analytics (GA4). -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXNMWSJCZE"></script>
 <script>
@@ -252,6 +284,6 @@ body {
 for (const page of pages) {
   const plaintext = readFileSync(page.src, 'utf8');
   const payload = encrypt(plaintext);
-  writeFileSync(page.out, gatePage(page.title, payload));
+  writeFileSync(page.out, gatePage(page, payload));
   console.log(`${page.out} written (${(payload.ct.length / 1e3).toFixed(0)} KB payload)`);
 }

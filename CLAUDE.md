@@ -16,7 +16,7 @@ The case pages are AES-256-GCM encrypted (staticrypt-style). The real pages live
 
 **After editing anything in `_src/`, regenerate the gates:** `node encrypt-cases.mjs <password>`. The password itself is never committed. Caveats: case imagery (`offers/`, `brenger-hero.png`) is not encrypted and stays publicly fetchable by URL; both case pages share one password.
 
-Both case pages use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, white statement bands, orange stat numbers, and scroll-reveal animations (vanilla JS). Sections are styled inline; shared tokens/roles (`.heading-mixed`, `.label`, `.mark`, `.serif-italic`) live in the page's style block. The Brenger page's image slots are mostly dashed `.img-placeholder` divs awaiting real screens; only the hero photo is real. Offers imagery lives in `offers/`.
+Both case pages use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, white statement bands, orange stat numbers, and scroll-reveal animations (vanilla JS). Sections are styled inline; shared tokens/roles (`.heading-mixed`, `.label`, `.mark`, `.serif-italic`) live in the page's style block. The Brenger page references its imagery in `brenger/` (discovery boards plus phase 1–3 screens); the PNGs themselves still need to be exported from the "Brenger case update" Claude Design project (`export/brenger/`) and dropped into `brenger/`. Offers imagery lives in `offers/`.
 
 ## Design system
 

@@ -275,11 +275,11 @@ img { display: block; max-width: 100%; }
   <div style="max-width: 68rem; margin: 0 auto; padding: 0 1.5rem;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 2rem;">
       <figure data-reveal="up" style="margin: 0;">
-        <div class="img-placeholder" style="width: 100%; aspect-ratio: 4/3; border-radius: 20px;">Discovery session &mdash; Opportunity Canvas with team sticky notes</div>
+        <div style="width: 100%; aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; background: var(--gray05);"><img src="brenger/discovery-opportunity-canvas.png" alt="Opportunity Canvas board with team sticky notes mapping problems, users, outcomes, and learning goals" style="width: 100%; height: 100%; object-fit: cover; object-position: left top;"></div>
         <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Opportunity Canvas &mdash; mapping problems, users, outcomes, and solution ideas.</figcaption>
       </figure>
       <figure data-reveal="up" style="margin: 0;">
-        <div class="img-placeholder" style="width: 100%; aspect-ratio: 4/3; border-radius: 20px;">Ideation session &mdash; IF/THEN/BECAUSE hypotheses on Miro</div>
+        <div style="width: 100%; aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; background: var(--gray05);"><img src="brenger/discovery-ideation.png" alt="Ideation board with paper sketches and sticky notes exploring Brenger touchpoints from VIP to checkout" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;"></div>
         <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Ideation &mdash; hypotheses mapped across every touchpoint from VIP to checkout.</figcaption>
       </figure>
     </div>
@@ -295,27 +295,29 @@ img { display: block; max-width: 100%; }
 
   <!-- ITERATIVE MODEL -->
   <div data-reveal="up" style="max-width: 68rem; margin: 5rem auto; padding: 0 1.5rem;">
-    <div style="display: flex; align-items: center; justify-content: center; gap: clamp(.5rem, 2vw, 1.5rem); flex-wrap: wrap; padding: 3rem 1.5rem; background: var(--code-wash); border-radius: 20px;">
-      <div style="text-align: center; flex: 1; min-width: 6rem;">
-        <div style="font-family: var(--font-heading); font-style: italic; font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: .3rem;">1</div>
-        <div style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); line-height: 1.3;">In-chat<br>promotion</div>
+    <div style="padding: 4rem clamp(1.5rem, 5vw, 4rem) 3.5rem; background: var(--code-wash); border-radius: 20px;">
+      <div class="heading-mixed" style="font-size: clamp(1.35rem, 2.5vw, 1.75rem); text-align: center; text-wrap: balance; max-width: 42rem; margin: 0 auto 3rem auto;">We decided to build a new product <em>iteratively,</em> delivering value to users in chunks and reducing risk.</div>
+      <div style="display: flex; align-items: center; gap: clamp(.5rem, 1.5vw, 1rem); max-width: 52rem; margin: 0 auto;">
+        <div style="font-family: var(--font-sans); font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1;">A</div>
+        <div style="flex: 1; position: relative; padding-top: .5rem;">
+          <div style="display: flex; justify-content: space-evenly; align-items: flex-end; font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1; margin-bottom: 1rem;">
+            <span>&#128761;</span><span>&#128756;</span><span>&#128690;</span><span>&#127949;&#65039;</span><span>&#128663;</span>
+          </div>
+          <div style="height: 1px; background: var(--gray30); position: relative;">
+            <span style="position: absolute; left: -3px; top: -3.5px; width: 8px; height: 8px; border-radius: 50%; background: var(--gray30);"></span>
+            <span style="position: absolute; right: -2px; top: -9.5px; color: var(--gray30); font-size: 1rem; line-height: 1.25;">&rsaquo;</span>
+            <span style="position: absolute; right: -3px; top: -3.5px; width: 8px; height: 8px; border-radius: 50%; background: var(--gray30);"></span>
+          </div>
+        </div>
+        <div style="font-family: var(--font-sans); font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1;">B</div>
       </div>
-      <div style="flex: 0 0 2rem; height: 1px; background: var(--gray20); position: relative;"><span style="position:absolute;right:-4px;top:-6px;color:var(--gray20);">&rsaquo;</span></div>
-      <div style="text-align: center; flex: 1; min-width: 6rem;">
-        <div style="font-family: var(--font-heading); font-style: italic; font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: .3rem;">2</div>
-        <div style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); line-height: 1.3;">Split<br>payment</div>
-      </div>
-      <div style="flex: 0 0 2rem; height: 1px; background: var(--gray20); position: relative;"><span style="position:absolute;right:-4px;top:-6px;color:var(--gray20);">&rsaquo;</span></div>
-      <div style="text-align: center; flex: 1; min-width: 6rem;">
-        <div style="font-family: var(--font-heading); font-style: italic; font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: .3rem;">3</div>
-        <div style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); line-height: 1.3;">Full<br>integration</div>
-      </div>
+      <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); line-height: 1.55; text-align: center; text-wrap: pretty; max-width: 40rem; margin: 2rem auto 0 auto;">You cannot go from A to B with a tire, two tires, a car frame, you need the entire car. If we start from a skateboard, to an electric step, to an electric bike the shipment can get from A to B and it's a usable product.</p>
     </div>
   </div>
 
   <!-- PHASE 1 -->
   <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
-    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 1 &mdash; Skateboard</div>
+    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 1 &mdash; Skateboard &#128761;</div>
     <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 0 0 1.75rem 0;">Testing desirability with <em>in-chat promotion</em></h2>
     <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0 0 1.6rem 0; text-wrap: pretty;">
       Live from November 2023 in three L1 categories (Home &amp; Decor, Garden &amp; Patio, White Goods). A banner inside the Marktplaats chat told users they could ship large items with Brenger, then redirected them to Brenger's platform to complete the order.
@@ -340,11 +342,11 @@ img { display: block; max-width: 100%; }
   <div style="max-width: 68rem; margin: 5rem auto 6rem auto; padding: 0 1.5rem;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 2rem;">
       <figure data-reveal="up" style="margin: 0;">
-        <div class="img-placeholder" style="width: 100%; aspect-ratio: 9 / 16; max-width: 20rem; margin: 0 auto; border-radius: 20px;">Phase 1 &mdash; In-chat Brenger banner on mobile</div>
+        <img src="brenger/phase1-banner.png" alt="In-chat Brenger banner promoting large-item delivery inside a Marktplaats conversation" style="width: 100%; max-width: 20rem; margin: 0 auto; border-radius: 20px;">
         <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">The in-chat promotion &mdash; minimal intervention, maximum signal.</figcaption>
       </figure>
       <figure data-reveal="up" style="margin: 0;">
-        <div class="img-placeholder" style="width: 100%; aspect-ratio: 9 / 16; max-width: 20rem; margin: 0 auto; border-radius: 20px;">Phase 1 &mdash; Brenger modal explaining how large-item shipping works</div>
+        <img src="brenger/phase1-modal.png" alt="Brenger modal explaining how large-item shipping works, with price calculation CTA" style="width: 100%; max-width: 20rem; margin: 0 auto; border-radius: 20px;">
         <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Clear instructions &mdash; half of users said they considered using the service.</figcaption>
       </figure>
     </div>
@@ -367,7 +369,7 @@ img { display: block; max-width: 100%; }
 
   <!-- PHASE 2 -->
   <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
-    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 2 &mdash; Electric Step</div>
+    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 2 &mdash; Electric Step &#128756;</div>
     <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 0 0 1.75rem 0;">Item paid at <em>Marktplaats,</em> shipping completed at <em>Brenger</em></h2>
     <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0 0 1.6rem 0; text-wrap: pretty;">
       The first real integration: Brenger appeared as a shipping option alongside "Self Shipping" in the payment proposal. Buyers paid for the item inside Marktplaats, then were redirected to Brenger to complete shipping details and payment. Curbside-only pricing, estimated via the Brenger API based on distance.
@@ -379,15 +381,25 @@ img { display: block; max-width: 100%; }
 
   <!-- PHASE 2 IMAGERY -->
   <div style="max-width: 68rem; margin: 5rem auto 6rem auto; padding: 0 1.5rem;">
-    <figure data-reveal="up" style="margin: 0;">
-      <div class="img-placeholder" style="width: 100%; aspect-ratio: 16 / 9; border-radius: 20px;">Phase 2 flow &mdash; Marktplaats payment proposal with Brenger option, then redirect to Brenger for shipping booking</div>
-      <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Split payment &mdash; item on Marktplaats, transport on Brenger. Two flows linked by a handoff.</figcaption>
-    </figure>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 2rem;">
+      <figure data-reveal="up" style="margin: 0;">
+        <img src="brenger/phase2-checkout.png" alt="Marktplaats checkout with Brenger as delivery method, paying for the item via iDeal" style="width: 100%; max-width: 20rem; margin: 0 auto; border-radius: 20px;">
+        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Item payment on Marktplaats, with Brenger set as the delivery method.</figcaption>
+      </figure>
+      <figure data-reveal="up" style="margin: 0;">
+        <img src="brenger/phase2-handoff.png" alt="Payment success screen with the Brenger handoff card explaining the next steps" style="width: 100%; max-width: 20rem; margin: 0 auto; border-radius: 20px;">
+        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">After payment, a handoff card explains the next steps and links to Brenger.</figcaption>
+      </figure>
+      <figure data-reveal="up" style="margin: 0;">
+        <img src="brenger/phase2-booking.png" alt="Brenger booking screen where the buyer reviews and pays for the transport" style="width: 100%; max-width: 20rem; margin: 0 auto; border-radius: 20px;">
+        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Transport booked and paid on Brenger, pre-filled from the trade.</figcaption>
+      </figure>
+    </div>
   </div>
 
   <!-- PHASE 3 -->
   <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
-    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 3 &mdash; Electric Bike</div>
+    <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 3 &mdash; Electric Bike &#128690;</div>
     <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 0 0 1.75rem 0;"><em>Full payment</em> on Marktplaats, scheduling via <em>Brenger</em></h2>
     <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.7; color: var(--gray35); margin: 0 0 1.6rem 0; text-wrap: pretty;">
       The biggest friction point removed: users paid for both item <em class="serif-italic">and</em> shipping in a single Marktplaats checkout. Post-purchase, Brenger handled appointment scheduling. The platform could now offer better prices than going to Brenger directly, and Buyer Protection covered the entire transaction end to end.
@@ -399,14 +411,18 @@ img { display: block; max-width: 100%; }
 
   <!-- PHASE 3 IMAGERY -->
   <div style="max-width: 68rem; margin: 5rem auto 6rem auto; padding: 0 1.5rem;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 2rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 2rem;">
       <figure data-reveal="up" style="margin: 0;">
-        <div class="img-placeholder" style="width: 100%; max-width: 23.5rem; margin: 0 auto; aspect-ratio: 9 / 16; border-radius: 20px;">Phase 3 &mdash; Unified checkout with Brenger shipping included</div>
-        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Single checkout &mdash; item + shipping paid in one flow.</figcaption>
+        <img src="brenger/phase3-delivery-options.png" alt="Marktplaats delivery selection with Brenger curbside delivery up to 200 kg alongside DHL and PostNL" style="width: 100%; max-width: 20rem; margin: 0 auto; border-radius: 20px;">
+        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Brenger as a native delivery option, next to DHL and PostNL.</figcaption>
       </figure>
       <figure data-reveal="up" style="margin: 0;">
-        <div class="img-placeholder" style="width: 100%; max-width: 23.5rem; margin: 0 auto; aspect-ratio: 9 / 16; border-radius: 20px;">Phase 3 &mdash; Brenger scheduling post-purchase</div>
-        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Post-purchase scheduling &mdash; both parties pick a time slot.</figcaption>
+        <img src="brenger/phase3-scheduling.png" alt="Brenger post-purchase scheduling screen where the buyer selects at least three available delivery days" style="width: 100%; max-width: 20rem; margin: 0 auto; border-radius: 20px;">
+        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Post-purchase scheduling &mdash; both parties pick available days.</figcaption>
+      </figure>
+      <figure data-reveal="up" style="margin: 0;">
+        <img src="brenger/phase3-extra-service.png" alt="Brenger extra service selection with free curbside delivery as default and optional carrying help" style="width: 100%; max-width: 20rem; margin: 0 auto; border-radius: 20px;">
+        <figcaption style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .8rem;">Curbside stays the default; carrying help is an optional upgrade.</figcaption>
       </figure>
     </div>
   </div>

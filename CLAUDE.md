@@ -16,7 +16,7 @@ The case pages are AES-256-GCM encrypted (staticrypt-style). The real pages live
 
 **After editing anything in `_src/`, regenerate the gates:** `node encrypt-cases.mjs <password>`. The password itself is never committed. Caveats: case imagery (`offers/`, `brenger-hero.png`) is not encrypted and stays publicly fetchable by URL; both case pages share one password.
 
-Both case pages use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, white statement bands, orange stat numbers, and scroll-reveal animations (vanilla JS). Sections are styled inline; shared tokens/roles (`.heading-mixed`, `.label`, `.mark`, `.serif-italic`) live in the page's style block. The Brenger page's image slots are mostly dashed `.img-placeholder` divs awaiting real screens; only the hero photo is real. Offers imagery lives in `offers/`.
+Both case pages use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, white statement bands, orange stat numbers, and scroll-reveal animations (vanilla JS). Sections are styled inline; shared tokens/roles (`.heading-mixed`, `.label`, `.mark`, `.serif-italic`) live in the page's style block. Brenger imagery lives in `brenger/`; Offers imagery lives in `offers/`.
 
 ## Design system
 
@@ -49,6 +49,7 @@ Both case pages use the editorial case-study layout: a 680px centered reading co
 - `brenger-hero.png` — hero photo used in both the card and the case page
 - `brenger-icon.png` — Brenger app icon (orange circle with chevron)
 - `brenger-card.png` — unused, kept for reference
+- `brenger/` — Brenger research artifacts and Phase 1–3 product screens
 - `marktplaats-icon.png` — Marktplaats app icon (downloaded, not yet in use)
 - `offers-hero.png` — two phones showing offer/counter-offer UI
 - `dhl-hero.png` — phone with DHL van in Amsterdam background

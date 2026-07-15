@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>Designing for the Wrong Market · Quaddro · Ale Rosenbaum</title>
+  <meta name="description" content="How user research reshaped Quaddro's product strategy and helped the company pivot from the U.S. to Brazil." />
+  <meta name="author" content="Ale Rosenbaum" />
+  <link rel="canonical" href="https://alerosenbaum.com/quaddro.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Ale Rosenbaum" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://alerosenbaum.com/quaddro.html" />
+  <meta property="og:title" content="Designing for the Wrong Market · Quaddro" />
+  <meta property="og:description" content="How user research reshaped Quaddro's product strategy and helped the company pivot from the U.S. to Brazil." />
+  <meta property="og:image" content="https://alerosenbaum.com/quaddro-hero.png" />
+  <meta property="og:image:secure_url" content="https://alerosenbaum.com/quaddro-hero.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="Brazilian barber managing Pix payments, receipts and handwritten accounts at his worktable" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Designing for the Wrong Market · Quaddro" />
+  <meta name="twitter:description" content="How user research reshaped Quaddro's product strategy and helped the company pivot from the U.S. to Brazil." />
+  <meta name="twitter:image" content="https://alerosenbaum.com/quaddro-hero.png" />
+  <meta name="twitter:image:alt" content="Brazilian barber managing Pix payments, receipts and handwritten accounts at his worktable" />
+
+  <!-- Google Analytics (GA4). -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXNMWSJCZE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VXNMWSJCZE');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Spectral:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gray-hue: 32;
+      --gray00: hsl(var(--gray-hue), 10%, 98%);
+      --gray05: hsl(var(--gray-hue), 8%, 95%);
+      --gray10: hsl(var(--gray-hue), 8%, 90%);
+      --gray20: hsl(var(--gray-hue), 8%, 70%);
+      --gray30: hsl(var(--gray-hue), 6%, 30%);
+      --gray35: hsl(var(--gray-hue), 3%, 20%);
+      --gray40: hsl(var(--gray-hue), 6%, 5%);
+      --site-color: #ff7006;
+      --highlight-color: #ffc800;
+      --text-color: var(--gray40);
+      --meta-color: var(--gray30);
+      --wash-color: var(--gray00);
+      --code-wash: var(--gray05);
+      --font-sans: system-ui, -apple-system, sans-serif;
+      --font-heading: "Instrument Serif", Georgia, serif;
+      --font-serif: "Spectral", Georgia, serif;
+      --fs-body: clamp(100%, 2.75vw, 125%);
+      --fs-small: .8rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      margin: 0;
+      background: var(--wash-color);
+      color: var(--text-color);
+      font-family: var(--font-serif);
+      font-size: var(--fs-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--highlight-color); color: var(--gray40); }
+    a {
+      color: inherit;
+      text-decoration-color: var(--site-color);
+      text-decoration-thickness: max(.05em, 1px);
+    }
+    a:hover, a:focus { color: var(--site-color); }
+    img { max-width: 100%; }
+
+    .sans { font-family: var(--font-sans); }
+    .serif-italic {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-weight: 400;
+    }
+    .label {
+      margin-bottom: 1.5rem;
+      color: var(--site-color);
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .heading-mixed {
+      margin: 0 0 1.75rem;
+      font-family: var(--font-sans);
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      letter-spacing: -.015em;
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+    .heading-mixed em {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .body-copy {
+      margin: 0 0 1.6rem;
+      color: var(--gray35);
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      text-wrap: pretty;
+    }
+    .body-copy:last-child { margin-bottom: 0; }
+    .mark {
+      text-decoration: underline;
+      text-decoration-color: var(--site-color);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      max-width: 68rem;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 0;
+      font-family: var(--font-sans);
+    }
+    .site-nav a { font-size: 1rem; text-decoration: none; }
+    .site-nav span { color: var(--meta-color); font-size: var(--fs-small); }
+
+    .hero {
+      width: 100%;
+      max-width: 60.25rem;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 2px;
+    }
+    .hero h1 {
+      max-width: 12ch;
+      margin: 0 0 2rem;
+      font-family: var(--font-sans);
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: .98;
+      text-wrap: balance;
+    }
+    .hero h1 em {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -.02em;
+    }
+    .hero-lede {
+      max-width: 46rem;
+      margin: 0 0 3rem;
+      color: var(--gray35);
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      text-wrap: pretty;
+    }
+
+    .hero-visual {
+      width: 100%;
+      margin: 0;
+      background: var(--code-wash);
+      overflow: hidden;
+    }
+    .hero-visual img {
+      display: block;
+      width: 100%;
+      height: min(72vh, 760px);
+      min-height: 380px;
+      object-fit: cover;
+    }
+    figcaption {
+      max-width: 42.5rem;
+      margin: .9rem auto 0;
+      padding: 0 1.5rem;
+      color: var(--meta-color);
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      line-height: 1.55;
+    }
+
+    .reading-section {
+      max-width: 42.5rem;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 0;
+    }
+    .reading-section.compact { padding-top: 3rem; }
+    .reading-section.end { padding-bottom: 8rem; }
+
+    .case-facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 42.5rem;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+      font-family: var(--font-sans);
+    }
+    .fact {
+      display: grid;
+      grid-template-columns: 5.5rem 1fr;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--gray10);
+    }
+    .fact:nth-child(odd) { margin-right: 1.5rem; }
+    .fact:nth-child(even) { margin-left: 1.5rem; }
+    .fact-label {
+      color: var(--meta-color);
+      font-size: var(--fs-small);
+    }
+    .fact-value { font-size: var(--fs-small); line-height: 1.55; }
+
+    .statement {
+      margin-top: 6rem;
+      background: #fdfcfb;
+    }
+    .statement-inner {
+      max-width: 51.25rem;
+      margin: 0 auto;
+      padding: 10rem 1.5rem;
+      text-align: center;
+    }
+    .statement-copy {
+      font-family: var(--font-sans);
+      font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+      font-weight: 400;
+      letter-spacing: -.02em;
+      line-height: 1.18;
+      text-wrap: balance;
+    }
+    .statement-copy em {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .question-list {
+      margin: 2.5rem 0 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--gray10);
+    }
+    .question-list li {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--gray10);
+      color: var(--gray35);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .question-list span { color: var(--site-color); font-size: var(--fs-small); }
+
+    .workflow {
+      max-width: 68rem;
+      margin: 5rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .media-block {
+      max-width: 68rem;
+      margin: 5rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 2rem;
+    }
+    .media-grid figure { margin: 0; }
+    .image-placeholder {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 18rem;
+      padding: 2rem;
+      border: 1px solid var(--gray10);
+      border-radius: 20px;
+      background: var(--gray05);
+      color: var(--text-color);
+      font-family: var(--font-sans);
+      text-align: center;
+      overflow: hidden;
+    }
+    .image-placeholder.ratio-wide { aspect-ratio: 21 / 9; }
+    .image-placeholder.ratio-landscape { aspect-ratio: 4 / 3; }
+    .image-placeholder.ratio-cinema { aspect-ratio: 16 / 9; }
+    .placeholder-index {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      color: var(--site-color);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .placeholder-content strong {
+      display: block;
+      margin-bottom: .55rem;
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .placeholder-content span {
+      display: block;
+      max-width: 28rem;
+      color: var(--meta-color);
+      font-size: var(--fs-small);
+      line-height: 1.55;
+    }
+    .placeholder-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--gray20);
+      border-radius: 50%;
+      color: var(--site-color);
+      font-size: 1.1rem;
+    }
+    .workflow-surface {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-radius: 20px;
+      background: var(--gray40);
+      color: var(--gray00);
+      overflow: hidden;
+    }
+    .workflow-item {
+      min-height: 18rem;
+      padding: 2rem;
+      border-right: 1px solid #ffffff22;
+    }
+    .workflow-item:last-child { border-right: 0; }
+    .workflow-number {
+      color: var(--site-color);
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-style: italic;
+      line-height: 1;
+    }
+    .workflow-item h3 {
+      margin: 4.5rem 0 .75rem;
+      font-family: var(--font-sans);
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+    .workflow-item p {
+      margin: 0;
+      color: var(--gray20);
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      line-height: 1.6;
+    }
+
+    .strategy-wrap {
+      max-width: 68rem;
+      margin: 4rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .strategy-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-sans);
+      table-layout: fixed;
+    }
+    .strategy-table th,
+    .strategy-table td {
+      padding: 1.25rem 1rem;
+      border-bottom: 1px solid var(--gray10);
+      text-align: left;
+      vertical-align: top;
+      font-size: .9rem;
+      line-height: 1.55;
+    }
+    .strategy-table th {
+      color: var(--meta-color);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .strategy-table td:nth-child(2) { color: var(--gray30); }
+    .strategy-table td:last-child { font-weight: 500; }
+
+    .mvp-stage {
+      margin-top: 5rem;
+      padding: 7rem 1.5rem;
+      background: #ff7006;
+    }
+    .phones {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 18rem));
+      justify-content: center;
+      gap: 2rem;
+      max-width: 68rem;
+      margin: 0 auto;
+    }
+    .phone {
+      min-height: 31rem;
+      padding: .75rem;
+      border: 2px solid var(--gray40);
+      border-radius: 2.4rem;
+      background: var(--gray40);
+      box-shadow: 0 1.5rem 3rem #8a380833;
+    }
+    .phone-screen {
+      height: 100%;
+      min-height: 29rem;
+      padding: 2rem 1.2rem 1.2rem;
+      border-radius: 1.75rem;
+      background: var(--gray00);
+      color: var(--gray40);
+      font-family: var(--font-sans);
+    }
+    .phone-kicker {
+      color: var(--meta-color);
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .phone h3 {
+      margin: 1rem 0 2rem;
+      font-size: 1.45rem;
+      font-weight: 500;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+    }
+    .ui-line {
+      height: .65rem;
+      margin-bottom: .7rem;
+      border-radius: 1rem;
+      background: var(--gray10);
+    }
+    .ui-line.short { width: 62%; }
+    .ui-value {
+      margin: 1.6rem 0;
+      padding: 1.1rem;
+      border: 1px solid var(--gray10);
+      border-radius: .7rem;
+      background: #fdfcfb;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+    .ui-button {
+      margin-top: 2rem;
+      padding: .85rem;
+      border-radius: .5rem;
+      background: var(--gray40);
+      color: var(--gray00);
+      text-align: center;
+      font-size: .8rem;
+      font-weight: 600;
+    }
+    .ui-contact {
+      display: flex;
+      gap: .8rem;
+      align-items: center;
+      padding: .9rem 0;
+      border-bottom: 1px solid var(--gray10);
+    }
+    .ui-avatar {
+      width: 2.25rem;
+      height: 2.25rem;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--site-color);
+    }
+    .ui-contact-lines { flex: 1; }
+    .ui-contact-lines .ui-line { margin-bottom: .4rem; }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 42.5rem;
+      margin: 3rem 0 0;
+      border-top: 1px solid var(--gray10);
+    }
+    .principle { padding: 1.4rem 1.2rem 0 0; }
+    .principle span {
+      display: block;
+      margin-bottom: .6rem;
+      color: var(--site-color);
+      font-family: var(--font-heading);
+      font-size: 1.7rem;
+      font-style: italic;
+    }
+    .principle p {
+      margin: 0;
+      color: var(--meta-color);
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      line-height: 1.55;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+    }
+    .impact-value {
+      color: var(--site-color);
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-style: italic;
+      line-height: 1;
+    }
+    .impact-label {
+      max-width: 14rem;
+      margin-top: .7rem;
+      color: var(--meta-color);
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+      line-height: 1.55;
+    }
+
+    .question-shift {
+      max-width: 68rem;
+      margin: 6rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .shift-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 2rem;
+      align-items: center;
+      padding: 4rem;
+      border-radius: 20px;
+      background: var(--gray40);
+      color: var(--gray00);
+    }
+    .shift-label {
+      display: block;
+      margin-bottom: 1rem;
+      color: var(--gray20);
+      font-family: var(--font-sans);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .shift-quote {
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-style: italic;
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+    .shift-arrow {
+      color: var(--site-color);
+      font-family: var(--font-sans);
+      font-size: 2rem;
+    }
+
+    .site-footer { background: var(--code-wash); }
+    .footer-inner {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 42.5rem;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 4.5rem;
+    }
+    .footer-inner strong {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .footer-inner span {
+      color: var(--meta-color);
+      font-family: var(--font-sans);
+      font-size: var(--fs-small);
+    }
+
+    @media (max-width: 700px) {
+      .hero-visual img { height: auto; min-height: 0; object-fit: contain; }
+      .case-facts { grid-template-columns: 1fr; }
+      .fact:nth-child(odd), .fact:nth-child(even) { margin: 0; }
+      .media-grid { grid-template-columns: 1fr; }
+      .image-placeholder { min-height: 15rem; }
+      .image-placeholder.ratio-wide,
+      .image-placeholder.ratio-landscape,
+      .image-placeholder.ratio-cinema { aspect-ratio: 4 / 3; }
+      .workflow-surface { grid-template-columns: 1fr; }
+      .workflow-item { min-height: 13rem; border-right: 0; border-bottom: 1px solid #ffffff22; }
+      .workflow-item:last-child { border-bottom: 0; }
+      .workflow-item h3 { margin-top: 2rem; }
+      .strategy-table, .strategy-table tbody, .strategy-table tr, .strategy-table td { display: block; }
+      .strategy-table thead { display: none; }
+      .strategy-table tr { padding: 1.4rem 0; border-bottom: 1px solid var(--gray10); }
+      .strategy-table td { padding: .35rem 0; border: 0; }
+      .strategy-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: .2rem;
+        color: var(--meta-color);
+        font-size: .65rem;
+        font-weight: 600;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+      }
+      .phones { grid-template-columns: minmax(0, 19rem); }
+      .principles, .impact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .shift-grid { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+      .shift-arrow { transform: rotate(90deg); }
+      .statement-inner { padding-top: 7rem; padding-bottom: 7rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="index.html">Ale Rosenbaum</a>
+    <span>Case study · 2020–2022</span>
+  </nav>
+
+  <header class="hero">
+    <h1 data-reveal="up">Designing for the <em>wrong market</em></h1>
+    <p class="hero-lede" data-reveal="up">How user research reshaped Quaddro's product strategy and helped the company pivot from the U.S. to Brazil.</p>
+  </header>
+
+  <figure class="hero-visual">
+    <img data-reveal="img" src="quaddro-hero.png" alt="Brazilian barber managing Pix payments, receipts and handwritten accounts at his worktable" />
+    <figcaption>The reality behind the strategy · Pix payments, receipts and handwritten records sharing one small-business worktable.</figcaption>
+  </figure>
+
+  <section class="reading-section compact">
+    <p class="body-copy" data-reveal="up">Quaddro was originally built for the U.S. market. When Brazil emerged as a promising direction, we first needed to answer a more fundamental question: <span class="mark">would the same product work for Brazilian entrepreneurs?</span></p>
+    <p class="body-copy" data-reveal="up">We quickly realised we were not redesigning an interface. We were challenging the assumptions behind the product itself.</p>
+  </section>
+
+  <section class="case-facts" aria-label="Case study details">
+    <div class="fact" data-reveal="up"><span class="fact-label">Role</span><span class="fact-value">Founding Product Designer</span></div>
+    <div class="fact" data-reveal="up"><span class="fact-label">Timeline</span><span class="fact-value">2020–2022</span></div>
+    <div class="fact" data-reveal="up"><span class="fact-label">Team</span><span class="fact-value">Founders, Product, Engineering and QA</span></div>
+    <div class="fact" data-reveal="up"><span class="fact-label">Focus</span><span class="fact-value">Discovery, research and product strategy</span></div>
+    <div class="fact" data-reveal="up"><span class="fact-label">Outcome</span><span class="fact-value">Brazil pivot, MVP and product foundation</span></div>
+    <div class="fact" data-reveal="up"><span class="fact-label">Impact</span><span class="fact-value">Contributed to the evolution behind a R$16M funding round</span></div>
+  </section>
+
+  <figure class="media-block">
+    <div class="image-placeholder ratio-wide" data-reveal="up">
+      <span class="placeholder-index">Image 01</span>
+      <div class="placeholder-content">
+        <span class="placeholder-mark" aria-hidden="true">+</span>
+        <strong>The original U.S. product</strong>
+        <span>Add a dashboard, onboarding or product overview that makes the starting point tangible.</span>
+      </div>
+    </div>
+    <figcaption>Before the pivot · the product and assumptions originally built for the U.S. market.</figcaption>
+  </figure>
+
+  <section class="reading-section">
+    <div class="label" data-reveal="up">My role</div>
+    <h2 class="heading-mixed" data-reveal="up">Turning research into <em>company direction</em></h2>
+    <p class="body-copy" data-reveal="up">I partnered directly with the founders to understand the Brazilian market and translate research into product strategy. I led the discovery process end to end, from planning and interviews to synthesis, product principles, MVP definition and interface design.</p>
+    <p class="body-copy" data-reveal="up">The work crossed research, facilitation and execution. I aligned the founders around the product opportunity, defined what the first release should prove, and collaborated with Product, Engineering and QA to turn those decisions into a mobile-first experience.</p>
+  </section>
+
+  <section class="reading-section">
+    <div class="label" data-reveal="up">The unknowns</div>
+    <h2 class="heading-mixed" data-reveal="up">We started with <em>uncertainty</em>, not features</h2>
+    <p class="body-copy" data-reveal="up">Before making product decisions, we identified the questions that could change the direction of the company.</p>
+    <ol class="question-list" data-reveal="up">
+      <li><span>01</span>Who are Brazilian micro-entrepreneurs?</li>
+      <li><span>02</span>How do they actually manage their business today?</li>
+      <li><span>03</span>Which assumptions from the U.S. product no longer hold?</li>
+      <li><span>04</span>What would users need on day one?</li>
+      <li><span>05</span>What should we intentionally leave out?</li>
+    </ol>
+  </section>
+
+  <div class="statement">
+    <div class="statement-inner" data-reveal="up">
+      <div class="statement-copy">The risk was not building the wrong interface. It was <em>solving the wrong problem.</em></div>
+    </div>
+  </div>
+
+  <section class="reading-section">
+    <div class="label" data-reveal="up">Research</div>
+    <h2 class="heading-mixed" data-reveal="up">Research that changed <em>everything</em></h2>
+    <p class="body-copy" data-reveal="up">Rather than validate the existing product, we used interviews and observation sessions to understand how Brazilian entrepreneurs actually worked. A completely different picture emerged.</p>
+    <p class="body-copy" data-reveal="up">The entrepreneurs we met were not using CRMs, managing detailed spreadsheets or looking for advanced business software. They built their businesses around tools they already trusted, stitching together simple routines throughout the day.</p>
+  </section>
+
+  <div class="media-block">
+    <div class="media-grid">
+      <figure>
+        <div class="image-placeholder ratio-landscape" data-reveal="up">
+          <span class="placeholder-index">Image 02</span>
+          <div class="placeholder-content">
+            <span class="placeholder-mark" aria-hidden="true">+</span>
+            <strong>Research in context</strong>
+            <span>Add an interview, observation session or participant workspace.</span>
+          </div>
+        </div>
+        <figcaption>Field research · understanding daily routines in the environment where they happen.</figcaption>
+      </figure>
+      <figure>
+        <div class="image-placeholder ratio-landscape" data-reveal="up">
+          <span class="placeholder-index">Image 03</span>
+          <div class="placeholder-content">
+            <span class="placeholder-mark" aria-hidden="true">+</span>
+            <strong>Research synthesis</strong>
+            <span>Add notes, themes, journey fragments or an opportunity map.</span>
+          </div>
+        </div>
+        <figcaption>Synthesis · turning observed behaviours into shared product evidence.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <figure class="workflow">
+    <div class="workflow-surface" role="img" aria-label="The three tools at the center of participants' daily business routines: WhatsApp, Pix and paper notebooks">
+      <div class="workflow-item" data-reveal="up">
+        <div class="workflow-number">01</div>
+        <h3>WhatsApp</h3>
+        <p>Customer conversations, orders and follow-ups happened in the same place as everyday communication.</p>
+      </div>
+      <div class="workflow-item" data-reveal="up">
+        <div class="workflow-number">02</div>
+        <h3>Pix</h3>
+        <p>Instant payments matched the speed and informality of small, mobile-first businesses.</p>
+      </div>
+      <div class="workflow-item" data-reveal="up">
+        <div class="workflow-number">03</div>
+        <h3>Paper notebooks</h3>
+        <p>Financial control remained tangible, flexible and easy to fit into an overloaded routine.</p>
+      </div>
+    </div>
+    <figcaption>The existing business stack · familiar tools connected manually, not a demand for more software.</figcaption>
+  </figure>
+
+  <section class="reading-section">
+    <p class="body-copy" data-reveal="up">The biggest insight was not about technology. <span class="mark">It was about behaviour.</span> People did not need more features. They needed a product that respected the way they already worked.</p>
+  </section>
+
+  <section class="reading-section">
+    <div class="label" data-reveal="up">Strategy</div>
+    <h2 class="heading-mixed" data-reveal="up">Five assumptions became <em>five product decisions</em></h2>
+    <p class="body-copy" data-reveal="up">The research did not simply improve the interface. It changed the product strategy and became the foundation of the MVP.</p>
+  </section>
+
+  <div class="strategy-wrap" data-reveal="up">
+    <table class="strategy-table">
+      <thead>
+        <tr><th>Previous assumption</th><th>What we learned</th><th>Product decision</th></tr>
+      </thead>
+      <tbody>
+        <tr><td data-label="Previous assumption">Entrepreneurs want business software</td><td data-label="What we learned">They want simple workflows</td><td data-label="Product decision">Prioritise essential tasks over feature depth</td></tr>
+        <tr><td data-label="Previous assumption">More features create more value</td><td data-label="What we learned">Simplicity increases confidence</td><td data-label="Product decision">Remove unnecessary complexity</td></tr>
+        <tr><td data-label="Previous assumption">Desktop-first workflows are acceptable</td><td data-label="What we learned">Business happens on the phone</td><td data-label="Product decision">Design mobile-first from the ground up</td></tr>
+        <tr><td data-label="Previous assumption">Users will adapt to the product</td><td data-label="What we learned">The product must adapt to users</td><td data-label="Product decision">Mirror familiar behaviours instead of creating new ones</td></tr>
+        <tr><td data-label="Previous assumption">Onboarding should explain everything</td><td data-label="What we learned">Users learn by doing</td><td data-label="Product decision">Focus on immediate value instead of education</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="media-block">
+    <div class="image-placeholder ratio-wide" data-reveal="up">
+      <span class="placeholder-index">Image 04</span>
+      <div class="placeholder-content">
+        <span class="placeholder-mark" aria-hidden="true">+</span>
+        <strong>Strategy synthesis with the founders</strong>
+        <span>Add a workshop board, product principles or the artefact used to align the company around the Brazil direction.</span>
+      </div>
+    </div>
+    <figcaption>Alignment · research translated into product principles and MVP decisions.</figcaption>
+  </figure>
+
+  <section class="reading-section">
+    <div class="label" data-reveal="up">The MVP</div>
+    <h2 class="heading-mixed" data-reveal="up">The smallest product that could <em>validate the direction</em></h2>
+    <p class="body-copy" data-reveal="up">Every design decision reinforced one objective: reduce friction for people already overwhelmed by running a business. We focused the MVP on fast invoicing, Pix-ready payments, simple customer management, clear language and lightweight performance for lower-end Android devices.</p>
+    <div class="principles" data-reveal="up">
+      <div class="principle"><span>Fast</span><p>Immediate value before explanation.</p></div>
+      <div class="principle"><span>Familiar</span><p>Existing behaviours before new mental models.</p></div>
+      <div class="principle"><span>Light</span><p>Essential workflows before feature depth.</p></div>
+    </div>
+  </section>
+
+  <figure class="mvp-stage">
+    <div class="phones" role="img" aria-label="Three conceptual mobile screens representing invoicing, Pix payments and customer management in the Quaddro MVP">
+      <div class="phone" data-reveal="up">
+        <div class="phone-screen">
+          <span class="phone-kicker">Invoice</span>
+          <h3>Create and send in minutes</h3>
+          <div class="ui-line"></div><div class="ui-line short"></div>
+          <div class="ui-value">R$ 480,00</div>
+          <div class="ui-line"></div><div class="ui-line short"></div>
+          <div class="ui-button">Create invoice</div>
+        </div>
+      </div>
+      <div class="phone" data-reveal="up">
+        <div class="phone-screen">
+          <span class="phone-kicker">Pix payment</span>
+          <h3>Get paid without changing the routine</h3>
+          <div class="ui-value">Pix ready</div>
+          <div class="ui-line"></div><div class="ui-line"></div><div class="ui-line short"></div>
+          <div class="ui-button">Share payment</div>
+        </div>
+      </div>
+      <div class="phone" data-reveal="up">
+        <div class="phone-screen">
+          <span class="phone-kicker">Customers</span>
+          <h3>People, not CRM records</h3>
+          <div class="ui-contact"><div class="ui-avatar"></div><div class="ui-contact-lines"><div class="ui-line"></div><div class="ui-line short"></div></div></div>
+          <div class="ui-contact"><div class="ui-avatar"></div><div class="ui-contact-lines"><div class="ui-line"></div><div class="ui-line short"></div></div></div>
+          <div class="ui-contact"><div class="ui-avatar"></div><div class="ui-contact-lines"><div class="ui-line"></div><div class="ui-line short"></div></div></div>
+          <div class="ui-button">Add customer</div>
+        </div>
+      </div>
+    </div>
+    <figcaption style="color:#5a240c;">Conceptual view of the MVP principles · fast invoicing, Pix-ready payments and lightweight customer management.</figcaption>
+  </figure>
+
+  <section class="reading-section">
+    <p class="body-copy" data-reveal="up">Instead of introducing new behaviours, we designed around existing ones. The product became a bridge between the routines entrepreneurs already trusted and the control they needed to grow.</p>
+  </section>
+
+  <figure class="media-block">
+    <div class="image-placeholder ratio-cinema" data-reveal="up">
+      <span class="placeholder-index">Image 05</span>
+      <div class="placeholder-content">
+        <span class="placeholder-mark" aria-hidden="true">+</span>
+        <strong>The real MVP flow</strong>
+        <span>Add final mobile screens, a prototype walkthrough or a before-and-after product sequence.</span>
+      </div>
+    </div>
+    <figcaption>MVP experience · the shipped or validated product replacing these conceptual screens.</figcaption>
+  </figure>
+
+  <section class="reading-section">
+    <div class="label" data-reveal="up">Business impact</div>
+    <h2 class="heading-mixed" data-reveal="up">From adapting a product to <em>defining a market</em></h2>
+    <p class="body-copy" data-reveal="up">The redesign helped transform Quaddro from a product designed for the U.S. into one built around Brazilian entrepreneurs. The work supported the company's pivot, established the product foundation for future growth, and contributed to the product evolution behind a R$16M funding round.</p>
+    <div class="impact-grid" data-reveal="up">
+      <div><div class="impact-value">U.S. → BR</div><div class="impact-label">research supported the strategic pivot toward Brazil</div></div>
+      <div><div class="impact-value">MVP</div><div class="impact-label">a focused foundation built around local behaviour</div></div>
+      <div><div class="impact-value">R$16M</div><div class="impact-label">funding round supported by the product's continued evolution</div></div>
+    </div>
+  </section>
+
+  <figure class="media-block">
+    <div class="image-placeholder ratio-wide" data-reveal="up">
+      <span class="placeholder-index">Image 06</span>
+      <div class="placeholder-content">
+        <span class="placeholder-mark" aria-hidden="true">+</span>
+        <strong>Quaddro in Brazil</strong>
+        <span>Add the launch, product in use, team moment or growth milestone that closes the strategic arc.</span>
+      </div>
+    </div>
+    <figcaption>After the pivot · evidence of the product and company operating around the Brazilian market.</figcaption>
+  </figure>
+
+  <section class="question-shift">
+    <div class="shift-grid" data-reveal="up">
+      <div><span class="shift-label">Before</span><p class="shift-quote">“How do we adapt the U.S. product?”</p></div>
+      <div class="shift-arrow" aria-hidden="true">→</div>
+      <div><span class="shift-label">After</span><p class="shift-quote">“What product should exist for this market?”</p></div>
+    </div>
+  </section>
+
+  <section class="reading-section end">
+    <div class="label" data-reveal="up">Reflection</div>
+    <h2 class="heading-mixed" data-reveal="up">Question assumptions before <em>proposing solutions</em></h2>
+    <p class="body-copy" data-reveal="up">This project fundamentally changed the way I think about Product Design. When a product enters a new market, the biggest risk is not building the wrong interface. It is solving the wrong problem.</p>
+    <p class="body-copy" data-reveal="up">Since then, I have approached discovery by questioning assumptions before proposing solutions. Whether working at a startup or a marketplace serving millions of users, that principle continues to guide how I help teams make better product decisions.</p>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <strong>Let's start creating together.</strong>
+      <span>Ale Rosenbaum · Senior Product Designer · Amsterdam</span>
+    </div>
+  </footer>
+
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const elements = Array.from(document.querySelectorAll('[data-reveal]'));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          observer.unobserve(entry.target);
+          requestAnimationFrame(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = entry.target.getAttribute('data-reveal') === 'img' ? 'scale(1)' : 'translateY(0)';
+          });
+        });
+      }, { rootMargin: '0px 0px -8% 0px' });
+
+      elements.forEach((element) => {
+        if (element.getBoundingClientRect().top < window.innerHeight * .92) return;
+        const isImage = element.getAttribute('data-reveal') === 'img';
+        element.style.transition = isImage ? 'transform 800ms cubic-bezier(.16,1,.3,1)' : 'opacity 650ms cubic-bezier(.16,1,.3,1), transform 650ms cubic-bezier(.16,1,.3,1)';
+        element.style.opacity = isImage ? '1' : '0';
+        element.style.transform = isImage ? 'scale(1.04)' : 'translateY(24px)';
+        observer.observe(element);
+      });
+    }
+  </script>
+</body>
+</html>

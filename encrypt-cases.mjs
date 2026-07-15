@@ -24,7 +24,17 @@ const pages = [
     imageHeight: 1170,
     imageAlt: 'Hand holding a phone showing the Brenger shipping flow inside the Marktplaats app',
   },
-  { src: '_src/offers.html', out: 'offers.html', title: 'From Silence to Structured Offers · Ale Rosenbaum' },
+  {
+    src: '_src/offers.html',
+    out: 'offers.html',
+    title: 'From Silence to Structured Offers · Ale Rosenbaum',
+    description: 'How I designed structured offers for Marktplaats, turning silent conversations into clearer negotiations and more successful deals.',
+    url: 'https://alerosenbaum.com/offers.html',
+    image: 'https://alerosenbaum.com/offers-hero.png',
+    imageWidth: 1024,
+    imageHeight: 1024,
+    imageAlt: 'Two phone screens showing the structured offer and counter-offer experience',
+  },
 ];
 
 function encrypt(plaintext) {

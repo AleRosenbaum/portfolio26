@@ -122,6 +122,11 @@ body.floating-nav-visible > .nav {
   display: none !important;
 }
 
+/* The nav is fixed, so pages that show it from the top need the room. */
+body.floating-nav-always {
+  padding-top: 56px;
+}
+
 @media (max-width: 600px) {
   .floating-portfolio-nav {
     width: calc(100vw - 32px);

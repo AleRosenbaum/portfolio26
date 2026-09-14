@@ -13,7 +13,7 @@ Plain HTML/CSS/JS. No framework. Four pages:
 
 ## Shared navigation and footer
 
-`sticky-header.css/js` and `site-footer.css/js` are injected on every page. `sticky-header.js` appends a floating pill nav that appears once the hero scrolls past, looking for `[data-sticky-header-trigger]`, then `.hero`, then the first `figure`. `site-footer.js` removes any existing `<footer>` before appending the shared dark one, so a page must not define its own. The gate pages inject all four files into the decrypted payload at runtime.
+`sticky-header.css/js` and `site-footer.css/js` are injected on every page. `sticky-header.js` appends a floating pill nav that appears once the hero scrolls past, looking for `[data-sticky-header-trigger]`, then `.hero`, then the first `figure`. `site-footer.js` removes any existing `<footer>` before appending the shared dark one, so a page must not define its own. The floating nav only appears after the trigger scrolls past, so the case pages each keep a static `<nav>` at the very top (name on the left, `Case study · <year>` on the right) to cover the first fold. The gate pages inject all four files into the decrypted payload at runtime.
 
 ## Case study password wall
 

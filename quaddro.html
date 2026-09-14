@@ -134,6 +134,18 @@
       text-underline-offset: 4px;
     }
 
+    .site-nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      max-width: 68rem;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 0;
+      font-family: var(--font-sans);
+    }
+    .site-nav a { font-size: 1rem; text-decoration: none; }
+    .site-nav span { color: var(--meta-color); font-size: var(--fs-small); }
+
     .hero {
       width: 100%;
       max-width: 60.25rem;
@@ -631,6 +643,11 @@
   </style>
 </head>
 <body>
+  <nav class="site-nav">
+    <a href="index.html">Ale Rosenbaum</a>
+    <span>Case study · 2021</span>
+  </nav>
+
   <header class="hero">
     <h1 data-reveal="up">Designing for the <em>wrong market</em></h1>
     <p class="hero-lede" data-reveal="up">How user research reshaped Quaddro's product strategy and helped the company pivot from the U.S. to Brazil.</p>

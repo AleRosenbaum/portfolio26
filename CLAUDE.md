@@ -4,11 +4,16 @@ Personal portfolio site for Ale Rosenbaum, Senior Product Designer at Marktplaat
 
 ## Structure
 
-Plain HTML/CSS/JS. No framework. Three pages:
+Plain HTML/CSS/JS. No framework. Four pages:
 
 - `index.html` — main SPA. JS `go()` function swaps between Home and Contact views. Nav hides on home. Opening `index.html#contact` lands on the Contact view.
 - `brenger.html` — password gate for the Brenger case study ("Integrating Brenger into Marktplaats").
 - `offers.html` — password gate for the Structured Offers case study ("From Silence to Structured Offers").
+- `quaddro.html` — the Quaddro case study ("Designing for the Wrong Market"). Public, not password gated, and not yet linked from the home grid.
+
+## Shared navigation and footer
+
+`sticky-header.css/js` and `site-footer.css/js` are injected on every page. `sticky-header.js` appends a floating pill nav that appears once the hero scrolls past, looking for `[data-sticky-header-trigger]`, then `.hero`, then the first `figure`. `site-footer.js` removes any existing `<footer>` before appending the shared dark one, so a page must not define its own. The gate pages inject all four files into the decrypted payload at runtime.
 
 ## Case study password wall
 
@@ -43,6 +48,7 @@ Both case pages use the editorial case-study layout: a 680px centered reading co
 | Brenger (last-mile logistics) | `brenger-hero.png` | `brenger-icon.png` | `brenger.html` |
 | Structured Offers | `offers-hero.png` | `brenger-icon.png` (placeholder) | `offers.html` |
 | DHL Shipping | `dhl-hero.png` | `brenger-icon.png` (placeholder) | not linked yet |
+| Quaddro (US to Brazil pivot) | `quaddro-hero.png` | `quaddro-logo.jpeg` | `quaddro.html`, not linked yet |
 
 ## Assets
 
@@ -54,6 +60,8 @@ Both case pages use the editorial case-study layout: a 680px centered reading co
 - `offers-hero.png` — two phones showing offer/counter-offer UI
 - `dhl-hero.png` — phone with DHL van in Amsterdam background
 - `offers/` — all imagery for the Structured Offers case page (hero, research shots, Miro boards, prototypes, offer-card SVGs, buyer/seller flow GIFs)
+- `quaddro-hero.png`, `quaddro-logo.jpeg` — Quaddro card and case hero
+- `quaddro/` — Quaddro case imagery, cropped out of the original 2022 pitch deck. Eight files: `bizbox-app`, `us-retention`, `csd-matrix`, `research-plan`, `personas`, `research-nuggets`, `mvp-screens`, `quaddro-brazil`. Each `.case-figure` on the page falls back to an on-page export brief if its file is missing, so the page degrades readably rather than breaking.
 
 ## Writing style
 

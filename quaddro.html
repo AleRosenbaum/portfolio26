@@ -40,6 +40,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Spectral:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/sticky-header.css" />
+  <script src="/sticky-header.js" defer></script>
+  <link rel="stylesheet" href="/site-footer.css" />
+  <script src="/site-footer.js" defer></script>
+
   <style>
     :root {
       --gray-hue: 32;
@@ -128,18 +133,6 @@
       text-decoration-thickness: 2px;
       text-underline-offset: 4px;
     }
-
-    .site-nav {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      max-width: 68rem;
-      margin: 0 auto;
-      padding: 1.5rem 1.5rem 0;
-      font-family: var(--font-sans);
-    }
-    .site-nav a { font-size: 1rem; text-decoration: none; }
-    .site-nav span { color: var(--meta-color); font-size: var(--fs-small); }
 
     .hero {
       width: 100%;
@@ -305,6 +298,23 @@
     .image-placeholder.ratio-wide { aspect-ratio: 21 / 9; }
     .image-placeholder.ratio-landscape { aspect-ratio: 4 / 3; }
     .image-placeholder.ratio-cinema { aspect-ratio: 16 / 9; }
+
+    .media-grid.even { grid-template-columns: 1fr 1fr; }
+    .case-figure {
+      overflow: hidden;
+      border: 1px solid var(--gray10);
+      border-radius: 20px;
+      background: var(--gray05);
+    }
+    .case-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    /* Until the export lands, the figure falls back to its own brief. */
+    .case-figure .image-placeholder { display: none; border: 0; border-radius: 0; }
+    .case-figure.is-missing .image-placeholder { display: flex; }
+    .case-figure.is-missing img { display: none; }
     .placeholder-index {
       position: absolute;
       top: 1.25rem;
@@ -580,34 +590,12 @@
       font-size: 2rem;
     }
 
-    .site-footer { background: var(--code-wash); }
-    .footer-inner {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      max-width: 42.5rem;
-      margin: 0 auto;
-      padding: 3.5rem 1.5rem 4.5rem;
-    }
-    .footer-inner strong {
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      font-style: italic;
-      font-weight: 400;
-    }
-    .footer-inner span {
-      color: var(--meta-color);
-      font-family: var(--font-sans);
-      font-size: var(--fs-small);
-    }
 
     @media (max-width: 700px) {
       .hero-visual img { height: auto; min-height: 0; object-fit: contain; }
       .case-facts { grid-template-columns: 1fr; }
       .fact:nth-child(odd), .fact:nth-child(even) { margin: 0; }
-      .media-grid { grid-template-columns: 1fr; }
+      .media-grid, .media-grid.even { grid-template-columns: 1fr; }
       .image-placeholder { min-height: 15rem; }
       .image-placeholder.ratio-wide,
       .image-placeholder.ratio-landscape,
@@ -643,11 +631,6 @@
   </style>
 </head>
 <body>
-  <nav class="site-nav">
-    <a href="index.html">Ale Rosenbaum</a>
-    <span>Case study · 2020–2022</span>
-  </nav>
-
   <header class="hero">
     <h1 data-reveal="up">Designing for the <em>wrong market</em></h1>
     <p class="hero-lede" data-reveal="up">How user research reshaped Quaddro's product strategy and helped the company pivot from the U.S. to Brazil.</p>
@@ -659,7 +642,7 @@
   </figure>
 
   <section class="reading-section compact">
-    <p class="body-copy" data-reveal="up">Quaddro was originally built for the U.S. market. When Brazil emerged as a promising direction, we first needed to answer a more fundamental question: <span class="mark">would the same product work for Brazilian entrepreneurs?</span></p>
+    <p class="body-copy" data-reveal="up">The product launched in the United States as Bizbox, a multi-language scheduling tool with embedded payments, built for Latino home service workers. When Brazil emerged as a promising direction, we first needed to answer a more fundamental question: <span class="mark">would the same product work for Brazilian entrepreneurs?</span></p>
     <p class="body-copy" data-reveal="up">We quickly realised we were not redesigning an interface. We were challenging the assumptions behind the product itself.</p>
   </section>
 
@@ -672,17 +655,38 @@
     <div class="fact" data-reveal="up"><span class="fact-label">Impact</span><span class="fact-value">Contributed to the evolution behind a R$16M funding round</span></div>
   </section>
 
-  <figure class="media-block">
-    <div class="image-placeholder ratio-wide" data-reveal="up">
-      <span class="placeholder-index">Image 01</span>
-      <div class="placeholder-content">
-        <span class="placeholder-mark" aria-hidden="true">+</span>
-        <strong>The original U.S. product</strong>
-        <span>Add a dashboard, onboarding or product overview that makes the starting point tangible.</span>
+  <div class="media-block">
+    <div class="media-grid even">
+      <figure>
+        <div class="case-figure" data-reveal="up">
+      <img src="quaddro/bizbox-app.png" alt="The Bizbox mobile app showing a job list with scheduled appointments, prices and addresses in Dallas, Texas" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <div class="image-placeholder ratio-landscape">
+        <span class="placeholder-index">Export 01</span>
+        <div class="placeholder-content">
+          <span class="placeholder-mark" aria-hidden="true">+</span>
+          <strong>The Bizbox app</strong>
+          <span>Slide 08 · crop the phone mockups out of the blue panel. No slide title, no “a.” mark.</span>
+        </div>
       </div>
     </div>
-    <figcaption>Before the pivot · the product and assumptions originally built for the U.S. market.</figcaption>
-  </figure>
+        <figcaption>Bizbox in the United States · multi-language scheduling with embedded payments.</figcaption>
+      </figure>
+      <figure>
+        <div class="case-figure" data-reveal="up">
+      <img src="quaddro/us-retention.png" alt="Google Analytics charts showing 781 new users against 533 returning users, and a retention curve that drops to near zero after the first day" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <div class="image-placeholder ratio-landscape">
+        <span class="placeholder-index">Export 02</span>
+        <div class="placeholder-content">
+          <span class="placeholder-mark" aria-hidden="true">+</span>
+          <strong>The retention cliff</strong>
+          <span>Slide 09 · crop the two Google Analytics cards side by side. Drop the slide title and the footnote.</span>
+        </div>
+      </div>
+    </div>
+        <figcaption>Retention collapsed after day one · Google Analytics, Feb to Aug 2021.</figcaption>
+      </figure>
+    </div>
+  </div>
 
   <section class="reading-section">
     <div class="label" data-reveal="up">My role</div>
@@ -710,6 +714,21 @@
     </div>
   </div>
 
+  <figure class="media-block">
+    <div class="case-figure" data-reveal="up">
+      <img src="quaddro/csd-matrix.png" alt="A CSD matrix with three columns of sticky notes: green certainties, yellow suppositions and red doubts" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <div class="image-placeholder ratio-cinema">
+        <span class="placeholder-index">Export 03</span>
+        <div class="placeholder-content">
+          <span class="placeholder-mark" aria-hidden="true">+</span>
+          <strong>The CSD matrix</strong>
+          <span>Slide 12 · crop the three sticky columns. Keep the Certainties, Suppositions and Doubts headings, drop the slide title.</span>
+        </div>
+      </div>
+    </div>
+    <figcaption>Certainties, suppositions and doubts · sorting what we knew from what we were assuming, before a single interview.</figcaption>
+  </figure>
+
   <section class="reading-section">
     <div class="label" data-reveal="up">Research</div>
     <h2 class="heading-mixed" data-reveal="up">Research that changed <em>everything</em></h2>
@@ -720,26 +739,32 @@
   <div class="media-block">
     <div class="media-grid">
       <figure>
-        <div class="image-placeholder ratio-landscape" data-reveal="up">
-          <span class="placeholder-index">Image 02</span>
-          <div class="placeholder-content">
-            <span class="placeholder-mark" aria-hidden="true">+</span>
-            <strong>Research in context</strong>
-            <span>Add an interview, observation session or participant workspace.</span>
-          </div>
+        <div class="case-figure" data-reveal="up">
+      <img src="quaddro/research-plan.png" alt="The research plan in Notion, listing objective, hypothesis, recruitment, target users, interview guide and analysis" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <div class="image-placeholder ratio-landscape">
+        <span class="placeholder-index">Export 04</span>
+        <div class="placeholder-content">
+          <span class="placeholder-mark" aria-hidden="true">+</span>
+          <strong>The research plan</strong>
+          <span>Slide 14 · crop the Notion window. Keep the “32 · 30min in-depth interviews” card if it crops cleanly beside it.</span>
         </div>
-        <figcaption>Field research · understanding daily routines in the environment where they happen.</figcaption>
+      </div>
+    </div>
+        <figcaption>Thirty-two interviews, thirty minutes each · planned around daily routines rather than product features.</figcaption>
       </figure>
       <figure>
-        <div class="image-placeholder ratio-landscape" data-reveal="up">
-          <span class="placeholder-index">Image 03</span>
-          <div class="placeholder-content">
-            <span class="placeholder-mark" aria-hidden="true">+</span>
-            <strong>Research synthesis</strong>
-            <span>Add notes, themes, journey fragments or an opportunity map.</span>
-          </div>
+        <div class="case-figure" data-reveal="up">
+      <img src="quaddro/personas.png" alt="Four Brazilian personas: Carol, Tabatha, Guga and Marina, each with demographics, needs and potential solutions" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <div class="image-placeholder ratio-landscape">
+        <span class="placeholder-index">Export 05</span>
+        <div class="placeholder-content">
+          <span class="placeholder-mark" aria-hidden="true">+</span>
+          <strong>The personas</strong>
+          <span>Slide 16 · crop the four persona cards. Check the body text is legible at export scale, it reads greyed out on the slide.</span>
         </div>
-        <figcaption>Synthesis · turning observed behaviours into shared product evidence.</figcaption>
+      </div>
+    </div>
+        <figcaption>Carol, Tabatha, Guga and Marina · the four working patterns the interviews kept returning to.</figcaption>
       </figure>
     </div>
   </div>
@@ -791,15 +816,18 @@
   </div>
 
   <figure class="media-block">
-    <div class="image-placeholder ratio-wide" data-reveal="up">
-      <span class="placeholder-index">Image 04</span>
-      <div class="placeholder-content">
-        <span class="placeholder-mark" aria-hidden="true">+</span>
-        <strong>Strategy synthesis with the founders</strong>
-        <span>Add a workshop board, product principles or the artefact used to align the company around the Brazil direction.</span>
+    <div class="case-figure" data-reveal="up">
+      <img src="quaddro/research-nuggets.png" alt="An atomic research database in Notion, with each interview finding tagged by status, confidence, relevance and theme" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <div class="image-placeholder ratio-wide">
+        <span class="placeholder-index">Export 06</span>
+        <div class="placeholder-content">
+          <span class="placeholder-mark" aria-hidden="true">+</span>
+          <strong>Atomic research</strong>
+          <span>Slide 15 · crop the Notion nuggets table. Export at 2x so the column headings stay readable.</span>
+        </div>
       </div>
     </div>
-    <figcaption>Alignment · research translated into product principles and MVP decisions.</figcaption>
+    <figcaption>Every finding tagged and traceable · the evidence the founders and I argued the strategy from.</figcaption>
   </figure>
 
   <section class="reading-section">
@@ -853,21 +881,24 @@
   </section>
 
   <figure class="media-block">
-    <div class="image-placeholder ratio-cinema" data-reveal="up">
-      <span class="placeholder-index">Image 05</span>
-      <div class="placeholder-content">
-        <span class="placeholder-mark" aria-hidden="true">+</span>
-        <strong>The real MVP flow</strong>
-        <span>Add final mobile screens, a prototype walkthrough or a before-and-after product sequence.</span>
+    <div class="case-figure" data-reveal="up">
+      <img src="quaddro/mvp-screens.png" alt="The Quaddro app screens for professionals, covering sign-up, onboarding, agenda, catalogue and settings" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <div class="image-placeholder ratio-cinema">
+        <span class="placeholder-index">Export 07</span>
+        <div class="placeholder-content">
+          <span class="placeholder-mark" aria-hidden="true">+</span>
+          <strong>The app for pros</strong>
+          <span>Slide 23 is empty and slide 22 is the Figma canvas. Best source is the real screens: export them from the “App for pros” file directly, or crop the prototype canvas as a fallback.</span>
+        </div>
       </div>
     </div>
-    <figcaption>MVP experience · the shipped or validated product replacing these conceptual screens.</figcaption>
+    <figcaption>The app professionals actually used · sign-up, agenda, catalogue and payment, built mobile-first.</figcaption>
   </figure>
 
   <section class="reading-section">
     <div class="label" data-reveal="up">Business impact</div>
     <h2 class="heading-mixed" data-reveal="up">From adapting a product to <em>defining a market</em></h2>
-    <p class="body-copy" data-reveal="up">The redesign helped transform Quaddro from a product designed for the U.S. into one built around Brazilian entrepreneurs. The work supported the company's pivot, established the product foundation for future growth, and contributed to the product evolution behind a R$16M funding round.</p>
+    <p class="body-copy" data-reveal="up">Bizbox did not cross the border. It was rebuilt around Brazilian entrepreneurs and relaunched under a new name, Quaddro. The work supported the company's pivot, established the product foundation for future growth, and contributed to the product evolution behind a R$16M funding round.</p>
     <div class="impact-grid" data-reveal="up">
       <div><div class="impact-value">U.S. → BR</div><div class="impact-label">research supported the strategic pivot toward Brazil</div></div>
       <div><div class="impact-value">MVP</div><div class="impact-label">a focused foundation built around local behaviour</div></div>
@@ -876,15 +907,18 @@
   </section>
 
   <figure class="media-block">
-    <div class="image-placeholder ratio-wide" data-reveal="up">
-      <span class="placeholder-index">Image 06</span>
-      <div class="placeholder-content">
-        <span class="placeholder-mark" aria-hidden="true">+</span>
-        <strong>Quaddro in Brazil</strong>
-        <span>Add the launch, product in use, team moment or growth milestone that closes the strategic arc.</span>
+    <div class="case-figure" data-reveal="up">
+      <img src="quaddro/quaddro-brazil.png" alt="The Quaddro booking experience on the web, where a professional&#39;s clients book, reschedule and pay for appointments" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <div class="image-placeholder ratio-wide">
+        <span class="placeholder-index">Export 08</span>
+        <div class="placeholder-content">
+          <span class="placeholder-mark" aria-hidden="true">+</span>
+          <strong>Quaddro in Brazil</strong>
+          <span>Slides 24 and 25 · crop the web booking screens. Pick whichever shows the client-facing flow most clearly.</span>
+        </div>
       </div>
     </div>
-    <figcaption>After the pivot · evidence of the product and company operating around the Brazilian market.</figcaption>
+    <figcaption>The client side · booking, rescheduling and paying without either person leaving their phone.</figcaption>
   </figure>
 
   <section class="question-shift">
@@ -901,13 +935,6 @@
     <p class="body-copy" data-reveal="up">This project fundamentally changed the way I think about Product Design. When a product enters a new market, the biggest risk is not building the wrong interface. It is solving the wrong problem.</p>
     <p class="body-copy" data-reveal="up">Since then, I have approached discovery by questioning assumptions before proposing solutions. Whether working at a startup or a marketplace serving millions of users, that principle continues to guide how I help teams make better product decisions.</p>
   </section>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <strong>Let's start creating together.</strong>
-      <span>Ale Rosenbaum · Senior Product Designer · Amsterdam</span>
-    </div>
-  </footer>
 
   <script>
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

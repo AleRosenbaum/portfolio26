@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>Design System · Ale Rosenbaum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/tokens.css" />
+  <link rel="stylesheet" href="/sticky-header.css" />
+  <script src="/sticky-header.js" defer></script>
+  <link rel="stylesheet" href="/site-footer.css" />
+  <script src="/site-footer.js" defer></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      background: var(--wash-color);
+      color: var(--text-color);
+      font-family: var(--font-body);
+      font-size: var(--fs-16);
+      line-height: var(--lh-body);
+    }
+    ::selection { background: var(--highlight-color); color: var(--gray40); }
+
+    .ds {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: var(--space-12) var(--space-3) var(--space-16);
+    }
+    .ds-intro { max-width: var(--reading-width); margin-bottom: var(--space-12); }
+    .label {
+      font-size: var(--fs-small);
+      color: var(--site-color);
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-2);
+    }
+    .ds-title {
+      font-size: var(--fs-display);
+      font-weight: 400;
+      letter-spacing: -.03em;
+      line-height: var(--lh-heading);
+      margin-bottom: var(--space-3);
+    }
+    .ds-title em, .ds-section h2 em {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-weight: 400;
+    }
+    .ds-lede { color: var(--meta-color); }
+    .ds-lede code, .ds-name {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: var(--fs-12);
+    }
+    .ds-lede code {
+      background: var(--code-wash);
+      padding: 0 var(--space-1);
+      border-radius: var(--radius-s);
+    }
+
+    .ds-toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1) var(--space-3);
+      margin-top: var(--space-4);
+      font-size: var(--fs-16);
+    }
+    .ds-toc a { color: var(--meta-color); text-decoration: none; }
+    .ds-toc a:hover { color: var(--hover-color); }
+
+    .ds-section {
+      padding-top: var(--space-8);
+      margin-top: var(--space-8);
+      border-top: 1px solid var(--hairline-color);
+      scroll-margin-top: var(--space-10);
+    }
+    .ds-section h2 {
+      font-size: var(--fs-heading);
+      font-weight: 400;
+      letter-spacing: -.015em;
+      line-height: var(--lh-ui);
+      margin-bottom: var(--space-1);
+    }
+    .ds-section > p { color: var(--meta-color); margin-bottom: var(--space-5); max-width: var(--reading-width); }
+    .ds-group-title {
+      font-size: var(--fs-12);
+      color: var(--meta-color);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin: var(--space-5) 0 var(--space-2);
+    }
+
+    .ds-name { color: var(--text-color); word-break: break-all; }
+    .ds-value { font-size: var(--fs-12); color: var(--meta-color); word-break: break-word; }
+    .ds-note { font-size: var(--fs-12); color: var(--meta-color); }
+
+    /* Colors */
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(144px, 1fr));
+      gap: var(--space-3);
+    }
+    .swatch-chip {
+      height: 96px;
+      border-radius: var(--radius-m);
+      border: 1px solid var(--hairline-color);
+      margin-bottom: var(--space-1);
+      background-image:
+        linear-gradient(45deg, var(--gray10) 25%, transparent 25%, transparent 75%, var(--gray10) 75%),
+        linear-gradient(45deg, var(--gray10) 25%, transparent 25%, transparent 75%, var(--gray10) 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 8px 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .swatch-chip span { position: absolute; inset: 0; }
+
+    /* Rows: type, line height, spacing, radii */
+    .rows { display: flex; flex-direction: column; }
+    .row {
+      display: grid;
+      grid-template-columns: 184px minmax(0, 1fr);
+      gap: var(--space-3);
+      align-items: center;
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid var(--hairline-color);
+    }
+    .row-meta { display: flex; flex-direction: column; gap: 0; }
+    .type-sample {
+      line-height: var(--lh-heading);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .lh-sample {
+      max-width: 40ch;
+      --lh-step: calc(var(--lh) * 1em);
+      background: repeating-linear-gradient(transparent 0, transparent calc(var(--lh-step) - 1px), var(--gray20) calc(var(--lh-step) - 1px), var(--gray20) var(--lh-step));
+    }
+    .space-bar {
+      height: 16px;
+      background: var(--site-color);
+      border-radius: 2px;
+      min-width: 1px;
+    }
+    .radius-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(152px, 1fr));
+      gap: var(--space-3);
+    }
+    .radius-box {
+      height: 104px;
+      background: var(--gray05);
+      border: 1px solid var(--gray20);
+      margin-bottom: var(--space-1);
+    }
+    .shadow-box {
+      height: 104px;
+      background: var(--white);
+      border-radius: var(--radius-m);
+      margin-bottom: var(--space-1);
+    }
+    .font-card {
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--hairline-color);
+    }
+    .font-card .specimen { font-size: var(--fs-48); line-height: var(--lh-heading); margin-bottom: var(--space-2); }
+    .font-card .alphabet { font-size: var(--fs-20); color: var(--meta-color); margin-bottom: var(--space-2); }
+    .layout-bar {
+      height: 24px;
+      max-width: 100%;
+      background: var(--gray10);
+      border-left: 2px solid var(--site-color);
+      border-right: 2px solid var(--site-color);
+    }
+
+    .ds-error { color: var(--error-color); }
+
+    @media (max-width: 600px) {
+      .ds { padding-top: var(--space-10); }
+      .row { grid-template-columns: minmax(0, 1fr); gap: var(--space-1); }
+      .type-sample { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <main class="ds">
+    <header class="ds-intro">
+      <div class="label">Internal reference</div>
+      <h1 class="ds-title">Design <em>system</em></h1>
+      <p class="ds-lede">Every token in <code>tokens.css</code>, rendered live from the file. Add or change a token there and it shows up here on the next load.</p>
+      <nav class="ds-toc" id="toc"></nav>
+    </header>
+    <div id="ds-root"><p class="ds-note">Loading tokens…</p></div>
+  </main>
+
+  <script>
+  (function () {
+    var root = document.getElementById('ds-root');
+    var toc = document.getElementById('toc');
+    var css = getComputedStyle(document.documentElement);
+
+    function el(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text != null) n.textContent = text;
+      return n;
+    }
+    function meta(t) {
+      var m = el('div', 'row-meta');
+      m.appendChild(el('div', 'ds-name', t.name));
+      m.appendChild(el('div', 'ds-value', t.raw + (t.resolved && t.resolved !== t.raw ? '  →  ' + t.resolved : '')));
+      if (t.note) m.appendChild(el('div', 'ds-note', t.note));
+      return m;
+    }
+    function px(value) {
+      var probe = el('div');
+      probe.style.position = 'absolute';
+      probe.style.visibility = 'hidden';
+      probe.style.width = value;
+      document.body.appendChild(probe);
+      var w = probe.getBoundingClientRect().width;
+      probe.remove();
+      return Math.round(w * 100) / 100;
+    }
+
+    // Read tokens.css and keep each token with its group heading and inline comment.
+    function parse(text) {
+      var block = text.slice(text.indexOf(':root'));
+      var groups = [], current = { title: 'Tokens', tokens: [] };
+      block.split('\n').forEach(function (line) {
+        var heading = line.match(/\/\*\s*─+\s*(.+?)\s*─+\s*\*\//);
+        if (heading) {
+          if (current.tokens.length) groups.push(current);
+          current = { title: heading[1], tokens: [] };
+          return;
+        }
+        var decl = line.match(/^\s*(--[\w-]+)\s*:\s*(.+?);\s*(?:\/\*\s*(.*?)\s*\*\/)?\s*$/);
+        if (decl) {
+          current.tokens.push({
+            name: decl[1],
+            raw: decl[2],
+            note: decl[3] || '',
+            resolved: css.getPropertyValue(decl[1]).trim()
+          });
+        }
+      });
+      if (current.tokens.length) groups.push(current);
+      return groups;
+    }
+
+    function kind(t) {
+      var n = t.name;
+      if (/^--font-/.test(n)) return 'font';
+      if (/^--fs-/.test(n)) return 'fs';
+      if (/^--lh-/.test(n)) return 'lh';
+      if (/^--space-/.test(n)) return 'space';
+      if (/^--radius-/.test(n)) return 'radius';
+      if (/^--shadow/.test(n)) return 'shadow';
+      if (/width|max$/.test(n)) return 'layout';
+      if (CSS.supports('color', 'var(' + n + ')') && /^(#|hsl|rgb|var\(--(gray|site|white|text|meta|wash|ink|on-))/.test(t.raw)) return 'color';
+      return 'other';
+    }
+
+    var SECTIONS = [
+      { id: 'color', title: 'Color', em: 'palette', desc: 'Warm gray scale, the orange accent, status colors and the semantic roles built on top of them. Overlays sit on a checkerboard so their transparency is visible.' },
+      { id: 'font', title: 'Font', em: 'families', desc: 'Instrument Sans carries body and UI. Instrument Serif is reserved for display and italic accents.' },
+      { id: 'fs', title: 'Type', em: 'scale', desc: '4px steps up to 24px, 8px steps above. Fluid tokens resize with the viewport between two points on the scale.' },
+      { id: 'lh', title: 'Line', em: 'heights', desc: 'Only three. Headings, large UI, and body or lists. The rules mark each line box.' },
+      { id: 'space', title: 'Spacing', em: '8px grid', desc: 'Every margin, padding and gap uses one of these.' },
+      { id: 'radius', title: 'Corner', em: 'radii', desc: '' },
+      { id: 'shadow', title: 'Elevation', em: '', desc: '' },
+      { id: 'layout', title: 'Layout', em: 'widths', desc: 'Container widths, drawn at real size up to the width of this page.' },
+      { id: 'other', title: 'Other', em: 'tokens', desc: '' }
+    ];
+
+    function renderColor(list, groupsByTitle) {
+      var wrap = el('div');
+      groupsByTitle.forEach(function (g) {
+        var items = g.tokens.filter(function (t) { return kind(t) === 'color'; });
+        if (!items.length) return;
+        wrap.appendChild(el('div', 'ds-group-title', g.title));
+        var grid = el('div', 'swatches');
+        items.forEach(function (t) {
+          var card = el('div');
+          var chip = el('div', 'swatch-chip');
+          var fill = el('span');
+          fill.style.background = 'var(' + t.name + ')';
+          chip.appendChild(fill);
+          card.appendChild(chip);
+          card.appendChild(meta(t));
+          grid.appendChild(card);
+        });
+        wrap.appendChild(grid);
+      });
+      return wrap;
+    }
+    function renderFont(list) {
+      var wrap = el('div');
+      list.forEach(function (t) {
+        var card = el('div', 'font-card');
+        var s = el('div', 'specimen', 'Designing for the wrong market');
+        s.style.fontFamily = 'var(' + t.name + ')';
+        if (t.name === '--font-heading') s.style.fontStyle = 'italic';
+        var a = el('div', 'alphabet', 'Aa Bb Cc Dd Ee Ff Gg 0123456789 €17.3M');
+        a.style.fontFamily = 'var(' + t.name + ')';
+        card.appendChild(s); card.appendChild(a); card.appendChild(meta(t));
+        wrap.appendChild(card);
+      });
+      return wrap;
+    }
+    function renderRows(list, sample) {
+      var wrap = el('div', 'rows');
+      list.forEach(function (t) {
+        var row = el('div', 'row');
+        var m = meta(t);
+        row.appendChild(m);
+        row.appendChild(sample(t, m));
+        wrap.appendChild(row);
+      });
+      return wrap;
+    }
+    function renderRadius(list) {
+      var grid = el('div', 'radius-grid');
+      list.forEach(function (t) {
+        var card = el('div');
+        var box = el('div', 'radius-box');
+        box.style.borderRadius = 'var(' + t.name + ')';
+        card.appendChild(box); card.appendChild(meta(t));
+        grid.appendChild(card);
+      });
+      return grid;
+    }
+    function renderShadow(list) {
+      var grid = el('div', 'radius-grid');
+      list.forEach(function (t) {
+        var card = el('div');
+        var box = el('div', 'shadow-box');
+        box.style.boxShadow = 'var(' + t.name + ')';
+        card.appendChild(box); card.appendChild(meta(t));
+        grid.appendChild(card);
+      });
+      return grid;
+    }
+
+    fetch('/tokens.css', { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (text) {
+        var groups = parse(text);
+        var all = [].concat.apply([], groups.map(function (g) { return g.tokens; }));
+        root.textContent = '';
+        SECTIONS.forEach(function (sec) {
+          var list = all.filter(function (t) { return kind(t) === sec.id; });
+          if (!list.length) return;
+          var s = el('section', 'ds-section');
+          s.id = sec.id;
+          var h = el('h2');
+          h.appendChild(document.createTextNode(sec.title + (sec.em ? ' ' : '')));
+          if (sec.em) h.appendChild(el('em', null, sec.em));
+          s.appendChild(h);
+          s.appendChild(el('p', null, (sec.desc ? sec.desc + ' ' : '') + list.length + ' tokens.'));
+
+          var body;
+          if (sec.id === 'color') body = renderColor(list, groups);
+          else if (sec.id === 'font') body = renderFont(list);
+          else if (sec.id === 'fs') body = renderRows(list, function (t, m) {
+            m.querySelector('.ds-value').textContent += '  ·  ' + px('var(' + t.name + ')') + 'px now';
+            var x = el('div', 'type-sample', 'Trust, not price, was the real barrier');
+            x.style.fontSize = 'var(' + t.name + ')';
+            return x;
+          });
+          else if (sec.id === 'lh') body = renderRows(list, function (t) {
+            var x = el('p', 'lh-sample', 'A survey of 1,000 buyers and sellers revealed that 75% picked up with their own car because no viable alternative existed.');
+            x.style.setProperty('--lh', 'var(' + t.name + ')');
+            x.style.lineHeight = 'var(--lh)';
+            return x;
+          });
+          else if (sec.id === 'space') body = renderRows(list, function (t, m) {
+            m.querySelector('.ds-value').textContent += '  ·  ' + px('var(' + t.name + ')') + 'px';
+            var x = el('div', 'space-bar');
+            x.style.width = 'var(' + t.name + ')';
+            return x;
+          });
+          else if (sec.id === 'radius') body = renderRadius(list);
+          else if (sec.id === 'shadow') body = renderShadow(list);
+          else if (sec.id === 'layout') body = renderRows(list, function (t, m) {
+            m.querySelector('.ds-value').textContent += '  ·  ' + px('var(' + t.name + ')') + 'px';
+            var x = el('div', 'layout-bar');
+            x.style.width = 'var(' + t.name + ')';
+            return x;
+          });
+          else body = renderRows(list, function (t) { return el('div', 'ds-value', t.resolved); });
+
+          s.appendChild(body);
+          root.appendChild(s);
+
+          var link = el('a', null, sec.title);
+          link.href = '#' + sec.id;
+          toc.appendChild(link);
+        });
+      })
+      .catch(function (e) {
+        root.textContent = '';
+        root.appendChild(el('p', 'ds-error', 'Could not load tokens.css (' + e.message + ').'));
+      });
+  })();
+  </script>
+</body>
+</html>

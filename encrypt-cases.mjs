@@ -92,33 +92,17 @@ gtag('config', 'G-VXNMWSJCZE');
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
 <style>
-:root {
-  --gray-hue: 32;
-  --gray-sat-mult: .2;
-  --gray00: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 50%), 98%);
-  --gray05: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 95%);
-  --gray10: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 90%);
-  --gray20: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 40%), 70%);
-  --gray30: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 30%), 30%);
-  --gray40: hsl(var(--gray-hue), calc(var(--gray-sat-mult) * 30%), 5%);
-  --site-color: #ff7006;
-  --text-color: var(--gray40);
-  --meta-color: var(--gray30);
-  --wash-color: var(--gray00);
-  --font-sans: system-ui, -apple-system, sans-serif;
-  --font-heading: 'Instrument Serif', Georgia, serif;
-  --fs-small: 0.8rem;
-}
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { -webkit-font-smoothing: antialiased; }
 body {
   background: var(--wash-color);
   color: var(--text-color);
   font-family: var(--font-sans);
-  font-size: clamp(100%, 2.75vw, 125%);
-  line-height: 1.6;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -127,12 +111,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  max-width: 68rem;
+  max-width: var(--container-max);
   width: 100%;
   margin: 0 auto;
-  padding: 1.5rem 1.5rem 0 1.5rem;
+  padding: var(--space-3) var(--space-3) 0;
 }
-.gate-nav a { font-size: 1rem; color: inherit; text-decoration: none; }
+.gate-nav a { font-size: var(--fs-16); color: inherit; text-decoration: none; }
 .gate-nav a:hover { color: var(--site-color); }
 .gate-nav span { font-size: var(--fs-small); color: var(--meta-color); }
 .gate-wrap {
@@ -140,7 +124,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1.5rem;
+  padding: var(--space-6) var(--space-3);
 }
 .gate {
   width: 100%;
@@ -153,31 +137,31 @@ body {
   font-weight: 500;
   letter-spacing: .04em;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-2);
 }
 .gate h1 {
   font-family: var(--font-heading);
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  line-height: 1.15;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: var(--lh-heading);
   text-wrap: balance;
-  margin-bottom: .75rem;
+  margin-bottom: var(--space-1);
 }
 .gate p {
   font-size: var(--fs-small);
   color: var(--meta-color);
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-4);
 }
-.gate form { display: flex; flex-direction: column; gap: .75rem; }
+.gate form { display: flex; flex-direction: column; gap: var(--space-1); }
 .gate input {
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: var(--fs-16);
   color: var(--text-color);
   background: var(--gray05);
-  border: 1px solid var(--gray10);
-  border-radius: 3px;
-  padding: .6rem .9rem;
+  border: 1px solid var(--hairline-color);
+  border-radius: var(--radius-s);
+  padding: var(--space-1) var(--space-2);
   outline: none;
   text-align: center;
   transition: border-color .2s;
@@ -186,12 +170,12 @@ body {
 .gate input:focus { border-color: var(--meta-color); }
 .gate button {
   font-family: var(--font-sans);
-  font-size: 1rem;
-  padding: .6rem .9rem;
-  background: var(--text-color);
-  color: var(--wash-color);
+  font-size: var(--fs-16);
+  padding: var(--space-1) var(--space-2);
+  background: var(--ink-surface);
+  color: var(--on-ink);
   border: none;
-  border-radius: 3px;
+  border-radius: var(--radius-s);
   cursor: pointer;
   transition: opacity .2s;
 }
@@ -199,13 +183,13 @@ body {
 .gate button:disabled { opacity: .5; cursor: wait; }
 .gate-error {
   font-size: var(--fs-small);
-  color: #c0392b;
-  min-height: 1.2em;
+  color: var(--error-color);
+  min-height: 1.5em;
 }
 .gate-hint {
   font-size: var(--fs-small);
   color: var(--gray20);
-  margin-top: 2.5rem;
+  margin-top: var(--space-5);
 }
 .gate-hint a { color: var(--meta-color); }
 </style>

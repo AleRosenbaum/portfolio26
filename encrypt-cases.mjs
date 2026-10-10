@@ -1,8 +1,10 @@
 // Encrypts the case-study sources in _src/ into password-gated public pages.
 // Usage: node encrypt-cases.mjs <password>
 // Run after every edit to _src/brenger.html or _src/offers.html.
+// It first runs stamp-assets.mjs so every page links the current asset versions.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { randomBytes, pbkdf2Sync, createCipheriv } from 'node:crypto';
+import { stampAssets } from './stamp-assets.mjs';
 
 const password = process.argv[2];
 if (!password) {
@@ -11,6 +13,7 @@ if (!password) {
 }
 
 const ITERATIONS = 600000;
+const v = stampAssets();
 
 const pages = [
   {
@@ -93,7 +96,7 @@ gtag('config', 'G-VXNMWSJCZE');
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/tokens.css?v=${v['tokens.css']}">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { -webkit-font-smoothing: antialiased; }
@@ -248,17 +251,17 @@ body {
       var html = await decrypt(pass);
       sessionStorage.setItem('ale-case-pass', pass);
       if (html.indexOf('/sticky-header.css') === -1) {
-        html = html.replace('</head>', '<link rel="stylesheet" href="/sticky-header.css"></head>');
+        html = html.replace('</head>', '<link rel="stylesheet" href="/sticky-header.css?v=${v['sticky-header.css']}"></head>');
       }
       if (html.indexOf('/sticky-header.js') === -1) {
-        var stickyHeaderScript = '<script src="/sticky-header.js"><' + '/script>';
+        var stickyHeaderScript = '<script src="/sticky-header.js?v=${v['sticky-header.js']}"><' + '/script>';
         html = html.replace('</body>', stickyHeaderScript + '</body>');
       }
       if (html.indexOf('/site-footer.css') === -1) {
-        html = html.replace('</head>', '<link rel="stylesheet" href="/site-footer.css"></head>');
+        html = html.replace('</head>', '<link rel="stylesheet" href="/site-footer.css?v=${v['site-footer.css']}"></head>');
       }
       if (html.indexOf('/site-footer.js') === -1) {
-        var siteFooterScript = '<script src="/site-footer.js"><' + '/script>';
+        var siteFooterScript = '<script src="/site-footer.js?v=${v['site-footer.js']}"><' + '/script>';
         html = html.replace('</body>', siteFooterScript + '</body>');
       }
       document.open();

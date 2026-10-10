@@ -79,10 +79,15 @@
   --radius-pill: 999px;
 
   /* ─── Layout ─── */
-  --container-width: 33rem;  /* home nav and contact column */
-  --reading-width: 680px;    /* case study reading column */
-  --container-max: 68rem;    /* wide case imagery */
+  --gutter: 1.5rem;          /* side margin on small screens, 24px */
+  --measure: 680px;          /* comfortable line length for reading */
+  --column: var(--measure);  /* the shared column: nav, hero, text and footer line up to it. Only the home page widens it */
+  --column-box: calc(var(--column) + 2 * var(--gutter));  /* a column container including its gutters */
+  --container-max: 68rem;    /* wide case imagery that breaks out of the column */
 }
+
+/* ─── Base ─── */
+*, *::before, *::after { box-sizing: border-box; }
 
 /* ─── Headings: the tag sets the size ─── */
 h1 { font-size: var(--fs-h1); line-height: var(--lh-heading); font-weight: var(--fw-regular); }

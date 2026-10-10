@@ -48,17 +48,17 @@
   <link rel="stylesheet" href="/site-footer.css" />
   <script src="/site-footer.js" defer></script>
   <style>
-    /* Shared tokens live in /tokens.css. Only home layout tokens are defined here. */
+    /* Shared tokens live in /tokens.css. The home page is the one wide page:
+       it widens the shared column, so the nav and footer follow its edges. */
     :root {
-      --grid-spec: minmax(0,1fr) minmax(auto, var(--container-width)) minmax(0,1fr);
-      --center-column: 2 / 3;
+      --inset: 120px;
+      --column: calc(100% - 2 * var(--inset));
     }
-
+    @media (max-width: 64em) {
+      :root { --inset: var(--space-10); }
+    }
     @media (max-width: 50em) {
-      :root {
-        --grid-spec: minmax(100%, 1fr);
-        --center-column: 1 / -1;
-      }
+      :root { --inset: var(--gutter); }
     }
 
     /* ── Reset ── */
@@ -119,12 +119,9 @@
 
     /* ── NAV ── */
     .nav {
-      display: grid;
-      grid-template-columns: var(--grid-spec);
-      grid-gap: var(--space-1);
+      padding: 0 var(--inset);
       margin-bottom: var(--space-2);
     }
-    .nav > * { grid-column: var(--center-column); }
 
     .nav-inner {
       display: flex;
@@ -163,13 +160,10 @@
 
     /* ── HOME: HERO ── */
     .hero {
-      padding: var(--space-20) 120px var(--space-10);
+      padding: var(--space-20) var(--inset) var(--space-10);
     }
     @media (max-width: 64em) {
-      .hero { padding: var(--space-10) var(--space-10) var(--space-10); }
-    }
-    @media (max-width: 50em) {
-      .hero { padding: var(--space-10) var(--space-3) var(--space-10); }
+      .hero { padding-top: var(--space-10); }
     }
     .hero-name {
       font-size: var(--fs-h3);
@@ -268,13 +262,10 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--space-5);
-      padding: 0 120px var(--space-10);
-    }
-    @media (max-width: 64em) {
-      .cases-grid { padding: 0 var(--space-10) var(--space-10); }
+      padding: 0 var(--inset) var(--space-10);
     }
     @media (max-width: 50em) {
-      .cases-grid { grid-template-columns: 1fr; padding: 0 var(--space-3) var(--space-10); }
+      .cases-grid { grid-template-columns: 1fr; }
     }
 
     .case-card {
@@ -374,13 +365,11 @@
 
     /* ── CONTACT ── */
     .contact-wrap {
-      display: grid;
-      grid-template-columns: var(--grid-spec);
+      padding: 0 var(--inset);
     }
     .contact-inner {
-      grid-column: var(--center-column);
-      padding: var(--space-4);
-      padding-bottom: var(--space-6);
+      max-width: var(--measure);
+      padding: var(--space-4) 0 var(--space-6);
     }
 
     .contact-heading {

@@ -45,8 +45,10 @@ All tokens live in `tokens.css`, linked by every page (home, case sources, Quadd
 
 ## Layout
 
-- `index.html` uses a 3-column CSS grid (`--grid-spec`) for the nav and contact page. Home content is full-width with fixed horizontal padding: `120px` desktop / `80px` tablet (max-width: 64em) / `24px` mobile (max-width: 50em).
-- The case studies (`_src/brenger.html`, `_src/offers.html`) use the editorial layout described in the password wall section above.
+One shared column, defined in `tokens.css`: `--measure` (680px), `--column` (defaults to `--measure`), `--gutter` (24px) and `--column-box` (a container of `--column` plus both gutters). The floating nav, the hero, the body text and the footer all line up to the column edges on every page. Text containers use `max-width: var(--column-box); margin: 0 auto; padding: 0 var(--gutter)` (or `1.5rem`, the same value).
+
+- **Home is the only wide page.** `index.html` sets `--inset` (120px desktop, 80px tablet at 64em, 24px mobile at 50em) and widens `--column` to `calc(100% - 2 * var(--inset))`, so the nav and footer follow the home edges. The contact view keeps its text at `--measure`, left aligned to the same edge.
+- Case studies may break out of the column only for imagery: full-bleed hero images and `--container-max` (68rem) image grids.
 
 ## Home page sections
 

@@ -5,7 +5,7 @@
   left: 50%;
   display: flex;
   align-items: center;
-  width: min(680px, calc(100vw - 32px));
+  width: min(var(--column), calc(100% - 2 * var(--gutter)));
   min-height: 56px;
   padding: 8px;
   overflow: hidden;
@@ -129,7 +129,7 @@ body.floating-nav-always {
 
 @media (max-width: 600px) {
   .floating-portfolio-nav {
-    width: calc(100vw - 32px);
+    width: calc(100% - 2 * var(--gutter));
     min-height: 56px;
     border-radius: var(--radius-m);
     font-size: var(--fs-base);

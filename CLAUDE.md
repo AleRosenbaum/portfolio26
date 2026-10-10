@@ -4,12 +4,13 @@ Personal portfolio site for Ale Rosenbaum, Senior Product Designer at Marktplaat
 
 ## Structure
 
-Plain HTML/CSS/JS. No framework. Four pages:
+Plain HTML/CSS/JS. No framework. Four pages plus an internal design system page:
 
 - `index.html` — main SPA. JS `go()` function swaps between Home and Contact views. Nav hides on home. Opening `index.html#contact` lands on the Contact view.
 - `brenger.html` — password gate for the Brenger case study ("Integrating Brenger into Marktplaats").
 - `offers.html` — password gate for the Structured Offers case study ("From Silence to Structured Offers").
 - `quaddro.html` — the Quaddro case study ("Designing for the Wrong Market"). Public, not password gated, and not yet linked from the home grid.
+- `design-system.html`: internal reference that renders every token in `tokens.css` live (colors, fonts, type scale, line heights, spacing, radii, layout). Reachable only by URL: not linked anywhere and marked `noindex`. It parses `tokens.css` at load time, so it never needs editing when tokens change. Keep the `/* ─── Group ─── */` headings and trailing `/* note */` comments in `tokens.css`, because the page uses them for grouping and descriptions.
 
 ## Shared navigation and footer
 

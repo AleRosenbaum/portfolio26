@@ -30,7 +30,7 @@ The case pages are AES-256-GCM encrypted (staticrypt-style). The real pages live
 
 **After editing `tokens.css`, `sticky-header.*` or `site-footer.*`, run `node stamp-assets.mjs`** (or the encrypt script). Pages link these files with a content hash (`/tokens.css?v=1a2b3c4d`); GitHub Pages lets browsers cache them for 10 minutes, and without a new hash a browser can pair new HTML with an old stylesheet and break the layout. The password itself is never committed. Caveats: case imagery (`offers/`, `brenger-hero.png`) is not encrypted and stays publicly fetchable by URL; both case pages share one password.
 
-Both case pages use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, white statement bands, orange stat numbers, and scroll-reveal animations (vanilla JS). Sections are styled inline; tokens come from `tokens.css` and shared roles (`.heading-mixed`, `.label`, `.mark`, `.bold`) live in the page's style block. Brenger imagery lives in `brenger/`; Offers imagery lives in `offers/`.
+Both case pages use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, white statement bands, orange stat numbers, and scroll-reveal animations (vanilla JS). Sections are styled inline; tokens come from `tokens.css` and shared roles (`.heading-mixed`, `.label`, `.bold`) live in the page's style block. Brenger imagery lives in `brenger/`; Offers imagery lives in `offers/`.
 
 ## Design system
 
@@ -38,7 +38,7 @@ All tokens live in `tokens.css`, linked by every page (home, case sources, Quadd
 
 - **Colors:** warm gray scale `--gray00` to `--gray40` (32° hue), accent `--site-color: #ff7006`, plus semantic tokens (`--text-color`, `--meta-color`, `--wash-color`, `--ink-surface`, `--on-ink`, `--success-color`, `--error-color`, glass and scrim overlays). No raw hex or rgba in pages.
 - **Font:** Instrument Sans only (`--font-sans`), weights 400, 500, 600 and 700 from Google Fonts. No serif and no italic anywhere.
-- **Weights:** `--fw-regular` (400), `--fw-medium` (500), `--fw-bold` (600). Emphasis is always bold: `<em>` renders as `--fw-bold` and `.bold` does the same for whole elements. Never use `font-style: italic`.
+- **Weights:** `--fw-regular` (400), `--fw-medium` (500), `--fw-bold` (600). Emphasis is always bold: `<em>` renders as `--fw-bold` and `.bold` does the same for whole elements. Never use `font-style: italic` or underlined text for emphasis; key phrases go in `<strong>`.
 - **Type scale:** six roles named after web conventions. `--fs-h1` (40 to 64px, page titles), `--fs-h2` (32 to 48px, statements and big numbers), `--fs-h3` (24 to 32px, section headings), `--fs-large` (20px), `--fs-base` (16px), `--fs-small` (12px). Headings are fluid with `clamp()`. Never use a raw font size; pick a role. The heading tag sets its size: `tokens.css` styles every `<h1>`, `<h2>` and `<h3>` with the matching role, so never put a font size on a heading tag. A non-heading element that borrows a heading size must also set the matching line height. Each page has exactly one `<h1>` (on the home page it is the bio).
 - **Line heights:** `--lh-heading` (1.1) for h1 and h2, `--lh-ui` (1.2) for h3 and single line UI, `--lh-body` (1.5) for large, base and small.
 - **Spacing:** 8px grid. Use `--space-1` (8px) to `--space-20` (160px). Literal values in inline styles must also be multiples of 8px.

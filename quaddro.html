@@ -39,7 +39,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/tokens.css" />
   <link rel="stylesheet" href="/sticky-header.css" />
   <script src="/sticky-header.js" defer></script>
@@ -54,8 +54,8 @@
       margin: 0;
       background: var(--wash-color);
       color: var(--text-color);
-      font-family: var(--font-body);
-      font-size: var(--fs-body);
+      font-family: var(--font-sans);
+      font-size: var(--fs-base);
       line-height: var(--lh-body);
       overflow-x: hidden;
     }
@@ -68,16 +68,11 @@
     a:hover, a:focus { color: var(--site-color); }
     img { max-width: 100%; }
 
-    .sans { font-family: var(--font-sans); }
-    .serif-italic {
-      font-family: var(--font-heading);
-      font-style: italic;
-      font-weight: 400;
-    }
+    .sans { }
+    .italic { font-style: italic; }
     .label {
       margin-bottom: 1.5rem;
       color: var(--site-color);
-      font-family: var(--font-sans);
       font-size: var(--fs-small);
       font-weight: 500;
       letter-spacing: .04em;
@@ -85,15 +80,13 @@
     }
     .heading-mixed {
       margin: 0 0 1.5rem;
-      font-family: var(--font-sans);
-      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      font-size: var(--fs-h3);
       font-weight: 400;
       letter-spacing: -.015em;
       line-height: var(--lh-ui);
       text-wrap: balance;
     }
     .heading-mixed em {
-      font-family: var(--font-heading);
       font-style: italic;
       font-weight: 400;
       letter-spacing: 0;
@@ -101,8 +94,7 @@
     .body-copy {
       margin: 0 0 1.5rem;
       color: var(--gray35);
-      font-family: var(--font-sans);
-      font-size: 1rem;
+      font-size: var(--fs-base);
       line-height: var(--lh-body);
       text-wrap: pretty;
     }
@@ -123,15 +115,13 @@
     .hero h1 {
       max-width: 12ch;
       margin: 0 0 2rem;
-      font-family: var(--font-sans);
-      font-size: clamp(3rem, 7vw, 6rem);
+      font-size: var(--fs-h1);
       font-weight: 400;
       letter-spacing: -.045em;
       line-height: var(--lh-heading);
       text-wrap: balance;
     }
     .hero h1 em {
-      font-family: var(--font-heading);
       font-style: italic;
       font-weight: 400;
       letter-spacing: -.02em;
@@ -140,8 +130,7 @@
       max-width: 46rem;
       margin: 0 0 3rem;
       color: var(--gray35);
-      font-family: var(--font-sans);
-      font-size: 1rem;
+      font-size: var(--fs-base);
       line-height: var(--lh-body);
       text-wrap: pretty;
     }
@@ -164,7 +153,6 @@
       margin: 1rem auto 0;
       padding: 0 1.5rem;
       color: var(--meta-color);
-      font-family: var(--font-sans);
       font-size: var(--fs-small);
       line-height: var(--lh-body);
     }
@@ -183,7 +171,6 @@
       max-width: 42.5rem;
       margin: 0 auto;
       padding: 3rem 1.5rem 5rem;
-      font-family: var(--font-sans);
     }
     .fact {
       display: grid;
@@ -211,15 +198,13 @@
       text-align: center;
     }
     .statement-copy {
-      font-family: var(--font-sans);
-      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-size: var(--fs-h2);
       font-weight: 400;
       letter-spacing: -.02em;
       line-height: var(--lh-ui);
       text-wrap: balance;
     }
     .statement-copy em {
-      font-family: var(--font-heading);
       font-style: italic;
       font-weight: 400;
       letter-spacing: 0;
@@ -238,8 +223,7 @@
       padding: 1rem 0;
       border-bottom: 1px solid var(--gray10);
       color: var(--gray35);
-      font-family: var(--font-sans);
-      font-size: 1rem;
+      font-size: var(--fs-base);
       line-height: var(--lh-body);
     }
     .question-list span { color: var(--site-color); font-size: var(--fs-small); }
@@ -271,7 +255,6 @@
       border-radius: var(--radius-m);
       background: var(--gray05);
       color: var(--text-color);
-      font-family: var(--font-sans);
       text-align: center;
       overflow: hidden;
     }
@@ -300,7 +283,7 @@
       top: 1rem;
       left: 1rem;
       color: var(--site-color);
-      font-size: .75rem;
+      font-size: var(--fs-small);
       font-weight: 600;
       letter-spacing: .06em;
       text-transform: uppercase;
@@ -308,8 +291,7 @@
     .placeholder-content strong {
       display: block;
       margin-bottom: .5rem;
-      font-family: var(--font-heading);
-      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-size: var(--fs-h3);
       font-style: italic;
       font-weight: 400;
       line-height: var(--lh-heading);
@@ -331,7 +313,7 @@
       border: 1px solid var(--gray20);
       border-radius: 50%;
       color: var(--site-color);
-      font-size: 1rem;
+      font-size: var(--fs-base);
     }
     .workflow-surface {
       display: grid;
@@ -349,21 +331,18 @@
     .workflow-item:last-child { border-right: 0; }
     .workflow-number {
       color: var(--site-color);
-      font-family: var(--font-heading);
-      font-size: 3.5rem;
+      font-size: var(--fs-h2);
       font-style: italic;
       line-height: var(--lh-heading);
     }
     .workflow-item h3 {
       margin: 4.5rem 0 .5rem;
-      font-family: var(--font-sans);
-      font-size: 1.25rem;
+      font-size: var(--fs-large);
       font-weight: 500;
     }
     .workflow-item p {
       margin: 0;
       color: var(--gray20);
-      font-family: var(--font-sans);
       font-size: var(--fs-small);
       line-height: var(--lh-body);
     }
@@ -376,7 +355,6 @@
     .strategy-table {
       width: 100%;
       border-collapse: collapse;
-      font-family: var(--font-sans);
       table-layout: fixed;
     }
     .strategy-table th,
@@ -385,12 +363,12 @@
       border-bottom: 1px solid var(--gray10);
       text-align: left;
       vertical-align: top;
-      font-size: 1rem;
+      font-size: var(--fs-base);
       line-height: var(--lh-body);
     }
     .strategy-table th {
       color: var(--meta-color);
-      font-size: .75rem;
+      font-size: var(--fs-small);
       font-weight: 600;
       letter-spacing: .06em;
       text-transform: uppercase;
@@ -426,18 +404,17 @@
       border-radius: var(--radius-l);
       background: var(--gray00);
       color: var(--gray40);
-      font-family: var(--font-sans);
     }
     .phone-kicker {
       color: var(--meta-color);
-      font-size: .75rem;
+      font-size: var(--fs-small);
       font-weight: 600;
       letter-spacing: .06em;
       text-transform: uppercase;
     }
     .phone h3 {
       margin: 1rem 0 2rem;
-      font-size: 1.5rem;
+      font-size: var(--fs-h3);
       font-weight: 500;
       letter-spacing: -.02em;
       line-height: var(--lh-ui);
@@ -455,7 +432,7 @@
       border: 1px solid var(--gray10);
       border-radius: var(--radius-s);
       background: var(--white);
-      font-size: 1.5rem;
+      font-size: var(--fs-h3);
       font-weight: 600;
     }
     .ui-button {
@@ -465,7 +442,7 @@
       background: var(--gray40);
       color: var(--gray00);
       text-align: center;
-      font-size: .75rem;
+      font-size: var(--fs-small);
       font-weight: 600;
     }
     .ui-contact {
@@ -497,14 +474,12 @@
       display: block;
       margin-bottom: .5rem;
       color: var(--site-color);
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
+      font-size: var(--fs-h3);
       font-style: italic;
     }
     .principle p {
       margin: 0;
       color: var(--meta-color);
-      font-family: var(--font-sans);
       font-size: var(--fs-small);
       line-height: var(--lh-body);
     }
@@ -517,8 +492,7 @@
     }
     .impact-value {
       color: var(--site-color);
-      font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-size: var(--fs-h2);
       font-style: italic;
       line-height: var(--lh-heading);
     }
@@ -526,7 +500,6 @@
       max-width: 14rem;
       margin-top: .5rem;
       color: var(--meta-color);
-      font-family: var(--font-sans);
       font-size: var(--fs-small);
       line-height: var(--lh-body);
     }
@@ -550,24 +523,21 @@
       display: block;
       margin-bottom: 1rem;
       color: var(--gray20);
-      font-family: var(--font-sans);
-      font-size: .75rem;
+      font-size: var(--fs-small);
       font-weight: 600;
       letter-spacing: .06em;
       text-transform: uppercase;
     }
     .shift-quote {
       margin: 0;
-      font-family: var(--font-heading);
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-size: var(--fs-h3);
       font-style: italic;
       line-height: var(--lh-ui);
       text-wrap: balance;
     }
     .shift-arrow {
       color: var(--site-color);
-      font-family: var(--font-sans);
-      font-size: 2rem;
+      font-size: var(--fs-h3);
     }
 
 
@@ -593,7 +563,7 @@
         display: block;
         margin-bottom: .5rem;
         color: var(--meta-color);
-        font-size: .75rem;
+        font-size: var(--fs-small);
         font-weight: 600;
         letter-spacing: .06em;
         text-transform: uppercase;

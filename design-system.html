@@ -8,7 +8,7 @@
   <title>Design System · Ale Rosenbaum</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/tokens.css" />
   <link rel="stylesheet" href="/sticky-header.css" />
   <script src="/sticky-header.js" defer></script>
@@ -20,8 +20,8 @@
     body {
       background: var(--wash-color);
       color: var(--text-color);
-      font-family: var(--font-body);
-      font-size: var(--fs-16);
+      font-family: var(--font-sans);
+      font-size: var(--fs-base);
       line-height: var(--lh-body);
     }
     ::selection { background: var(--highlight-color); color: var(--gray40); }
@@ -41,21 +41,20 @@
       margin-bottom: var(--space-2);
     }
     .ds-title {
-      font-size: var(--fs-display);
+      font-size: var(--fs-h1);
       font-weight: 400;
       letter-spacing: -.03em;
       line-height: var(--lh-heading);
       margin-bottom: var(--space-3);
     }
     .ds-title em, .ds-section h2 em {
-      font-family: var(--font-heading);
       font-style: italic;
       font-weight: 400;
     }
     .ds-lede { color: var(--meta-color); }
     .ds-lede code, .ds-name {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: var(--fs-12);
+      font-size: var(--fs-small);
     }
     .ds-lede code {
       background: var(--code-wash);
@@ -68,7 +67,7 @@
       flex-wrap: wrap;
       gap: var(--space-1) var(--space-3);
       margin-top: var(--space-4);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
     }
     .ds-toc a { color: var(--meta-color); text-decoration: none; }
     .ds-toc a:hover { color: var(--hover-color); }
@@ -80,7 +79,7 @@
       scroll-margin-top: var(--space-10);
     }
     .ds-section h2 {
-      font-size: var(--fs-heading);
+      font-size: var(--fs-h3);
       font-weight: 400;
       letter-spacing: -.015em;
       line-height: var(--lh-ui);
@@ -88,7 +87,7 @@
     }
     .ds-section > p { color: var(--meta-color); margin-bottom: var(--space-5); max-width: var(--reading-width); }
     .ds-group-title {
-      font-size: var(--fs-12);
+      font-size: var(--fs-small);
       color: var(--meta-color);
       letter-spacing: .08em;
       text-transform: uppercase;
@@ -96,8 +95,8 @@
     }
 
     .ds-name { color: var(--text-color); word-break: break-all; }
-    .ds-value { font-size: var(--fs-12); color: var(--meta-color); word-break: break-word; }
-    .ds-note { font-size: var(--fs-12); color: var(--meta-color); }
+    .ds-value { font-size: var(--fs-small); color: var(--meta-color); word-break: break-word; }
+    .ds-note { font-size: var(--fs-small); color: var(--meta-color); }
 
     /* Colors */
     .swatches {
@@ -169,8 +168,8 @@
       padding: var(--space-4) 0;
       border-bottom: 1px solid var(--hairline-color);
     }
-    .font-card .specimen { font-size: var(--fs-48); line-height: var(--lh-heading); margin-bottom: var(--space-2); }
-    .font-card .alphabet { font-size: var(--fs-20); color: var(--meta-color); margin-bottom: var(--space-2); }
+    .font-card .specimen { font-size: var(--fs-h2); line-height: var(--lh-heading); margin-bottom: var(--space-2); }
+    .font-card .alphabet { font-size: var(--fs-large); color: var(--meta-color); margin-bottom: var(--space-2); }
     .layout-bar {
       height: 24px;
       max-width: 100%;
@@ -269,9 +268,9 @@
 
     var SECTIONS = [
       { id: 'color', title: 'Color', em: 'palette', desc: 'Warm gray scale, the orange accent, status colors and the semantic roles built on top of them. Overlays sit on a checkerboard so their transparency is visible.' },
-      { id: 'font', title: 'Font', em: 'families', desc: 'Instrument Sans carries body and UI. Instrument Serif is reserved for display and italic accents.' },
-      { id: 'fs', title: 'Type', em: 'scale', desc: '4px steps up to 24px, 8px steps above. Fluid tokens resize with the viewport between two points on the scale.' },
-      { id: 'lh', title: 'Line', em: 'heights', desc: 'Only three. Headings, large UI, and body or lists. The rules mark each line box.' },
+      { id: 'font', title: 'Font', em: 'family', desc: 'Instrument Sans is the only typeface. Emphasis uses its italic.' },
+      { id: 'fs', title: 'Type', em: 'scale', desc: 'Six roles named after web conventions. Headings are fluid between two sizes; large, base and small are fixed.' },
+      { id: 'lh', title: 'Line', em: 'heights', desc: 'Only three: h1 and h2, h3 and single line UI, then large, base and small. The rules mark each line box.' },
       { id: 'space', title: 'Spacing', em: '8px grid', desc: 'Every margin, padding and gap uses one of these.' },
       { id: 'radius', title: 'Corner', em: 'radii', desc: '' },
       { id: 'shadow', title: 'Elevation', em: '', desc: '' },
@@ -306,7 +305,6 @@
         var card = el('div', 'font-card');
         var s = el('div', 'specimen', 'Designing for the wrong market');
         s.style.fontFamily = 'var(' + t.name + ')';
-        if (t.name === '--font-heading') s.style.fontStyle = 'italic';
         var a = el('div', 'alphabet', 'Aa Bb Cc Dd Ee Ff Gg 0123456789 €17.3M');
         a.style.fontFamily = 'var(' + t.name + ')';
         card.appendChild(s); card.appendChild(a); card.appendChild(meta(t));

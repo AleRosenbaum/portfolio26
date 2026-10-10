@@ -92,7 +92,7 @@ gtag('config', 'G-VXNMWSJCZE');
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/tokens.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -101,7 +101,7 @@ body {
   background: var(--wash-color);
   color: var(--text-color);
   font-family: var(--font-sans);
-  font-size: var(--fs-body);
+  font-size: var(--fs-base);
   line-height: var(--lh-body);
   min-height: 100vh;
   display: flex;
@@ -116,7 +116,7 @@ body {
   margin: 0 auto;
   padding: var(--space-3) var(--space-3) 0;
 }
-.gate-nav a { font-size: var(--fs-16); color: inherit; text-decoration: none; }
+.gate-nav a { font-size: var(--fs-base); color: inherit; text-decoration: none; }
 .gate-nav a:hover { color: var(--site-color); }
 .gate-nav span { font-size: var(--fs-small); color: var(--meta-color); }
 .gate-wrap {
@@ -140,10 +140,10 @@ body {
   margin-bottom: var(--space-2);
 }
 .gate h1 {
-  font-family: var(--font-heading);
+  font-family: var(--font-sans);
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-size: var(--fs-h3);
   line-height: var(--lh-heading);
   text-wrap: balance;
   margin-bottom: var(--space-1);
@@ -156,7 +156,7 @@ body {
 .gate form { display: flex; flex-direction: column; gap: var(--space-1); }
 .gate input {
   font-family: var(--font-sans);
-  font-size: var(--fs-16);
+  font-size: var(--fs-base);
   color: var(--text-color);
   background: var(--gray05);
   border: 1px solid var(--hairline-color);
@@ -170,7 +170,7 @@ body {
 .gate input:focus { border-color: var(--meta-color); }
 .gate button {
   font-family: var(--font-sans);
-  font-size: var(--fs-16);
+  font-size: var(--fs-base);
   padding: var(--space-1) var(--space-2);
   background: var(--ink-surface);
   color: var(--on-ink);

@@ -41,7 +41,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/tokens.css" />
   <link rel="stylesheet" href="/sticky-header.css" />
   <script src="/sticky-header.js" defer></script>
@@ -68,8 +68,8 @@
     body {
       background-color: var(--wash-color);
       color: var(--text-color);
-      font-family: var(--font-body);
-      font-size: var(--fs-body);
+      font-family: var(--font-sans);
+      font-size: var(--fs-base);
       line-height: var(--lh-body);
       font-feature-settings: "ss02" 1;
     }
@@ -90,8 +90,7 @@
     ul, ol { margin-bottom: var(--space-2); padding-left: var(--space-3); }
 
     h1, .h1 {
-      font-family: var(--font-heading);
-      font-size: var(--fs-32);
+      font-size: var(--fs-h3);
       font-weight: 400;
       letter-spacing: -.0125em;
       line-height: var(--lh-heading);
@@ -102,8 +101,7 @@
     }
 
     h2 {
-      font-family: var(--font-heading);
-      font-size: var(--fs-20);
+      font-size: var(--fs-large);
       font-weight: 400;
       line-height: var(--lh-ui);
       margin-bottom: var(--space-2);
@@ -111,14 +109,13 @@
     }
 
     h3 {
-      font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       color: var(--meta-color);
       font-weight: 400;
     }
 
     small, .small { font-size: var(--fs-small); }
-    .sans { font-family: var(--font-sans); }
+    .sans { }
     .meta { color: var(--meta-color); }
 
     hr {
@@ -130,7 +127,6 @@
       position: relative;
     }
     hr::after {
-      font-family: var(--font-heading);
       content: "∞";
       background-color: var(--wash-color);
       padding-inline: var(--space-1);
@@ -163,8 +159,7 @@
     }
 
     .nav-name {
-      font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       color: var(--text-color);
       text-decoration: none;
       cursor: pointer;
@@ -173,8 +168,7 @@
 
     .nav-links { display: flex; gap: var(--space-2); list-style: none; padding: 0; margin: 0; }
     .nav-links a {
-      font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       color: var(--meta-color);
       text-decoration: none;
       cursor: pointer;
@@ -203,15 +197,13 @@
       .hero { padding: var(--space-10) var(--space-3) var(--space-10); }
     }
     .hero-name {
-      font-family: var(--font-sans);
-      font-size: var(--fs-32);
+      font-size: var(--fs-h3);
       line-height: var(--lh-ui);
       color: var(--meta-color);
       margin-bottom: var(--space-2);
     }
     .hero-bio {
-      font-size: var(--fs-48);
-      font-family: var(--font-sans);
+      font-size: var(--fs-h2);
       font-weight: 500;
       letter-spacing: -0.025em;
       line-height: var(--lh-ui);
@@ -220,7 +212,6 @@
       margin-bottom: var(--space-10);
     }
     .hero-bio a {
-      font-family: var(--font-heading);
       font-style: italic;
     }
     .hero-cols {
@@ -232,8 +223,7 @@
       .hero-cols { grid-template-columns: 1fr; gap: var(--space-5); }
     }
     .hero-col-label {
-      font-family: var(--font-sans);
-      font-size: var(--fs-12);
+      font-size: var(--fs-small);
       line-height: var(--lh-body);
       color: var(--meta-color);
       letter-spacing: 0.08em;
@@ -249,18 +239,17 @@
       gap: var(--space-1);
     }
     .exp-list li {
-      font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       letter-spacing: 0.02em;
       line-height: var(--lh-body);
     }
     @media (min-width: 64em) {
-      .exp-list li { font-size: var(--fs-20); }
+      .exp-list li { font-size: var(--fs-large); }
     }
     .exp-list .exp-role { font-weight: 600; color: var(--text-color); }
     .exp-list .exp-place { color: var(--meta-color); }
     .exp-list .exp-tag {
-      font-size: var(--fs-12);
+      font-size: var(--fs-small);
       color: var(--site-color);
       border: 1px solid currentColor;
       border-radius: var(--radius-pill);
@@ -270,8 +259,7 @@
       font-weight: 500;
     }
     .exp-more {
-      font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       color: var(--meta-color);
       display: flex;
       gap: var(--space-2);
@@ -288,13 +276,12 @@
       gap: var(--space-1);
     }
     .links-list li {
-      font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       letter-spacing: 0.02em;
       line-height: var(--lh-body);
     }
     @media (min-width: 64em) {
-      .links-list li { font-size: var(--fs-20); }
+      .links-list li { font-size: var(--fs-large); }
     }
     .links-list a {
       color: var(--text-color);
@@ -350,8 +337,7 @@
       transition: background .3s ease;
     }
     .case-thumb-overlay span {
-      font-family: var(--font-sans);
-      font-size: var(--fs-12);
+      font-size: var(--fs-small);
       font-weight: 600;
       letter-spacing: .06em;
       text-transform: uppercase;
@@ -380,8 +366,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--font-sans);
-      font-size: var(--fs-12);
+      font-size: var(--fs-small);
       font-weight: 700;
       letter-spacing: .04em;
       color: var(--white);
@@ -391,8 +376,7 @@
     .case-title {
       grid-column: 1 / -1;
       grid-row: 1;
-      font-family: var(--font-sans);
-      font-size: var(--fs-20);
+      font-size: var(--fs-large);
       font-weight: 500;
       letter-spacing: -0.01em;
       color: var(--text-color);
@@ -400,13 +384,12 @@
       margin: 0;
     }
     @media (min-width: 64em) {
-      .case-title { font-size: var(--fs-24); }
+      .case-title { font-size: var(--fs-h3); }
     }
     .case-desc {
       grid-column: 2;
       grid-row: 2;
-      font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       letter-spacing: 0.02em;
       color: var(--meta-color);
       line-height: var(--lh-body);
@@ -428,8 +411,7 @@
     }
 
     .contact-heading {
-      font-family: var(--font-heading);
-      font-size: var(--fs-32);
+      font-size: var(--fs-h3);
       font-weight: 400;
       font-style: italic;
       letter-spacing: -.0125em;
@@ -441,21 +423,19 @@
     }
     .contact-lead {
       color: var(--meta-color);
-      font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       margin-bottom: var(--space-4);
     }
 
     .form { display: flex; flex-direction: column; gap: var(--space-2); }
     .field { display: flex; flex-direction: column; gap: var(--space-1); }
     .field-label {
-      font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       color: var(--meta-color);
     }
     .field-input, .field-textarea {
-      font-family: var(--font-body);
-      font-size: var(--fs-16);
+      font-family: var(--font-sans);
+      font-size: var(--fs-base);
       color: var(--text-color);
       background: var(--gray05);
       border: 1px solid var(--hairline-color);
@@ -472,7 +452,7 @@
 
     .form-submit {
       font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       padding: var(--space-1) var(--space-2);
       background: var(--ink-surface);
       color: var(--on-ink);
@@ -488,8 +468,7 @@
 
     .contact-links { margin-top: var(--space-4); }
     .cl-label {
-      font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       color: var(--meta-color);
       margin-bottom: var(--space-2);
     }
@@ -499,8 +478,7 @@
       width: 100%;
     }
     .cl-table td {
-      font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       padding-block: var(--space-1);
       border-top: 1px solid var(--hairline-color);
       vertical-align: middle;
@@ -514,8 +492,7 @@
       align-items: center;
       gap: var(--space-1);
       margin-top: var(--space-2);
-      font-family: var(--font-sans);
-      font-size: var(--fs-16);
+      font-size: var(--fs-base);
       color: var(--meta-color);
     }
     .avail-dot {

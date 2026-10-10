@@ -16,7 +16,7 @@
   -webkit-backdrop-filter: blur(12px) saturate(140%);
   backdrop-filter: blur(12px) saturate(140%);
   font-family: var(--font-sans);
-  font-size: var(--fs-16);
+  font-size: var(--fs-base);
   font-weight: 400;
   line-height: var(--lh-heading);
   opacity: 0;
@@ -132,7 +132,7 @@ body.floating-nav-always {
     width: calc(100vw - 32px);
     min-height: 56px;
     border-radius: var(--radius-m);
-    font-size: var(--fs-16);
+    font-size: var(--fs-base);
   }
 
   .floating-portfolio-nav__brand {

@@ -35,32 +35,21 @@
   --wash-veil: hsla(var(--gray-hue), 10%, 98%, .56);  /* fades imagery into the wash */
   --shadow-logo: 0 2px 8px hsla(0, 0%, 0%, .1), 0 1px 2px hsla(0, 0%, 0%, .06);
 
-  /* ─── Fonts ─── */
-  --font-sans: 'Instrument Sans', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Instrument Serif', Georgia, serif;  /* display and italic accents */
-  --font-body: var(--font-sans);
+  /* ─── Font ─── */
+  --font-sans: 'Instrument Sans', system-ui, -apple-system, sans-serif;  /* the only typeface */
 
-  /* ─── Type scale (rem). 4px steps up to 24px, 8px steps above ─── */
-  --fs-12: .75rem;   /* labels, captions, tags */
-  --fs-16: 1rem;     /* body, UI */
-  --fs-20: 1.25rem;  /* large body, card titles */
-  --fs-24: 1.5rem;
-  --fs-32: 2rem;
-  --fs-40: 2.5rem;
-  --fs-48: 3rem;
-  --fs-56: 3.5rem;
-  --fs-64: 4rem;
-  --fs-80: 5rem;
+  /* ─── Type scale ─── */
+  --fs-h1: clamp(2.5rem, 6vw, 4rem);      /* page titles, 40 to 64px */
+  --fs-h2: clamp(2rem, 4.5vw, 3rem);      /* statements, big numbers, 32 to 48px */
+  --fs-h3: clamp(1.5rem, 3vw, 2rem);      /* section headings, 24 to 32px */
+  --fs-large: 1.25rem;                    /* ledes, prominent lists, 20px */
+  --fs-base: 1rem;                        /* body and UI, 16px */
+  --fs-small: .75rem;                     /* labels, captions, tags, 12px */
 
-  --fs-small: var(--fs-12);
-  --fs-body: clamp(1rem, 2.75vw, 1.25rem);
-  --fs-heading: clamp(1.5rem, 3vw, 2rem);
-  --fs-display: clamp(3rem, 7.5vw, 5rem);
-
-  /* ─── Line heights: only these three ─── */
-  --lh-heading: 1.1;
-  --lh-ui: 1.2;
-  --lh-body: 1.5;
+  /* ─── Line heights ─── */
+  --lh-heading: 1.1;  /* h1, h2 */
+  --lh-ui: 1.2;       /* h3, single line UI */
+  --lh-body: 1.5;     /* large, base, small */
 
   /* ─── Spacing: 8px grid ─── */
   --space-1: .5rem;   /*   8px */

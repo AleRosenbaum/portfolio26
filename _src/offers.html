@@ -35,7 +35,7 @@
   <meta name="twitter:image:alt" content="Two phone screens showing the structured offer and counter-offer experience" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/tokens.css" />
   <link rel="stylesheet" href="/sticky-header.css" />
   <script src="/sticky-header.js" defer></script>
@@ -47,36 +47,32 @@
    ============================================================ */
 
 body, .body {
-  font-family: var(--font-body);
-  font-size: var(--fs-body);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
   line-height: var(--lh-body);
   color: var(--text-color);
   background: var(--wash-color);
   font-feature-settings: "ss02" 1;
 }
 
-/* Display — Instrument Serif italic, only on big editorial moments */
+/* Display: page title */
 .display, .display-italic {
-  font-family: var(--font-heading);
   font-style: italic;
-  font-size: var(--fs-display);
+  font-size: var(--fs-h1);
   font-weight: 400;
   letter-spacing: -.03em;
   line-height: var(--lh-heading);
   text-wrap: balance;
 }
 
-/* Intro xxl — sans body with serif italic em — the signature hybrid */
+/* Intro xxl: large statement with italic emphasis */
 .intro-xxl {
-  font-family: var(--font-sans);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: var(--fs-h2);
   font-weight: 400;
   line-height: var(--lh-ui);
   text-wrap: pretty;
 }
-.intro-xxl em,
-.intro-xxl .serif-em {
-  font-family: var(--font-heading);
+.intro-xxl em {
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0;
@@ -84,48 +80,41 @@ body, .body {
 
 /* H1 — narrow editorial, e.g. contact heading */
 h1, .h1 {
-  font-family: var(--font-heading);
-  font-size: var(--fs-32);
+  font-size: var(--fs-h3);
   font-weight: 400;
   letter-spacing: -.0125em;
   line-height: var(--lh-heading);
   text-wrap: balance;
 }
 
-/* H2 base — Instrument Serif (matches home page base h2) */
+/* H2 base */
 h2, .h2 {
-  font-family: var(--font-heading);
-  font-size: var(--fs-20);
+  font-size: var(--fs-large);
   font-weight: 400;
   line-height: var(--lh-ui);
 }
 
-/* Mixed heading — sans base with serif-italic <em> (the case-study pattern:
-   .research-heading / .phase-title / .reflection-heading / .challenge-stat) */
+/* Section heading with italic <em> emphasis */
 .heading-mixed {
-  font-family: var(--font-sans);
-  font-size: var(--fs-heading);
+  font-size: var(--fs-h3);
   font-weight: 400;
   letter-spacing: -.015em;
   line-height: var(--lh-ui);
 }
 .heading-mixed em, h2 em, .h2 em {
-  font-family: var(--font-heading);
   font-style: italic;
   font-weight: 400;
 }
 
 /* H3 — meta heading, muted */
 h3, .h3 {
-  font-family: var(--font-sans);
-  font-size: var(--fs-16);
+  font-size: var(--fs-base);
   color: var(--meta-color);
   font-weight: 400;
 }
 
 /* Section label — uppercase, orange */
 .label {
-  font-family: var(--font-sans);
   font-size: var(--fs-small);
   color: var(--site-color);
   font-weight: 500;
@@ -133,17 +122,15 @@ h3, .h3 {
   text-transform: uppercase;
 }
 
-/* Body paragraph (serif) */
+/* Body paragraph */
 p, .p {
-  font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--fs-base);
   line-height: var(--lh-body);
   color: var(--text-color);
 }
 
-/* Sans body (case study reading copy) */
+/* Case study reading copy */
 .body-sans {
-  font-family: var(--font-sans);
   font-size: var(--fs-small);
   color: var(--meta-color);
   line-height: var(--lh-body);
@@ -151,14 +138,12 @@ p, .p {
 
 /* Meta / caption */
 .meta, .caption, small {
-  font-family: var(--font-sans);
   font-size: var(--fs-small);
   color: var(--meta-color);
 }
 
-.sans { font-family: var(--font-sans); }
-.serif { font-family: var(--font-body); }
-.serif-italic { font-family: var(--font-heading); font-style: italic; font-weight: 400; }
+.sans { }
+.italic { font-style: italic; }
 
 /* Inline mark — orange underline accent, applied to one or two key words */
 .mark {
@@ -174,7 +159,6 @@ blockquote {
   padding-left: var(--space-2);
   margin-block: var(--space-3);
   font-style: italic;
-  font-family: var(--font-body);
   position: relative;
 }
 blockquote::before {
@@ -215,7 +199,6 @@ hr, .infinity-rule {
   position: relative;
 }
 hr::after, .infinity-rule::after {
-  font-family: var(--font-heading);
   content: "∞";
   background: var(--wash-color);
   padding-inline: var(--space-1);
@@ -234,19 +217,19 @@ hr::after, .infinity-rule::after {
     @media (max-width: 640px) {
       .stat-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
       .statement-pad { padding-top: 6rem !important; padding-bottom: 6rem !important; }
-      .results-title span, .results-title em { font-size: clamp(1.5rem, 8vw, 2rem) !important; letter-spacing: -0.4px !important; }
+      .results-title span, .results-title em { font-size: var(--fs-h3) !important; letter-spacing: -0.4px !important; }
     }
   </style>
 </head>
 <body>
 
-<div data-screen-label="Case study" style="font-family: var(--font-sans); color: var(--text-color); background: var(--wash-color); min-height: 100vh; overflow-x: hidden;">
+<div data-screen-label="Case study" style="color: var(--text-color); background: var(--wash-color); min-height: 100vh; overflow-x: hidden;">
 
   <!-- HEADER -->
   <header data-screen-label="Header" style="max-width: 960px; margin: 0 auto; padding: 7rem 1.5rem 5rem 1.5rem; width: 100%; padding-top: 4rem; padding-bottom: 0">
     
     <h1 class="intro-xxl" data-reveal="up" style="margin: 0 0 2rem 0; max-width: 776px">From <em>silence</em> to structured offers</h1>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 3rem 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 3rem 0; text-wrap: pretty;">
       Unresponsive behaviour was costing Marktplaats 7.5&nbsp;million failed connections a year, and its reputation with them. This is how research on why conversations die became a structured offer flow that filters noise and closes deals.
     </p>
     <div data-reveal="up" style="display: grid; gap: .5rem;">
@@ -267,9 +250,9 @@ hr::after, .infinity-rule::after {
 
   <!-- CONTEXT -->
   <section data-screen-label="Context and problem" style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 6rem 1.5rem; padding-top: 3rem; padding-bottom: 3rem">
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       Marktplaats is the Netherlands' largest classifieds marketplace. Deals start as chat conversations, and an alarming share of them simply died. Buyers ghosted sellers, sellers ignored buyers, and both sides blamed the platform.
-    </p><p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;"><u>
+    </p><p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;"><u>
       As the Senior Product Designer on the Interactions domain, I led the design track end to end:</u> I shaped the track strategy, coordinated the research with our two researchers, drove the product strategy alongside the PM and data analyst, and designed the final solution. What follows is that work, from the first behavioural signals to the shipped flow.
     </p>
     
@@ -277,23 +260,23 @@ hr::after, .infinity-rule::after {
 
   <!-- INLINE STATEMENT -->
   <div data-reveal="up" style="max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem; padding-top: 8px; padding-bottom: 8px">
-    <div class="heading-mixed" style="font-size: clamp(2rem, 4.5vw, 3rem); text-wrap: balance; text-align: left">People come to Marktplaats for the <em>haggle</em>. Yet every year, 7.5&nbsp;million conversations <em>end in silence.</em></div>
+    <div class="heading-mixed" style="font-size: var(--fs-h2); text-wrap: balance; text-align: left">People come to Marktplaats for the <em>haggle</em>. Yet every year, 7.5&nbsp;million conversations <em>end in silence.</em></div>
   </div>
 
   <section style="max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 6rem 1.5rem;">
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
-      Behavioural analysis of Q1&nbsp;2025 chat data sized the damage. This wasn't just a pain point: it was a competitive risk. The Interactions domain prioritised it for 2025, and my track owned the answer: understand <em class="serif-italic">why</em> people stop responding, then redesign negotiation so they don't.
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+      Behavioural analysis of Q1&nbsp;2025 chat data sized the damage. This wasn't just a pain point: it was a competitive risk. The Interactions domain prioritised it for 2025, and my track owned the answer: understand <em class="italic">why</em> people stop responding, then redesign negotiation so they don't.
     </p>
 
     <div class="stat-grid" data-reveal="up" data-screen-label="Problem stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 2.5rem; margin: 3.5rem 0 0 0;">
       <div>
-        <div class="serif-italic" data-stat-num="" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading);">7.5M</div>
+        <div class="italic" data-stat-num="" style="font-size: var(--fs-h2); line-height: var(--lh-heading);">7.5M</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">connections lost to unresponsiveness per year</div>
       </div>
       
       
       <div>
-        <div class="serif-italic" data-stat-num="" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading);">31%</div>
+        <div class="italic" data-stat-num="" style="font-size: var(--fs-h2); line-height: var(--lh-heading);">31%</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">of frustrated users say they leave for competitors</div>
       </div>
     </div>
@@ -315,29 +298,29 @@ hr::after, .infinity-rule::after {
   <!-- RESEARCH -->
   <section data-screen-label="Research and discovery" style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Research</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;">Mixed methods, <em>one question</em>: why do users go silent?</h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">Mixed methods, <em>one question</em>: why do users go silent?</h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       I coordinated a mixed-methods deep-dive with our research team in March 2025, triangulating what users do with what they say: behavioural analysis of <span class="mark">10M+ chats</span> from Q1, surveys of <span class="mark">1,077 buyers</span> intercepted on listings and 633 sellers on My&nbsp;Ads, and a 700-user brand tracker panel benchmarking Marktplaats against Vinted and Facebook Marketplace.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       The early chat stage turned out to be the most vulnerable. And counter to the team's intuition, <span class="mark">buyers were the bigger risk</span>: sellers risk losing a deal if they don't reply, buyers feel no such pressure.
     </p>
 
     <div class="stat-grid" data-reveal="up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 3.5rem 0;">
       <div>
-        <div class="serif-italic" data-stat-num="" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading);">25%</div>
+        <div class="italic" data-stat-num="" style="font-size: var(--fs-h2); line-height: var(--lh-heading);">25%</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body);">of conversations never get a first seller reply: seller silence</div>
       </div>
       <div>
-        <div class="serif-italic" data-stat-num="" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading);">60%</div>
+        <div class="italic" data-stat-num="" style="font-size: var(--fs-h2); line-height: var(--lh-heading);">60%</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body);">die because the buyer never sends a second message: buyer silence</div>
       </div>
     </div>
 
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
-      Three drivers explained the silence, sized and ranked. <em class="serif-italic">The price perception gap:</em> 600K chats a month involve lowballing, 51% of sellers stop responding after a low offer, and sellers are twice as likely as buyers to go silent over price. <em class="serif-italic">Tone and rudeness:</em> 120K chats a month contain offensive language, the top reason sellers disengage, and why Marktplaats was rated the rudest platform against Vinted and Facebook. <em class="serif-italic">Slow responses:</em> 94% of users expect a reply within 12 hours; past that, reply rates drop 30%.
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+      Three drivers explained the silence, sized and ranked. <em class="italic">The price perception gap:</em> 600K chats a month involve lowballing, 51% of sellers stop responding after a low offer, and sellers are twice as likely as buyers to go silent over price. <em class="italic">Tone and rudeness:</em> 120K chats a month contain offensive language, the top reason sellers disengage, and why Marktplaats was rated the rudest platform against Vinted and Facebook. <em class="italic">Slow responses:</em> 94% of users expect a reply within 12 hours; past that, reply rates drop 30%.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       Sizing each driver against the 7.5M opportunity made the priority obvious: fixing the price perception gap alone was worth <span class="mark">+1M connections and +150K transactions a year</span>, roughly eight times the impact of speeding up replies.
     </p>
 
@@ -359,7 +342,7 @@ hr::after, .infinity-rule::after {
           </div>
           <div style="position: absolute; inset: 0; background: var(--wash-veil); pointer-events: none;"></div>
           <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2.5rem; pointer-events: none;">
-            <div class="serif-italic" style="font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: var(--lh-ui); text-wrap: balance;">"I moved to Vinted because the sellers care enough to reply to my questions."</div>
+            <div class="italic" style="font-size: var(--fs-h3); line-height: var(--lh-ui); text-wrap: balance;">"I moved to Vinted because the sellers care enough to reply to my questions."</div>
             <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: 1rem;">Buyer, on unresponsive behaviour</div>
           </div>
         </div>
@@ -371,16 +354,16 @@ hr::after, .infinity-rule::after {
   <!-- STATEMENT -->
   <div style="background: var(--white);">
     <div class="statement-pad" data-reveal="up" style="max-width: 816px; margin: 0 auto; padding: 12rem 1.5rem;">
-      <div class="heading-mixed" style="font-size: clamp(2rem, 4.5vw, 3rem); text-wrap: balance; text-align: center;">The flood of low-effort contact <em>was</em> the unresponsiveness problem.</div>
+      <div class="heading-mixed" style="font-size: var(--fs-h2); text-wrap: balance; text-align: center;">The flood of low-effort contact <em>was</em> the unresponsiveness problem.</div>
     </div>
   </div>
 
   <!-- REFRAME -->
   <section data-screen-label="Problem definition" style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       For years the platform had optimised for lead volume: frictionless contact buttons, canned one-tap messages, unrestricted public bids. The research reframed that belief. Offers via chat were messy and easy to ignore, bids carried no commitment, and sellers received unclear, unserious proposals.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       Success would not be more leads. It would be a higher share of conversations that <span class="mark">connect</span>, a reply from both sides, and convert into on-platform transactions. We distilled it into one question.
     </p>
   </section>
@@ -399,15 +382,15 @@ hr::after, .infinity-rule::after {
   <div style="background: var(--white);">
     <div class="statement-pad" data-reveal="up" style="max-width: 816px; margin: 0 auto; padding: 12rem 1.5rem; text-align: center;">
       
-      <div class="heading-mixed" style="font-size: clamp(2rem, 4.5vw, 3rem); text-wrap: balance;">how might we improve lead quality by facilitating <em>efficient negotiations</em>?</div>
+      <div class="heading-mixed" style="font-size: var(--fs-h2); text-wrap: balance;">how might we improve lead quality by facilitating <em>efficient negotiations</em>?</div>
     </div>
   </div>
 
   <!-- PROCESS -->
   <section data-screen-label="Design process" style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 4rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Process</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;">Diverge wide, <em>prioritise hard</em></h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">Diverge wide, <em>prioritise hard</em></h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       I facilitated a cross-functional ideation workshop in Miro around the HMW: design, product, data and engineering generating IF/THEN/BECAUSE hypotheses, then mapping every idea on an impact × effort matrix. Mandatory minimum bids, lowball feedback and reject/counter actions landed in the high-impact, low-effort quadrant.
     </p>
   </section>
@@ -427,13 +410,13 @@ hr::after, .infinity-rule::after {
 
   <section style="max-width: 680px; margin: 0 auto; padding: 5rem 1.5rem 0 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Decisions</div>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
-      <span class="mark">Every major call was settled with an experiment, not an opinion</span>, and some told us we were wrong. We assumed hiding public bids would reduce manipulation; the experiment backfired. Hiding them pushed buyers into unstructured chat, causing <span class="mark">+14.1% lowball buyers</span> and +16.6% lowball leads, while public bids help sellers earn 5 to 6% more. The lesson: <span class="mark">don't hide negotiation, <em class="serif-italic">structure it</em></span>.
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+      <span class="mark">Every major call was settled with an experiment, not an opinion</span>, and some told us we were wrong. We assumed hiding public bids would reduce manipulation; the experiment backfired. Hiding them pushed buyers into unstructured chat, causing <span class="mark">+14.1% lowball buyers</span> and +16.6% lowball leads, while public bids help sellers earn 5 to 6% more. The lesson: <span class="mark">don't hide negotiation, <em class="italic">structure it</em></span>.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
-      Transaction data showed 80% of deals close between −30% and +5% of asking price, so we guide both sides: a minimum bid pre-filled at 60% of asking on listing creation, and a nudge for buyers whose offer falls below the acceptable range. And friction proved acceptable, if it filters noise: making canned responses slightly less automatic reduced total leads with <em class="serif-italic">no</em> significant impact on connected leads or payments. The drop-off was entirely low-intent traffic. That experiment became the strategic foundation for the whole redesign.
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+      Transaction data showed 80% of deals close between −30% and +5% of asking price, so we guide both sides: a minimum bid pre-filled at 60% of asking on listing creation, and a nudge for buyers whose offer falls below the acceptable range. And friction proved acceptable, if it filters noise: making canned responses slightly less automatic reduced total leads with <em class="italic">no</em> significant impact on connected leads or payments. The drop-off was entirely low-intent traffic. That experiment became the strategic foundation for the whole redesign.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 5rem 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 5rem 0; text-wrap: pretty;">
       The direction that emerged: a <span class="mark">bounded negotiation flow</span> where buyers customise an offer within seller-set constraints. Price, delivery method and an optional message travel together as one structured, trackable proposal instead of a loose chat thread.
     </p>
   </section>
@@ -448,12 +431,12 @@ hr::after, .infinity-rule::after {
   <!-- VALIDATION -->
   <section data-screen-label="Testing and validation" style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Validation</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;">Twelve interviews, <em>2,385 survey answers</em></h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">Twelve interviews, <em>2,385 survey answers</em></h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       We tested interactive buyer and seller prototypes of the structured offer flow in contextual remote interviews with 12 active traders via UserZoom, and quantified bidding mindsets with surveys of 1,672 buyers and 713 sellers in May 2025.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
-      The mindset survey killed the idea of a single "bidder persona". The same person acts as a <em class="serif-italic">fair negotiator</em> (77% of buyers) in one trade and an <em class="serif-italic">opportunistic bidder</em> (42%) in the next. On the seller side, 81% identify as flexible negotiators, yet 66% also enjoy auction-style bidding. <span class="mark">The flow had to serve mindsets, not personas.</span>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+      The mindset survey killed the idea of a single "bidder persona". The same person acts as a <em class="italic">fair negotiator</em> (77% of buyers) in one trade and an <em class="italic">opportunistic bidder</em> (42%) in the next. On the seller side, 81% identify as flexible negotiators, yet 66% also enjoy auction-style bidding. <span class="mark">The flow had to serve mindsets, not personas.</span>
     </p>
   </section>
 
@@ -478,16 +461,16 @@ hr::after, .infinity-rule::after {
   <!-- TESTING QUOTE -->
   <div style="background: var(--white);">
     <div class="statement-pad" data-reveal="up" style="max-width: 816px; margin: 0 auto; padding: 12rem 1.5rem; text-align: center;">
-      <div class="serif-italic" style="font-size: clamp(2rem, 4.5vw, 3rem); line-height: var(--lh-ui); text-wrap: balance;">"It feels more serious, like you're making a proposal you need to stand behind."</div>
+      <div class="italic" style="font-size: var(--fs-h2); line-height: var(--lh-ui); text-wrap: balance;">"It feels more serious, like you're making a proposal you need to stand behind."</div>
       <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: 1.5rem;">Buyer, testing the structured offer prototype</div>
     </div>
   </div>
 
   <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       Testing reshaped the flow in four ways. The counter-offer, hidden behind "Reject", became a first-class action next to Accept and Decline. Price guidance was rewritten: "up to 40% off" read as an invitation to lowball, so it became neutral acceptable-range feedback. Demand signals returned: buyers missed the popularity cues of public bids, so offer counts and interest indicators were added to the structured flow.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       And costs were clarified: greyed-out shipping options and an unexplained "service cost" confused users, so fees were renamed and disclosed earlier, and sellers got an offer history to track negotiations.
     </p>
   </section>
@@ -495,7 +478,7 @@ hr::after, .infinity-rule::after {
   <!-- SOLUTION -->
   <section data-screen-label="Final solution" style="max-width: 680px; margin: 0 auto; padding: 8rem 1.5rem 4rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">The solution</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;">One offer. Total clarity. <em>A path to payment.</em></h2>
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">One offer. Total clarity. <em>A path to payment.</em></h2>
     <div style="display: flex; flex-direction: column; gap: 1rem; margin: 2.5rem 0 3rem 0;">
       <div data-reveal="up" style="width: 100%;">
         <img src="offers/offer-card-buyer.svg" alt="Buyer offer card · Proposed with Shipping, 20 euros" style="width: 100%; display: block">
@@ -504,10 +487,10 @@ hr::after, .infinity-rule::after {
         <img src="offers/offer-card-seller.svg" alt="Seller's counter-offer card · 25 euros, with Go to payment button" style="width: 100%; display: block">
       </div>
     </div>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       The Structured Payment Offer flow <span class="mark">moves the deal out of ambiguous chat and into a clear, committed sequence</span>. The platform's rule of thumb became simple: if you like the price, <span class="mark">buy now</span>. If the price isn't right, <span class="mark">negotiate</span>. If the listing is unclear, <span class="mark">ask</span>.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       Buyers compose price, delivery method and an optional message in one step, with the total cost visible before committing. Sellers receive every offer with full deal terms and three one-click decisions: Accept, Counter, or Decline. An accepted offer becomes a ready-to-pay checkout, eliminating the back-and-forth about bank details and shipping that kills deals today.
     </p>
   </section>
@@ -532,37 +515,37 @@ hr::after, .infinity-rule::after {
   <!-- RESULTS -->
   <section data-screen-label="Results and impact" style="max-width: 680px; margin: 0 auto; padding: 8rem 1.5rem 4rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Results</div>
-    <h2 class="heading-mixed results-title" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;"><span style="font-size: 48px; letter-spacing: -0.78px; text-align: center">Fewer leads. Same deals.&nbsp;<br></span><em style="font-size: 48px; letter-spacing: -0.78px; text-align: center;">Proof the leads we removed were the problem.</em><br></h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <h2 class="heading-mixed results-title" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;"><span style="font-size: var(--fs-h2); letter-spacing: -0.78px; text-align: center">Fewer leads. Same deals.&nbsp;<br></span><em style="font-size: var(--fs-h2); letter-spacing: -0.78px; text-align: center;">Proof the leads we removed were the problem.</em><br></h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       Shipped experiments from the track have already moved the numbers.
     </p>
 
     <div class="stat-grid" data-reveal="up" data-screen-label="Results stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 2.5rem; margin: 3.5rem 0 0 0;">
       <div>
-        <div class="serif-italic" data-stat-num="" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading);">−22%</div>
+        <div class="italic" data-stat-num="" style="font-size: var(--fs-h2); line-height: var(--lh-heading);">−22%</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">messages containing a low offer after in-flow lowball feedback</div>
       </div>
       <div>
-        <div class="serif-italic" data-stat-num="" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading);">−28%</div>
+        <div class="italic" data-stat-num="" style="font-size: var(--fs-h2); line-height: var(--lh-heading);">−28%</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">lowball offers when buyers are guided on acceptable ranges, without losing the buyer</div>
       </div>
       <div>
-        <div class="serif-italic" data-stat-num="" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading);">+50%</div>
+        <div class="italic" data-stat-num="" style="font-size: var(--fs-h2); line-height: var(--lh-heading);">+50%</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">adoption of minimum bids when nudged at listing creation</div>
       </div>
       <div>
-        <div class="serif-italic" data-stat-num="" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading);">7h</div>
+        <div class="italic" data-stat-num="" style="font-size: var(--fs-h2); line-height: var(--lh-heading);">7h</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">faster responses from 45K sellers reached by notification reminders</div>
       </div>
     </div>
   </section>
 
   <section style="max-width: 680px; margin: 0 auto; padding: 5rem 1.5rem 6rem 1.5rem;">
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       The full structured offer rollout carries a validated projection: restricting offers to the acceptable range lifts lead-to-connection from 54% to 57.5%, worth <span class="mark">+1M connected conversations and +150K transactions a year</span>.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
-      Just as important is what <em class="serif-italic">didn't</em> move: adding friction to low-effort contact left connected leads and total payments statistically unchanged.
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+      Just as important is what <em class="italic">didn't</em> move: adding friction to low-effort contact left connected leads and total payments statistically unchanged.
     </p>
   </section>
 
@@ -572,8 +555,8 @@ hr::after, .infinity-rule::after {
   <!-- REFLECTION -->
   <section data-screen-label="Learnings" style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 8rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Reflection</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;">What I'd do <em>differently</em></h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">What I'd do differently: <span class="mark">test removal before designing around it</span>. We initially treated public bidding as expendable; the hide-bids experiment proved buyers reroute into worse behaviour. Cheap experiments on assumptions would have saved a full design cycle. Backend constraints — when the deal snapshot is taken, how shipping carriers integrate into listing creation — reshaped the design late and should have been mapped in discovery, not surfaced during handoff.</p>
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">What I'd do <em>differently</em></h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">What I'd do differently: <span class="mark">test removal before designing around it</span>. We initially treated public bidding as expendable; the hide-bids experiment proved buyers reroute into worse behaviour. Cheap experiments on assumptions would have saved a full design cycle. Backend constraints — when the deal snapshot is taken, how shipping carriers integrate into listing creation — reshaped the design late and should have been mapped in discovery, not surfaced during handoff.</p>
     
     
   </section>

@@ -18,7 +18,7 @@
     'brand actions';
   grid-template-columns: minmax(0, 1fr) auto;
   gap: clamp(3rem, 6vw, 5rem) 3rem;
-  width: min(680px, calc(100% - 48px));
+  width: min(var(--column), calc(100% - 2 * var(--gutter)));
   min-height: inherit;
   margin: 0 auto;
   padding: clamp(4rem, 7vw, 6rem) 0;
@@ -146,7 +146,7 @@
       'actions';
     grid-template-columns: 1fr;
     gap: 2.5rem;
-    width: calc(100% - 48px);
+    width: calc(100% - 2 * var(--gutter));
     padding: 4rem 0 4.5rem;
   }
 

@@ -111,10 +111,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  max-width: var(--container-max);
+  max-width: var(--column-box);
   width: 100%;
   margin: 0 auto;
-  padding: var(--space-3) var(--space-3) 0;
+  padding: var(--space-3) var(--gutter) 0;
 }
 .gate-nav a { font-size: var(--fs-base); color: inherit; text-decoration: none; }
 .gate-nav a:hover { color: var(--site-color); }

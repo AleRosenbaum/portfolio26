@@ -157,7 +157,7 @@
   .site-footer__statement {
     max-width: 15ch;
     margin-bottom: 2.5rem;
-    font-size: var(--fs-h2);
+    font-size: var(--fs-h2); line-height: var(--lh-heading);
   }
 
   .site-footer__break {

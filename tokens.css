@@ -83,3 +83,8 @@
   --reading-width: 680px;    /* case study reading column */
   --container-max: 68rem;    /* wide case imagery */
 }
+
+/* ─── Headings: the tag sets the size ─── */
+h1 { font-size: var(--fs-h1); line-height: var(--lh-heading); font-weight: var(--fw-regular); }
+h2 { font-size: var(--fs-h2); line-height: var(--lh-heading); font-weight: var(--fw-regular); }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-ui); font-weight: var(--fw-regular); }

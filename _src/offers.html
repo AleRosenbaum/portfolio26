@@ -66,9 +66,6 @@ body, .body {
 
 /* Intro xxl: large statement with bold emphasis */
 .intro-xxl {
-  font-size: var(--fs-h2);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-ui);
   text-wrap: pretty;
 }
 .intro-xxl em {
@@ -76,39 +73,16 @@ body, .body {
   letter-spacing: 0;
 }
 
-/* H1 — narrow editorial, e.g. contact heading */
-h1, .h1 {
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-regular);
-  letter-spacing: -.0125em;
-  line-height: var(--lh-heading);
-  text-wrap: balance;
-}
-
-/* H2 base */
-h2, .h2 {
-  font-size: var(--fs-large);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-ui);
-}
+h1, h2 { text-wrap: balance; }
 
 /* Section heading with bold <em> emphasis */
 .heading-mixed {
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-regular);
   letter-spacing: -.015em;
-  line-height: var(--lh-ui);
 }
 .heading-mixed em, h2 em, .h2 em {
   font-weight: var(--fw-bold);
 }
 
-/* H3 — meta heading, muted */
-h3, .h3 {
-  font-size: var(--fs-base);
-  color: var(--meta-color);
-  font-weight: var(--fw-regular);
-}
 
 /* Section label — uppercase, orange */
 .label {
@@ -216,7 +190,6 @@ hr::after, .infinity-rule::after {
     @media (max-width: 640px) {
       .stat-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
       .statement-pad { padding-top: 6rem !important; padding-bottom: 6rem !important; }
-      .results-title span, .results-title em { font-size: var(--fs-h3) !important; letter-spacing: -0.4px !important; }
     }
   </style>
 </head>
@@ -259,7 +232,7 @@ hr::after, .infinity-rule::after {
 
   <!-- INLINE STATEMENT -->
   <div data-reveal="up" style="max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem; padding-top: 8px; padding-bottom: 8px">
-    <div class="heading-mixed" style="font-size: var(--fs-h2); text-wrap: balance; text-align: left">People come to Marktplaats for the <em>haggle</em>. Yet every year, 7.5&nbsp;million conversations <em>end in silence.</em></div>
+    <div class="heading-mixed" style="font-size: var(--fs-h2); line-height: var(--lh-heading); text-wrap: balance; text-align: left">People come to Marktplaats for the <em>haggle</em>. Yet every year, 7.5&nbsp;million conversations <em>end in silence.</em></div>
   </div>
 
   <section style="max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 6rem 1.5rem;">
@@ -297,7 +270,7 @@ hr::after, .infinity-rule::after {
   <!-- RESEARCH -->
   <section data-screen-label="Research and discovery" style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Research</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">Mixed methods, <em>one question</em>: why do users go silent?</h2>
+    <h2 class="heading-mixed" data-reveal="up" style=" margin: 0 0 1.5rem 0;">Mixed methods, <em>one question</em>: why do users go silent?</h2>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       I coordinated a mixed-methods deep-dive with our research team in March 2025, triangulating what users do with what they say: behavioural analysis of <span class="mark">10M+ chats</span> from Q1, surveys of <span class="mark">1,077 buyers</span> intercepted on listings and 633 sellers on My&nbsp;Ads, and a 700-user brand tracker panel benchmarking Marktplaats against Vinted and Facebook Marketplace.
     </p>
@@ -353,7 +326,7 @@ hr::after, .infinity-rule::after {
   <!-- STATEMENT -->
   <div style="background: var(--white);">
     <div class="statement-pad" data-reveal="up" style="max-width: 816px; margin: 0 auto; padding: 12rem 1.5rem;">
-      <div class="heading-mixed" style="font-size: var(--fs-h2); text-wrap: balance; text-align: center;">The flood of low-effort contact <em>was</em> the unresponsiveness problem.</div>
+      <div class="heading-mixed" style="font-size: var(--fs-h2); line-height: var(--lh-heading); text-wrap: balance; text-align: center;">The flood of low-effort contact <em>was</em> the unresponsiveness problem.</div>
     </div>
   </div>
 
@@ -381,14 +354,14 @@ hr::after, .infinity-rule::after {
   <div style="background: var(--white);">
     <div class="statement-pad" data-reveal="up" style="max-width: 816px; margin: 0 auto; padding: 12rem 1.5rem; text-align: center;">
       
-      <div class="heading-mixed" style="font-size: var(--fs-h2); text-wrap: balance;">how might we improve lead quality by facilitating <em>efficient negotiations</em>?</div>
+      <div class="heading-mixed" style="font-size: var(--fs-h2); line-height: var(--lh-heading); text-wrap: balance;">how might we improve lead quality by facilitating <em>efficient negotiations</em>?</div>
     </div>
   </div>
 
   <!-- PROCESS -->
   <section data-screen-label="Design process" style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 4rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Process</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">Diverge wide, <em>prioritise hard</em></h2>
+    <h2 class="heading-mixed" data-reveal="up" style=" margin: 0 0 1.5rem 0;">Diverge wide, <em>prioritise hard</em></h2>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       I facilitated a cross-functional ideation workshop in Miro around the HMW: design, product, data and engineering generating IF/THEN/BECAUSE hypotheses, then mapping every idea on an impact × effort matrix. Mandatory minimum bids, lowball feedback and reject/counter actions landed in the high-impact, low-effort quadrant.
     </p>
@@ -430,7 +403,7 @@ hr::after, .infinity-rule::after {
   <!-- VALIDATION -->
   <section data-screen-label="Testing and validation" style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Validation</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">Twelve interviews, <em>2,385 survey answers</em></h2>
+    <h2 class="heading-mixed" data-reveal="up" style=" margin: 0 0 1.5rem 0;">Twelve interviews, <em>2,385 survey answers</em></h2>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       We tested interactive buyer and seller prototypes of the structured offer flow in contextual remote interviews with 12 active traders via UserZoom, and quantified bidding mindsets with surveys of 1,672 buyers and 713 sellers in May 2025.
     </p>
@@ -477,7 +450,7 @@ hr::after, .infinity-rule::after {
   <!-- SOLUTION -->
   <section data-screen-label="Final solution" style="max-width: 680px; margin: 0 auto; padding: 8rem 1.5rem 4rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">The solution</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">One offer. Total clarity. <em>A path to payment.</em></h2>
+    <h2 class="heading-mixed" data-reveal="up" style=" margin: 0 0 1.5rem 0;">One offer. Total clarity. <em>A path to payment.</em></h2>
     <div style="display: flex; flex-direction: column; gap: 1rem; margin: 2.5rem 0 3rem 0;">
       <div data-reveal="up" style="width: 100%;">
         <img src="offers/offer-card-buyer.svg" alt="Buyer offer card · Proposed with Shipping, 20 euros" style="width: 100%; display: block">
@@ -514,7 +487,7 @@ hr::after, .infinity-rule::after {
   <!-- RESULTS -->
   <section data-screen-label="Results and impact" style="max-width: 680px; margin: 0 auto; padding: 8rem 1.5rem 4rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Results</div>
-    <h2 class="heading-mixed results-title" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;"><span style="font-size: var(--fs-h2); letter-spacing: -0.78px; text-align: center">Fewer leads. Same deals.&nbsp;<br></span><em style="font-size: var(--fs-h2); letter-spacing: -0.78px; text-align: center;">Proof the leads we removed were the problem.</em><br></h2>
+    <h2 class="heading-mixed results-title" data-reveal="up" style=" margin: 0 0 1.5rem 0;"><span style="font-size: var(--fs-h2); line-height: var(--lh-heading); letter-spacing: -0.78px; text-align: center">Fewer leads. Same deals.&nbsp;<br></span><em style="font-size: var(--fs-h2); line-height: var(--lh-heading); letter-spacing: -0.78px; text-align: center;">Proof the leads we removed were the problem.</em><br></h2>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       Shipped experiments from the track have already moved the numbers.
     </p>
@@ -554,7 +527,7 @@ hr::after, .infinity-rule::after {
   <!-- REFLECTION -->
   <section data-screen-label="Learnings" style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 8rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Reflection</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">What I'd do <em>differently</em></h2>
+    <h2 class="heading-mixed" data-reveal="up" style=" margin: 0 0 1.5rem 0;">What I'd do <em>differently</em></h2>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">What I'd do differently: <span class="mark">test removal before designing around it</span>. We initially treated public bidding as expendable; the hide-bids experiment proved buyers reroute into worse behaviour. Cheap experiments on assumptions would have saved a full design cycle. Backend constraints — when the deal snapshot is taken, how shipping carriers integrate into listing creation — reshaped the design late and should have been mapped in discovery, not surfaced during handoff.</p>
     
     

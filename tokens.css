@@ -92,6 +92,17 @@
 /* Emphasis is bold, never italic or underlined */
 strong, b { font-weight: var(--fw-bold); }
 
+/* ─── Image captions: paragraph size, centered under the image, never wider than the column ─── */
+figcaption {
+  max-width: min(var(--column), 100% - 2 * var(--gutter));
+  margin: var(--space-2) auto 0;
+  color: var(--meta-color);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  text-align: center;
+  text-wrap: balance;
+}
+
 /* ─── Headings: the tag sets the size ─── */
 h1 { font-size: var(--fs-h1); line-height: var(--lh-heading); font-weight: var(--fw-regular); }
 h2 { font-size: var(--fs-h2); line-height: var(--lh-heading); font-weight: var(--fw-regular); }

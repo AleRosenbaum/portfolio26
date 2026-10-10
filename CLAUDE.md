@@ -50,6 +50,7 @@ All tokens live in `tokens.css`, linked by every page (home, case sources, Quadd
 One shared column, defined in `tokens.css`: `--measure` (680px), `--column` (defaults to `--measure`), `--gutter` (24px) and `--column-box` (a container of `--column` plus both gutters). The floating nav, the hero, the body text and the footer all line up to the column edges on every page. Text containers use `max-width: var(--column-box); margin: 0 auto; padding: 0 var(--gutter)` (or `1.5rem`, the same value).
 
 - **Home is the only wide page.** `index.html` sets `--inset` (120px desktop, 80px tablet at 64em, 24px mobile at 50em) and widens `--column` to `calc(100% - 2 * var(--inset))`, so the nav and footer follow the home edges. The contact view keeps its text at `--measure`, left aligned to the same edge.
+- Image captions are styled once, in `tokens.css`: every `<figcaption>` is paragraph size (`--fs-base`), centered text, centered under its image and never wider than the column. Do not style captions inline.
 - Case studies may break out of the column only for imagery: full-bleed hero images and `--container-max` (68rem) image grids.
 
 ## Home page sections

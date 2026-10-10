@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/tokens.css?v=76654bd0" />
+  <link rel="stylesheet" href="/tokens.css?v=8de3a28f" />
   <link rel="stylesheet" href="/sticky-header.css?v=2bc181fa" />
   <script src="/sticky-header.js?v=4e20ad31" defer></script>
   <link rel="stylesheet" href="/site-footer.css?v=a82a7406" />
@@ -349,7 +349,7 @@
       return grid;
     }
 
-    fetch('/tokens.css?v=76654bd0', { cache: 'no-store' })
+    fetch('/tokens.css?v=8de3a28f', { cache: 'no-store' })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(function (text) {
         var groups = parse(text);

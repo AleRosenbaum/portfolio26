@@ -35,7 +35,7 @@ gtag('config', 'G-VXNMWSJCZE');
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/tokens.css">
 <link rel="stylesheet" href="/sticky-header.css">
 <script src="/sticky-header.js" defer></script>
@@ -57,31 +57,29 @@ body {
 
 .intro-xxl {
   font-size: var(--fs-h2);
-  font-weight: 400;
+  font-weight: var(--fw-regular);
   line-height: var(--lh-ui);
   text-wrap: pretty;
 }
 .intro-xxl em {
-  font-style: italic;
-  font-weight: 400;
+  font-weight: var(--fw-bold);
   letter-spacing: 0;
 }
 
 .heading-mixed {
   font-size: var(--fs-h3);
-  font-weight: 400;
+  font-weight: var(--fw-regular);
   letter-spacing: -.015em;
   line-height: var(--lh-ui);
 }
 .heading-mixed em, h2 em, .h2 em {
-  font-style: italic;
-  font-weight: 400;
+  font-weight: var(--fw-bold);
 }
 
 .label {
   font-size: var(--fs-small);
   color: var(--site-color);
-  font-weight: 500;
+  font-weight: var(--fw-medium);
   letter-spacing: .04em;
   text-transform: uppercase;
 }
@@ -94,7 +92,7 @@ body {
   text-underline-offset: 4px;
 }
 
-.italic { font-style: italic; }
+.bold { font-weight: var(--fw-bold); }
 
 a {
   color: inherit;
@@ -145,7 +143,9 @@ img { display: block; max-width: 100%; height: auto; }
 [data-reveal="img"] {
   transition: transform 800ms ease-out;
 }
-</style>
+
+    em { font-style: normal; font-weight: var(--fw-bold); }
+  </style>
 </head>
 <body>
 
@@ -190,11 +190,11 @@ img { display: block; max-width: 100%; height: auto; }
 
     <div data-reveal="up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 2.5rem; margin: 3.5rem 0 0 0;">
       <div>
-        <div class="italic" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">17.3M</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">17.3M</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">large-item ads listed in 2023, avg. price &euro;230</div>
       </div>
       <div>
-        <div class="italic" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">68%</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">68%</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">of sellers default to pick-up when an item is too large to ship</div>
       </div>
     </div>
@@ -282,11 +282,11 @@ img { display: block; max-width: 100%; height: auto; }
 
     <div data-reveal="up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 3.5rem 0;">
       <div>
-        <div class="italic" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">22K</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">22K</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body);">leads sent to Brenger from in-chat banners</div>
       </div>
       <div>
-        <div class="italic" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">198</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">198</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body);">completed Brenger transactions (~1.8% conversion)</div>
       </div>
     </div>
@@ -309,7 +309,7 @@ img { display: block; max-width: 100%; height: auto; }
   <!-- VALIDATION QUOTE -->
   <div style="background: var(--white);">
     <div data-reveal="up" style="max-width: 816px; margin: 0 auto; padding: 8rem 1.5rem; text-align: center;">
-      <div class="italic" style="font-size: var(--fs-h2); line-height: var(--lh-ui); text-wrap: balance;">"I can see the convenience of large item home delivery &mdash; I just need to trust that it arrives safely."</div>
+      <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-ui); text-wrap: balance;">"I can see the convenience of large item home delivery &mdash; I just need to trust that it arrives safely."</div>
       <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: 1.5rem;">Buyer, exit survey on in-chat banner (n=1,871)</div>
     </div>
   </div>
@@ -329,7 +329,7 @@ img { display: block; max-width: 100%; height: auto; }
       The first real integration: Brenger appeared as a shipping option alongside "Self Shipping" in the payment proposal. Buyers paid for the item inside Marktplaats, then were redirected to Brenger to complete shipping details and payment. Curbside-only pricing, estimated via the Brenger API based on distance.
     </p>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
-      The split introduced friction &mdash; two payment moments, two platforms &mdash; but it validated the full transaction loop. Users could now complete an item purchase on Marktplaats <em class="italic">and</em> have it delivered, with <span class="mark">Buyer Protection</span> covering the entire trade.
+      The split introduced friction &mdash; two payment moments, two platforms &mdash; but it validated the full transaction loop. Users could now complete an item purchase on Marktplaats <em class="bold">and</em> have it delivered, with <span class="mark">Buyer Protection</span> covering the entire trade.
     </p>
   </section>
 
@@ -356,7 +356,7 @@ img { display: block; max-width: 100%; height: auto; }
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 3 &mdash; Electric Bike &#128690;</div>
     <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;"><em>Full payment</em> on Marktplaats, scheduling via <em>Brenger</em></h2>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
-      The biggest friction point removed: users paid for both item <em class="italic">and</em> shipping in a single Marktplaats checkout. Post-purchase, Brenger handled appointment scheduling. The platform could now offer better prices than going to Brenger directly, and Buyer Protection covered the entire transaction end to end.
+      The biggest friction point removed: users paid for both item <em class="bold">and</em> shipping in a single Marktplaats checkout. Post-purchase, Brenger handled appointment scheduling. The platform could now offer better prices than going to Brenger directly, and Buyer Protection covered the entire transaction end to end.
     </p>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       Curbside remained the default (72% of shipments), keeping the flow simple: distance and item dimensions determined the price. No floor-level questions, no elevator inputs. For door-to-door delivery, users could upgrade at Brenger post-purchase.
@@ -407,19 +407,19 @@ img { display: block; max-width: 100%; height: auto; }
 
     <div data-reveal="up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 2.5rem; margin: 3.5rem 0 0 0;">
       <div>
-        <div class="italic" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">300</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">300</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">weekly shipments target reached in H2 2024</div>
       </div>
       <div>
-        <div class="italic" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">&euro;500K+</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">&euro;500K+</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">projected shipping revenue in 2024, with expectations to triple in 2025</div>
       </div>
       <div>
-        <div class="italic" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">25K</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">25K</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">annual shipments target for 2025 &mdash; matching Brenger's unintegrated 2023 volume</div>
       </div>
       <div>
-        <div class="italic" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">+5%</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">+5%</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">increase in payment proposals sent in targeted categories</div>
       </div>
     </div>

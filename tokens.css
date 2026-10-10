@@ -33,10 +33,17 @@
   --glass-hover: hsla(0, 0%, 100%, .4);
   --scrim: hsla(0, 0%, 0%, .24);        /* image hover overlay */
   --wash-veil: hsla(var(--gray-hue), 10%, 98%, .56);  /* fades imagery into the wash */
+  --hairline-on-ink: hsla(0, 0%, 100%, .12);  /* dividers on dark surfaces */
+  --shadow-device: 0 24px 48px hsla(22, 89%, 29%, .2);  /* phone mockups on orange */
   --shadow-logo: 0 2px 8px hsla(0, 0%, 0%, .1), 0 1px 2px hsla(0, 0%, 0%, .06);
 
   /* ─── Font ─── */
   --font-sans: 'Instrument Sans', system-ui, -apple-system, sans-serif;  /* the only typeface */
+
+  /* ─── Font weights ─── */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;  /* emphasis; there is no italic */
 
   /* ─── Type scale ─── */
   --fs-h1: clamp(2.5rem, 6vw, 4rem);      /* page titles, 40 to 64px */

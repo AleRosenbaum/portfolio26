@@ -41,7 +41,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/tokens.css" />
   <link rel="stylesheet" href="/sticky-header.css" />
   <script src="/sticky-header.js" defer></script>
@@ -91,7 +91,7 @@
 
     h1, .h1 {
       font-size: var(--fs-h3);
-      font-weight: 400;
+      font-weight: var(--fw-regular);
       letter-spacing: -.0125em;
       line-height: var(--lh-heading);
       text-wrap: balance;
@@ -102,7 +102,7 @@
 
     h2 {
       font-size: var(--fs-large);
-      font-weight: 400;
+      font-weight: var(--fw-regular);
       line-height: var(--lh-ui);
       margin-bottom: var(--space-2);
       padding-top: var(--space-2);
@@ -111,7 +111,7 @@
     h3 {
       font-size: var(--fs-base);
       color: var(--meta-color);
-      font-weight: 400;
+      font-weight: var(--fw-regular);
     }
 
     small, .small { font-size: var(--fs-small); }
@@ -204,7 +204,7 @@
     }
     .hero-bio {
       font-size: var(--fs-h2);
-      font-weight: 500;
+      font-weight: var(--fw-medium);
       letter-spacing: -0.025em;
       line-height: var(--lh-ui);
       text-wrap: pretty;
@@ -212,7 +212,7 @@
       margin-bottom: var(--space-10);
     }
     .hero-bio a {
-      font-style: italic;
+      font-weight: var(--fw-bold);
     }
     .hero-cols {
       display: grid;
@@ -246,7 +246,7 @@
     @media (min-width: 64em) {
       .exp-list li { font-size: var(--fs-large); }
     }
-    .exp-list .exp-role { font-weight: 600; color: var(--text-color); }
+    .exp-list .exp-role { font-weight: var(--fw-bold); color: var(--text-color); }
     .exp-list .exp-place { color: var(--meta-color); }
     .exp-list .exp-tag {
       font-size: var(--fs-small);
@@ -256,7 +256,7 @@
       padding: .1em .5em;
       margin-left: .3em;
       vertical-align: middle;
-      font-weight: 500;
+      font-weight: var(--fw-medium);
     }
     .exp-more {
       font-size: var(--fs-base);
@@ -338,7 +338,7 @@
     }
     .case-thumb-overlay span {
       font-size: var(--fs-small);
-      font-weight: 600;
+      font-weight: var(--fw-bold);
       letter-spacing: .06em;
       text-transform: uppercase;
       color: var(--white);
@@ -367,7 +367,7 @@
       align-items: center;
       justify-content: center;
       font-size: var(--fs-small);
-      font-weight: 700;
+      font-weight: var(--fw-bold);
       letter-spacing: .04em;
       color: var(--white);
       box-shadow: var(--shadow-logo);
@@ -377,7 +377,7 @@
       grid-column: 1 / -1;
       grid-row: 1;
       font-size: var(--fs-large);
-      font-weight: 500;
+      font-weight: var(--fw-medium);
       letter-spacing: -0.01em;
       color: var(--text-color);
       line-height: var(--lh-ui);
@@ -412,8 +412,7 @@
 
     .contact-heading {
       font-size: var(--fs-h3);
-      font-weight: 400;
-      font-style: italic;
+      font-weight: var(--fw-bold);
       letter-spacing: -.0125em;
       line-height: var(--lh-heading);
       text-wrap: balance;
@@ -503,6 +502,8 @@
       flex-shrink: 0;
     }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+  
+    em { font-style: normal; font-weight: var(--fw-bold); }
   </style>
 </head>
 <body data-floating-nav="scroll">

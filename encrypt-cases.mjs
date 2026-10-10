@@ -92,7 +92,7 @@ gtag('config', 'G-VXNMWSJCZE');
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/tokens.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -134,15 +134,14 @@ body {
 .gate-label {
   font-size: var(--fs-small);
   color: var(--site-color);
-  font-weight: 500;
+  font-weight: var(--fw-medium);
   letter-spacing: .04em;
   text-transform: uppercase;
   margin-bottom: var(--space-2);
 }
 .gate h1 {
   font-family: var(--font-sans);
-  font-style: italic;
-  font-weight: 400;
+  font-weight: var(--fw-bold);
   font-size: var(--fs-h3);
   line-height: var(--lh-heading);
   text-wrap: balance;

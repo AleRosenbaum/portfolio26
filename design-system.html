@@ -8,7 +8,7 @@
   <title>Design System · Ale Rosenbaum</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/tokens.css" />
   <link rel="stylesheet" href="/sticky-header.css" />
   <script src="/sticky-header.js" defer></script>
@@ -35,21 +35,20 @@
     .label {
       font-size: var(--fs-small);
       color: var(--site-color);
-      font-weight: 500;
+      font-weight: var(--fw-medium);
       letter-spacing: .04em;
       text-transform: uppercase;
       margin-bottom: var(--space-2);
     }
     .ds-title {
       font-size: var(--fs-h1);
-      font-weight: 400;
+      font-weight: var(--fw-regular);
       letter-spacing: -.03em;
       line-height: var(--lh-heading);
       margin-bottom: var(--space-3);
     }
     .ds-title em, .ds-section h2 em {
-      font-style: italic;
-      font-weight: 400;
+      font-weight: var(--fw-bold);
     }
     .ds-lede { color: var(--meta-color); }
     .ds-lede code, .ds-name {
@@ -80,7 +79,7 @@
     }
     .ds-section h2 {
       font-size: var(--fs-h3);
-      font-weight: 400;
+      font-weight: var(--fw-regular);
       letter-spacing: -.015em;
       line-height: var(--lh-ui);
       margin-bottom: var(--space-1);
@@ -185,6 +184,8 @@
       .row { grid-template-columns: minmax(0, 1fr); gap: var(--space-1); }
       .type-sample { white-space: normal; }
     }
+  
+    em { font-style: normal; font-weight: var(--fw-bold); }
   </style>
 </head>
 <body>
@@ -256,6 +257,7 @@
     function kind(t) {
       var n = t.name;
       if (/^--font-/.test(n)) return 'font';
+      if (/^--fw-/.test(n)) return 'weight';
       if (/^--fs-/.test(n)) return 'fs';
       if (/^--lh-/.test(n)) return 'lh';
       if (/^--space-/.test(n)) return 'space';
@@ -268,7 +270,8 @@
 
     var SECTIONS = [
       { id: 'color', title: 'Color', em: 'palette', desc: 'Warm gray scale, the orange accent, status colors and the semantic roles built on top of them. Overlays sit on a checkerboard so their transparency is visible.' },
-      { id: 'font', title: 'Font', em: 'family', desc: 'Instrument Sans is the only typeface. Emphasis uses its italic.' },
+      { id: 'font', title: 'Font', em: 'family', desc: 'Instrument Sans is the only typeface, with no italic.' },
+      { id: 'weight', title: 'Font', em: 'weights', desc: 'Emphasis is always bold, never italic.' },
       { id: 'fs', title: 'Type', em: 'scale', desc: 'Six roles named after web conventions. Headings are fluid between two sizes; large, base and small are fixed.' },
       { id: 'lh', title: 'Line', em: 'heights', desc: 'Only three: h1 and h2, h3 and single line UI, then large, base and small. The rules mark each line box.' },
       { id: 'space', title: 'Spacing', em: '8px grid', desc: 'Every margin, padding and gap uses one of these.' },
@@ -370,6 +373,12 @@
             m.querySelector('.ds-value').textContent += '  ·  ' + px('var(' + t.name + ')') + 'px now';
             var x = el('div', 'type-sample', 'Trust, not price, was the real barrier');
             x.style.fontSize = 'var(' + t.name + ')';
+            return x;
+          });
+          else if (sec.id === 'weight') body = renderRows(list, function (t) {
+            var x = el('div', 'type-sample', 'Trust, not price, was the real barrier');
+            x.style.fontSize = 'var(--fs-h3)';
+            x.style.fontWeight = 'var(' + t.name + ')';
             return x;
           });
           else if (sec.id === 'lh') body = renderRows(list, function (t) {

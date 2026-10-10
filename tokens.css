@@ -89,6 +89,9 @@
 /* ─── Base ─── */
 *, *::before, *::after { box-sizing: border-box; }
 
+/* Emphasis is bold, never italic or underlined */
+strong, b { font-weight: var(--fw-bold); }
+
 /* ─── Headings: the tag sets the size ─── */
 h1 { font-size: var(--fs-h1); line-height: var(--lh-heading); font-weight: var(--fw-regular); }
 h2 { font-size: var(--fs-h2); line-height: var(--lh-heading); font-weight: var(--fw-regular); }

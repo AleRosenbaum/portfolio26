@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/tokens.css?v=445047cb" />
+  <link rel="stylesheet" href="/tokens.css?v=76654bd0" />
   <link rel="stylesheet" href="/sticky-header.css?v=2bc181fa" />
   <script src="/sticky-header.js?v=4e20ad31" defer></script>
   <link rel="stylesheet" href="/site-footer.css?v=a82a7406" />
@@ -116,14 +116,6 @@ p, .p {
 .sans { }
 .bold { font-weight: var(--fw-bold); }
 
-/* Inline mark — orange underline accent, applied to one or two key words */
-.mark {
-  text-decoration: underline;
-  -webkit-text-decoration-color: var(--site-color);
-  text-decoration-color: var(--site-color);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-}
 
 /* Blockquote */
 blockquote {
@@ -224,8 +216,8 @@ hr::after, .infinity-rule::after {
   <section data-screen-label="Context and problem" style="max-width: var(--column-box); margin: 0 auto; padding: 6rem 1.5rem 6rem 1.5rem; padding-top: 3rem; padding-bottom: 3rem">
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       Marktplaats is the Netherlands' largest classifieds marketplace. Deals start as chat conversations, and an alarming share of them simply died. Buyers ghosted sellers, sellers ignored buyers, and both sides blamed the platform.
-    </p><p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;"><u>
-      As the Senior Product Designer on the Interactions domain, I led the design track end to end:</u> I shaped the track strategy, coordinated the research with our two researchers, drove the product strategy alongside the PM and data analyst, and designed the final solution. What follows is that work, from the first behavioural signals to the shipped flow.
+    </p><p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;"><strong>
+      As the Senior Product Designer on the Interactions domain, I led the design track end to end:</strong> I shaped the track strategy, coordinated the research with our two researchers, drove the product strategy alongside the PM and data analyst, and designed the final solution. What follows is that work, from the first behavioural signals to the shipped flow.
     </p>
     
   </section>
@@ -272,10 +264,10 @@ hr::after, .infinity-rule::after {
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Research</div>
     <h2 class="heading-mixed" data-reveal="up" style=" margin: 0 0 1.5rem 0;">Mixed methods, <em>one question</em>: why do users go silent?</h2>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
-      I coordinated a mixed-methods deep-dive with our research team in March 2025, triangulating what users do with what they say: behavioural analysis of <span class="mark">10M+ chats</span> from Q1, surveys of <span class="mark">1,077 buyers</span> intercepted on listings and 633 sellers on My&nbsp;Ads, and a 700-user brand tracker panel benchmarking Marktplaats against Vinted and Facebook Marketplace.
+      I coordinated a mixed-methods deep-dive with our research team in March 2025, triangulating what users do with what they say: behavioural analysis of <strong>10M+ chats</strong> from Q1, surveys of <strong>1,077 buyers</strong> intercepted on listings and 633 sellers on My&nbsp;Ads, and a 700-user brand tracker panel benchmarking Marktplaats against Vinted and Facebook Marketplace.
     </p>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
-      The early chat stage turned out to be the most vulnerable. And counter to the team's intuition, <span class="mark">buyers were the bigger risk</span>: sellers risk losing a deal if they don't reply, buyers feel no such pressure.
+      The early chat stage turned out to be the most vulnerable. And counter to the team's intuition, <strong>buyers were the bigger risk</strong>: sellers risk losing a deal if they don't reply, buyers feel no such pressure.
     </p>
 
     <div class="stat-grid" data-reveal="up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 3.5rem 0;">
@@ -293,7 +285,7 @@ hr::after, .infinity-rule::after {
       Three drivers explained the silence, sized and ranked. <em class="bold">The price perception gap:</em> 600K chats a month involve lowballing, 51% of sellers stop responding after a low offer, and sellers are twice as likely as buyers to go silent over price. <em class="bold">Tone and rudeness:</em> 120K chats a month contain offensive language, the top reason sellers disengage, and why Marktplaats was rated the rudest platform against Vinted and Facebook. <em class="bold">Slow responses:</em> 94% of users expect a reply within 12 hours; past that, reply rates drop 30%.
     </p>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
-      Sizing each driver against the 7.5M opportunity made the priority obvious: fixing the price perception gap alone was worth <span class="mark">+1M connections and +150K transactions a year</span>, roughly eight times the impact of speeding up replies.
+      Sizing each driver against the 7.5M opportunity made the priority obvious: fixing the price perception gap alone was worth <strong>+1M connections and +150K transactions a year</strong>, roughly eight times the impact of speeding up replies.
     </p>
 
   </section>
@@ -336,7 +328,7 @@ hr::after, .infinity-rule::after {
       For years the platform had optimised for lead volume: frictionless contact buttons, canned one-tap messages, unrestricted public bids. The research reframed that belief. Offers via chat were messy and easy to ignore, bids carried no commitment, and sellers received unclear, unserious proposals.
     </p>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
-      Success would not be more leads. It would be a higher share of conversations that <span class="mark">connect</span>, a reply from both sides, and convert into on-platform transactions. We distilled it into one question.
+      Success would not be more leads. It would be a higher share of conversations that <strong>connect</strong>, a reply from both sides, and convert into on-platform transactions. We distilled it into one question.
     </p>
   </section>
 
@@ -383,13 +375,13 @@ hr::after, .infinity-rule::after {
   <section style="max-width: var(--column-box); margin: 0 auto; padding: 5rem 1.5rem 0 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Decisions</div>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
-      <span class="mark">Every major call was settled with an experiment, not an opinion</span>, and some told us we were wrong. We assumed hiding public bids would reduce manipulation; the experiment backfired. Hiding them pushed buyers into unstructured chat, causing <span class="mark">+14.1% lowball buyers</span> and +16.6% lowball leads, while public bids help sellers earn 5 to 6% more. The lesson: <span class="mark">don't hide negotiation, <em class="bold">structure it</em></span>.
+      <strong>Every major call was settled with an experiment, not an opinion</strong>, and some told us we were wrong. We assumed hiding public bids would reduce manipulation; the experiment backfired. Hiding them pushed buyers into unstructured chat, causing <strong>+14.1% lowball buyers</strong> and +16.6% lowball leads, while public bids help sellers earn 5 to 6% more. The lesson: <strong>don't hide negotiation, <em class="bold">structure it</em></strong>.
     </p>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       Transaction data showed 80% of deals close between −30% and +5% of asking price, so we guide both sides: a minimum bid pre-filled at 60% of asking on listing creation, and a nudge for buyers whose offer falls below the acceptable range. And friction proved acceptable, if it filters noise: making canned responses slightly less automatic reduced total leads with <em class="bold">no</em> significant impact on connected leads or payments. The drop-off was entirely low-intent traffic. That experiment became the strategic foundation for the whole redesign.
     </p>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 5rem 0; text-wrap: pretty;">
-      The direction that emerged: a <span class="mark">bounded negotiation flow</span> where buyers customise an offer within seller-set constraints. Price, delivery method and an optional message travel together as one structured, trackable proposal instead of a loose chat thread.
+      The direction that emerged: a <strong>bounded negotiation flow</strong> where buyers customise an offer within seller-set constraints. Price, delivery method and an optional message travel together as one structured, trackable proposal instead of a loose chat thread.
     </p>
   </section>
 
@@ -408,7 +400,7 @@ hr::after, .infinity-rule::after {
       We tested interactive buyer and seller prototypes of the structured offer flow in contextual remote interviews with 12 active traders via UserZoom, and quantified bidding mindsets with surveys of 1,672 buyers and 713 sellers in May 2025.
     </p>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
-      The mindset survey killed the idea of a single "bidder persona". The same person acts as a <em class="bold">fair negotiator</em> (77% of buyers) in one trade and an <em class="bold">opportunistic bidder</em> (42%) in the next. On the seller side, 81% identify as flexible negotiators, yet 66% also enjoy auction-style bidding. <span class="mark">The flow had to serve mindsets, not personas.</span>
+      The mindset survey killed the idea of a single "bidder persona". The same person acts as a <em class="bold">fair negotiator</em> (77% of buyers) in one trade and an <em class="bold">opportunistic bidder</em> (42%) in the next. On the seller side, 81% identify as flexible negotiators, yet 66% also enjoy auction-style bidding. <strong>The flow had to serve mindsets, not personas.</strong>
     </p>
   </section>
 
@@ -460,7 +452,7 @@ hr::after, .infinity-rule::after {
       </div>
     </div>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
-      The Structured Payment Offer flow <span class="mark">moves the deal out of ambiguous chat and into a clear, committed sequence</span>. The platform's rule of thumb became simple: if you like the price, <span class="mark">buy now</span>. If the price isn't right, <span class="mark">negotiate</span>. If the listing is unclear, <span class="mark">ask</span>.
+      The Structured Payment Offer flow <strong>moves the deal out of ambiguous chat and into a clear, committed sequence</strong>. The platform's rule of thumb became simple: if you like the price, <strong>buy now</strong>. If the price isn't right, <strong>negotiate</strong>. If the listing is unclear, <strong>ask</strong>.
     </p>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       Buyers compose price, delivery method and an optional message in one step, with the total cost visible before committing. Sellers receive every offer with full deal terms and three one-click decisions: Accept, Counter, or Decline. An accepted offer becomes a ready-to-pay checkout, eliminating the back-and-forth about bank details and shipping that kills deals today.
@@ -514,7 +506,7 @@ hr::after, .infinity-rule::after {
 
   <section style="max-width: var(--column-box); margin: 0 auto; padding: 5rem 1.5rem 6rem 1.5rem;">
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
-      The full structured offer rollout carries a validated projection: restricting offers to the acceptable range lifts lead-to-connection from 54% to 57.5%, worth <span class="mark">+1M connected conversations and +150K transactions a year</span>.
+      The full structured offer rollout carries a validated projection: restricting offers to the acceptable range lifts lead-to-connection from 54% to 57.5%, worth <strong>+1M connected conversations and +150K transactions a year</strong>.
     </p>
     <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       Just as important is what <em class="bold">didn't</em> move: adding friction to low-effort contact left connected leads and total payments statistically unchanged.
@@ -528,7 +520,7 @@ hr::after, .infinity-rule::after {
   <section data-screen-label="Learnings" style="max-width: var(--column-box); margin: 0 auto; padding: 6rem 1.5rem 8rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Reflection</div>
     <h2 class="heading-mixed" data-reveal="up" style=" margin: 0 0 1.5rem 0;">What I'd do <em>differently</em></h2>
-    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">What I'd do differently: <span class="mark">test removal before designing around it</span>. We initially treated public bidding as expendable; the hide-bids experiment proved buyers reroute into worse behaviour. Cheap experiments on assumptions would have saved a full design cycle. Backend constraints — when the deal snapshot is taken, how shipping carriers integrate into listing creation — reshaped the design late and should have been mapped in discovery, not surfaced during handoff.</p>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">What I'd do differently: <strong>test removal before designing around it</strong>. We initially treated public bidding as expendable; the hide-bids experiment proved buyers reroute into worse behaviour. Cheap experiments on assumptions would have saved a full design cycle. Backend constraints — when the deal snapshot is taken, how shipping carriers integrate into listing creation — reshaped the design late and should have been mapped in discovery, not surfaced during handoff.</p>
     
     
   </section>

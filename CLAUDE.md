@@ -27,15 +27,19 @@ The case pages are AES-256-GCM encrypted (staticrypt-style). The real pages live
 
 **After editing anything in `_src/`, regenerate the gates:** `node encrypt-cases.mjs <password>`. The password itself is never committed. Caveats: case imagery (`offers/`, `brenger-hero.png`) is not encrypted and stays publicly fetchable by URL; both case pages share one password.
 
-Both case pages use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, white statement bands, orange stat numbers, and scroll-reveal animations (vanilla JS). Sections are styled inline; shared tokens/roles (`.heading-mixed`, `.label`, `.mark`, `.serif-italic`) live in the page's style block. Brenger imagery lives in `brenger/`; Offers imagery lives in `offers/`.
+Both case pages use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, white statement bands, orange stat numbers, and scroll-reveal animations (vanilla JS). Sections are styled inline; tokens come from `tokens.css` and shared roles (`.heading-mixed`, `.label`, `.mark`, `.serif-italic`) live in the page's style block. Brenger imagery lives in `brenger/`; Offers imagery lives in `offers/`.
 
 ## Design system
 
-- **Colors:** warm gray palette via HSL tokens (`--gray00` through `--gray40`), accent `--site-color: #ff7006`
-- **Fonts:** Instrument Serif (display/italic accents) + Spectral (body serif), loaded from Google Fonts
-- **Spacing:** 8px grid. All spacing values must be multiples of 8px.
-- **Type scale:** three line-heights: `1.1` (headings), `1.2` (large UI), `1.5` (body/lists). Font sizes in rem on 8px grid.
-- **No dark mode** — removed intentionally.
+All tokens live in `tokens.css`, linked by every page (home, case sources, Quaddro, the gate template in `encrypt-cases.mjs`) before `sticky-header.css` and `site-footer.css`. Never redefine a token inside a page; add it to `tokens.css`.
+
+- **Colors:** warm gray scale `--gray00` to `--gray40` (32° hue), accent `--site-color: #ff7006`, plus semantic tokens (`--text-color`, `--meta-color`, `--wash-color`, `--ink-surface`, `--on-ink`, `--success-color`, `--error-color`, glass and scrim overlays). No raw hex or rgba in pages.
+- **Fonts:** Instrument Sans (`--font-sans`, also body) + Instrument Serif (`--font-heading`, display and italic accents), loaded from Google Fonts. Spectral and system-ui are no longer used.
+- **Type scale:** `--fs-12` to `--fs-80` in rem. 4px steps up to 24px (12, 16, 20, 24), 8px steps above. Fluid sizes use `clamp()` with both ends on the scale. Semantic: `--fs-small`, `--fs-body`, `--fs-heading`, `--fs-display`.
+- **Line heights:** only `--lh-heading` (1.1), `--lh-ui` (1.2), `--lh-body` (1.5).
+- **Spacing:** 8px grid. Use `--space-1` (8px) to `--space-20` (160px). Literal values in inline styles must also be multiples of 8px.
+- **Radii:** `--radius-s` 8px, `--radius-m` 16px, `--radius-l` 24px, `--radius-xl` 32px, `--radius-pill`.
+- **No dark mode** (removed intentionally).
 
 ## Layout
 

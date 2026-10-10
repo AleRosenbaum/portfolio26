@@ -4,11 +4,11 @@
   width: 100%;
   min-height: 34rem;
   overflow: hidden;
-  color: hsl(32, 18%, 97%);
-  background: hsl(32, 8%, 3%);
-  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
-  font-size: 16px;
-  line-height: 1.2;
+  color: var(--on-ink);
+  background: var(--ink-surface);
+  font-family: var(--font-sans);
+  font-size: var(--fs-16);
+  line-height: var(--lh-ui);
 }
 
 .site-footer__inner {
@@ -55,7 +55,7 @@
   font-size: clamp(2rem, 3.15vw, 3.5rem);
   font-weight: 400;
   letter-spacing: -.035em;
-  line-height: 1.08;
+  line-height: var(--lh-heading);
   text-wrap: balance;
 }
 
@@ -69,16 +69,16 @@
 
 .site-footer__cta {
   display: inline-flex;
-  min-height: clamp(3.75rem, 5vw, 4.5rem);
+  min-height: clamp(3.5rem, 5vw, 4.5rem);
   align-items: center;
   justify-content: center;
-  padding: .75rem clamp(1.75rem, 3vw, 2.5rem);
-  color: hsl(32, 8%, 15%) !important;
-  background: hsl(32, 18%, 97%);
-  border-radius: 999px;
+  padding: var(--space-2) clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--text-color) !important;
+  background: var(--on-ink);
+  border-radius: var(--radius-pill);
   font-size: clamp(1.25rem, 1.8vw, 2rem);
   font-weight: 400;
-  line-height: 1;
+  line-height: var(--lh-heading);
   transition: color 180ms ease, background-color 180ms ease, transform 240ms cubic-bezier(.22, 1, .36, 1);
 }
 
@@ -88,7 +88,7 @@
   align-items: flex-start;
   gap: 1rem;
   padding-top: 0;
-  font-size: clamp(1.25rem, 1.65vw, 1.75rem);
+  font-size: clamp(1.25rem, 1.65vw, 1.5rem);
 }
 
 .site-footer__nav a {
@@ -113,7 +113,7 @@
 .site-footer__brand:focus-visible,
 .site-footer__nav a:hover,
 .site-footer__nav a:focus-visible {
-  color: var(--site-color, #ff7006) !important;
+  color: var(--hover-color) !important;
 }
 
 .site-footer__nav a:hover::after,
@@ -124,13 +124,13 @@
 
 .site-footer__cta:hover,
 .site-footer__cta:focus-visible {
-  color: hsl(32, 18%, 97%) !important;
-  background: var(--site-color, #ff7006);
+  color: var(--on-ink) !important;
+  background: var(--site-color);
   transform: translateY(-2px);
 }
 
 .site-footer a:focus-visible {
-  outline: 2px solid var(--site-color, #ff7006);
+  outline: 2px solid var(--site-color);
   outline-offset: 4px;
 }
 
@@ -145,7 +145,7 @@
       'brand'
       'actions';
     grid-template-columns: 1fr;
-    gap: 2.75rem;
+    gap: 2.5rem;
     width: calc(100% - 48px);
     padding: 4rem 0 4.5rem;
   }
@@ -157,7 +157,7 @@
   .site-footer__statement {
     max-width: 15ch;
     margin-bottom: 2.5rem;
-    font-size: clamp(2rem, 9vw, 2.75rem);
+    font-size: clamp(2rem, 9vw, 2.5rem);
   }
 
   .site-footer__break {

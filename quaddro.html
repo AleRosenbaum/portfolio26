@@ -39,34 +39,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Spectral:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/tokens.css" />
   <link rel="stylesheet" href="/sticky-header.css" />
   <script src="/sticky-header.js" defer></script>
   <link rel="stylesheet" href="/site-footer.css" />
   <script src="/site-footer.js" defer></script>
 
   <style>
-    :root {
-      --gray-hue: 32;
-      --gray00: hsl(var(--gray-hue), 10%, 98%);
-      --gray05: hsl(var(--gray-hue), 8%, 95%);
-      --gray10: hsl(var(--gray-hue), 8%, 90%);
-      --gray20: hsl(var(--gray-hue), 8%, 70%);
-      --gray30: hsl(var(--gray-hue), 6%, 30%);
-      --gray35: hsl(var(--gray-hue), 3%, 20%);
-      --gray40: hsl(var(--gray-hue), 6%, 5%);
-      --site-color: #ff7006;
-      --highlight-color: #ffc800;
-      --text-color: var(--gray40);
-      --meta-color: var(--gray30);
-      --wash-color: var(--gray00);
-      --code-wash: var(--gray05);
-      --font-sans: system-ui, -apple-system, sans-serif;
-      --font-heading: "Instrument Serif", Georgia, serif;
-      --font-serif: "Spectral", Georgia, serif;
-      --fs-body: clamp(100%, 2.75vw, 125%);
-      --fs-small: .8rem;
-    }
 
     *, *::before, *::after { box-sizing: border-box; }
     html { -webkit-font-smoothing: antialiased; }
@@ -74,9 +54,9 @@
       margin: 0;
       background: var(--wash-color);
       color: var(--text-color);
-      font-family: var(--font-serif);
+      font-family: var(--font-body);
       font-size: var(--fs-body);
-      line-height: 1.6;
+      line-height: var(--lh-body);
       overflow-x: hidden;
     }
     ::selection { background: var(--highlight-color); color: var(--gray40); }
@@ -104,12 +84,12 @@
       text-transform: uppercase;
     }
     .heading-mixed {
-      margin: 0 0 1.75rem;
+      margin: 0 0 1.5rem;
       font-family: var(--font-sans);
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
       font-weight: 400;
       letter-spacing: -.015em;
-      line-height: 1.2;
+      line-height: var(--lh-ui);
       text-wrap: balance;
     }
     .heading-mixed em {
@@ -119,11 +99,11 @@
       letter-spacing: 0;
     }
     .body-copy {
-      margin: 0 0 1.6rem;
+      margin: 0 0 1.5rem;
       color: var(--gray35);
       font-family: var(--font-sans);
-      font-size: 1.05rem;
-      line-height: 1.7;
+      font-size: 1rem;
+      line-height: var(--lh-body);
       text-wrap: pretty;
     }
     .body-copy:last-child { margin-bottom: 0; }
@@ -136,18 +116,18 @@
 
     .hero {
       width: 100%;
-      max-width: 60.25rem;
+      max-width: 60rem;
       margin: 0 auto;
-      padding: 4rem 1.5rem 2px;
+      padding: 4rem 1.5rem 0;
     }
     .hero h1 {
       max-width: 12ch;
       margin: 0 0 2rem;
       font-family: var(--font-sans);
-      font-size: clamp(2.8rem, 7vw, 5.6rem);
+      font-size: clamp(3rem, 7vw, 6rem);
       font-weight: 400;
       letter-spacing: -.045em;
-      line-height: .98;
+      line-height: var(--lh-heading);
       text-wrap: balance;
     }
     .hero h1 em {
@@ -161,8 +141,8 @@
       margin: 0 0 3rem;
       color: var(--gray35);
       font-family: var(--font-sans);
-      font-size: 1.05rem;
-      line-height: 1.7;
+      font-size: 1rem;
+      line-height: var(--lh-body);
       text-wrap: pretty;
     }
 
@@ -176,17 +156,17 @@
       display: block;
       width: 100%;
       height: min(72vh, 760px);
-      min-height: 380px;
+      min-height: 376px;
       object-fit: cover;
     }
     figcaption {
       max-width: 42.5rem;
-      margin: .9rem auto 0;
+      margin: 1rem auto 0;
       padding: 0 1.5rem;
       color: var(--meta-color);
       font-family: var(--font-sans);
       font-size: var(--fs-small);
-      line-height: 1.55;
+      line-height: var(--lh-body);
     }
 
     .reading-section {
@@ -218,24 +198,24 @@
       color: var(--meta-color);
       font-size: var(--fs-small);
     }
-    .fact-value { font-size: var(--fs-small); line-height: 1.55; }
+    .fact-value { font-size: var(--fs-small); line-height: var(--lh-body); }
 
     .statement {
       margin-top: 6rem;
-      background: #fdfcfb;
+      background: var(--white);
     }
     .statement-inner {
-      max-width: 51.25rem;
+      max-width: 51rem;
       margin: 0 auto;
       padding: 10rem 1.5rem;
       text-align: center;
     }
     .statement-copy {
       font-family: var(--font-sans);
-      font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+      font-size: clamp(2rem, 4.5vw, 3rem);
       font-weight: 400;
       letter-spacing: -.02em;
-      line-height: 1.18;
+      line-height: var(--lh-ui);
       text-wrap: balance;
     }
     .statement-copy em {
@@ -260,7 +240,7 @@
       color: var(--gray35);
       font-family: var(--font-sans);
       font-size: 1rem;
-      line-height: 1.5;
+      line-height: var(--lh-body);
     }
     .question-list span { color: var(--site-color); font-size: var(--fs-small); }
 
@@ -288,7 +268,7 @@
       min-height: 18rem;
       padding: 2rem;
       border: 1px solid var(--gray10);
-      border-radius: 20px;
+      border-radius: var(--radius-m);
       background: var(--gray05);
       color: var(--text-color);
       font-family: var(--font-sans);
@@ -303,7 +283,7 @@
     .case-figure {
       overflow: hidden;
       border: 1px solid var(--gray10);
-      border-radius: 20px;
+      border-radius: var(--radius-m);
       background: var(--gray05);
     }
     .case-figure img {
@@ -317,29 +297,29 @@
     .case-figure.is-missing img { display: none; }
     .placeholder-index {
       position: absolute;
-      top: 1.25rem;
-      left: 1.25rem;
+      top: 1rem;
+      left: 1rem;
       color: var(--site-color);
-      font-size: .7rem;
+      font-size: .75rem;
       font-weight: 600;
       letter-spacing: .06em;
       text-transform: uppercase;
     }
     .placeholder-content strong {
       display: block;
-      margin-bottom: .55rem;
+      margin-bottom: .5rem;
       font-family: var(--font-heading);
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-size: clamp(1.5rem, 3vw, 2rem);
       font-style: italic;
       font-weight: 400;
-      line-height: 1.1;
+      line-height: var(--lh-heading);
     }
     .placeholder-content span {
       display: block;
       max-width: 28rem;
       color: var(--meta-color);
       font-size: var(--fs-small);
-      line-height: 1.55;
+      line-height: var(--lh-body);
     }
     .placeholder-mark {
       display: inline-flex;
@@ -351,12 +331,12 @@
       border: 1px solid var(--gray20);
       border-radius: 50%;
       color: var(--site-color);
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
     .workflow-surface {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      border-radius: 20px;
+      border-radius: var(--radius-m);
       background: var(--gray40);
       color: var(--gray00);
       overflow: hidden;
@@ -372,12 +352,12 @@
       font-family: var(--font-heading);
       font-size: 3.5rem;
       font-style: italic;
-      line-height: 1;
+      line-height: var(--lh-heading);
     }
     .workflow-item h3 {
-      margin: 4.5rem 0 .75rem;
+      margin: 4.5rem 0 .5rem;
       font-family: var(--font-sans);
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 500;
     }
     .workflow-item p {
@@ -385,7 +365,7 @@
       color: var(--gray20);
       font-family: var(--font-sans);
       font-size: var(--fs-small);
-      line-height: 1.6;
+      line-height: var(--lh-body);
     }
 
     .strategy-wrap {
@@ -401,16 +381,16 @@
     }
     .strategy-table th,
     .strategy-table td {
-      padding: 1.25rem 1rem;
+      padding: 1rem 1rem;
       border-bottom: 1px solid var(--gray10);
       text-align: left;
       vertical-align: top;
-      font-size: .9rem;
-      line-height: 1.55;
+      font-size: 1rem;
+      line-height: var(--lh-body);
     }
     .strategy-table th {
       color: var(--meta-color);
-      font-size: .7rem;
+      font-size: .75rem;
       font-weight: 600;
       letter-spacing: .06em;
       text-transform: uppercase;
@@ -421,7 +401,7 @@
     .mvp-stage {
       margin-top: 5rem;
       padding: 7rem 1.5rem;
-      background: #ff7006;
+      background: var(--site-color);
     }
     .phones {
       display: grid;
@@ -433,66 +413,66 @@
     }
     .phone {
       min-height: 31rem;
-      padding: .75rem;
+      padding: .5rem;
       border: 2px solid var(--gray40);
-      border-radius: 2.4rem;
+      border-radius: 2.5rem;
       background: var(--gray40);
       box-shadow: 0 1.5rem 3rem #8a380833;
     }
     .phone-screen {
       height: 100%;
       min-height: 29rem;
-      padding: 2rem 1.2rem 1.2rem;
-      border-radius: 1.75rem;
+      padding: 2rem 1rem 1rem;
+      border-radius: var(--radius-l);
       background: var(--gray00);
       color: var(--gray40);
       font-family: var(--font-sans);
     }
     .phone-kicker {
       color: var(--meta-color);
-      font-size: .65rem;
+      font-size: .75rem;
       font-weight: 600;
       letter-spacing: .06em;
       text-transform: uppercase;
     }
     .phone h3 {
       margin: 1rem 0 2rem;
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       font-weight: 500;
       letter-spacing: -.02em;
-      line-height: 1.2;
+      line-height: var(--lh-ui);
     }
     .ui-line {
       height: .65rem;
-      margin-bottom: .7rem;
-      border-radius: 1rem;
+      margin-bottom: .5rem;
+      border-radius: var(--radius-m);
       background: var(--gray10);
     }
     .ui-line.short { width: 62%; }
     .ui-value {
-      margin: 1.6rem 0;
-      padding: 1.1rem;
+      margin: 1.5rem 0;
+      padding: 1rem;
       border: 1px solid var(--gray10);
-      border-radius: .7rem;
-      background: #fdfcfb;
-      font-size: 1.4rem;
+      border-radius: var(--radius-s);
+      background: var(--white);
+      font-size: 1.5rem;
       font-weight: 600;
     }
     .ui-button {
       margin-top: 2rem;
-      padding: .85rem;
-      border-radius: .5rem;
+      padding: 1rem;
+      border-radius: var(--radius-s);
       background: var(--gray40);
       color: var(--gray00);
       text-align: center;
-      font-size: .8rem;
+      font-size: .75rem;
       font-weight: 600;
     }
     .ui-contact {
       display: flex;
-      gap: .8rem;
+      gap: 1rem;
       align-items: center;
-      padding: .9rem 0;
+      padding: 1rem 0;
       border-bottom: 1px solid var(--gray10);
     }
     .ui-avatar {
@@ -503,7 +483,7 @@
       background: var(--site-color);
     }
     .ui-contact-lines { flex: 1; }
-    .ui-contact-lines .ui-line { margin-bottom: .4rem; }
+    .ui-contact-lines .ui-line { margin-bottom: .5rem; }
 
     .principles {
       display: grid;
@@ -512,13 +492,13 @@
       margin: 3rem 0 0;
       border-top: 1px solid var(--gray10);
     }
-    .principle { padding: 1.4rem 1.2rem 0 0; }
+    .principle { padding: 1.5rem 1rem 0 0; }
     .principle span {
       display: block;
-      margin-bottom: .6rem;
+      margin-bottom: .5rem;
       color: var(--site-color);
       font-family: var(--font-heading);
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       font-style: italic;
     }
     .principle p {
@@ -526,7 +506,7 @@
       color: var(--meta-color);
       font-family: var(--font-sans);
       font-size: var(--fs-small);
-      line-height: 1.55;
+      line-height: var(--lh-body);
     }
 
     .impact-grid {
@@ -540,15 +520,15 @@
       font-family: var(--font-heading);
       font-size: clamp(2.5rem, 5vw, 3.5rem);
       font-style: italic;
-      line-height: 1;
+      line-height: var(--lh-heading);
     }
     .impact-label {
       max-width: 14rem;
-      margin-top: .7rem;
+      margin-top: .5rem;
       color: var(--meta-color);
       font-family: var(--font-sans);
       font-size: var(--fs-small);
-      line-height: 1.55;
+      line-height: var(--lh-body);
     }
 
     .question-shift {
@@ -562,7 +542,7 @@
       gap: 2rem;
       align-items: center;
       padding: 4rem;
-      border-radius: 20px;
+      border-radius: var(--radius-m);
       background: var(--gray40);
       color: var(--gray00);
     }
@@ -571,7 +551,7 @@
       margin-bottom: 1rem;
       color: var(--gray20);
       font-family: var(--font-sans);
-      font-size: .7rem;
+      font-size: .75rem;
       font-weight: 600;
       letter-spacing: .06em;
       text-transform: uppercase;
@@ -579,9 +559,9 @@
     .shift-quote {
       margin: 0;
       font-family: var(--font-heading);
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
       font-style: italic;
-      line-height: 1.2;
+      line-height: var(--lh-ui);
       text-wrap: balance;
     }
     .shift-arrow {
@@ -606,14 +586,14 @@
       .workflow-item h3 { margin-top: 2rem; }
       .strategy-table, .strategy-table tbody, .strategy-table tr, .strategy-table td { display: block; }
       .strategy-table thead { display: none; }
-      .strategy-table tr { padding: 1.4rem 0; border-bottom: 1px solid var(--gray10); }
-      .strategy-table td { padding: .35rem 0; border: 0; }
+      .strategy-table tr { padding: 1.5rem 0; border-bottom: 1px solid var(--gray10); }
+      .strategy-table td { padding: .5rem 0; border: 0; }
       .strategy-table td::before {
         content: attr(data-label);
         display: block;
-        margin-bottom: .2rem;
+        margin-bottom: .5rem;
         color: var(--meta-color);
-        font-size: .65rem;
+        font-size: .75rem;
         font-weight: 600;
         letter-spacing: .06em;
         text-transform: uppercase;
@@ -873,7 +853,7 @@
         </div>
       </div>
     </div>
-    <figcaption style="color:#5a240c;">Conceptual view of the MVP principles · fast invoicing, Pix-ready payments and lightweight customer management.</figcaption>
+    <figcaption style="color: var(--text-color);">Conceptual view of the MVP principles · fast invoicing, Pix-ready payments and lightweight customer management.</figcaption>
   </figure>
 
   <section class="reading-section">
@@ -948,7 +928,7 @@
             entry.target.style.transform = entry.target.getAttribute('data-reveal') === 'img' ? 'scale(1)' : 'translateY(0)';
           });
         });
-      }, { rootMargin: '0px 0px -8% 0px' });
+      }, { rootMargin: '0px 0 -8% 0' });
 
       elements.forEach((element) => {
         if (element.getBoundingClientRect().top < window.innerHeight * .92) return;

@@ -35,7 +35,7 @@ gtag('config', 'G-VXNMWSJCZE');
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/tokens.css">
 <link rel="stylesheet" href="/sticky-header.css">
 <script src="/sticky-header.js" defer></script>
@@ -49,44 +49,37 @@ html { -webkit-font-smoothing: antialiased; }
 body {
   background: var(--wash-color);
   color: var(--text-color);
-  font-family: var(--font-body);
-  font-size: var(--fs-body);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
   line-height: var(--lh-body);
   font-feature-settings: "ss02" 1;
 }
 
 .intro-xxl {
-  font-family: var(--font-sans);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 400;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-regular);
   line-height: var(--lh-ui);
   text-wrap: pretty;
 }
 .intro-xxl em {
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-weight: 400;
+  font-weight: var(--fw-bold);
   letter-spacing: 0;
 }
 
 .heading-mixed {
-  font-family: var(--font-sans);
-  font-size: var(--fs-heading);
-  font-weight: 400;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-regular);
   letter-spacing: -.015em;
   line-height: var(--lh-ui);
 }
 .heading-mixed em, h2 em, .h2 em {
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-weight: 400;
+  font-weight: var(--fw-bold);
 }
 
 .label {
-  font-family: var(--font-sans);
   font-size: var(--fs-small);
   color: var(--site-color);
-  font-weight: 500;
+  font-weight: var(--fw-medium);
   letter-spacing: .04em;
   text-transform: uppercase;
 }
@@ -99,11 +92,7 @@ body {
   text-underline-offset: 4px;
 }
 
-.serif-italic {
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-weight: 400;
-}
+.bold { font-weight: var(--fw-bold); }
 
 a {
   color: inherit;
@@ -123,7 +112,6 @@ hr {
   position: relative;
 }
 hr::after {
-  font-family: var(--font-heading);
   content: "\221E";
   background: var(--wash-color);
   padding-inline: var(--space-1);
@@ -143,7 +131,6 @@ img { display: block; max-width: 100%; height: auto; }
   align-items: center;
   justify-content: center;
   color: var(--gray20);
-  font-family: var(--font-sans);
   font-size: var(--fs-small);
   text-align: center;
   padding: 2rem;
@@ -156,16 +143,18 @@ img { display: block; max-width: 100%; height: auto; }
 [data-reveal="img"] {
   transition: transform 800ms ease-out;
 }
-</style>
+
+    em { font-style: normal; font-weight: var(--fw-bold); }
+  </style>
 </head>
 <body>
 
-<div style="font-family: var(--font-sans); color: var(--text-color); background: var(--wash-color); min-height: 100vh; overflow-x: hidden;">
+<div style="color: var(--text-color); background: var(--wash-color); min-height: 100vh; overflow-x: hidden;">
 
   <!-- HEADER -->
   <header style="max-width: 960px; margin: 0 auto; padding: 4rem 1.5rem 0 1.5rem; width: 100%;">
     <h1 class="intro-xxl" data-reveal="up" style="margin: 0 0 2rem 0; max-width: 776px">Integrating <em>Brenger</em> into Marktplaats, one step at a time</h1>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 3rem 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 3rem 0; text-wrap: pretty;">
       17.3 million large-item ads listed every year with no way to ship them. This is how a discovery on user needs became Marktplaats's first integrated large-item delivery service, built iteratively from a chat banner to a full transactional flow.
     </p>
   </header>
@@ -183,29 +172,29 @@ img { display: block; max-width: 100%; height: auto; }
 
   <!-- CONTEXT -->
   <section style="max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 3rem 1.5rem;">
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       <u>As the Product Designer on the Shipping &amp; Messaging team, I led the design end to end:</u> I shaped the iterative strategy with the PM, ran the foundational research (n=1,000), designed every phase from promotion to full integration, and coordinated usability testing.
     </p>
   </section>
 
   <!-- INLINE STATEMENT -->
   <div data-reveal="up" style="max-width: 680px; margin: 0 auto; padding: 8px 1.5rem;">
-    <div class="heading-mixed" style="font-size: clamp(2rem, 4.5vw, 3rem); text-wrap: balance; text-align: left">In 2023, <em>4 of the top 10</em> most searched items on Marktplaats were large items with <em>no shipping option.</em></div>
+    <div class="heading-mixed" style="font-size: var(--fs-h2); text-wrap: balance; text-align: left">In 2023, <em>4 of the top 10</em> most searched items on Marktplaats were large items with <em>no shipping option.</em></div>
   </div>
 
   <!-- PROBLEM STATS -->
   <section style="max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 6rem 1.5rem;">
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       Existing carriers maxed out at 23kg and 176cm. Sofas, dining tables, and washing machines simply didn't fit. Meanwhile, Brenger was already handling <span class="mark">25,000+ Marktplaats-attributed shipments per year</span> without any product integration.
     </p>
 
     <div data-reveal="up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 2.5rem; margin: 3.5rem 0 0 0;">
       <div>
-        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading); color: var(--site-color);">17.3M</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">17.3M</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">large-item ads listed in 2023, avg. price &euro;230</div>
       </div>
       <div>
-        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading); color: var(--site-color);">68%</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">68%</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">of sellers default to pick-up when an item is too large to ship</div>
       </div>
     </div>
@@ -214,8 +203,8 @@ img { display: block; max-width: 100%; height: auto; }
   <!-- RESEARCH (condensed) -->
   <section style="max-width: 680px; margin: 0 auto; padding: 4rem 1.5rem 0 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Research</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;">Trust, not price, was the <em>real barrier</em></h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">Trust, not price, was the <em>real barrier</em></h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       A survey of <span class="mark">1,000 buyers and sellers</span> revealed that 75% picked up with their own car because no viable alternative existed. The main reason buyers wouldn't ship? They needed to see the item in person first (38%). Price expectations were realistic &mdash; 62% expected &euro;0&ndash;40 for a &euro;300 sofa. Sellers wanted easier delivery (40%) and more reach (32%). Sizing the opportunity: <span class="mark">1.6M ads had potential for paid shipment</span>.
     </p>
   </section>
@@ -223,15 +212,15 @@ img { display: block; max-width: 100%; height: auto; }
   <!-- STATEMENT -->
   <div style="background: var(--white);">
     <div data-reveal="up" style="max-width: 816px; margin: 0 auto; padding: 8rem 1.5rem;">
-      <div class="heading-mixed" style="font-size: clamp(2rem, 4.5vw, 3rem); text-wrap: balance; text-align: center;">how might we help buyers and sellers trade large items in a <em>safe and convenient</em> way?</div>
+      <div class="heading-mixed" style="font-size: var(--fs-h2); text-wrap: balance; text-align: center;">how might we help buyers and sellers trade large items in a <em>safe and convenient</em> way?</div>
     </div>
   </div>
 
   <!-- PROCESS -->
   <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 4rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Process</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;">Build the skateboard, <em>not the moving truck</em></h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">Build the skateboard, <em>not the moving truck</em></h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       I facilitated a cross-functional discovery with design, product, data, and engineering. The iterative model was deliberate: <span class="mark">each phase would deliver user value, validate assumptions, and earn the right to the next investment</span>. Three steps &mdash; Skateboard, Electric Step, Electric Bike &mdash; each unlocking more integration depth.
     </p>
   </section>
@@ -253,7 +242,7 @@ img { display: block; max-width: 100%; height: auto; }
   <!-- DECISIONS -->
   <section style="max-width: 680px; margin: 0 auto; padding: 5rem 1.5rem 0 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Decisions</div>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       <span class="mark">Curbside delivery first:</span> 72% of Marktplaats-attributed Brenger shipments were curbside, so we scoped the MVP to fixed-price curbside only &mdash; simpler pricing, fewer inputs, faster to build. <span class="mark">Address as the hardest UX problem:</span> I ran a dedicated ideation on collecting addresses without disrupting the flow. Winner: reuse the address book and pre-fill from profile data.
     </p>
   </section>
@@ -261,43 +250,43 @@ img { display: block; max-width: 100%; height: auto; }
   <!-- ITERATIVE MODEL -->
   <div data-reveal="up" style="max-width: 68rem; margin: 5rem auto; padding: 0 1.5rem;">
     <div style="padding: 4rem clamp(1.5rem, 5vw, 4rem) 3.5rem; background: var(--code-wash); border-radius: var(--radius-m);">
-      <div class="heading-mixed" style="font-size: clamp(1.25rem, 2.5vw, 1.5rem); text-align: center; text-wrap: balance; max-width: 42rem; margin: 0 auto 3rem auto;">We decided to build a new product <em>iteratively,</em> delivering value to users in chunks and reducing risk.</div>
+      <div class="heading-mixed" style="font-size: var(--fs-h3); text-align: center; text-wrap: balance; max-width: 42rem; margin: 0 auto 3rem auto;">We decided to build a new product <em>iteratively,</em> delivering value to users in chunks and reducing risk.</div>
       <div style="display: flex; align-items: center; gap: clamp(.5rem, 1.5vw, 1rem); max-width: 52rem; margin: 0 auto;">
-        <div style="font-family: var(--font-sans); font-size: clamp(1.25rem, 2.5vw, 1.5rem); line-height: var(--lh-heading);">A</div>
+        <div style="font-size: var(--fs-h3); line-height: var(--lh-heading);">A</div>
         <div style="flex: 1; position: relative; padding-top: .5rem;">
-          <div style="display: flex; justify-content: space-evenly; align-items: flex-end; font-size: clamp(1.5rem, 3vw, 2rem); line-height: var(--lh-heading); margin-bottom: 1rem;">
+          <div style="display: flex; justify-content: space-evenly; align-items: flex-end; font-size: var(--fs-h3); line-height: var(--lh-heading); margin-bottom: 1rem;">
             <span>&#128761;</span><span>&#128756;</span><span>&#128690;</span><span>&#127949;&#65039;</span><span>&#128663;</span>
           </div>
           <div style="height: 1px; background: var(--gray30); position: relative;">
             <span style="position: absolute; left: -3px; top: -3.5px; width: 8px; height: 8px; border-radius: 50%; background: var(--gray30);"></span>
-            <span style="position: absolute; right: -2px; top: -8px; color: var(--gray30); font-size: 1rem; line-height: var(--lh-ui);">&rsaquo;</span>
+            <span style="position: absolute; right: -2px; top: -8px; color: var(--gray30); font-size: var(--fs-base); line-height: var(--lh-ui);">&rsaquo;</span>
             <span style="position: absolute; right: -3px; top: -3.5px; width: 8px; height: 8px; border-radius: 50%; background: var(--gray30);"></span>
           </div>
         </div>
-        <div style="font-family: var(--font-sans); font-size: clamp(1.25rem, 2.5vw, 1.5rem); line-height: var(--lh-heading);">B</div>
+        <div style="font-size: var(--fs-h3); line-height: var(--lh-heading);">B</div>
       </div>
-      <p style="font-family: var(--font-sans); font-size: var(--fs-small); color: var(--meta-color); line-height: var(--lh-body); text-align: center; text-wrap: pretty; max-width: 40rem; margin: 2rem auto 0 auto;">You cannot go from A to B with a tire, two tires, a car frame, you need the entire car. If we start from a skateboard, to an electric step, to an electric bike the shipment can get from A to B and it's a usable product.</p>
+      <p style="font-size: var(--fs-small); color: var(--meta-color); line-height: var(--lh-body); text-align: center; text-wrap: pretty; max-width: 40rem; margin: 2rem auto 0 auto;">You cannot go from A to B with a tire, two tires, a car frame, you need the entire car. If we start from a skateboard, to an electric step, to an electric bike the shipment can get from A to B and it's a usable product.</p>
     </div>
   </div>
 
   <!-- PHASE 1 -->
   <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 1 &mdash; Skateboard &#128761;</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;">Testing desirability with <em>in-chat promotion</em></h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">Testing desirability with <em>in-chat promotion</em></h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       Live from November 2023 in three L1 categories (Home &amp; Decor, Garden &amp; Patio, White Goods). A banner inside the Marktplaats chat told users they could ship large items with Brenger, then redirected them to Brenger's platform to complete the order.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       No backend integration. No payment inside Marktplaats. Just enough to measure intent without engineering investment.
     </p>
 
     <div data-reveal="up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 3.5rem 0;">
       <div>
-        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading); color: var(--site-color);">22K</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">22K</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body);">leads sent to Brenger from in-chat banners</div>
       </div>
       <div>
-        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading); color: var(--site-color);">198</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">198</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body);">completed Brenger transactions (~1.8% conversion)</div>
       </div>
     </div>
@@ -320,14 +309,14 @@ img { display: block; max-width: 100%; height: auto; }
   <!-- VALIDATION QUOTE -->
   <div style="background: var(--white);">
     <div data-reveal="up" style="max-width: 816px; margin: 0 auto; padding: 8rem 1.5rem; text-align: center;">
-      <div class="serif-italic" style="font-size: clamp(2rem, 4.5vw, 3rem); line-height: var(--lh-ui); text-wrap: balance;">"I can see the convenience of large item home delivery &mdash; I just need to trust that it arrives safely."</div>
+      <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-ui); text-wrap: balance;">"I can see the convenience of large item home delivery &mdash; I just need to trust that it arrives safely."</div>
       <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: 1.5rem;">Buyer, exit survey on in-chat banner (n=1,871)</div>
     </div>
   </div>
 
   <!-- QUALITATIVE VALIDATION -->
   <section style="max-width: 680px; margin: 0 auto; padding: 4rem 1.5rem 0 1.5rem;">
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       An exit survey (n=1,871) validated demand: <span class="mark">half considered using the service</span>. Signal strong enough to invest in real integration.
     </p>
   </section>
@@ -335,12 +324,12 @@ img { display: block; max-width: 100%; height: auto; }
   <!-- PHASE 2 -->
   <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 2 &mdash; Electric Step &#128756;</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;">Item paid at <em>Marktplaats,</em> shipping completed at <em>Brenger</em></h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">Item paid at <em>Marktplaats,</em> shipping completed at <em>Brenger</em></h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       The first real integration: Brenger appeared as a shipping option alongside "Self Shipping" in the payment proposal. Buyers paid for the item inside Marktplaats, then were redirected to Brenger to complete shipping details and payment. Curbside-only pricing, estimated via the Brenger API based on distance.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
-      The split introduced friction &mdash; two payment moments, two platforms &mdash; but it validated the full transaction loop. Users could now complete an item purchase on Marktplaats <em class="serif-italic">and</em> have it delivered, with <span class="mark">Buyer Protection</span> covering the entire trade.
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+      The split introduced friction &mdash; two payment moments, two platforms &mdash; but it validated the full transaction loop. Users could now complete an item purchase on Marktplaats <em class="bold">and</em> have it delivered, with <span class="mark">Buyer Protection</span> covering the entire trade.
     </p>
   </section>
 
@@ -365,11 +354,11 @@ img { display: block; max-width: 100%; height: auto; }
   <!-- PHASE 3 -->
   <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 0 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Phase 3 &mdash; Electric Bike &#128690;</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;"><em>Full payment</em> on Marktplaats, scheduling via <em>Brenger</em></h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
-      The biggest friction point removed: users paid for both item <em class="serif-italic">and</em> shipping in a single Marktplaats checkout. Post-purchase, Brenger handled appointment scheduling. The platform could now offer better prices than going to Brenger directly, and Buyer Protection covered the entire transaction end to end.
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;"><em>Full payment</em> on Marktplaats, scheduling via <em>Brenger</em></h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+      The biggest friction point removed: users paid for both item <em class="bold">and</em> shipping in a single Marktplaats checkout. Post-purchase, Brenger handled appointment scheduling. The platform could now offer better prices than going to Brenger directly, and Buyer Protection covered the entire transaction end to end.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       Curbside remained the default (72% of shipments), keeping the flow simple: distance and item dimensions determined the price. No floor-level questions, no elevator inputs. For door-to-door delivery, users could upgrade at Brenger post-purchase.
     </p>
   </section>
@@ -395,15 +384,15 @@ img { display: block; max-width: 100%; height: auto; }
   <!-- SOLUTION STATEMENT -->
   <div style="background: var(--white);">
     <div data-reveal="up" style="max-width: 816px; margin: 0 auto; padding: 8rem 1.5rem; text-align: center;">
-      <div class="heading-mixed" style="font-size: clamp(2rem, 4.5vw, 3rem); text-wrap: balance;">From zero shipping options for large items to a <em>fully integrated flow</em> in three iterations.</div>
+      <div class="heading-mixed" style="font-size: var(--fs-h2); text-wrap: balance;">From zero shipping options for large items to a <em>fully integrated flow</em> in three iterations.</div>
     </div>
   </div>
 
   <!-- SOLUTION SUMMARY -->
   <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 4rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">The solution</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;">One checkout. Trusted delivery. <em>Buyer Protection included.</em></h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">One checkout. Trusted delivery. <em>Buyer Protection included.</em></h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       Sellers create a payment proposal with Brenger as the shipping method, buyers see a transparent total (item + transport), pay in one step, and both parties schedule the pickup. The platform's new principle: if it fits in a box, use PostNL. If it needs a courier, <span class="mark">use Brenger</span>.
     </p>
   </section>
@@ -411,26 +400,26 @@ img { display: block; max-width: 100%; height: auto; }
   <!-- RESULTS -->
   <section style="max-width: 680px; margin: 0 auto; padding: 8rem 1.5rem 4rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Results</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;">From 0 to 300 weekly shipments. <em>A new revenue line for Marktplaats.</em></h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">From 0 to 300 weekly shipments. <em>A new revenue line for Marktplaats.</em></h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       Each phase validated the next investment. The skateboard proved demand, the electric step proved the transaction model, and the electric bike proved the business case.
     </p>
 
     <div data-reveal="up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 2.5rem; margin: 3.5rem 0 0 0;">
       <div>
-        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading); color: var(--site-color);">300</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">300</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">weekly shipments target reached in H2 2024</div>
       </div>
       <div>
-        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading); color: var(--site-color);">&euro;500K+</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">&euro;500K+</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">projected shipping revenue in 2024, with expectations to triple in 2025</div>
       </div>
       <div>
-        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading); color: var(--site-color);">25K</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">25K</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">annual shipments target for 2025 &mdash; matching Brenger's unintegrated 2023 volume</div>
       </div>
       <div>
-        <div class="serif-italic" style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: var(--lh-heading); color: var(--site-color);">+5%</div>
+        <div class="bold" style="font-size: var(--fs-h2); line-height: var(--lh-heading); color: var(--site-color);">+5%</div>
         <div style="font-size: var(--fs-small); color: var(--meta-color); margin-top: .5rem; line-height: var(--lh-body); max-width: 14rem;">increase in payment proposals sent in targeted categories</div>
       </div>
     </div>
@@ -438,7 +427,7 @@ img { display: block; max-width: 100%; height: auto; }
 
   <!-- RESULTS COMMENTARY -->
   <section style="max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 6rem 1.5rem;">
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       The financial model projects &euro;1.7M revenue for 2025 and &euro;3.5M by 2026. The integration positions Marktplaats as the <span class="mark">only major Dutch marketplace with integrated large-item shipping</span> &mdash; a moat no direct competitor currently offers.
     </p>
   </section>
@@ -446,11 +435,11 @@ img { display: block; max-width: 100%; height: auto; }
   <!-- REFLECTION -->
   <section style="max-width: 680px; margin: 0 auto; padding: 6rem 1.5rem 8rem 1.5rem;">
     <div class="label" data-reveal="up" style="margin-bottom: 1.5rem;">Reflection</div>
-    <h2 class="heading-mixed" data-reveal="up" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); margin: 0 0 1.5rem 0;">Defining the product <em>in increments</em></h2>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
+    <h2 class="heading-mixed" data-reveal="up" style="font-size: var(--fs-h3); margin: 0 0 1.5rem 0;">Defining the product <em>in increments</em></h2>
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0 0 1.5rem 0; text-wrap: pretty;">
       <span class="mark">The iterative approach was the design decision.</span> Phase 1 asked "is there demand?", Phase 2 asked "will people complete the transaction?", Phase 3 asked "can we make it convenient enough to scale?" Without that structure, we'd have built a full integration against unvalidated assumptions.
     </p>
-    <p data-reveal="up" style="font-family: var(--font-sans); font-size: 1rem; line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
+    <p data-reveal="up" style="font-size: var(--fs-base); line-height: var(--lh-body); color: var(--gray35); margin: 0; text-wrap: pretty;">
       What I'd do differently: <span class="mark">map backend constraints earlier</span>. The address collection problem surfaced late and required a dedicated ideation that could have been run in discovery.
     </p>
   </section>

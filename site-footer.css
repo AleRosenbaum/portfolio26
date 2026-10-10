@@ -7,7 +7,7 @@
   color: var(--on-ink);
   background: var(--ink-surface);
   font-family: var(--font-sans);
-  font-size: var(--fs-16);
+  font-size: var(--fs-base);
   line-height: var(--lh-ui);
 }
 
@@ -52,8 +52,8 @@
   max-width: 22em;
   margin: 0;
   color: inherit;
-  font-size: clamp(2rem, 3.15vw, 3.5rem);
-  font-weight: 400;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-regular);
   letter-spacing: -.035em;
   line-height: var(--lh-heading);
   text-wrap: balance;
@@ -76,8 +76,8 @@
   color: var(--text-color) !important;
   background: var(--on-ink);
   border-radius: var(--radius-pill);
-  font-size: clamp(1.25rem, 1.8vw, 2rem);
-  font-weight: 400;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-regular);
   line-height: var(--lh-heading);
   transition: color 180ms ease, background-color 180ms ease, transform 240ms cubic-bezier(.22, 1, .36, 1);
 }
@@ -88,7 +88,7 @@
   align-items: flex-start;
   gap: 1rem;
   padding-top: 0;
-  font-size: clamp(1.25rem, 1.65vw, 1.5rem);
+  font-size: var(--fs-large);
 }
 
 .site-footer__nav a {
@@ -157,7 +157,7 @@
   .site-footer__statement {
     max-width: 15ch;
     margin-bottom: 2.5rem;
-    font-size: clamp(2rem, 9vw, 2.5rem);
+    font-size: var(--fs-h2);
   }
 
   .site-footer__break {

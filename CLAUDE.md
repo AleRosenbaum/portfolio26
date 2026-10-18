@@ -6,7 +6,7 @@ Personal portfolio site for Ale Rosenbaum, Senior Product Designer at Marktplaat
 
 Plain HTML/CSS/JS. No framework. Four pages plus an internal design system page:
 
-- `index.html` — main SPA. JS `go()` function swaps between Home and Contact views. Nav hides on home. Opening `index.html#contact` lands on the Contact view.
+- `index.html` — the home page. There is no Contact view: the bio's "looks for a team that does too" link and every "Get in touch" open LinkedIn, and old `/#contact` links redirect there.
 - `brenger.html` — password gate for the Brenger case study ("Integrating Brenger into Marktplaats").
 - `offers.html` — password gate for the Structured Offers case study ("From Silence to Structured Offers").
 - `quaddro.html` — the Quaddro case study ("Designing for the Wrong Market"). Public, not password gated, and linked from the home grid.
@@ -16,7 +16,7 @@ Plain HTML/CSS/JS. No framework. Four pages plus an internal design system page:
 
 `sticky-header.css/js` and `site-footer.css/js` are injected on every page. Both scripts own their element outright, so a page must not define its own `<nav>` or `<footer>`:
 
-- `sticky-header.js` appends the floating pill nav and, by default, shows it from the first fold. `index.html` opts out with `<body data-floating-nav="scroll">`, which reveals the nav only once the hero scrolls past (`[data-sticky-header-trigger]`, then `.hero`, then the first `figure`) or the Contact view opens. When the nav is always on, the body gets `.floating-nav-always` and 56px of top padding to clear the fixed bar.
+- `sticky-header.js` appends the floating pill nav and, by default, shows it from the first fold. `index.html` opts out with `<body data-floating-nav="scroll">`, which reveals the nav only once the hero scrolls past (`[data-sticky-header-trigger]`, then `.hero`, then the first `figure`). When the nav is always on, the body gets `.floating-nav-always` and 56px of top padding to clear the fixed bar.
 - The script also removes any `<nav>` whose text contains "Case study". The case pages used to carry their own static bar, and the already-encrypted gate payloads still do.
 - `site-footer.js` removes any existing `<footer>` before appending the shared dark one.
 
@@ -44,7 +44,7 @@ The case pages are AES-256-GCM encrypted (staticrypt-style). The real pages live
 
 **After editing anything in `_src/`, regenerate the gates:** `node encrypt-cases.mjs <password> [<password> ...]`, passing every password that should work. It also runs `stamp-assets.mjs`.
 
-The gate page itself uses the shared nav and footer and the same header as the case it unlocks: the case `<h1>` (read from the `<body>` of the `_src` file), a short lede, and the home contact form fields. "Ask me for access" is a `mailto:` with a subject naming the case. To change only the gate, without the password, run `node encrypt-cases.mjs --gate-only`: it rebuilds the page around the payload already in `brenger.html` and `offers.html`, leaving the encrypted content as it was.
+The gate page itself uses the shared nav and footer and the same header as the case it unlocks: the case `<h1>` (read from the `<body>` of the `_src` file), a short lede, and simple form fields. "Ask me for access" is a `mailto:` with a subject naming the case. To change only the gate, without the password, run `node encrypt-cases.mjs --gate-only`: it rebuilds the page around the payload already in `brenger.html` and `offers.html`, leaving the encrypted content as it was.
 
 **After editing `tokens.css`, `sticky-header.*` or `site-footer.*`, run `node stamp-assets.mjs`** (or the encrypt script). Pages link these files with a content hash (`/tokens.css?v=1a2b3c4d`); GitHub Pages lets browsers cache them for 10 minutes, and without a new hash a browser can pair new HTML with an old stylesheet and break the layout. Passwords are never committed. Each one opens both cases: the page is encrypted once with a random key, and that key is stored once per password. Caveats: case imagery (`offers/`, `brenger-hero.png`) is not encrypted and stays publicly fetchable by URL; both case pages share the same passwords.
 
@@ -57,7 +57,7 @@ All tokens live in `tokens.css`, linked by every page (home, case sources, Quadd
 - **Colors:** warm gray scale `--gray00` to `--gray40` (32° hue), accent `--site-color: #8438f4` (purple), plus semantic tokens (`--text-color`, `--meta-color`, `--wash-color`, `--ink-surface`, `--on-ink`, `--success-color`, `--error-color`, glass and scrim overlays). No raw hex or rgba in pages.
 - **Font:** Instrument Sans only (`--font-sans`), weights 400, 500, 600 and 700 from Google Fonts. No serif and no italic anywhere.
 - **Weights:** `--fw-regular` (400), `--fw-medium` (500), `--fw-bold` (600). Emphasis is always bold: `<em>` renders as `--fw-bold` and `.bold` does the same for whole elements. Never use `font-style: italic` or underlined text for emphasis; key phrases go in `<strong>`.
-- **Type scale:** six roles named after web conventions. `--fs-h1` (40 to 64px, page titles), `--fs-h2` (32 to 48px, statements and big numbers), `--fs-h3` (24 to 32px, section headings), `--fs-large` (20px), `--fs-base` (16px), `--fs-small` (12px). Headings are fluid with `clamp()`. Never use a raw font size; pick a role. The heading tag sets its size: `tokens.css` styles every `<h1>`, `<h2>` and `<h3>` with the matching role, so never put a font size on a heading tag. A non-heading element that borrows a heading size must also set the matching line height. Each page has exactly one `<h1>` (on the home page it is the bio; the Contact view title is an `<h2>`).
+- **Type scale:** six roles named after web conventions. `--fs-h1` (40 to 64px, page titles), `--fs-h2` (32 to 48px, statements and big numbers), `--fs-h3` (24 to 32px, section headings), `--fs-large` (20px), `--fs-base` (16px), `--fs-small` (12px). Headings are fluid with `clamp()`. Never use a raw font size; pick a role. The heading tag sets its size: `tokens.css` styles every `<h1>`, `<h2>` and `<h3>` with the matching role, so never put a font size on a heading tag. A non-heading element that borrows a heading size must also set the matching line height. Each page has exactly one `<h1>` (on the home page it is the bio).
 - **Line heights:** `--lh-heading` (1.1) for h1 and h2, `--lh-ui` (1.2) for h3 and single line UI, `--lh-body` (1.5) for large, base and small.
 - **Spacing:** 8px grid. Use `--space-1` (8px) to `--space-20` (160px). Literal values in inline styles must also be multiples of 8px.
 - **Radii:** `--radius-s` 8px, `--radius-m` 16px, `--radius-l` 24px, `--radius-xl` 32px, `--radius-pill`.
@@ -67,7 +67,7 @@ All tokens live in `tokens.css`, linked by every page (home, case sources, Quadd
 
 One shared column, defined in `tokens.css`: `--measure` (680px), `--column` (defaults to `--measure`), `--gutter` (24px) and `--column-box` (a container of `--column` plus both gutters). The floating nav, the hero, the body text and the footer all line up to the column edges on every page. Text containers use `max-width: var(--column-box); margin: 0 auto; padding: 0 var(--gutter)` (or `1.5rem`, the same value).
 
-- **Home is the only wide page.** `index.html` sets `--inset` (120px desktop, 80px tablet at 64em, 24px mobile at 50em) and widens `--column` to `calc(100% - 2 * var(--inset))`, so the nav and footer follow the home edges. The contact view keeps its text at `--measure`, left aligned to the same edge.
+- **Home is the only wide page.** `index.html` sets `--inset` (120px desktop, 80px tablet at 64em, 24px mobile at 50em) and widens `--column` to `calc(100% - 2 * var(--inset))`, so the nav and footer follow the home edges.
 - Image captions are styled once, in `tokens.css`: every `<figcaption>` is paragraph size (`--fs-base`), centered text, centered under its image and never wider than the column. Do not style captions inline.
 - Case studies may break out of the column only for imagery: full-bleed hero images and `--container-max` (68rem) image grids.
 
@@ -103,7 +103,7 @@ One shared column, defined in `tokens.css`: `--measure` (680px), `--column` (def
 ## Writing style
 
 - No em dashes (`—`). Rewrite sentences naturally instead.
-- English for case titles and descriptions. Portuguese only in the contact form (legacy, leave as-is).
+- English everywhere on the site.
 - Tone: direct, professional, no fluff.
 
 ## Owner

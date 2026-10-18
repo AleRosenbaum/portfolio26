@@ -6,6 +6,7 @@
 // contact_click      an email or LinkedIn link           channel, link_location
 // access_request     "Ask me for access" on a gate       case_name
 // case_read          25, 50, 75 and 100% of a case       case_name, percent_scrolled
+// case_section_view  a section label reaches mid screen  case_name, section, section_index
 (function () {
   // The gate replaces its document with the case on unlock, and the case loads
   // this script again, so guard per document rather than per window.
@@ -42,9 +43,29 @@
     }
   }, true);
 
+  if (!caseName || isGate) return;
+
+  // Which sections people reach, named by their labels ("Research",
+  // "Results"...). A section counts once its label scrolls into the upper half
+  // of the screen. Emoji are dropped from the name.
+  var labels = Array.prototype.slice.call(document.querySelectorAll('.label'));
+  if (labels.length && 'IntersectionObserver' in window) {
+    var sections = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        sections.unobserve(entry.target);
+        track('case_section_view', {
+          case_name: caseName,
+          section: entry.target.textContent.replace(/[^\p{L}\p{N}\s·]/gu, '').replace(/\s+/g, ' ').trim(),
+          section_index: labels.indexOf(entry.target) + 1
+        });
+      });
+    }, { rootMargin: '0px 0px -50% 0px' });
+    labels.forEach(function (label) { sections.observe(label); });
+  }
+
   // Reading depth on the case pages, measured against the content above the
   // footer so that "100" means the reader reached the end of the case.
-  if (!caseName || isGate) return;
   var marks = [25, 50, 75, 100];
   var framePending = false;
 

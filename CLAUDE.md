@@ -34,6 +34,7 @@ GA4 (`G-VXNMWSJCZE`) loads on the home page, Quaddro and the case gates, but not
 | `case_unlock` / `case_unlock_failed` | a password is entered (never sent) | `case_name` |
 | `access_request` | "Ask me for access" on a gate | `case_name` |
 | `case_read` | 25, 50, 75 and 100% of a case, above the footer | `case_name`, `percent_scrolled` |
+| `case_section_view` | a section `.label` reaches the upper half of the screen, once each | `case_name`, `section` (label text, emoji dropped), `section_index` |
 
 The gate does not send a page view. On unlock it strips the case's own GA snippet and sends the case's page view itself, so each read counts once. To see the parameters in GA reports, register them as event scoped custom dimensions.
 

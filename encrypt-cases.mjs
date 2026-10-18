@@ -2,15 +2,24 @@
 // Usage: node encrypt-cases.mjs <password>
 // Run after every edit to _src/brenger.html or _src/offers.html.
 // It first runs stamp-assets.mjs so every page links the current asset versions.
+// node encrypt-cases.mjs --gate-only rebuilds only the password page around the
+// payload already in brenger.html and offers.html, so the gate itself can change
+// without the password. The encrypted case content stays as it was.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { randomBytes, pbkdf2Sync, createCipheriv } from 'node:crypto';
 import { stampAssets } from './stamp-assets.mjs';
 
-const password = process.argv[2];
-if (!password) {
-  console.error('Usage: node encrypt-cases.mjs <password>');
+const gateOnly = process.argv[2] === '--gate-only';
+const password = gateOnly ? null : process.argv[2];
+if (!password && !gateOnly) {
+  console.error('Usage: node encrypt-cases.mjs <password>  (or --gate-only)');
   process.exit(1);
 }
+if (password && password.startsWith('--')) {
+  console.error(`Unknown option ${password}. Passwords cannot start with "--".`);
+  process.exit(1);
+}
+const ACCESS_EMAIL = 'alesrosenbaum@gmail.com';
 
 const ITERATIONS = 600000;
 const v = stampAssets();
@@ -19,6 +28,7 @@ const pages = [
   {
     src: '_src/brenger.html',
     out: 'brenger.html',
+    caseName: 'Brenger',
     title: 'Integrating Brenger into Marktplaats · Ale Rosenbaum',
     description: "How I turned a large-item shipping gap into Marktplaats's first integrated Brenger delivery flow, built iteratively from chat promotion to checkout.",
     url: 'https://alerosenbaum.com/brenger.html',
@@ -30,6 +40,7 @@ const pages = [
   {
     src: '_src/offers.html',
     out: 'offers.html',
+    caseName: 'Structured Offers',
     title: 'From Silence to Structured Offers · Ale Rosenbaum',
     description: 'How I designed structured offers for Marktplaats, turning silent conversations into clearer negotiations and more successful deals.',
     url: 'https://alerosenbaum.com/offers.html',
@@ -97,82 +108,83 @@ gtag('config', 'G-VXNMWSJCZE');
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/tokens.css?v=${v['tokens.css']}">
+<link rel="stylesheet" href="/sticky-header.css?v=${v['sticky-header.css']}">
+<script src="/sticky-header.js?v=${v['sticky-header.js']}" defer></script>
+<link rel="stylesheet" href="/site-footer.css?v=${v['site-footer.css']}">
+<script src="/site-footer.js?v=${v['site-footer.js']}" defer></script>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { -webkit-font-smoothing: antialiased; }
 body {
+  margin: 0;
   background: var(--wash-color);
   color: var(--text-color);
   font-family: var(--font-sans);
   font-size: var(--fs-base);
   line-height: var(--lh-body);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  font-feature-settings: "ss02" 1;
 }
-.gate-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  max-width: var(--column-box);
-  width: 100%;
-  margin: 0 auto;
-  padding: var(--space-3) var(--gutter) 0;
-}
-.gate-nav a { font-size: var(--fs-base); color: inherit; text-decoration: none; }
-.gate-nav a:hover { color: var(--site-color); }
-.gate-nav span { font-size: var(--fs-small); color: var(--meta-color); }
-.gate-wrap {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-6) var(--space-3);
-}
+em { font-style: normal; font-weight: var(--fw-bold); }
+
+/* Same column and header as the case page it unlocks */
 .gate {
-  width: 100%;
-  max-width: 26rem;
-  text-align: center;
+  max-width: var(--column-box);
+  min-height: calc(100vh - 3.5rem);
+  margin: 0 auto;
+  padding: var(--space-8) var(--gutter) var(--space-12);
 }
-.gate-label {
-  font-size: var(--fs-small);
+.label {
+  margin: 0 0 var(--space-3);
   color: var(--site-color);
+  font-size: var(--fs-small);
   font-weight: var(--fw-medium);
   letter-spacing: .04em;
   text-transform: uppercase;
-  margin-bottom: var(--space-2);
 }
 .gate h1 {
-  font-family: var(--font-sans);
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-h3);
-  line-height: var(--lh-heading);
-  text-wrap: balance;
-  margin-bottom: var(--space-1);
+  margin: 0 0 var(--space-4);
+  text-wrap: pretty;
 }
-.gate p {
-  font-size: var(--fs-small);
-  color: var(--meta-color);
-  margin-bottom: var(--space-4);
+.gate-lede {
+  margin: 0 0 var(--space-6);
+  color: var(--gray35);
+  text-wrap: pretty;
 }
-.gate form { display: flex; flex-direction: column; gap: var(--space-1); }
-.gate input {
+
+/* Form fields as on the home contact form */
+.gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 26rem;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.field-input {
   font-family: var(--font-sans);
   font-size: var(--fs-base);
+  line-height: var(--lh-body);
   color: var(--text-color);
   background: var(--gray05);
   border: 1px solid var(--hairline-color);
   border-radius: var(--radius-s);
   padding: var(--space-1) var(--space-2);
   outline: none;
-  text-align: center;
+  -webkit-appearance: none;
   transition: border-color .2s;
 }
-.gate input::placeholder { color: var(--gray20); }
-.gate input:focus { border-color: var(--meta-color); }
-.gate button {
+.field-input::placeholder { color: var(--gray20); }
+.field-input:focus { border-color: var(--meta-color); }
+.form-submit {
+  align-self: flex-start;
   font-family: var(--font-sans);
   font-size: var(--fs-base);
+  line-height: var(--lh-body);
   padding: var(--space-1) var(--space-2);
   background: var(--ink-surface);
   color: var(--on-ink);
@@ -181,41 +193,41 @@ body {
   cursor: pointer;
   transition: opacity .2s;
 }
-.gate button:hover { opacity: .8; }
-.gate button:disabled { opacity: .5; cursor: wait; }
+.form-submit:hover { opacity: .75; }
+.form-submit:disabled { opacity: .5; cursor: wait; }
+.form-submit:focus-visible { outline: 2px solid var(--site-color); outline-offset: 2px; }
 .gate-error {
-  font-size: var(--fs-small);
-  color: var(--error-color);
   min-height: 1.5em;
+  margin: 0;
+  color: var(--error-color);
+  font-size: var(--fs-small);
 }
 .gate-hint {
-  font-size: var(--fs-small);
-  color: var(--gray20);
-  margin-top: var(--space-5);
+  margin: var(--space-3) 0 0;
+  color: var(--meta-color);
 }
-.gate-hint a { color: var(--meta-color); }
+.gate-hint a {
+  color: var(--text-color);
+  text-decoration-color: var(--site-color);
+  text-decoration-thickness: max(.05em, 1px);
+}
+.gate-hint a:hover { color: var(--hover-color); }
 </style>
 </head>
 <body>
 
-<nav class="gate-nav">
-  <a href="index.html">Ale Rosenbaum</a>
-  <span>Protected case study</span>
-</nav>
-
-<div class="gate-wrap">
-  <div class="gate">
-    <p class="gate-label">Password required</p>
-    <h1>This case study is private.</h1>
-    <p>Enter the password to view it.</p>
-    <form id="gate-form">
-      <input type="password" id="gate-pass" placeholder="Password" autocomplete="current-password" autofocus required>
-      <button type="submit" id="gate-btn">Unlock</button>
-      <div class="gate-error" id="gate-error"></div>
-    </form>
-    <p class="gate-hint">No password? <a href="mailto:alesrosenbaum@gmail.com">Ask me for access</a>.</p>
-  </div>
-</div>
+<main class="gate">
+  <p class="label">Protected case study</p>
+  <h1>${page.heading}</h1>
+  <p class="gate-lede">This case study is private. Enter the password to read it.</p>
+  <form class="gate-form" id="gate-form">
+    <label class="visually-hidden" for="gate-pass">Password</label>
+    <input class="field-input" type="password" id="gate-pass" placeholder="Password" autocomplete="current-password" autofocus required>
+    <button class="form-submit" type="submit" id="gate-btn">Unlock</button>
+    <p class="gate-error" id="gate-error" role="alert"></p>
+  </form>
+  <p class="gate-hint">No password? <a href="mailto:${ACCESS_EMAIL}?subject=${encodeURIComponent(`Password for the ${page.caseName} case study`)}">Ask me for access</a>.</p>
+</main>
 
 <script id="payload" type="application/json">${JSON.stringify(payload)}</script>
 <script>
@@ -294,7 +306,11 @@ body {
 
 for (const page of pages) {
   const plaintext = readFileSync(page.src, 'utf8');
-  const payload = encrypt(plaintext);
+  // The gate shows the same title as the case page it unlocks
+  page.heading = plaintext.slice(plaintext.indexOf('<body')).match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1].trim();
+  const payload = gateOnly
+    ? JSON.parse(readFileSync(page.out, 'utf8').match(/<script id="payload" type="application\/json">([\s\S]*?)<\/script>/)[1])
+    : encrypt(plaintext);
   writeFileSync(page.out, gatePage(page, payload));
-  console.log(`${page.out} written (${(payload.ct.length / 1e3).toFixed(0)} KB payload)`);
+  console.log(`${page.out} written (${(payload.ct.length / 1e3).toFixed(0)} KB payload${gateOnly ? ', reused' : ''})`);
 }

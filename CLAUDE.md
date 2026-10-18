@@ -28,6 +28,8 @@ The case pages are AES-256-GCM encrypted (staticrypt-style). The real pages live
 
 **After editing anything in `_src/`, regenerate the gates:** `node encrypt-cases.mjs <password>`. It also runs `stamp-assets.mjs`.
 
+The gate page itself uses the shared nav and footer and the same header as the case it unlocks: the case `<h1>` (read from the `<body>` of the `_src` file), a short lede, and the home contact form fields. "Ask me for access" is a `mailto:` with a subject naming the case. To change only the gate, without the password, run `node encrypt-cases.mjs --gate-only`: it rebuilds the page around the payload already in `brenger.html` and `offers.html`, leaving the encrypted content as it was.
+
 **After editing `tokens.css`, `sticky-header.*` or `site-footer.*`, run `node stamp-assets.mjs`** (or the encrypt script). Pages link these files with a content hash (`/tokens.css?v=1a2b3c4d`); GitHub Pages lets browsers cache them for 10 minutes, and without a new hash a browser can pair new HTML with an old stylesheet and break the layout. The password itself is never committed. Caveats: case imagery (`offers/`, `brenger-hero.png`) is not encrypted and stays publicly fetchable by URL; both case pages share one password.
 
 Both case pages use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, white statement bands, accent stat numbers, and scroll-reveal animations (vanilla JS). Sections are styled inline; tokens come from `tokens.css` and shared roles (`.heading-mixed`, `.label`, `.bold`) live in the page's style block. Brenger imagery lives in `brenger/`; Offers imagery lives in `offers/`.

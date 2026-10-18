@@ -311,82 +311,6 @@
     .strategy-table td:nth-child(2) { color: var(--meta-color); }
     .strategy-table td:last-child { font-weight: var(--fw-medium); }
 
-    .mvp-surface { padding: var(--space-8) clamp(var(--space-3), 5vw, var(--space-8)); }
-    .phones {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 18rem));
-      justify-content: center;
-      gap: var(--space-4);
-    }
-    .phone {
-      min-height: 31rem;
-      padding: var(--space-1);
-      border: 2px solid var(--ink-surface);
-      border-radius: var(--radius-xl);
-      background: var(--ink-surface);
-    }
-    .phone-screen {
-      height: 100%;
-      min-height: 29rem;
-      padding: var(--space-4) var(--space-2) var(--space-2);
-      border-radius: var(--radius-l);
-      background: var(--wash-color);
-      color: var(--text-color);
-    }
-    .phone-kicker {
-      color: var(--meta-color);
-      font-size: var(--fs-small);
-      font-weight: var(--fw-bold);
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-    .phone h3 {
-      margin: var(--space-2) 0 var(--space-4);
-      font-weight: var(--fw-medium);
-      letter-spacing: -.02em;
-    }
-    .ui-line {
-      height: var(--space-1);
-      margin-bottom: var(--space-1);
-      border-radius: var(--radius-pill);
-      background: var(--gray10);
-    }
-    .ui-line.short { width: 62%; }
-    .ui-value {
-      margin: var(--space-3) 0;
-      padding: var(--space-2);
-      border: 1px solid var(--hairline-color);
-      border-radius: var(--radius-s);
-      background: var(--white);
-      font-size: var(--fs-h3); line-height: var(--lh-ui);
-      font-weight: var(--fw-bold);
-    }
-    .ui-button {
-      margin-top: var(--space-4);
-      padding: var(--space-2);
-      border-radius: var(--radius-s);
-      background: var(--ink-surface);
-      color: var(--on-ink);
-      text-align: center;
-      font-size: var(--fs-small);
-      font-weight: var(--fw-bold);
-    }
-    .ui-contact {
-      display: flex;
-      gap: var(--space-2);
-      align-items: center;
-      padding: var(--space-2) 0;
-      border-bottom: 1px solid var(--hairline-color);
-    }
-    .ui-avatar {
-      width: 2.5rem;
-      height: 2.5rem;
-      flex: 0 0 auto;
-      border-radius: var(--radius-pill);
-      background: var(--site-color);
-    }
-    .ui-contact-lines { flex: 1; }
-
     /* Orange stat numbers, as on the Brenger and Offers pages */
     .stat-grid {
       display: grid;
@@ -462,7 +386,6 @@
         letter-spacing: .06em;
         text-transform: uppercase;
       }
-      .phones { grid-template-columns: minmax(0, 19rem); }
       .stat-grid { grid-template-columns: 1fr; gap: var(--space-4); }
       .shift-grid { grid-template-columns: 1fr; }
       .shift-arrow { justify-self: start; transform: rotate(90deg); }
@@ -496,7 +419,7 @@
     <div class="media-grid">
       <figure data-reveal="up">
         <div class="case-figure">
-          <img src="quaddro/bizbox-app.png" alt="The Bizbox mobile app showing a job list with scheduled appointments, prices and addresses in Dallas, Texas" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+          <img src="quaddro/bizbox-app.webp" alt="The Bizbox app in June 2021, with a team card for inviting professionals and a form for booking an animal care and training appointment" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
           <div class="image-placeholder">
             <span class="placeholder-index">Export 01 · 4:3</span>
             <div class="placeholder-content">
@@ -506,11 +429,11 @@
             </div>
           </div>
         </div>
-        <figcaption>Bizbox in the United States, with scheduled jobs, prices and addresses in Dallas.</figcaption>
+        <figcaption>Bizbox in the United States, with team invites and appointment booking.</figcaption>
       </figure>
       <figure data-reveal="up">
         <div class="case-figure">
-          <img src="quaddro/us-retention.png" alt="Google Analytics charts showing 781 new users against 533 returning users, and a retention curve that drops to near zero after the first day" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+          <img src="quaddro/us-retention.webp" alt="Google Analytics user retention chart for the 42 days ending 31 August, dropping from 100% on day zero to under 10% the next day and close to zero after that" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
           <div class="image-placeholder">
             <span class="placeholder-index">Export 02 · 4:3</span>
             <div class="placeholder-content">
@@ -520,7 +443,7 @@
             </div>
           </div>
         </div>
-        <figcaption>Retention collapsed after day one · Google Analytics, Feb to Aug 2021.</figcaption>
+        <figcaption>Retention collapsed after day one · Google Analytics, 42 days ending 31 August 2021.</figcaption>
       </figure>
     </div>
   </div>
@@ -546,7 +469,7 @@
 
   <figure class="media-block" data-reveal="up">
     <div class="case-figure wide">
-      <img src="quaddro/csd-matrix.png" alt="A CSD matrix with three columns of sticky notes: green certainties, yellow suppositions and red doubts" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <img src="quaddro/csd-matrix.webp" alt="A CSD matrix with three columns of sticky notes: green certainties, yellow suppositions and red doubts" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
       <div class="image-placeholder">
         <span class="placeholder-index">Export 03 · 21:9</span>
         <div class="placeholder-content">
@@ -570,7 +493,7 @@
     <div class="media-grid">
       <figure data-reveal="up">
         <div class="case-figure">
-          <img src="quaddro/research-plan.png" alt="The research plan in Notion, listing objective, hypothesis, recruitment, target users, interview guide and analysis" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+          <img src="quaddro/research-plan.webp" alt="The research plan in Notion for interviews with Brazilian professionals: 30 minute in-depth interviews, with sections for objective, hypothesis, recruitment, target users, interview guide, answers and analysis" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
           <div class="image-placeholder">
             <span class="placeholder-index">Export 04 · 4:3</span>
             <div class="placeholder-content">
@@ -584,7 +507,7 @@
       </figure>
       <figure data-reveal="up">
         <div class="case-figure">
-          <img src="quaddro/personas.png" alt="Four Brazilian personas: Carol, Tabatha, Guga and Marina, each with demographics, needs and potential solutions" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+          <img src="quaddro/personas.webp" alt="Two Brazilian personas, Carol, a beautician, and Tabatha, a personal trainer, each with demographics, pains and needs, and potential solutions" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
           <div class="image-placeholder">
             <span class="placeholder-index">Export 05 · 4:3</span>
             <div class="placeholder-content">
@@ -594,7 +517,7 @@
             </div>
           </div>
         </div>
-        <figcaption>Carol, Tabatha, Guga and Marina · the four working patterns the interviews kept returning to.</figcaption>
+        <figcaption>Carol and Tabatha, two of the four personas the interviews kept returning to.</figcaption>
       </figure>
     </div>
   </div>
@@ -647,7 +570,7 @@
 
   <figure class="media-block" data-reveal="up">
     <div class="case-figure wide">
-      <img src="quaddro/research-nuggets.png" alt="An atomic research database in Notion, with each interview finding tagged by status, confidence, relevance and theme" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <img src="quaddro/research-nuggets.webp" alt="An atomic research database in Notion, with each finding tagged by status, confidence, relevance, profession and source" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
       <div class="image-placeholder">
         <span class="placeholder-index">Export 06 · 21:9</span>
         <div class="placeholder-content">
@@ -668,45 +591,8 @@
   </section>
 
   <figure class="media-block" data-reveal="up">
-    <div class="surface-card mvp-surface">
-      <div class="phones" role="img" aria-label="Three conceptual mobile screens representing invoicing, Pix payments and customer management in the Quaddro MVP">
-        <div class="phone">
-          <div class="phone-screen">
-            <span class="phone-kicker">Invoice</span>
-            <h3>Create and send in minutes</h3>
-            <div class="ui-line"></div><div class="ui-line short"></div>
-            <div class="ui-value">R$ 480,00</div>
-            <div class="ui-line"></div><div class="ui-line short"></div>
-            <div class="ui-button">Create invoice</div>
-          </div>
-        </div>
-        <div class="phone">
-          <div class="phone-screen">
-            <span class="phone-kicker">Pix payment</span>
-            <h3>Get paid without changing the routine</h3>
-            <div class="ui-value">Pix ready</div>
-            <div class="ui-line"></div><div class="ui-line"></div><div class="ui-line short"></div>
-            <div class="ui-button">Share payment</div>
-          </div>
-        </div>
-        <div class="phone">
-          <div class="phone-screen">
-            <span class="phone-kicker">Customers</span>
-            <h3>People, not CRM records</h3>
-            <div class="ui-contact"><div class="ui-avatar"></div><div class="ui-contact-lines"><div class="ui-line"></div><div class="ui-line short"></div></div></div>
-            <div class="ui-contact"><div class="ui-avatar"></div><div class="ui-contact-lines"><div class="ui-line"></div><div class="ui-line short"></div></div></div>
-            <div class="ui-contact"><div class="ui-avatar"></div><div class="ui-contact-lines"><div class="ui-line"></div><div class="ui-line short"></div></div></div>
-            <div class="ui-button">Add customer</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <figcaption>A conceptual view of the MVP, built around invoicing, Pix payments and customer management.</figcaption>
-  </figure>
-
-  <figure class="media-block" data-reveal="up">
     <div class="case-figure wide">
-      <img src="quaddro/mvp-screens.png" alt="The Quaddro app screens for professionals, covering sign-up, onboarding, agenda, catalogue and settings" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <img src="quaddro/mvp-screens.webp" alt="Three Quaddro app screens for professionals: an empty September agenda, creating a service plan, and a finances list of Pix and manual payments" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
       <div class="image-placeholder">
         <span class="placeholder-index">Export 07 · 21:9</span>
         <div class="placeholder-content">
@@ -716,12 +602,12 @@
         </div>
       </div>
     </div>
-    <figcaption>The app for professionals · sign-up, agenda, catalogue and payments.</figcaption>
+    <figcaption>The app for professionals · agenda, service plans and finances.</figcaption>
   </figure>
 
   <figure class="media-block" data-reveal="up">
     <div class="case-figure wide">
-      <img src="quaddro/quaddro-brazil.png" alt="The Quaddro booking experience on the web, where a professional&#39;s clients book, reschedule and pay for appointments" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <img src="quaddro/quaddro-brazil.webp" alt="A professional&#39;s Quaddro booking page in the browser, with opening hours, location, plans and packages, single services with prices and a button to book" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
       <div class="image-placeholder">
         <span class="placeholder-index">Export 08 · 21:9</span>
         <div class="placeholder-content">
@@ -731,7 +617,7 @@
         </div>
       </div>
     </div>
-    <figcaption>The client side · booking, rescheduling and paying without either person leaving their phone.</figcaption>
+    <figcaption>The client side · a professional&#39;s booking page, with plans, packages and single services.</figcaption>
   </figure>
 
   <section class="reading-section">

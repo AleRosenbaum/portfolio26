@@ -1,5 +1,7 @@
 // Encrypts the case-study sources in _src/ into password-gated public pages.
-// Usage: node encrypt-cases.mjs <password>
+// Usage: node encrypt-cases.mjs <password> [<password> ...]
+// Every password given opens both cases: the page is encrypted once with a
+// random content key, and that key is stored once per password.
 // Run after every edit to _src/brenger.html or _src/offers.html.
 // It first runs stamp-assets.mjs so every page links the current asset versions.
 // node encrypt-cases.mjs --gate-only rebuilds only the password page around the
@@ -10,13 +12,14 @@ import { randomBytes, pbkdf2Sync, createCipheriv } from 'node:crypto';
 import { stampAssets } from './stamp-assets.mjs';
 
 const gateOnly = process.argv[2] === '--gate-only';
-const password = gateOnly ? null : process.argv[2];
-if (!password && !gateOnly) {
-  console.error('Usage: node encrypt-cases.mjs <password>  (or --gate-only)');
+const passwords = gateOnly ? [] : process.argv.slice(2);
+if (!gateOnly && !passwords.length) {
+  console.error('Usage: node encrypt-cases.mjs <password> [<password> ...]  (or --gate-only)');
   process.exit(1);
 }
-if (password && password.startsWith('--')) {
-  console.error(`Unknown option ${password}. Passwords cannot start with "--".`);
+const option = passwords.find((pw) => pw.startsWith('--'));
+if (option) {
+  console.error(`Unknown option ${option}. Passwords cannot start with "--".`);
   process.exit(1);
 }
 const ACCESS_EMAIL = 'alesrosenbaum@gmail.com';
@@ -51,17 +54,27 @@ const pages = [
   },
 ];
 
+function seal(key, data) {
+  const iv = randomBytes(12);
+  const cipher = createCipheriv('aes-256-gcm', key, iv);
+  const ct = Buffer.concat([cipher.update(data), cipher.final(), cipher.getAuthTag()]);
+  return { iv: iv.toString('base64'), ct: ct.toString('base64') };
+}
+
+// The page is sealed once with a random content key. That key is then sealed
+// with a key derived from each password, all sharing one salt, so the browser
+// runs PBKDF2 once per attempt and tries each slot.
 function encrypt(plaintext) {
   const salt = randomBytes(16);
-  const iv = randomBytes(12);
-  const key = pbkdf2Sync(password, salt, ITERATIONS, 32, 'sha256');
-  const cipher = createCipheriv('aes-256-gcm', key, iv);
-  const ct = Buffer.concat([cipher.update(plaintext, 'utf8'), cipher.final(), cipher.getAuthTag()]);
+  const contentKey = randomBytes(32);
+  const content = seal(contentKey, Buffer.from(plaintext, 'utf8'));
+  const keys = passwords.map((pw) => seal(pbkdf2Sync(pw, salt, ITERATIONS, 32, 'sha256'), contentKey));
   return {
     salt: salt.toString('base64'),
-    iv: iv.toString('base64'),
-    ct: ct.toString('base64'),
     iter: ITERATIONS,
+    iv: content.iv,
+    ct: content.ct,
+    keys,
   };
 }
 
@@ -248,10 +261,19 @@ em { font-style: normal; font-weight: var(--fw-bold); }
   async function decrypt(pass) {
     var enc = new TextEncoder();
     var keyMaterial = await crypto.subtle.importKey('raw', enc.encode(pass), 'PBKDF2', false, ['deriveKey']);
-    var key = await crypto.subtle.deriveKey(
+    var passKey = await crypto.subtle.deriveKey(
       { name: 'PBKDF2', salt: b64(data.salt), iterations: data.iter, hash: 'SHA-256' },
       keyMaterial, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
     );
+    // One slot per password; the right password opens one of them
+    var contentKey = null;
+    for (var i = 0; i < data.keys.length && !contentKey; i++) {
+      try {
+        contentKey = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(data.keys[i].iv) }, passKey, b64(data.keys[i].ct));
+      } catch (e) {}
+    }
+    if (!contentKey) throw new Error('Wrong password');
+    var key = await crypto.subtle.importKey('raw', contentKey, 'AES-GCM', false, ['decrypt']);
     var plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(data.iv) }, key, b64(data.ct));
     return new TextDecoder().decode(plain);
   }

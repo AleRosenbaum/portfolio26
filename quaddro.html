@@ -175,6 +175,7 @@
       margin: var(--space-10) auto 0;
       padding: 0 var(--gutter);
     }
+    .media-block.narrow { max-width: calc(52rem + 2 * var(--gutter)); }
     .media-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
@@ -188,8 +189,6 @@
       overflow: hidden;
     }
     .case-figure.wide { aspect-ratio: 21 / 9; }
-    .case-figure.natural { aspect-ratio: auto; }
-    .case-figure.natural img { height: auto; }
     .case-figure img {
       display: block;
       width: 100%;
@@ -456,15 +455,15 @@
     <p class="body-copy" data-reveal="up">The first question was why people stopped using an app that cost them nothing. We split it in two: were we reaching the wrong segment, or offering the wrong value proposition? The promise at the time was to save time and impress customers. Each quadrant got its own hypotheses and the tests that could rule them out.</p>
   </section>
 
-  <figure class="media-block" data-reveal="up">
-    <div class="case-figure natural">
-      <img src="quaddro/challenge-matrix.webp" alt="A two by two matrix titled Why are people not using a free app, crossing wrong and right segment with wrong and right value proposition, each quadrant listing hypotheses and possible tests, next to the value proposition keywords save time and impress customers" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+  <figure class="media-block narrow" data-reveal="up">
+    <div class="case-figure">
+      <img src="quaddro/challenge-matrix.webp" alt="A two by two matrix crossing wrong and right segment with wrong and right value proposition. Each filled quadrant lists hypotheses and possible tests, such as trying other segments, testing the app as is in Brazil, and redefining a value proposition stronger than saving time and impressing customers" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
       <div class="image-placeholder">
-        <span class="placeholder-index">Export 09</span>
+        <span class="placeholder-index">Export 09 · 4:3</span>
         <div class="placeholder-content">
           <span class="placeholder-mark" aria-hidden="true">+</span>
           <strong>The challenge matrix</strong>
-          <span>Segment against value proposition, with the value proposition keywords beside it.</span>
+          <span>Segment against value proposition, with hypotheses and tests in each quadrant.</span>
         </div>
       </div>
     </div>

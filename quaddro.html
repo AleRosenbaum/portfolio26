@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <title>Designing for the Wrong Market · Quaddro · Ale Rosenbaum</title>
-  <meta name="description" content="How 32 interviews with Brazilian entrepreneurs turned a plan to adapt a U.S. product into a new one, built for Brazil." />
+  <meta name="description" content="Bizbox, a free app, was losing almost every U.S. user after the first day. The research I led into why pointed the company to Brazil, and to a new product." />
   <meta name="author" content="Ale Rosenbaum" />
   <link rel="canonical" href="https://alerosenbaum.com/quaddro.html" />
 
@@ -14,7 +14,7 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:url" content="https://alerosenbaum.com/quaddro.html" />
   <meta property="og:title" content="Designing for the Wrong Market · Quaddro" />
-  <meta property="og:description" content="How 32 interviews with Brazilian entrepreneurs turned a plan to adapt a U.S. product into a new one, built for Brazil." />
+  <meta property="og:description" content="Bizbox, a free app, was losing almost every U.S. user after the first day. The research I led into why pointed the company to Brazil, and to a new product." />
   <meta property="og:image" content="https://alerosenbaum.com/quaddro-hero.png" />
   <meta property="og:image:secure_url" content="https://alerosenbaum.com/quaddro-hero.png" />
   <meta property="og:image:type" content="image/png" />
@@ -24,7 +24,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Designing for the Wrong Market · Quaddro" />
-  <meta name="twitter:description" content="How 32 interviews with Brazilian entrepreneurs turned a plan to adapt a U.S. product into a new one, built for Brazil." />
+  <meta name="twitter:description" content="Bizbox, a free app, was losing almost every U.S. user after the first day. The research I led into why pointed the company to Brazil, and to a new product." />
   <meta name="twitter:image" content="https://alerosenbaum.com/quaddro-hero.png" />
   <meta name="twitter:image:alt" content="Brazilian barber managing Pix payments, receipts and handwritten accounts at his worktable" />
 
@@ -175,6 +175,7 @@
       margin: var(--space-10) auto 0;
       padding: 0 var(--gutter);
     }
+    .media-block.narrow { max-width: calc(52rem + 2 * var(--gutter)); }
     .media-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
@@ -401,7 +402,7 @@
 <body>
   <header class="hero">
     <h1 data-reveal="up">Designing for the <em>wrong market</em></h1>
-    <p class="hero-lede" data-reveal="up">How 32 interviews with Brazilian entrepreneurs turned a plan to adapt a U.S. product into a new one, built for Brazil.</p>
+    <p class="hero-lede" data-reveal="up">Bizbox, a free app, was losing almost every U.S. user after the first day. The research I led into why pointed the company to Brazil, and to a new product.</p>
   </header>
 
   <figure class="hero-visual">
@@ -410,8 +411,8 @@
   </figure>
 
   <section class="reading-section compact">
-    <p class="body-copy" data-reveal="up">The product launched in the United States as Bizbox, a multi-language scheduling tool with embedded payments, built for Latino home service workers. When the company began to look at Brazil in 2021, we first had to find out <strong>whether the same product would work for Brazilian entrepreneurs.</strong></p>
-    <p class="body-copy" data-reveal="up"><strong>As the founding Product Designer, I worked directly with the founders</strong> to understand the Brazilian market and turn research into product strategy. Discovery was mine to run: planning, interviews, synthesis, the principles that came out of it, the MVP scope and the interface itself.</p>
+    <p class="body-copy" data-reveal="up">The product launched in the United States as Bizbox, a free, multi-language scheduling tool with embedded payments, built for Latino home service workers. It never found product-market fit there. In 2021, most people who downloaded it stopped using it after the first day.</p>
+    <p class="body-copy" data-reveal="up"><strong>I joined as the founding Product Designer while the company was struggling with retention</strong>, and led the research into why. Discovery was mine to run: planning, interviews, synthesis, the principles that came out of it, the MVP scope and the interface itself.</p>
     <p class="body-copy" data-reveal="up">A good part of it was facilitation rather than design. I got the founders to agree on what the first release had to prove, then worked with Product, Engineering and QA to build it mobile-first.</p>
   </section>
 
@@ -449,9 +450,30 @@
   </div>
 
   <section class="reading-section">
+    <div class="label" data-reveal="up">The challenge</div>
+    <h2 class="heading-mixed" data-reveal="up">Wrong people, or <em>the wrong promise?</em></h2>
+    <p class="body-copy" data-reveal="up">The first question was why people stopped using an app that cost them nothing. We split it in two: were we reaching the wrong segment, or offering the wrong value proposition? The promise at the time was to save time and impress customers. Each quadrant got its own hypotheses and the tests that could rule them out.</p>
+  </section>
+
+  <figure class="media-block narrow" data-reveal="up">
+    <div class="case-figure">
+      <img src="quaddro/challenge-matrix.webp" alt="A two by two matrix crossing wrong and right segment with wrong and right value proposition. Each filled quadrant lists hypotheses and possible tests, such as trying other segments, testing the app as is in Brazil, and redefining a value proposition stronger than saving time and impressing customers" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+      <div class="image-placeholder">
+        <span class="placeholder-index">Export 09 · 4:3</span>
+        <div class="placeholder-content">
+          <span class="placeholder-mark" aria-hidden="true">+</span>
+          <strong>The challenge matrix</strong>
+          <span>Segment against value proposition, with hypotheses and tests in each quadrant.</span>
+        </div>
+      </div>
+    </div>
+    <figcaption>Segment against value proposition · the first map of why a free app was losing its users.</figcaption>
+  </figure>
+
+  <section class="reading-section">
     <div class="label" data-reveal="up">The unknowns</div>
     <h2 class="heading-mixed" data-reveal="up">We started with <em>uncertainty</em>, not features</h2>
-    <p class="body-copy" data-reveal="up">Before making product decisions, we identified the questions that could change the direction of the company.</p>
+    <p class="body-copy" data-reveal="up">The segment side of the matrix led us to solo entrepreneurs in Brazil. Before making product decisions there, we listed the questions that could change the direction of the company.</p>
     <ol class="question-list" data-reveal="up">
       <li><span>01</span>Who are Brazilian micro-entrepreneurs?</li>
       <li><span>02</span>How do they manage their business today?</li>
@@ -487,6 +509,7 @@
     <h2 class="heading-mixed" data-reveal="up">What the interviews <em>found</em></h2>
     <p class="body-copy" data-reveal="up">Rather than validate the existing product, we used interviews and observation sessions to learn how Brazilian entrepreneurs worked day to day.</p>
     <p class="body-copy" data-reveal="up">The entrepreneurs we met were not using CRMs, managing detailed spreadsheets or looking for advanced business software. They ran their businesses on tools they already trusted and connected the steps by hand.</p>
+    <p class="body-copy" data-reveal="up">In Brazil, far more of a solo entrepreneur's routine was still done by hand than in the U.S. <strong>Digitizing it would give back the hours spent on admin</strong>, so people could focus on the work their clients paid them for.</p>
   </section>
 
   <div class="media-block">
@@ -623,9 +646,9 @@
   <section class="reading-section">
     <div class="label" data-reveal="up">Business impact</div>
     <h2 class="heading-mixed" data-reveal="up">From adapting a product to <em>rebuilding it</em></h2>
-    <p class="body-copy" data-reveal="up">Bizbox did not cross the border. It was rebuilt around Brazilian entrepreneurs and relaunched under a new name, Quaddro. The research and the MVP shaped the pivot, and the company kept building on that product through to a R$16M funding round.</p>
+    <p class="body-copy" data-reveal="up">Bizbox did not cross the border. It was rebuilt around Brazilian entrepreneurs and relaunched under a new name, Quaddro. The research led the pivot, and the company kept building on that product through to a R$16M funding round.</p>
     <div class="stat-grid" data-reveal="up">
-      <div><div class="stat-value">U.S. → BR</div><div class="stat-label">the research that shaped the move to Brazil</div></div>
+      <div><div class="stat-value">U.S. → BR</div><div class="stat-label">the research that led the company to Brazil</div></div>
       <div><div class="stat-value">MVP</div><div class="stat-label">built around how Brazilian entrepreneurs worked</div></div>
       <div><div class="stat-value">R$16M</div><div class="stat-label">funding round, raised as the product kept evolving</div></div>
     </div>
@@ -633,7 +656,7 @@
 
   <section class="question-shift">
     <div class="surface-card shift-grid" data-reveal="up">
-      <div><span class="shift-label">Before</span><p class="shift-quote">“How do we adapt the U.S. product?”</p></div>
+      <div><span class="shift-label">Before</span><p class="shift-quote">“Why are people not using a free app?”</p></div>
       <div class="shift-arrow" aria-hidden="true">→</div>
       <div><span class="shift-label">After</span><p class="shift-quote">“What product should exist for this market?”</p></div>
     </div>

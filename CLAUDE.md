@@ -9,7 +9,7 @@ Plain HTML/CSS/JS. No framework. Four pages plus an internal design system page:
 - `index.html` — main SPA. JS `go()` function swaps between Home and Contact views. Nav hides on home. Opening `index.html#contact` lands on the Contact view.
 - `brenger.html` — password gate for the Brenger case study ("Integrating Brenger into Marktplaats").
 - `offers.html` — password gate for the Structured Offers case study ("From Silence to Structured Offers").
-- `quaddro.html` — the Quaddro case study ("Designing for the Wrong Market"). Public, not password gated, and not yet linked from the home grid.
+- `quaddro.html` — the Quaddro case study ("Designing for the Wrong Market"). Public, not password gated, and linked from the home grid.
 - `design-system.html`: internal reference that renders every token in `tokens.css` live (colors, fonts, type scale, line heights, spacing, radii, layout). Reachable only by URL: not linked anywhere and marked `noindex`. It parses `tokens.css` at load time, so it never needs editing when tokens change. Keep the `/* ─── Group ─── */` headings and trailing `/* note */` comments in `tokens.css`, because the page uses them for grouping and descriptions.
 
 ## Shared navigation and footer
@@ -65,7 +65,7 @@ One shared column, defined in `tokens.css`: `--measure` (680px), `--column` (def
 | Brenger (last-mile logistics) | `brenger-hero.png` | `brenger-icon.png` | `brenger.html` |
 | Structured Offers | `offers-hero.png` | `brenger-icon.png` (placeholder) | `offers.html` |
 | DHL Shipping | `dhl-hero.png` | `brenger-icon.png` (placeholder) | not linked yet |
-| Quaddro (US to Brazil pivot) | `quaddro-hero.png` | `quaddro-logo.jpeg` | `quaddro.html`, not linked yet |
+| Quaddro (US to Brazil pivot) | `quaddro-hero.png` | `quaddro-logo.jpeg` | `quaddro.html` |
 
 ## Assets
 
@@ -78,7 +78,7 @@ One shared column, defined in `tokens.css`: `--measure` (680px), `--column` (def
 - `dhl-hero.png` — phone with DHL van in Amsterdam background
 - `offers/` — all imagery for the Structured Offers case page (hero, research shots, Miro boards, prototypes, offer-card SVGs, buyer/seller flow GIFs)
 - `quaddro-hero.png`, `quaddro-logo.jpeg` — Quaddro card and case hero
-- `quaddro/` — Quaddro case imagery, cropped out of the original 2022 pitch deck. Eight files: `bizbox-app`, `us-retention`, `csd-matrix`, `research-plan`, `personas`, `research-nuggets`, `mvp-screens`, `quaddro-brazil`. Each `.case-figure` on the page falls back to an on-page export brief if its file is missing, so the page degrades readably rather than breaking.
+- `quaddro/` — Quaddro case imagery, cropped out of the original 2022 pitch deck. Eight WebP files: `bizbox-app`, `us-retention`, `research-plan` and `personas` sit in 4:3 frames, `csd-matrix`, `research-nuggets`, `mvp-screens` and `quaddro-brazil` in 21:9 frames. Each `.case-figure` on the page falls back to an on-page export brief if its file is missing, so the page degrades readably rather than breaking.
 
 ## Writing style
 

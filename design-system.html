@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/tokens.css?v=8de3a28f" />
+  <link rel="stylesheet" href="/tokens.css?v=d6733edf" />
   <link rel="stylesheet" href="/sticky-header.css?v=2bc181fa" />
   <script src="/sticky-header.js?v=59030e30" defer></script>
   <link rel="stylesheet" href="/site-footer.css?v=0e87a45d" />
@@ -269,7 +269,7 @@
     }
 
     var SECTIONS = [
-      { id: 'color', title: 'Color', em: 'palette', desc: 'Warm gray scale, the orange accent, status colors and the semantic roles built on top of them. Overlays sit on a checkerboard so their transparency is visible.' },
+      { id: 'color', title: 'Color', em: 'palette', desc: 'Warm gray scale, the purple accent, status colors and the semantic roles built on top of them. Overlays sit on a checkerboard so their transparency is visible.' },
       { id: 'font', title: 'Font', em: 'family', desc: 'Instrument Sans is the only typeface, with no italic.' },
       { id: 'weight', title: 'Font', em: 'weights', desc: 'Emphasis is always bold, never italic.' },
       { id: 'fs', title: 'Type', em: 'scale', desc: 'Six roles named after web conventions. Headings are fluid between two sizes; large, base and small are fixed.' },
@@ -349,7 +349,7 @@
       return grid;
     }
 
-    fetch('/tokens.css?v=8de3a28f', { cache: 'no-store' })
+    fetch('/tokens.css?v=d6733edf', { cache: 'no-store' })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(function (text) {
         var groups = parse(text);

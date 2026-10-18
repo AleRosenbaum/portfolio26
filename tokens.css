@@ -13,7 +13,7 @@
   --gray40: hsl(var(--gray-hue), 6%, 5%);    /* primary text, dark surfaces */
 
   /* ─── Brand and status ─── */
-  --site-color: #ff7006;       /* signature orange: links, marks, labels */
+  --site-color: #8438f4;       /* signature purple: links, marks, labels */
   --highlight-color: #ffc800;  /* text selection */
   --success-color: #3a7d44;
   --error-color: #c0392b;
@@ -34,7 +34,6 @@
   --scrim: hsla(0, 0%, 0%, .24);        /* image hover overlay */
   --wash-veil: hsla(var(--gray-hue), 10%, 98%, .56);  /* fades imagery into the wash */
   --hairline-on-ink: hsla(0, 0%, 100%, .12);  /* dividers on dark surfaces */
-  --shadow-device: 0 24px 48px hsla(22, 89%, 29%, .2);  /* phone mockups on orange */
   --shadow-logo: 0 2px 8px hsla(0, 0%, 0%, .1), 0 1px 2px hsla(0, 0%, 0%, .06);
 
   /* ─── Font ─── */

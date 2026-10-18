@@ -26,17 +26,19 @@ The gate pages inject all four files into the decrypted payload at runtime.
 
 The case pages are AES-256-GCM encrypted (staticrypt-style). The real pages live in `_src/` (not served by GitHub Pages because Jekyll skips underscore directories — do NOT add a `.nojekyll` file). The public `brenger.html` / `offers.html` are generated gate pages: a styled password form plus the encrypted payload; WebCrypto (PBKDF2, 600K iterations) decrypts and `document.write`s the real page on the correct password. The password is kept in `sessionStorage` so unlocking one case unlocks both for the session.
 
-**After editing anything in `_src/`, regenerate the gates:** `node encrypt-cases.mjs <password>`. It also runs `stamp-assets.mjs`.
+**After editing anything in `_src/`, regenerate the gates:** `node encrypt-cases.mjs <password> [<password> ...]`, passing every password that should work. It also runs `stamp-assets.mjs`.
 
-**After editing `tokens.css`, `sticky-header.*` or `site-footer.*`, run `node stamp-assets.mjs`** (or the encrypt script). Pages link these files with a content hash (`/tokens.css?v=1a2b3c4d`); GitHub Pages lets browsers cache them for 10 minutes, and without a new hash a browser can pair new HTML with an old stylesheet and break the layout. The password itself is never committed. Caveats: case imagery (`offers/`, `brenger-hero.png`) is not encrypted and stays publicly fetchable by URL; both case pages share one password.
+The gate page itself uses the shared nav and footer and the same header as the case it unlocks: the case `<h1>` (read from the `<body>` of the `_src` file), a short lede, and the home contact form fields. "Ask me for access" is a `mailto:` with a subject naming the case. To change only the gate, without the password, run `node encrypt-cases.mjs --gate-only`: it rebuilds the page around the payload already in `brenger.html` and `offers.html`, leaving the encrypted content as it was.
 
-Both case pages use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, white statement bands, orange stat numbers, and scroll-reveal animations (vanilla JS). Sections are styled inline; tokens come from `tokens.css` and shared roles (`.heading-mixed`, `.label`, `.bold`) live in the page's style block. Brenger imagery lives in `brenger/`; Offers imagery lives in `offers/`.
+**After editing `tokens.css`, `sticky-header.*` or `site-footer.*`, run `node stamp-assets.mjs`** (or the encrypt script). Pages link these files with a content hash (`/tokens.css?v=1a2b3c4d`); GitHub Pages lets browsers cache them for 10 minutes, and without a new hash a browser can pair new HTML with an old stylesheet and break the layout. Passwords are never committed. Each one opens both cases: the page is encrypted once with a random key, and that key is stored once per password. Caveats: case imagery (`offers/`, `brenger-hero.png`) is not encrypted and stays publicly fetchable by URL; both case pages share the same passwords.
+
+Both case pages use the editorial case-study layout: a 680px centered reading column, 68rem containers for wide imagery, full-bleed hero, white statement bands, accent stat numbers, and scroll-reveal animations (vanilla JS). Sections are styled inline; tokens come from `tokens.css` and shared roles (`.heading-mixed`, `.label`, `.bold`) live in the page's style block. Brenger imagery lives in `brenger/`; Offers imagery lives in `offers/`.
 
 ## Design system
 
 All tokens live in `tokens.css`, linked by every page (home, case sources, Quaddro, the gate template in `encrypt-cases.mjs`) before `sticky-header.css` and `site-footer.css`. Never redefine a token inside a page; add it to `tokens.css`.
 
-- **Colors:** warm gray scale `--gray00` to `--gray40` (32° hue), accent `--site-color: #ff7006`, plus semantic tokens (`--text-color`, `--meta-color`, `--wash-color`, `--ink-surface`, `--on-ink`, `--success-color`, `--error-color`, glass and scrim overlays). No raw hex or rgba in pages.
+- **Colors:** warm gray scale `--gray00` to `--gray40` (32° hue), accent `--site-color: #8438f4` (purple), plus semantic tokens (`--text-color`, `--meta-color`, `--wash-color`, `--ink-surface`, `--on-ink`, `--success-color`, `--error-color`, glass and scrim overlays). No raw hex or rgba in pages.
 - **Font:** Instrument Sans only (`--font-sans`), weights 400, 500, 600 and 700 from Google Fonts. No serif and no italic anywhere.
 - **Weights:** `--fw-regular` (400), `--fw-medium` (500), `--fw-bold` (600). Emphasis is always bold: `<em>` renders as `--fw-bold` and `.bold` does the same for whole elements. Never use `font-style: italic` or underlined text for emphasis; key phrases go in `<strong>`.
 - **Type scale:** six roles named after web conventions. `--fs-h1` (40 to 64px, page titles), `--fs-h2` (32 to 48px, statements and big numbers), `--fs-h3` (24 to 32px, section headings), `--fs-large` (20px), `--fs-base` (16px), `--fs-small` (12px). Headings are fluid with `clamp()`. Never use a raw font size; pick a role. The heading tag sets its size: `tokens.css` styles every `<h1>`, `<h2>` and `<h3>` with the matching role, so never put a font size on a heading tag. A non-heading element that borrows a heading size must also set the matching line height. Each page has exactly one `<h1>` (on the home page it is the bio).
@@ -56,7 +58,7 @@ One shared column, defined in `tokens.css`: `--measure` (680px), `--column` (def
 ## Home page sections
 
 1. **Hero** — name (2rem), bio (3rem), then two columns: Experience list + Links list
-2. **Cases grid** — 2×2 CSS grid, `gap: 40px`. Each card: square 1:1 thumbnail with `border-radius: 16px`, then logo (40×40px, `border-radius: 8px`, drop shadow) + title + description.
+2. **Cases grid** — two-column CSS grid, `gap: 40px`, with three cases (Brenger, Offers, Quaddro). Each card: square 1:1 thumbnail with `border-radius: 16px`, then logo (40×40px, `border-radius: 8px`, drop shadow) + title + description.
 
 ## Cases
 
@@ -64,11 +66,13 @@ One shared column, defined in `tokens.css`: `--measure` (680px), `--column` (def
 |---|---|---|---|
 | Brenger (last-mile logistics) | `brenger-hero.png` | `brenger-icon.png` | `brenger.html` |
 | Structured Offers | `offers-hero.png` | `brenger-icon.png` (placeholder) | `offers.html` |
-| DHL Shipping | `dhl-hero.png` | `brenger-icon.png` (placeholder) | not linked yet |
+| DHL Shipping | `dhl-hero.png` | `brenger-icon.png` (placeholder) | hidden: the card is commented out in `index.html` until the case exists |
 | Quaddro (US to Brazil pivot) | `quaddro-hero.png` | `quaddro-logo.jpeg` | `quaddro.html` |
 
 ## Assets
 
+- `favicon.svg`: the browser tab icon. It turns white when the browser is in dark mode, so only use it as the tab icon.
+- `logo.svg`: the same "a." mark in a fixed dark gray, used as an image by the nav and the footer.
 - `brenger-hero.png` — hero photo used in both the card and the case page
 - `brenger-icon.png` — Brenger app icon (orange circle with chevron)
 - `brenger-card.png` — unused, kept for reference

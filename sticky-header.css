@@ -160,6 +160,20 @@ body.floating-nav-always {
   }
 }
 
+/* The full pill needs 414px. Below that, drop "Work": it links home, like the
+   brand. Below 360px, keep only the "a." mark; the link keeps its aria-label. */
+@media (max-width: 413px) {
+  .floating-portfolio-nav__link {
+    display: none;
+  }
+}
+
+@media (max-width: 359px) {
+  .floating-portfolio-nav__brand span {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .floating-portfolio-nav {
     transition: none;

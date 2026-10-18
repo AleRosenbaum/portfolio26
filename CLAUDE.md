@@ -56,7 +56,7 @@ One shared column, defined in `tokens.css`: `--measure` (680px), `--column` (def
 ## Home page sections
 
 1. **Hero** — name (2rem), bio (3rem), then two columns: Experience list + Links list
-2. **Cases grid** — 2×2 CSS grid, `gap: 40px`. Each card: square 1:1 thumbnail with `border-radius: 16px`, then logo (40×40px, `border-radius: 8px`, drop shadow) + title + description.
+2. **Cases grid** — two-column CSS grid, `gap: 40px`, with three cases (Brenger, Offers, Quaddro). Each card: square 1:1 thumbnail with `border-radius: 16px`, then logo (40×40px, `border-radius: 8px`, drop shadow) + title + description.
 
 ## Cases
 
@@ -64,7 +64,7 @@ One shared column, defined in `tokens.css`: `--measure` (680px), `--column` (def
 |---|---|---|---|
 | Brenger (last-mile logistics) | `brenger-hero.png` | `brenger-icon.png` | `brenger.html` |
 | Structured Offers | `offers-hero.png` | `brenger-icon.png` (placeholder) | `offers.html` |
-| DHL Shipping | `dhl-hero.png` | `brenger-icon.png` (placeholder) | not linked yet |
+| DHL Shipping | `dhl-hero.png` | `brenger-icon.png` (placeholder) | hidden: the card is commented out in `index.html` until the case exists |
 | Quaddro (US to Brazil pivot) | `quaddro-hero.png` | `quaddro-logo.jpeg` | `quaddro.html` |
 
 ## Assets

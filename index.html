@@ -113,52 +113,6 @@
       transform: translate(-50%) translateY(-50%);
     }
 
-    /* ── Page shell ── */
-    .page { display: none; opacity: 0; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; }
-    .page.active { display: block; }
-    .page.in { opacity: 1; transform: none; }
-
-    /* ── NAV ── */
-    .nav {
-      padding: 0 var(--inset);
-      margin-bottom: var(--space-2);
-    }
-
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding-top: var(--space-4);
-    }
-
-    .nav-name {
-      font-size: var(--fs-base);
-      color: var(--text-color);
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .nav-name:hover { color: var(--hover-color); }
-
-    .nav-links { display: flex; gap: var(--space-2); list-style: none; padding: 0; margin: 0; }
-    .nav-links a {
-      font-size: var(--fs-base);
-      color: var(--meta-color);
-      text-decoration: none;
-      cursor: pointer;
-      position: relative;
-    }
-    .nav-links a:hover { color: var(--hover-color); }
-    .nav-links a.active { color: var(--text-color); }
-    .nav-links a.active::after {
-      content: "*";
-      color: var(--site-color);
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translate(-50%);
-      line-height: var(--lh-heading);
-    }
-
     /* ── HOME: HERO ── */
     .hero {
       padding: var(--space-20) var(--inset) var(--space-10);
@@ -364,129 +318,19 @@
       overflow: hidden;
     }
 
-    /* ── CONTACT ── */
-    .contact-wrap {
-      padding: 0 var(--inset);
-    }
-    .contact-inner {
-      max-width: var(--measure);
-      padding: var(--space-4) 0 var(--space-6);
-    }
-
-    .contact-heading {
-      font-weight: var(--fw-bold);
-      letter-spacing: -.0125em;
-      text-wrap: balance;
-      margin-bottom: var(--space-2);
-      padding-top: var(--space-4);
-      padding-bottom: var(--space-3);
-    }
-    .contact-lead {
-      color: var(--meta-color);
-      font-size: var(--fs-base);
-      margin-bottom: var(--space-4);
-    }
-
-    .form { display: flex; flex-direction: column; gap: var(--space-2); }
-    .field { display: flex; flex-direction: column; gap: var(--space-1); }
-    .field-label {
-      font-size: var(--fs-base);
-      color: var(--meta-color);
-    }
-    .field-input, .field-textarea {
-      font-family: var(--font-sans);
-      font-size: var(--fs-base);
-      color: var(--text-color);
-      background: var(--gray05);
-      border: 1px solid var(--hairline-color);
-      border-radius: var(--radius-s);
-      padding: var(--space-1) var(--space-2);
-      outline: none;
-      -webkit-appearance: none;
-      line-height: var(--lh-body);
-      transition: border-color .2s;
-    }
-    .field-input::placeholder, .field-textarea::placeholder { color: var(--gray20); }
-    .field-input:focus, .field-textarea:focus { border-color: var(--meta-color); }
-    .field-textarea { resize: vertical; min-height: 8rem; }
-
-    .form-submit {
-      font-family: var(--font-sans);
-      font-size: var(--fs-base);
-      padding: var(--space-1) var(--space-2);
-      background: var(--ink-surface);
-      color: var(--on-ink);
-      border: none;
-      border-radius: var(--radius-s);
-      cursor: pointer;
-      align-self: flex-start;
-      line-height: var(--lh-body);
-      transition: opacity .2s;
-    }
-    .form-submit:hover { opacity: .75; }
-    .form-submit.sent { background: var(--success-color); }
-
-    .contact-links { margin-top: var(--space-4); }
-    .cl-label {
-      font-size: var(--fs-base);
-      color: var(--meta-color);
-      margin-bottom: var(--space-2);
-    }
-    .cl-table {
-      font: inherit;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    .cl-table td {
-      font-size: var(--fs-base);
-      padding-block: var(--space-1);
-      border-top: 1px solid var(--hairline-color);
-      vertical-align: middle;
-    }
-    .cl-table td:last-child { text-align: right; color: var(--meta-color); }
-    .cl-table a { text-decoration: none; }
-    .cl-table a:hover { color: var(--hover-color); }
-
-    .avail {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-1);
-      margin-top: var(--space-2);
-      font-size: var(--fs-base);
-      color: var(--meta-color);
-    }
-    .avail-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--success-color);
-      animation: blink 2.8s ease-in-out infinite;
-      flex-shrink: 0;
-    }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
   
     em { font-style: normal; font-weight: var(--fw-bold); }
   </style>
 </head>
 <body data-floating-nav="scroll">
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <span class="nav-name" onclick="go('home')">Ale Rosenbaum</span>
-    <ul class="nav-links">
-      <li><a data-p="home"    onclick="go('home')">Work</a></li>
-      <li><a data-p="contact" onclick="go('contact')">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-
 <!-- ══════════ HOME ══════════ -->
-<div class="page" id="pg-home">
+<div id="pg-home">
 
   <div style="display:grid;grid-template-columns:1fr">
 
     <div class="hero">
-      <h1 class="hero-bio">Ale Rosenbaum is a Senior Product Designer at <a href="https://marktplaats.nl" target="_blank">Marktplaats</a>, Amsterdam. Designs with users in mind, ships with business goals in sight, builds with AI as a material, and <a href="#" onclick="go('contact'); return false;">looks for a team that does too</a>.</h1>
+      <h1 class="hero-bio">Ale Rosenbaum is a Senior Product Designer at <a href="https://marktplaats.nl" target="_blank">Marktplaats</a>, Amsterdam. Designs with users in mind, ships with business goals in sight, builds with AI as a material, and <a href="https://www.linkedin.com/in/alerosenbaum/" target="_blank" rel="noopener noreferrer">looks for a team that does too</a>.</h1>
       <div class="hero-cols">
         <div>
           <p class="hero-col-label">Experience</p>
@@ -578,66 +422,9 @@
 
 </div>
 
-<!-- ══════════ CONTACT ══════════ -->
-<div class="page" id="pg-contact">
-  <div class="contact-wrap">
-    <div class="contact-inner">
-      <h2 class="contact-heading">Vamos conversar sobre o seu projeto.</h2>
-      <p class="contact-lead">Disponível para projetos freelance, posições full-time e colaborações. Respondo em até 24h.</p>
-
-      <form class="form" onsubmit="handleForm(event)">
-        <div class="field">
-          <label class="field-label">Nome</label>
-          <input class="field-input" type="text" placeholder="Seu nome" required />
-        </div>
-        <div class="field">
-          <label class="field-label">Email</label>
-          <input class="field-input" type="email" placeholder="seu@email.com" required />
-        </div>
-        <div class="field">
-          <label class="field-label">Mensagem</label>
-          <textarea class="field-textarea" placeholder="Conte um pouco sobre o projeto..." required></textarea>
-        </div>
-        <button type="submit" class="form-submit" id="submit-btn">Enviar mensagem</button>
-      </form>
-
-      <div class="contact-links">
-        <p class="cl-label">Links</p>
-        <table class="cl-table">
-          <tbody>
-            <tr><td><a href="mailto:alesrosenbaum@gmail.com">Email</a></td><td>alesrosenbaum@gmail.com</td></tr>
-            <tr><td><a href="https://www.linkedin.com/in/alerosenbaum/" target="_blank">LinkedIn</a></td><td>/in/alerosenbaum</td></tr>
-          </tbody>
-        </table>
-        <div class="avail">
-          <div class="avail-dot"></div>
-          <span>Disponível para novos projetos</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-  function go(name) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active', 'in'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.p === name));
-    const el = document.getElementById('pg-' + name);
-    el.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    document.querySelector('.nav').style.display = name === 'home' ? 'none' : 'grid';
-    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('in')));
-  }
-
-  function handleForm(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submit-btn');
-    btn.textContent = 'Enviado!';
-    btn.classList.add('sent');
-    setTimeout(() => { btn.textContent = 'Enviar mensagem'; btn.classList.remove('sent'); e.target.reset(); }, 3500);
-  }
-
-  go(location.hash === '#contact' ? 'contact' : 'home');
+  // The Contact view is gone; old links to /#contact go to LinkedIn instead.
+  if (location.hash === '#contact') location.replace('https://www.linkedin.com/in/alerosenbaum/');
 </script>
 </body>
 </html>

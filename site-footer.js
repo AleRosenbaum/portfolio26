@@ -12,7 +12,7 @@
     '<div class="site-footer__inner">',
     '<p class="site-footer__statement">Every product decision is a hypothesis until users prove it otherwise.</p>',
     '<a class="site-footer__brand" href="/" aria-label="Ale Rosenbaum, home">',
-    '<img src="/favicon.svg" alt="" width="36" height="27">',
+    '<img src="/logo.svg" alt="" width="36" height="27">',
     '</a>',
     '<a class="site-footer__cta" href="https://www.linkedin.com/in/alerosenbaum/" target="_blank" rel="noopener noreferrer">Get in touch</a>',
     '</div>'

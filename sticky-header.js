@@ -14,7 +14,7 @@
   nav.setAttribute('aria-label', 'Portfolio navigation');
   nav.innerHTML = [
     '<a class="floating-portfolio-nav__brand" href="/" aria-label="Ale Rosenbaum, home">',
-    '<img src="/favicon.svg" alt="" width="20" height="20">',
+    '<img src="/logo.svg" alt="" width="20" height="20">',
     '<span>Ale Rosenbaum</span>',
     '</a>',
     '<div class="floating-portfolio-nav__actions">',

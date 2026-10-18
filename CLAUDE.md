@@ -69,6 +69,8 @@ One shared column, defined in `tokens.css`: `--measure` (680px), `--column` (def
 
 ## Assets
 
+- `favicon.svg`: the browser tab icon. It turns white when the browser is in dark mode, so only use it as the tab icon.
+- `logo.svg`: the same "a." mark in a fixed dark gray, used as an image by the nav and the footer.
 - `brenger-hero.png` — hero photo used in both the card and the case page
 - `brenger-icon.png` — Brenger app icon (orange circle with chevron)
 - `brenger-card.png` — unused, kept for reference

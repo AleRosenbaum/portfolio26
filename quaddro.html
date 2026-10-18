@@ -56,6 +56,7 @@
       font-family: var(--font-sans);
       font-size: var(--fs-base);
       line-height: var(--lh-body);
+      font-feature-settings: "ss02" 1;
       overflow-x: hidden;
     }
     ::selection { background: var(--highlight-color); color: var(--text-color); }
@@ -67,6 +68,7 @@
     a:hover, a:focus { color: var(--site-color); }
     img { max-width: 100%; }
 
+    /* Shared case study roles, as on the Brenger and Offers pages */
     .bold { font-weight: var(--fw-bold); }
     .label {
       margin-bottom: var(--space-3);
@@ -81,7 +83,6 @@
       letter-spacing: -.015em;
       text-wrap: balance;
     }
-    .heading-mixed em { letter-spacing: 0; }
     .body-copy {
       margin: 0 0 var(--space-3);
       color: var(--gray35);
@@ -91,6 +92,7 @@
     }
     .body-copy:last-child { margin-bottom: 0; }
 
+    /* Header and full-bleed hero */
     .hero {
       width: 100%;
       max-width: var(--column-box);
@@ -98,12 +100,10 @@
       padding: var(--space-8) var(--gutter) 0;
     }
     .hero h1 {
-      max-width: 12ch;
       margin: 0 0 var(--space-4);
-      letter-spacing: -.045em;
-      text-wrap: balance;
+      text-wrap: pretty;
     }
-    .hero h1 em { letter-spacing: -.02em; }
+    .hero h1 em { letter-spacing: 0; }
     .hero-lede {
       margin: 0 0 var(--space-6);
       color: var(--gray35);
@@ -111,20 +111,20 @@
       line-height: var(--lh-body);
       text-wrap: pretty;
     }
-
     .hero-visual {
-      width: 100%;
       margin: 0;
       overflow: hidden;
     }
     .hero-visual img {
       display: block;
       width: 100%;
-      background: var(--code-wash);
-      height: min(72vh, 760px);
+      height: 72vh;
       min-height: 376px;
       object-fit: cover;
+      background: var(--code-wash);
     }
+
+    /* Reading column */
     .reading-section {
       max-width: var(--column-box);
       margin: 0 auto;
@@ -133,28 +133,7 @@
     .reading-section.compact { padding-top: var(--space-6); }
     .reading-section.end { padding-bottom: var(--space-16); }
 
-    .case-facts {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      max-width: var(--column-box);
-      margin: 0 auto;
-      padding: var(--space-6) var(--gutter) var(--space-10);
-    }
-    .fact {
-      display: grid;
-      grid-template-columns: 5.5rem 1fr;
-      gap: var(--space-2);
-      padding: var(--space-2) 0;
-      border-top: 1px solid var(--hairline-color);
-    }
-    .fact:nth-child(odd) { margin-right: var(--space-3); }
-    .fact:nth-child(even) { margin-left: var(--space-3); }
-    .fact-label {
-      color: var(--meta-color);
-      font-size: var(--fs-small);
-    }
-    .fact-value { font-size: var(--fs-small); line-height: var(--lh-body); }
-
+    /* White statement band */
     .statement {
       margin-top: var(--space-12);
       background: var(--white);
@@ -162,17 +141,15 @@
     .statement-inner {
       max-width: var(--column-box);
       margin: 0 auto;
-      padding: var(--space-20) var(--gutter);
+      padding: var(--space-16) var(--gutter);
       text-align: center;
     }
     .statement-copy {
       font-size: var(--fs-h2);
-      font-weight: var(--fw-regular);
-      letter-spacing: -.02em;
+      letter-spacing: -.015em;
       line-height: var(--lh-heading);
       text-wrap: balance;
     }
-    .statement-copy em { letter-spacing: 0; }
 
     .question-list {
       margin: var(--space-5) 0 0;
@@ -192,11 +169,7 @@
     }
     .question-list span { color: var(--site-color); font-size: var(--fs-small); }
 
-    .workflow {
-      max-width: var(--container-max);
-      margin: var(--space-10) auto 0;
-      padding: 0 var(--gutter);
-    }
+    /* Imagery: wide container, 4:3 frames in pairs, 21:9 frames on their own */
     .media-block {
       max-width: var(--container-max);
       margin: var(--space-10) auto 0;
@@ -204,44 +177,37 @@
     }
     .media-grid {
       display: grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
       gap: var(--space-4);
     }
     .media-grid figure { margin: 0; }
+    .case-figure {
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-m);
+      background: var(--code-wash);
+      overflow: hidden;
+    }
+    .case-figure.wide { aspect-ratio: 21 / 9; }
+    .case-figure img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    /* Until the export lands, the figure falls back to its own brief. */
+    .case-figure .image-placeholder { display: none; }
+    .case-figure.is-missing { aspect-ratio: auto; }
+    .case-figure.is-missing img { display: none; }
+    .case-figure.is-missing .image-placeholder { display: flex; }
     .image-placeholder {
       position: relative;
-      display: flex;
       align-items: center;
       justify-content: center;
       min-height: 18rem;
       padding: var(--space-4);
-      border: 1px solid var(--hairline-color);
-      border-radius: var(--radius-m);
-      background: var(--gray05);
       color: var(--text-color);
       text-align: center;
-      overflow: hidden;
     }
-    .image-placeholder.ratio-wide { aspect-ratio: 21 / 9; }
-    .image-placeholder.ratio-landscape { aspect-ratio: 4 / 3; }
-    .image-placeholder.ratio-cinema { aspect-ratio: 16 / 9; }
-
-    .media-grid.even { grid-template-columns: 1fr 1fr; }
-    .case-figure {
-      overflow: hidden;
-      border: 1px solid var(--hairline-color);
-      border-radius: var(--radius-m);
-      background: var(--gray05);
-    }
-    .case-figure img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-    /* Until the export lands, the figure falls back to its own brief. */
-    .case-figure .image-placeholder { display: none; border: 0; border-radius: 0; }
-    .case-figure.is-missing .image-placeholder { display: flex; }
-    .case-figure.is-missing img { display: none; }
     .placeholder-index {
       position: absolute;
       top: var(--space-2);
@@ -278,18 +244,21 @@
       color: var(--site-color);
       font-size: var(--fs-base);
     }
+
+    /* Light card, as in the Brenger iterative model */
+    .surface-card {
+      border-radius: var(--radius-m);
+      background: var(--code-wash);
+    }
+
     .workflow-surface {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      border-radius: var(--radius-m);
-      background: var(--ink-surface);
-      color: var(--on-ink);
       overflow: hidden;
     }
     .workflow-item {
-      min-height: 18rem;
       padding: var(--space-4);
-      border-right: 1px solid var(--hairline-on-ink);
+      border-right: 1px solid var(--hairline-color);
     }
     .workflow-item:last-child { border-right: 0; }
     .workflow-number {
@@ -304,13 +273,13 @@
     }
     .workflow-item p {
       margin: 0;
-      color: var(--gray20);
+      color: var(--meta-color);
       font-size: var(--fs-small);
       line-height: var(--lh-body);
     }
 
     .strategy-wrap {
-      max-width: var(--container-max);
+      max-width: var(--column-box);
       margin: var(--space-8) auto 0;
       padding: 0 var(--gutter);
     }
@@ -328,6 +297,10 @@
       font-size: var(--fs-base);
       line-height: var(--lh-body);
     }
+    .strategy-table th:first-child,
+    .strategy-table td:first-child { padding-left: 0; }
+    .strategy-table th:last-child,
+    .strategy-table td:last-child { padding-right: 0; }
     .strategy-table th {
       color: var(--meta-color);
       font-size: var(--fs-small);
@@ -338,18 +311,12 @@
     .strategy-table td:nth-child(2) { color: var(--meta-color); }
     .strategy-table td:last-child { font-weight: var(--fw-medium); }
 
-    .mvp-figure { margin: var(--space-10) 0 0; }
-    .mvp-stage {
-      padding: var(--space-12) var(--gutter);
-      background: var(--site-color);
-    }
+    .mvp-surface { padding: var(--space-8) clamp(var(--space-3), 5vw, var(--space-8)); }
     .phones {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 18rem));
       justify-content: center;
       gap: var(--space-4);
-      max-width: var(--container-max);
-      margin: 0 auto;
     }
     .phone {
       min-height: 31rem;
@@ -357,7 +324,6 @@
       border: 2px solid var(--ink-surface);
       border-radius: var(--radius-xl);
       background: var(--ink-surface);
-      box-shadow: var(--shadow-device);
     }
     .phone-screen {
       height: 100%;
@@ -421,41 +387,20 @@
     }
     .ui-contact-lines { flex: 1; }
 
-    .principles {
+    /* Orange stat numbers, as on the Brenger and Offers pages */
+    .stat-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin: var(--space-6) 0 0;
-      border-top: 1px solid var(--hairline-color);
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6) var(--space-5);
+      margin: 3.5rem 0 0;
     }
-    .principle { padding: var(--space-3) var(--space-2) 0 0; }
-    .principle span {
-      display: block;
-      margin-bottom: var(--space-1);
-      color: var(--site-color);
-      font-size: var(--fs-h3); line-height: var(--lh-ui);
-      font-weight: var(--fw-bold);
-    }
-    .principle p {
-      margin: 0;
-      color: var(--meta-color);
-      font-size: var(--fs-small);
-      line-height: var(--lh-body);
-    }
-
-    .impact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, auto);
-      gap: var(--space-5);
-      margin-top: var(--space-6);
-    }
-    .impact-value {
+    .stat-value {
       color: var(--site-color);
       font-size: var(--fs-h2);
       font-weight: var(--fw-bold);
       line-height: var(--lh-heading);
-      white-space: nowrap;
     }
-    .impact-label {
+    .stat-label {
       max-width: 14rem;
       margin-top: var(--space-1);
       color: var(--meta-color);
@@ -473,15 +418,12 @@
       grid-template-columns: 1fr auto 1fr;
       gap: var(--space-4);
       align-items: center;
-      padding: var(--space-8);
-      border-radius: var(--radius-m);
-      background: var(--ink-surface);
-      color: var(--on-ink);
+      padding: var(--space-8) clamp(var(--space-3), 5vw, var(--space-8));
     }
     .shift-label {
       display: block;
       margin-bottom: var(--space-2);
-      color: var(--gray20);
+      color: var(--meta-color);
       font-size: var(--fs-small);
       font-weight: var(--fw-bold);
       letter-spacing: .06em;
@@ -500,17 +442,10 @@
     }
 
 
-    @media (max-width: 700px) {
-      .hero-visual img { height: auto; min-height: 0; object-fit: contain; }
-      .case-facts { grid-template-columns: 1fr; }
-      .fact:nth-child(odd), .fact:nth-child(even) { margin: 0; }
-      .media-grid, .media-grid.even { grid-template-columns: 1fr; }
+    @media (max-width: 640px) {
       .image-placeholder { min-height: 15rem; }
-      .image-placeholder.ratio-wide,
-      .image-placeholder.ratio-landscape,
-      .image-placeholder.ratio-cinema { aspect-ratio: 4 / 3; }
       .workflow-surface { grid-template-columns: 1fr; }
-      .workflow-item { min-height: 13rem; border-right: 0; border-bottom: 1px solid var(--hairline-on-ink); }
+      .workflow-item { border-right: 0; border-bottom: 1px solid var(--hairline-color); }
       .workflow-item:last-child { border-bottom: 0; }
       .workflow-item h3 { margin-top: var(--space-4); }
       .strategy-table, .strategy-table tbody, .strategy-table tr, .strategy-table td { display: block; }
@@ -528,16 +463,15 @@
         text-transform: uppercase;
       }
       .phones { grid-template-columns: minmax(0, 19rem); }
-      .principles, .impact-grid { grid-template-columns: 1fr; gap: var(--space-4); }
-      .shift-grid { grid-template-columns: 1fr; padding: var(--space-5) var(--gutter); }
-      .shift-arrow { transform: rotate(90deg); }
-      .statement-inner { padding-top: var(--space-12); padding-bottom: var(--space-12); }
+      .stat-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+      .shift-grid { grid-template-columns: 1fr; }
+      .shift-arrow { justify-self: start; transform: rotate(90deg); }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; }
     }
-  
+
     em { font-style: normal; font-weight: var(--fw-bold); }
   </style>
 </head>
@@ -553,57 +487,43 @@
   </figure>
 
   <section class="reading-section compact">
-    <p class="body-copy" data-reveal="up">The product launched in the United States as Bizbox, a multi-language scheduling tool with embedded payments, built for Latino home service workers. When the company began to look at Brazil, we first had to find out <strong>whether the same product would work for Brazilian entrepreneurs.</strong></p>
-  </section>
-
-  <section class="case-facts" aria-label="Case study details">
-    <div class="fact" data-reveal="up"><span class="fact-label">Role</span><span class="fact-value">Founding Product Designer</span></div>
-    <div class="fact" data-reveal="up"><span class="fact-label">Timeline</span><span class="fact-value">2021</span></div>
-    <div class="fact" data-reveal="up"><span class="fact-label">Team</span><span class="fact-value">Founders, Product, Engineering and QA</span></div>
-    <div class="fact" data-reveal="up"><span class="fact-label">Focus</span><span class="fact-value">Discovery, research and product strategy</span></div>
-    <div class="fact" data-reveal="up"><span class="fact-label">Outcome</span><span class="fact-value">Brazil pivot, MVP and product foundation</span></div>
-    <div class="fact" data-reveal="up"><span class="fact-label">Impact</span><span class="fact-value">Part of the product evolution behind a R$16M round</span></div>
+    <p class="body-copy" data-reveal="up">The product launched in the United States as Bizbox, a multi-language scheduling tool with embedded payments, built for Latino home service workers. When the company began to look at Brazil in 2021, we first had to find out <strong>whether the same product would work for Brazilian entrepreneurs.</strong></p>
+    <p class="body-copy" data-reveal="up"><strong>As the founding Product Designer, I worked directly with the founders</strong> to understand the Brazilian market and turn research into product strategy. Discovery was mine to run: planning, interviews, synthesis, the principles that came out of it, the MVP scope and the interface itself.</p>
+    <p class="body-copy" data-reveal="up">A good part of it was facilitation rather than design. I got the founders to agree on what the first release had to prove, then worked with Product, Engineering and QA to build it mobile-first.</p>
   </section>
 
   <div class="media-block">
-    <div class="media-grid even">
-      <figure>
-        <div class="case-figure" data-reveal="up">
-      <img src="quaddro/bizbox-app.png" alt="The Bizbox mobile app showing a job list with scheduled appointments, prices and addresses in Dallas, Texas" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
-      <div class="image-placeholder ratio-landscape">
-        <span class="placeholder-index">Export 01</span>
-        <div class="placeholder-content">
-          <span class="placeholder-mark" aria-hidden="true">+</span>
-          <strong>The Bizbox app</strong>
-          <span>Slide 08 · crop the phone mockups out of the blue panel. No slide title, no “a.” mark.</span>
+    <div class="media-grid">
+      <figure data-reveal="up">
+        <div class="case-figure">
+          <img src="quaddro/bizbox-app.png" alt="The Bizbox mobile app showing a job list with scheduled appointments, prices and addresses in Dallas, Texas" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+          <div class="image-placeholder">
+            <span class="placeholder-index">Export 01 · 4:3</span>
+            <div class="placeholder-content">
+              <span class="placeholder-mark" aria-hidden="true">+</span>
+              <strong>The Bizbox app</strong>
+              <span>Slide 08 · crop the phone mockups out of the blue panel. No slide title, no “a.” mark.</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
         <figcaption>Bizbox in the United States, with scheduled jobs, prices and addresses in Dallas.</figcaption>
       </figure>
-      <figure>
-        <div class="case-figure" data-reveal="up">
-      <img src="quaddro/us-retention.png" alt="Google Analytics charts showing 781 new users against 533 returning users, and a retention curve that drops to near zero after the first day" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
-      <div class="image-placeholder ratio-landscape">
-        <span class="placeholder-index">Export 02</span>
-        <div class="placeholder-content">
-          <span class="placeholder-mark" aria-hidden="true">+</span>
-          <strong>The retention cliff</strong>
-          <span>Slide 09 · crop the two Google Analytics cards side by side. Drop the slide title and the footnote.</span>
+      <figure data-reveal="up">
+        <div class="case-figure">
+          <img src="quaddro/us-retention.png" alt="Google Analytics charts showing 781 new users against 533 returning users, and a retention curve that drops to near zero after the first day" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+          <div class="image-placeholder">
+            <span class="placeholder-index">Export 02 · 4:3</span>
+            <div class="placeholder-content">
+              <span class="placeholder-mark" aria-hidden="true">+</span>
+              <strong>The retention cliff</strong>
+              <span>Slide 09 · crop the two Google Analytics cards side by side. Drop the slide title and the footnote.</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
         <figcaption>Retention collapsed after day one · Google Analytics, Feb to Aug 2021.</figcaption>
       </figure>
     </div>
   </div>
-
-  <section class="reading-section">
-    <div class="label" data-reveal="up">My role</div>
-    <h2 class="heading-mixed" data-reveal="up">Turning research into <em>company direction</em></h2>
-    <p class="body-copy" data-reveal="up">I worked directly with the founders to understand the Brazilian market and turn research into product strategy. Discovery was mine to run: planning, interviews, synthesis, the principles that came out of it, the MVP scope and the interface itself.</p>
-    <p class="body-copy" data-reveal="up">A good part of it was facilitation rather than design. I got the founders to agree on what the first release had to prove, then worked with Product, Engineering and QA to build it mobile-first.</p>
-  </section>
 
   <section class="reading-section">
     <div class="label" data-reveal="up">The unknowns</div>
@@ -624,11 +544,11 @@
     </div>
   </div>
 
-  <figure class="media-block">
-    <div class="case-figure" data-reveal="up">
+  <figure class="media-block" data-reveal="up">
+    <div class="case-figure wide">
       <img src="quaddro/csd-matrix.png" alt="A CSD matrix with three columns of sticky notes: green certainties, yellow suppositions and red doubts" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
-      <div class="image-placeholder ratio-cinema">
-        <span class="placeholder-index">Export 03</span>
+      <div class="image-placeholder">
+        <span class="placeholder-index">Export 03 · 21:9</span>
         <div class="placeholder-content">
           <span class="placeholder-mark" aria-hidden="true">+</span>
           <strong>The CSD matrix</strong>
@@ -648,50 +568,50 @@
 
   <div class="media-block">
     <div class="media-grid">
-      <figure>
-        <div class="case-figure" data-reveal="up">
-      <img src="quaddro/research-plan.png" alt="The research plan in Notion, listing objective, hypothesis, recruitment, target users, interview guide and analysis" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
-      <div class="image-placeholder ratio-landscape">
-        <span class="placeholder-index">Export 04</span>
-        <div class="placeholder-content">
-          <span class="placeholder-mark" aria-hidden="true">+</span>
-          <strong>The research plan</strong>
-          <span>Slide 14 · crop the Notion window. Keep the “32 · 30min in-depth interviews” card if it crops cleanly beside it.</span>
+      <figure data-reveal="up">
+        <div class="case-figure">
+          <img src="quaddro/research-plan.png" alt="The research plan in Notion, listing objective, hypothesis, recruitment, target users, interview guide and analysis" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+          <div class="image-placeholder">
+            <span class="placeholder-index">Export 04 · 4:3</span>
+            <div class="placeholder-content">
+              <span class="placeholder-mark" aria-hidden="true">+</span>
+              <strong>The research plan</strong>
+              <span>Slide 14 · crop the Notion window. Keep the “32 · 30min in-depth interviews” card if it crops cleanly beside it.</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
         <figcaption>Thirty-two interviews of thirty minutes each, planned around daily routines rather than product features.</figcaption>
       </figure>
-      <figure>
-        <div class="case-figure" data-reveal="up">
-      <img src="quaddro/personas.png" alt="Four Brazilian personas: Carol, Tabatha, Guga and Marina, each with demographics, needs and potential solutions" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
-      <div class="image-placeholder ratio-landscape">
-        <span class="placeholder-index">Export 05</span>
-        <div class="placeholder-content">
-          <span class="placeholder-mark" aria-hidden="true">+</span>
-          <strong>The personas</strong>
-          <span>Slide 16 · crop the four persona cards. Check the body text is legible at export scale, it reads greyed out on the slide.</span>
+      <figure data-reveal="up">
+        <div class="case-figure">
+          <img src="quaddro/personas.png" alt="Four Brazilian personas: Carol, Tabatha, Guga and Marina, each with demographics, needs and potential solutions" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
+          <div class="image-placeholder">
+            <span class="placeholder-index">Export 05 · 4:3</span>
+            <div class="placeholder-content">
+              <span class="placeholder-mark" aria-hidden="true">+</span>
+              <strong>The personas</strong>
+              <span>Slide 16 · crop the four persona cards. Check the body text is legible at export scale, it reads greyed out on the slide.</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
         <figcaption>Carol, Tabatha, Guga and Marina · the four working patterns the interviews kept returning to.</figcaption>
       </figure>
     </div>
   </div>
 
-  <figure class="workflow">
-    <div class="workflow-surface" role="img" aria-label="The three tools at the center of participants' daily business routines: WhatsApp, Pix and paper notebooks">
-      <div class="workflow-item" data-reveal="up">
+  <figure class="media-block" data-reveal="up">
+    <div class="surface-card workflow-surface" role="img" aria-label="The three tools at the center of participants' daily business routines: WhatsApp, Pix and paper notebooks">
+      <div class="workflow-item">
         <div class="workflow-number">01</div>
         <h3>WhatsApp</h3>
         <p>Customer conversations, orders and follow-ups happened in the same place as everyday communication.</p>
       </div>
-      <div class="workflow-item" data-reveal="up">
+      <div class="workflow-item">
         <div class="workflow-number">02</div>
         <h3>Pix</h3>
         <p>Instant payments matched the speed and informality of small, mobile-first businesses.</p>
       </div>
-      <div class="workflow-item" data-reveal="up">
+      <div class="workflow-item">
         <div class="workflow-number">03</div>
         <h3>Paper notebooks</h3>
         <p>Financial records stayed on paper, which was flexible and easy to keep up in an overloaded routine.</p>
@@ -725,11 +645,11 @@
     </table>
   </div>
 
-  <figure class="media-block">
-    <div class="case-figure" data-reveal="up">
+  <figure class="media-block" data-reveal="up">
+    <div class="case-figure wide">
       <img src="quaddro/research-nuggets.png" alt="An atomic research database in Notion, with each interview finding tagged by status, confidence, relevance and theme" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
-      <div class="image-placeholder ratio-wide">
-        <span class="placeholder-index">Export 06</span>
+      <div class="image-placeholder">
+        <span class="placeholder-index">Export 06 · 21:9</span>
         <div class="placeholder-content">
           <span class="placeholder-mark" aria-hidden="true">+</span>
           <strong>Atomic research</strong>
@@ -744,17 +664,13 @@
     <div class="label" data-reveal="up">The MVP</div>
     <h2 class="heading-mixed" data-reveal="up">The smallest product that could <em>validate the direction</em></h2>
     <p class="body-copy" data-reveal="up">The MVP had to take work off people already overloaded by running a business. It covered fast invoicing, Pix-ready payments, simple customer management, clear language and enough restraint to stay quick on lower-end Android devices.</p>
-    <div class="principles" data-reveal="up">
-      <div class="principle"><span>Fast</span><p>Immediate value before explanation.</p></div>
-      <div class="principle"><span>Familiar</span><p>Existing behaviours before new mental models.</p></div>
-      <div class="principle"><span>Light</span><p>Essential workflows before feature depth.</p></div>
-    </div>
+    <p class="body-copy" data-reveal="up">It followed three principles. <strong>Fast:</strong> immediate value before explanation. <strong>Familiar:</strong> existing behaviours before new mental models. <strong>Light:</strong> essential workflows before feature depth.</p>
   </section>
 
-  <figure class="mvp-figure">
-    <div class="mvp-stage">
+  <figure class="media-block" data-reveal="up">
+    <div class="surface-card mvp-surface">
       <div class="phones" role="img" aria-label="Three conceptual mobile screens representing invoicing, Pix payments and customer management in the Quaddro MVP">
-        <div class="phone" data-reveal="up">
+        <div class="phone">
           <div class="phone-screen">
             <span class="phone-kicker">Invoice</span>
             <h3>Create and send in minutes</h3>
@@ -764,7 +680,7 @@
             <div class="ui-button">Create invoice</div>
           </div>
         </div>
-        <div class="phone" data-reveal="up">
+        <div class="phone">
           <div class="phone-screen">
             <span class="phone-kicker">Pix payment</span>
             <h3>Get paid without changing the routine</h3>
@@ -773,7 +689,7 @@
             <div class="ui-button">Share payment</div>
           </div>
         </div>
-        <div class="phone" data-reveal="up">
+        <div class="phone">
           <div class="phone-screen">
             <span class="phone-kicker">Customers</span>
             <h3>People, not CRM records</h3>
@@ -788,11 +704,11 @@
     <figcaption>A conceptual view of the MVP, built around invoicing, Pix payments and customer management.</figcaption>
   </figure>
 
-  <figure class="media-block">
-    <div class="case-figure" data-reveal="up">
+  <figure class="media-block" data-reveal="up">
+    <div class="case-figure wide">
       <img src="quaddro/mvp-screens.png" alt="The Quaddro app screens for professionals, covering sign-up, onboarding, agenda, catalogue and settings" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
-      <div class="image-placeholder ratio-cinema">
-        <span class="placeholder-index">Export 07</span>
+      <div class="image-placeholder">
+        <span class="placeholder-index">Export 07 · 21:9</span>
         <div class="placeholder-content">
           <span class="placeholder-mark" aria-hidden="true">+</span>
           <strong>The app for pros</strong>
@@ -803,22 +719,11 @@
     <figcaption>The app for professionals · sign-up, agenda, catalogue and payments.</figcaption>
   </figure>
 
-  <section class="reading-section">
-    <div class="label" data-reveal="up">Business impact</div>
-    <h2 class="heading-mixed" data-reveal="up">From adapting a product to <em>rebuilding it</em></h2>
-    <p class="body-copy" data-reveal="up">Bizbox did not cross the border. It was rebuilt around Brazilian entrepreneurs and relaunched under a new name, Quaddro. The research and the MVP shaped the pivot, and the company kept building on that product through to a R$16M funding round.</p>
-    <div class="impact-grid" data-reveal="up">
-      <div><div class="impact-value">U.S. → BR</div><div class="impact-label">the research that shaped the move to Brazil</div></div>
-      <div><div class="impact-value">MVP</div><div class="impact-label">built around how Brazilian entrepreneurs worked</div></div>
-      <div><div class="impact-value">R$16M</div><div class="impact-label">funding round, raised as the product kept evolving</div></div>
-    </div>
-  </section>
-
-  <figure class="media-block">
-    <div class="case-figure" data-reveal="up">
+  <figure class="media-block" data-reveal="up">
+    <div class="case-figure wide">
       <img src="quaddro/quaddro-brazil.png" alt="The Quaddro booking experience on the web, where a professional&#39;s clients book, reschedule and pay for appointments" loading="lazy" onerror="this.closest('.case-figure').classList.add('is-missing')" />
-      <div class="image-placeholder ratio-wide">
-        <span class="placeholder-index">Export 08</span>
+      <div class="image-placeholder">
+        <span class="placeholder-index">Export 08 · 21:9</span>
         <div class="placeholder-content">
           <span class="placeholder-mark" aria-hidden="true">+</span>
           <strong>Quaddro in Brazil</strong>
@@ -829,8 +734,19 @@
     <figcaption>The client side · booking, rescheduling and paying without either person leaving their phone.</figcaption>
   </figure>
 
+  <section class="reading-section">
+    <div class="label" data-reveal="up">Business impact</div>
+    <h2 class="heading-mixed" data-reveal="up">From adapting a product to <em>rebuilding it</em></h2>
+    <p class="body-copy" data-reveal="up">Bizbox did not cross the border. It was rebuilt around Brazilian entrepreneurs and relaunched under a new name, Quaddro. The research and the MVP shaped the pivot, and the company kept building on that product through to a R$16M funding round.</p>
+    <div class="stat-grid" data-reveal="up">
+      <div><div class="stat-value">U.S. → BR</div><div class="stat-label">the research that shaped the move to Brazil</div></div>
+      <div><div class="stat-value">MVP</div><div class="stat-label">built around how Brazilian entrepreneurs worked</div></div>
+      <div><div class="stat-value">R$16M</div><div class="stat-label">funding round, raised as the product kept evolving</div></div>
+    </div>
+  </section>
+
   <section class="question-shift">
-    <div class="shift-grid" data-reveal="up">
+    <div class="surface-card shift-grid" data-reveal="up">
       <div><span class="shift-label">Before</span><p class="shift-quote">“How do we adapt the U.S. product?”</p></div>
       <div class="shift-arrow" aria-hidden="true">→</div>
       <div><span class="shift-label">After</span><p class="shift-quote">“What product should exist for this market?”</p></div>

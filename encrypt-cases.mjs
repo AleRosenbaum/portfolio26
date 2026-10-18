@@ -115,7 +115,9 @@ function gatePage(page, payload) {
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-VXNMWSJCZE');
+// The gate is not a page view of the case: the case sends that itself once it
+// is unlocked. The gate reports case_gate_view and case_unlock events instead.
+gtag('config', 'G-VXNMWSJCZE', { send_page_view: false });
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,6 +127,7 @@ gtag('config', 'G-VXNMWSJCZE');
 <script src="/sticky-header.js?v=${v['sticky-header.js']}" defer></script>
 <link rel="stylesheet" href="/site-footer.css?v=${v['site-footer.css']}">
 <script src="/site-footer.js?v=${v['site-footer.js']}" defer></script>
+<script src="/analytics.js?v=${v['analytics.js']}" defer></script>
 <style>
 html { -webkit-font-smoothing: antialiased; }
 body {
@@ -227,7 +230,7 @@ em { font-style: normal; font-weight: var(--fw-bold); }
 .gate-hint a:hover { color: var(--hover-color); }
 </style>
 </head>
-<body>
+<body data-case="${page.out.replace('.html', '')}" data-gate>
 
 <main class="gate">
   <p class="label">Protected case study</p>
@@ -239,7 +242,7 @@ em { font-style: normal; font-weight: var(--fw-bold); }
     <button class="form-submit" type="submit" id="gate-btn">Unlock</button>
     <p class="gate-error" id="gate-error" role="alert"></p>
   </form>
-  <p class="gate-hint">No password? <a href="mailto:${ACCESS_EMAIL}?subject=${encodeURIComponent(`Password for the ${page.caseName} case study`)}">Ask me for access</a>.</p>
+  <p class="gate-hint">No password? <a data-track="access_request" href="mailto:${ACCESS_EMAIL}?subject=${encodeURIComponent(`Password for the ${page.caseName} case study`)}">Ask me for access</a>.</p>
 </main>
 
 <script id="payload" type="application/json">${JSON.stringify(payload)}</script>
@@ -250,6 +253,7 @@ em { font-style: normal; font-weight: var(--fw-bold); }
   var input = document.getElementById('gate-pass');
   var btn = document.getElementById('gate-btn');
   var errEl = document.getElementById('gate-error');
+  var caseName = document.body.getAttribute('data-case');
 
   function b64(s) {
     var bin = atob(s);
@@ -284,6 +288,7 @@ em { font-style: normal; font-weight: var(--fw-bold); }
     try {
       var html = await decrypt(pass);
       sessionStorage.setItem('ale-case-pass', pass);
+      if (!fromStorage) gtag('event', 'case_unlock', { case_name: caseName });
       if (html.indexOf('/sticky-header.css') === -1) {
         html = html.replace('</head>', '<link rel="stylesheet" href="/sticky-header.css?v=${v['sticky-header.css']}"></head>');
       }
@@ -298,15 +303,22 @@ em { font-style: normal; font-weight: var(--fw-bold); }
         var siteFooterScript = '<script src="/site-footer.js?v=${v['site-footer.js']}"><' + '/script>';
         html = html.replace('</body>', siteFooterScript + '</body>');
       }
+      // gtag.js is already running from the gate and ignores the case's own
+      // config, so drop the case's snippet and send its page view from here.
+      html = html
+        .replace(/<script[^>]*googletagmanager[^>]*><\\/script>/, '')
+        .replace(/<script>[^<]*gtag\\('config'[^<]*<\\/script>/, '');
       document.open();
       document.write(html);
       document.close();
+      gtag('event', 'page_view', { page_title: document.title, page_location: location.href });
     } catch (e) {
       btn.disabled = false;
       if (fromStorage) {
         sessionStorage.removeItem('ale-case-pass');
       } else {
         errEl.textContent = 'Wrong password. Try again.';
+        gtag('event', 'case_unlock_failed', { case_name: caseName });
         input.select();
       }
     }
@@ -319,6 +331,7 @@ em { font-style: normal; font-weight: var(--fw-bold); }
 
   var saved = sessionStorage.getItem('ale-case-pass');
   if (saved) unlock(saved, true);
+  else gtag('event', 'case_gate_view', { case_name: caseName });
 })();
 </script>
 </body>

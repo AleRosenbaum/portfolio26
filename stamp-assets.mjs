@@ -6,7 +6,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 
-const ASSETS = ['tokens.css', 'sticky-header.css', 'sticky-header.js', 'site-footer.css', 'site-footer.js'];
+const ASSETS = ['tokens.css', 'sticky-header.css', 'sticky-header.js', 'site-footer.css', 'site-footer.js', 'analytics.js'];
 const PAGES = ['index.html', 'quaddro.html', 'design-system.html', '_src/brenger.html', '_src/offers.html'];
 
 export function stampAssets() {

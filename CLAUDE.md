@@ -22,6 +22,22 @@ Plain HTML/CSS/JS. No framework. Four pages plus an internal design system page:
 
 The gate pages inject all four files into the decrypted payload at runtime.
 
+## Analytics
+
+GA4 (`G-VXNMWSJCZE`) loads on the home page, Quaddro and the case gates, but not on the design system page. `analytics.js` is shared like the nav and footer (stamped, loaded with `defer`) and adds custom events; each case page names itself with `<body data-case="...">`.
+
+| Event | When | Parameters |
+|---|---|---|
+| `select_case` | a case card on the home page | `case_name` |
+| `contact_click` | any email or LinkedIn link | `channel`, `link_location` (nav, footer, page) |
+| `case_gate_view` | the password page is shown | `case_name` |
+| `case_unlock` / `case_unlock_failed` | a password is entered (never sent) | `case_name` |
+| `access_request` | "Ask me for access" on a gate | `case_name` |
+| `case_read` | 25, 50, 75 and 100% of a case, above the footer | `case_name`, `percent_scrolled` |
+| `case_section_view` | a section `.label` reaches the upper half of the screen, once each | `case_name`, `section` (label text, emoji dropped), `section_index` |
+
+The gate does not send a page view. On unlock it strips the case's own GA snippet and sends the case's page view itself, so each read counts once. To see the parameters in GA reports, register them as event scoped custom dimensions.
+
 ## Case study password wall
 
 The case pages are AES-256-GCM encrypted (staticrypt-style). The real pages live in `_src/` (not served by GitHub Pages because Jekyll skips underscore directories — do NOT add a `.nojekyll` file). The public `brenger.html` / `offers.html` are generated gate pages: a styled password form plus the encrypted payload; WebCrypto (PBKDF2, 600K iterations) decrypts and `document.write`s the real page on the correct password. The password is kept in `sessionStorage` so unlocking one case unlocks both for the session.
